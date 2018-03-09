@@ -467,35 +467,43 @@ e.g. `seedu.address.logic.LogicManagerTest`
 
 == Dev Ops
 
+Dev Ops is a software engineering culture and practice that aims at unifying software development (Dev) and software operations (Ops).
+Dev Ops advocates automation and monitoring at all steps of software construction. This section illustrates how we adopt this practice in developing AddressBook.
+
 === Build Automation
 
-See <<UsingGradle#, UsingGradle.adoc>> to learn how to use Gradle for build automation.
+We use Gradle for build automation. +
+See <<UsingGradle#, UsingGradle.adoc>> for more details.
 
 === Continuous Integration
 
-We use https://travis-ci.org/[Travis CI] and https://www.appveyor.com/[AppVeyor] to perform _Continuous Integration_ on our projects. See <<UsingTravis#, UsingTravis.adoc>> and <<UsingAppVeyor#, UsingAppVeyor.adoc>> for more details.
+We use https://travis-ci.org/[Travis CI] and https://www.appveyor.com/[AppVeyor] to perform _Continuous Integration_ on our projects. +
+See <<UsingTravis#, UsingTravis.adoc>> and <<UsingAppVeyor#, UsingAppVeyor.adoc>> for more details.
 
 === Coverage Reporting
 
-We use https://coveralls.io/[Coveralls] to track the code coverage of our projects. See <<UsingCoveralls#, UsingCoveralls.adoc>> for more details.
+We use https://coveralls.io/[Coveralls] to track the code coverage of our projects. +
+See <<UsingCoveralls#, UsingCoveralls.adoc>> for more details.
 
 === Documentation Previews
-When a pull request has changes to asciidoc files, you can use https://www.netlify.com/[Netlify] to see a preview of how the HTML version of those asciidoc files will look like when the pull request is merged. See <<UsingNetlify#, UsingNetlify.adoc>> for more details.
+
+We use https://www.netlify.com/[Netlify] to see a preview of how the HTML version of changed asciidoc files will look
+like when a pull request is merged. +
+See <<UsingNetlify#, UsingNetlify.adoc>> for more details.
 
 === Making a Release
 
-Here are the steps to create a new release.
+We do the following steps to create a new release:
 
 .  Update the version number in link:{repoURL}/src/main/java/seedu/address/MainApp.java[`MainApp.java`].
 .  Generate a JAR file <<UsingGradle#creating-the-jar-file, using Gradle>>.
-.  Tag the repo with the version number. e.g. `v0.1`
+.  Tag the repo with the version number, e.g. `v0.1`.
 .  https://help.github.com/articles/creating-releases/[Create a new release using GitHub] and upload the JAR file you created.
 
 === Managing Dependencies
 
-A project often depends on third-party libraries. For example, Address Book depends on the http://wiki.fasterxml.com/JacksonHome[Jackson library] for XML parsing. Managing these _dependencies_ can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives. +
-a. Include those libraries in the repo (this bloats the repo size) +
-b. Require developers to download those libraries manually (this creates extra work for developers)
+We automate _dependencies_ on third-party libraries using Gradle.
+There is no need to include those libraries in the repo or download them manually.
 
 [[GetStartedProgramming]]
 [appendix]
