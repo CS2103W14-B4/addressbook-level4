@@ -54,7 +54,7 @@ public class AddAppointmentCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException {
-        CelebCalendar cal = model.getCelebCalendars().get(calendarIndex);
+        CelebCalendar cal = (CelebCalendar) model.getCelebCalendars().get(calendarIndex);
         cal.addEntry(appt);
         return new CommandResult(MESSAGE_SUCCESS);
     }

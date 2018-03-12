@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import com.calendarfx.model.CalendarSource;
 import com.google.common.eventbus.Subscribe;
 
 import javafx.event.ActionEvent;
@@ -39,6 +40,9 @@ public class MainWindow extends UiPart<Stage> {
     private Config config;
     private UserPrefs prefs;
 
+    // Source of calendars for calendar UI container
+    private CalendarSource calendarSource;
+
     @FXML
     private StackPane browserPlaceholder;
 
@@ -65,6 +69,7 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
         this.config = config;
         this.prefs = prefs;
+        this.calendarSource = logic.getCelebCalendarSource();
 
         // Configure the UI
         setTitle(config.getAppTitle());
@@ -116,8 +121,10 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        browserPanel = new BrowserPanel();
-        browserPlaceholder.getChildren().add(browserPanel.getRoot());
+//        browserPanel = new BrowserPanel();
+//        browserPlaceholder.getChildren().add(browserPanel.getRoot());
+        CalendarPanel calendarPanel = new CalendarPanel(calendarSource);
+        browserPlaceholder.getChildren().add(calendarPanel.getCalendarView());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());

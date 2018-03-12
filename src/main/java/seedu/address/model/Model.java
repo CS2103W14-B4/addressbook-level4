@@ -1,10 +1,11 @@
 package seedu.address.model;
 
-import java.util.ArrayList;
 import java.util.function.Predicate;
 
+import com.calendarfx.model.Calendar;
+import com.calendarfx.model.CalendarSource;
+
 import javafx.collections.ObservableList;
-import seedu.address.model.calendar.CelebCalendar;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -40,7 +41,10 @@ public interface Model {
             throws DuplicatePersonException, PersonNotFoundException;
 
     /** Fetches the list of CelebCalendars */
-    ArrayList<CelebCalendar> getCelebCalendars();
+    ObservableList<Calendar> getCelebCalendars();
+
+    /** Fetches the CalendarSource of the CelebCalendars */
+    CalendarSource getCelebCalendarSource();
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();

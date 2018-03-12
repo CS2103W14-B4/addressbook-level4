@@ -3,9 +3,11 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+
+import com.calendarfx.model.Calendar;
+import com.calendarfx.model.CalendarSource;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +30,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<Person> filteredPersons;
-    private final ArrayList<CelebCalendar> calendarList;
+    private final CalendarSource celebCalendarSource;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -41,9 +43,11 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        celebCalendarSource = new CalendarSource("Test Celeb Calendar Source");
 
-        calendarList = new ArrayList<>();
-        calendarList.add(new CelebCalendar("Test Celeb Calendar"));
+        CelebCalendar testCalendar1 = new CelebCalendar("Paul McCartney");
+        CelebCalendar testCalendar2 = new CelebCalendar("John Lennon");
+        celebCalendarSource.getCalendars().addAll(testCalendar1, testCalendar2);
     }
 
     public ModelManager() {
@@ -96,8 +100,13 @@ public class ModelManager extends ComponentManager implements Model {
     //=========== Celeb Calendar Accessors =============================================================
 
     @Override
-    public ArrayList<CelebCalendar> getCelebCalendars() {
-        return calendarList;
+    public ObservableList<Calendar> getCelebCalendars() {
+        return celebCalendarSource.getCalendars();
+    }
+
+    @Override
+    public CalendarSource getCelebCalendarSource(){
+        return celebCalendarSource;
     }
 
     //=========== Filtered Person List Accessors =============================================================

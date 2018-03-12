@@ -1,5 +1,8 @@
 package seedu.address.logic;
 
+import com.calendarfx.model.Calendar;
+import com.calendarfx.model.CalendarSource;
+
 import javafx.collections.ObservableList;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -24,4 +27,10 @@ public interface Logic {
 
     /** Returns the list of input entered by the user, encapsulated in a {@code ListElementPointer} object */
     ListElementPointer getHistorySnapshot();
+
+    /** Returns the list of CelebCalendars stored */
+    ObservableList<Calendar> getCelebCalendars();
+
+    /** Fetches the CalendarSource of the CelebCalendars */
+    CalendarSource getCelebCalendarSource();
 }
