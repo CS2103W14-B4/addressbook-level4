@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.calendar.Appointment;
+import seedu.address.model.calendar.exceptions.AppointmentNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -188,6 +190,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         } else {
             throw new PersonNotFoundException();
         }
+    }
+
+    //// appointment-level operations
+    public void removeAppointment(Appointment key) throws AppointmentNotFoundException {
+
     }
 
     //// tag-level operations
