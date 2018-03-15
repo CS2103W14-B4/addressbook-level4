@@ -6,6 +6,8 @@ import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarSource;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.calendar.Appointment;
+import seedu.address.model.calendar.exceptions.AppointmentNotFoundException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -39,6 +41,9 @@ public interface Model {
      */
     void updatePerson(Person target, Person editedPerson)
             throws DuplicatePersonException, PersonNotFoundException;
+
+    /** Deletes the given appointment. */
+    void deleteAppointment(Appointment target) throws AppointmentNotFoundException;
 
     /** Fetches the list of CelebCalendars */
     ObservableList<Calendar> getCelebCalendars();
