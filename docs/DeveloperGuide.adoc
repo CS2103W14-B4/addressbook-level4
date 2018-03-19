@@ -837,11 +837,18 @@ See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-
 *Location on map*: Able to show the location of appointments using address in maps, to allow the
 celebrity manager to locate specifically the location of appointment. (By Damien)
 
-*Distance and time of travel between 2 location*: Calculates the distance and time required to travel between two
+*Distance and time of travel between 2 location*: Able to calculate the distance and time required to travel between two
 location to allow the celebrity manager to plan appointments and trips more effectively. (By Damien)
 
 *Route on map*: Able to show the rough route used to calculate the distance and time of travel, this allows
 the celebrity manager who usually has the responsibility to drive to be familiarised with the travel route. (By Damien)
+
+*Storage of appointments*: Able to parse appointments information from storage, and save new and edited appointment 
+information into storage. (By Tzer Bin)
+
+**MINOR**
+
+*Visual Themes*: Able to allow user to customize visual themes of the application. (By Tzer Bin)
 
 [appendix]
 
