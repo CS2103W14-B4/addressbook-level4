@@ -49,9 +49,10 @@
 <li><a href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">4.3. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.4. Configuration</a></li>
-<li><a href="#showlocation-feature">4.5. ShowLocation Feature</a></li>
-<li><a href="#addappointment-feature">4.6. AddAppointment feature</a></li>
-<li><a href="#appointment-storage-feature">4.7. Appointment Storage Feature</a></li>
+<li><a href="#removetag-feature">4.5. RemoveTag feature</a></li>
+<li><a href="#showlocation-feature">4.6. ShowLocation Feature</a></li>
+<li><a href="#addappointment-feature">4.7. AddAppointment feature</a></li>
+<li><a href="#appointment-storage-feature">4.8. Appointment Storage Feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -980,9 +981,164 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="showlocation-feature"><a class="link" href="#showlocation-feature">4.5. ShowLocation Feature</a></h3>
+<h3 id="removetag-feature"><a class="link" href="#removetag-feature">4.5. RemoveTag feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>This RemoveTag mechanism is facilitated by <code>RemoveTagCommand</code> which resides inside <code>Logic</code> and <code>removeTag</code> which resides in <code>AddressBook</code>.
+<code>RemoveTagCommand</code> removes a specified tag from each person in the address book, and prints out how many persons are affected by this removal.
+The following diagram shows the inheritance diagram for <code>RemoveTagCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemoveTagCommandClassDiagram.png" alt="RemoveTagCommandClassDiagram" width="">
+</div>
+<div class="title">Figure 11. Inheritance diagram for Command</div>
+</div>
+<div class="paragraph">
+<p>As you can see from the diagram, <code>RemoveTagCommand</code> inherits from the <code>UndoableCommand</code>.
+Similar to the other undoable commands like <code>DeleteCommand</code>, it supports the undo/redo feature.</p>
+</div>
+<div class="paragraph">
+<p>Unlike <code>DeleteCommand</code> that can raise <code>PersonNotFoundException</code> when the <code>index</code> of the <code>person</code> to be deleted does not exist,
+<code>RemoveTagCommand</code> can remove a non-existing tag from the address book, but implicitly tell the user that the tag does not exist
+by showing that, the number of persons affected by the removal is 0.</p>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the implementation of <code>executeUndoableCommand</code> in <code>RemoveTagCommand</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">RemoveTagCommand</span> <span class="directive">extends</span> UndoableCommand {
+    ...
+    public <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_DELETE_TAG_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Removed Tag %1$s and %2$s person(s) affected.</span><span class="delimiter">&quot;</span></span>;
+    ...
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() {
+        requireNonNull(tagToRemove);
+        <span class="type">int</span> numberOfAffectedPersons = model.removeTag(tagToRemove);
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_DELETE_TAG_SUCCESS, tagToRemove, numberOfAffectedPersons));
+    }
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the implementation of <code>removeTag</code> in <code>AddressBook</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">AddressBook</span> {
+    <span class="comment">/**
+     * Removes {@code tag} from all persons in this {@code AddressBook}.
+     * @returns the number of {@code person}s with this {@code tag} removed.
+     */</span>
+    <span class="directive">public</span> <span class="type">int</span> removeTag(Tag tag) {
+        <span class="type">int</span> count = <span class="integer">0</span>;
+        <span class="keyword">for</span> (Person person: persons) {
+            <span class="keyword">if</span> (person.removeTag(tag)) {
+                count++;
+            }
+        }
+        <span class="keyword">if</span> (count &gt; <span class="integer">0</span>) {
+            removeUnusedTags();
+        }
+        <span class="keyword">return</span> count;
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that <code>removeUnusedTags</code> is called inside <code>removeTag</code> when there is at least one person affected by the removal.
+This is because this operation removes the tag from each person with it, and thus after the operation, no person in the
+address book should have the tag, and hence the unused tag should be removed from <code>tags</code> inside the address book.</p>
+</div>
+<div class="paragraph">
+<p>Suppose the current address book has two types of tags, <code>friends</code> and <code>husband</code>.
+The snippet below shows the state of <code>PersonListPanel</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BeforeRemoveTag.png" alt="BeforeRemoveTag" width="">
+</div>
+<div class="title">Figure 12. Image of <code>PersonListPanel</code> before executing <code>removeTag friends</code></div>
+</div>
+<div class="paragraph">
+<p>After the successful execution of <code>removeTag friends</code>, <code>PersonListPanel</code> will be updated to the diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterRemoveTag.png" alt="AfterRemoveTag" width="">
+</div>
+<div class="title">Figure 13. Image of <code>PersonListPanel</code> after executing <code>removeTag friends</code></div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RemoveTagSequenceDiagram.png" alt="RemoveTagSequenceDiagram" width="">
+</div>
+<div class="title">Figure 14. Sequence diagram of removeTag command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-command-result-for-removal-of-non-existing-code-tag-code"><a class="link" href="#aspect-command-result-for-removal-of-non-existing-code-tag-code">Aspect: Command result for removal of non-existing <code>tag</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Output <code>tag</code> is removed and 0 person affected</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: Does not make it explicit to users that the <code>tag</code> being removed does not exist in the address book.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Output the <code>tag</code> cannot be removed</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Makes it clear to users that the <code>tag</code> does not exist and thus cannot be removed.</p>
+</li>
+<li>
+<p>Cons: Does not invalidate the removal and can thus be confusing to users whether this removal is legal.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3:</strong> Output error and invalid command format</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Follows the common logical convention and makes it clear to users that the removal is not legal.</p>
+</li>
+<li>
+<p>Cons: Requires the creation of additional exception class and exception handling methods.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="showlocation-feature"><a class="link" href="#showlocation-feature">4.6. ShowLocation Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The ShowLocation mechanism is facilitated by the <code>ShowLocationCommand</code>, which resides inside <code>Logic</code>. It supports the viewing of location
 in the <code>MapPanel</code> UI by updating the state of the <code>MapPanel</code>. This is done by re-centering the <code>MapPanel</code> to the latitude and longitude of the
@@ -995,7 +1151,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="images/LocationMarker.png" alt="LocationMarker" width="50">
 </div>
-<div class="title">Figure 11. Location Marker</div>
+<div class="title">Figure 15. Location Marker</div>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the inheritance diagram for <code>ShowLocationCommand</code>:</p>
@@ -1004,7 +1160,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
 </div>
-<div class="title">Figure 12. Inheritance diagram for Command</div>
+<div class="title">Figure 16. Inheritance diagram for Command</div>
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
@@ -1090,7 +1246,7 @@ command to re-center and mark the new location which is then shown to the user.<
 <div class="content">
 <img src="images/BeforeInput.png" alt="BeforeInput" width="400">
 </div>
-<div class="title">Figure 13. Image of Map Panel default state</div>
+<div class="title">Figure 17. Image of Map Panel default state</div>
 </div>
 <div class="paragraph">
 <p>After the input of "showLocation ma/Punggol" the <code>MapPanel</code> will be updated to the diagram below:</p>
@@ -1099,7 +1255,7 @@ command to re-center and mark the new location which is then shown to the user.<
 <div class="content">
 <img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 14. Image of Map Panel after command input</div>
+<div class="title">Figure 18. Image of Map Panel after command input</div>
 </div>
 <div class="paragraph">
 <p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker</p>
@@ -1111,11 +1267,11 @@ command to re-center and mark the new location which is then shown to the user.<
 <div class="content">
 <img src="images/ShowLocationSequenceDiagram.png" alt="ShowLocationSequenceDiagram" width="">
 </div>
-<div class="title">Figure 15. Sequence diagram of showLocation command</div>
+<div class="title">Figure 19. Sequence diagram of showLocation command</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-showlocationcommand-code"><a class="link" href="#aspect-implementation-of-code-showlocationcommand-code">Aspect: Implementation of <code>showLocationCommand</code></a></h5>
 <div class="ulist">
@@ -1185,9 +1341,9 @@ command to re-center and mark the new location which is then shown to the user.<
 </div>
 </div>
 <div class="sect2">
-<h3 id="addappointment-feature"><a class="link" href="#addappointment-feature">4.6. AddAppointment feature</a></h3>
+<h3 id="addappointment-feature"><a class="link" href="#addappointment-feature">4.7. AddAppointment feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.6.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The AddAppointment mechanism is facilitated by the <code>AddAppointmentCommand</code>, which resides inside <code>Logic</code>. It supports the adding of an appointment to an existing calendar.
 The appointment, if added successfully, can be viewed in our <code>CalendarPanel</code> UI. This is done by retrieving the list of calendars stored in our <code>CalendarPanel</code>
@@ -1336,7 +1492,7 @@ Inheritance from the base classes of the external package is done so that we can
 <div class="content">
 <img src="images/BeforeAddAppointment.png" alt="BeforeAddAppointment" width="800">
 </div>
-<div class="title">Figure 16. Image of Celeb Scheduler without any appointments</div>
+<div class="title">Figure 20. Image of Celeb Scheduler without any appointments</div>
 </div>
 <div class="paragraph">
 <p>After input of the command we will have:</p>
@@ -1345,14 +1501,14 @@ Inheritance from the base classes of the external package is done so that we can
 <div class="content">
 <img src="images/AfterAddAppointment.png" alt="AfterAddAppointment" width="800">
 </div>
-<div class="title">Figure 17. Image of Celeb Scheduler with newly added appointment</div>
+<div class="title">Figure 21. Image of Celeb Scheduler with newly added appointment</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="appointment-storage-feature"><a class="link" href="#appointment-storage-feature">4.7. Appointment Storage Feature</a></h3>
+<h3 id="appointment-storage-feature"><a class="link" href="#appointment-storage-feature">4.8. Appointment Storage Feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">4.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The storing of appointment is facilitated by the <code>XmlAppointmentListStorage</code> class, which resides in the <code>Storage</code> component.
 It supports the retrieval and storage for appointments made by the user.</p>
@@ -1432,7 +1588,7 @@ In <code>XmlSerializableAppointmentList</code>, it contains a <code>List</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.8.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementing-of-code-appointmentliststorage-code"><a class="link" href="#aspect-implementing-of-code-appointmentliststorage-code">Aspect: Implementing of <code>AppointmentListStorage</code></a></h5>
 <div class="ulist">
@@ -1568,7 +1724,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 18. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 22. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3985,7 +4141,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 17:53:23 UTC
+Last updated 2018-03-20 19:27:17 UTC
 </div>
 </div>
 </body>
