@@ -49,6 +49,7 @@
 <li><a href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">4.3. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.4. Configuration</a></li>
+<li><a href="#showlocation-feature">4.5. ShowLocation feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -973,6 +974,211 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="showlocation-feature"><a class="link" href="#showlocation-feature">4.5. ShowLocation feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The ShowLocation mechanism is facilitated by the <code>ShowLocationCommand</code>, which resides inside <code>Logic</code>. It supports the viewing of location
+in the <code>MapPanel</code> UI by updating the state of the <code>MapPanel</code>. This is done by re-centering the <code>MapPanel</code> to the latitude and longitude of the
+location and identifying it with a location marker. This command inherits from <code>Command</code> so it <strong>does not support the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The following picture shows the marker that is used to identify the location in the <code>MapPanel</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LocationMarker.png" alt="LocationMarker" width="50">
+</div>
+<div class="title">Figure 11. Location Marker</div>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the inheritance diagram for <code>ShowLocationCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
+</div>
+<div class="title">Figure 12. Inheritance diagram for Command</div>
+</div>
+<div class="paragraph">
+<p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
+Similar to the other commands like <code>FindCommand</code> it will not be identified by the undo/redo feature.</p>
+</div>
+<div class="paragraph">
+<p>This command does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to
+the due to the difference in address specification details as the <code>Address</code> model is too specific for the command to work.
+An example would be the details of unit number (e.g #11-111) which will not be valid for this command.</p>
+</div>
+<div class="paragraph">
+<p>The main diffrence between both model is shown below in the two diagrams.</p>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the diagram of <code>Address</code> model:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Address</span> {
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_ADDRESS_CONSTRAINTS =
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">Person addresses can take any values, and it should not be blank</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">/*
+     * The first character of the address must not be a whitespace,
+     * otherwise &quot; &quot; (a blank string) becomes a valid input.
+     */</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ADDRESS_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="content">[^</span><span class="char">\\</span><span class="content">s].*</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">/**
+     * Returns true if a given string is a valid person email.
+     */</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> isValidAddress(<span class="predefined-type">String</span> test) {
+        <span class="keyword">return</span> test.matches(ADDRESS_VALIDATION_REGEX);
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the diagram of <code>MapAddress</code> model:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MapAddress</span> {
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_ADDRESS_MAP_CONSTRAINTS =
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Address should be in location name, road name, block and road name or postal code format.</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>
+                    + <span class="string"><span class="delimiter">&quot;</span><span class="content">Note:(Person address may not be valid as it consist of too many details like unit number)</span><span class="delimiter">&quot;</span></span>
+    <span class="comment">/*
+     * The first character of the address must not be a whitespace,
+     * otherwise &quot; &quot; (a blank string) becomes a valid input.
+     */</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ADDRESS_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="content">[^</span><span class="char">\\</span><span class="content">s].*</span><span class="delimiter">&quot;</span></span>;
+    ...
+    <span class="comment">/**
+     * Returns true if a given string is a valid map address.
+     */</span>
+    public <span class="directive">static</span> <span class="type">boolean</span> isValidAddress(<span class="predefined-type">String</span> test) {
+        <span class="type">boolean</span> isValid;
+        Geocoding testAddress = <span class="keyword">new</span> Geocoding();
+        isValid = testAddress.checkIfAddressCanBeFound(test);
+        <span class="keyword">return</span> test.matches(ADDRESS_MAP_VALIDATION_REGEX) &amp;&amp; isValid;
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The difference to note is the <code>isValidAddress</code> method, where <code>Address</code> only checks for <strong>blank space</strong> whereas <code>MapAddress</code>
+checks for <strong>blank space and the validity of location in google server</strong>. Thus, making the command more restrictive to location,
+ road, block name and postal code. Any details more than that would result in a higher possibility of it being invalid.</p>
+</div>
+<div class="paragraph">
+<p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library. The <code>GMAPFX API</code> is used to create the
+<code>Geocoding</code> function, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
+is then used by the command to find the exact location in the <code>MapPanel</code>. The <code>Google Maps Web Services API</code> allows the
+command to re-center and mark the new location which is then shown to the user.</p>
+</div>
+<div class="paragraph">
+<p>Every new input of this command will remove the previous location marker and add the new marker into the map.</p>
+</div>
+<div class="paragraph">
+<p>The snippet below shows the state of <code>MapPanel</code> before input of <code>ShowLocation</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BeforeInput.png" alt="BeforeInput" width="400">
+</div>
+<div class="title">Figure 13. Image of Map Panel default state</div>
+</div>
+<div class="paragraph">
+<p>After the input of "showLocation ma/Punggol" the <code>MapPanel</code> will be updated to the diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
+</div>
+<div class="title">Figure 14. Image of Map Panel after command input</div>
+</div>
+<div class="paragraph">
+<p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ShowLocationSequenceDiagram.png" alt="ShowLocationSequenceDiagram" width="">
+</div>
+<div class="title">Figure 15. Sequence diagram of showLocation command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.5.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-showlocationcommand-code"><a class="link" href="#aspect-implementation-of-code-showlocationcommand-code">Aspect: Implementation of <code>showLocationCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Extend <code>Command</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to understand for new developers who will be developing this project as the command is at the same abstraction level as other commands.</p>
+</li>
+<li>
+<p>Cons: Does not have the undo/redo feature as it is not part of <code>UndoableCommand</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Extend <code>UndoableCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for command to have the undo/redo function.</p>
+</li>
+<li>
+<p>Cons: Requires more work that may not fit in with our timeline</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-use-of-address-model"><a class="link" href="#aspect-use-of-address-model">Aspect: Use of address model</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>MapAddress</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion</p>
+</li>
+<li>
+<p>Cons: Both model are very similar</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>Address</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces the amount of code/class in the project</p>
+</li>
+<li>
+<p>Cons: Will be confusing as different requirements for a single model. Lacks proper organisation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1040,7 +1246,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3457,7 +3663,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 13:29:48 UTC
+Last updated 2018-03-20 13:33:53 UTC
 </div>
 </div>
 </body>

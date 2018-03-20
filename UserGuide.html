@@ -45,7 +45,8 @@
 <li><a href="#exiting-the-program-code-exit-code">3.15. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.16. Saving the data</a></li>
 <li><a href="#removing-a-tag-code-removetag-code">3.17. Removing a tag : <code>removeTag</code></a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#show-location-on-map-code-showlocation-code">3.18. Show location on map : <code>showLocation</code></a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -582,7 +583,38 @@ Removes the tag, "friends" from every person with it in Celeb Scheduler and show
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="show-location-on-map-code-showlocation-code"><a class="link" href="#show-location-on-map-code-showlocation-code">3.18. Show location on map : <code>showLocation</code></a></h3>
+<div class="paragraph">
+<p>Shows the specific location in the map interface, by marking the latitude and longitude with a location marker.<br>
+Alias: <code>sl</code><br>
+Format: <code>showLocation ma/MapAddress</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The format of the address can be in postal code, road name, location name and building name.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>showlocation ma/Punggol</code><br>
+Updates the map by re-centering to the new location 'Punggol' and adding a location marker to it.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.19. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -652,7 +684,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 13:29:48 UTC
+Last updated 2018-03-20 13:33:53 UTC
 </div>
 </div>
 </body>
