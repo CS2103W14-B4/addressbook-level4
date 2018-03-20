@@ -49,8 +49,9 @@
 <li><a href="#proposed-data-encryption">4.2. [Proposed] Data Encryption</a></li>
 <li><a href="#logging">4.3. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.4. Configuration</a></li>
-<li><a href="#showlocation-feature">4.5. ShowLocation feature</a></li>
+<li><a href="#showlocation-feature">4.5. ShowLocation Feature</a></li>
 <li><a href="#addappointment-feature">4.6. AddAppointment feature</a></li>
+<li><a href="#appointment-storage-feature">4.7. Appointment Storage Feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -616,6 +617,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <li>
 <p>can save the Address Book data in xml format and read it back.</p>
 </li>
+<li>
+<p>can save the Appointment List data in xml format and read it back.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -976,7 +980,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="showlocation-feature"><a class="link" href="#showlocation-feature">4.5. ShowLocation feature</a></h3>
+<h3 id="showlocation-feature"><a class="link" href="#showlocation-feature">4.5. ShowLocation Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">4.5.1. Current Implementation</a></h4>
 <div class="paragraph">
@@ -1342,6 +1346,158 @@ Inheritance from the base classes of the external package is done so that we can
 <img src="images/AfterAddAppointment.png" alt="AfterAddAppointment" width="800">
 </div>
 <div class="title">Figure 17. Image of Celeb Scheduler with newly added appointment</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="appointment-storage-feature"><a class="link" href="#appointment-storage-feature">4.7. Appointment Storage Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The storing of appointment is facilitated by the <code>XmlAppointmentListStorage</code> class, which resides in the <code>Storage</code> component.
+It supports the retrieval and storage for appointments made by the user.</p>
+</div>
+<div class="paragraph">
+<p>During start-up of application, the storage component will be initialized by the <code>MainApp</code>, which retrieves information from the specified file path in <code>UserPrefs</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippet shows how the storage component will be initialized by the <code>MainApp</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> init() <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="comment">// initializes application.</span>
+
+        UserPrefsStorage userPrefsStorage = <span class="keyword">new</span> JsonUserPrefsStorage(config.getUserPrefsFilePath());
+        userPrefs = initPrefs(userPrefsStorage);
+        AddressBookStorage addressBookStorage = <span class="keyword">new</span> XmlAddressBookStorage(userPrefs.getAddressBookFilePath());
+        AppointmentListStorage appointmentListStorage =
+                <span class="keyword">new</span> XmlAppointmentListStorage(userPrefs.getAppointmentListFilePath());
+        storage = <span class="keyword">new</span> StorageManager(addressBookStorage, userPrefsStorage, appointmentListStorage);
+
+        <span class="comment">// initializes other component in the application.</span>
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the <code>XmlAppointmentListStorage</code> class, it allows developers to use methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>readAppointmentList</code>, to retrieve a <code>ReadOnlyAppointmentList</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is done by checking if the file exist, and load the list from <code>XmlSerializableAppointmentList</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>saveAppointmentList</code>, to write information into <code>filePath</code> specified in <code>userPrefs</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is done by creating a new file and rewriting to the list in <code>XmlSerializableAppointmentList</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>While the <code>XmlAppointmentListStorage</code> class allows access to data stored on the hard disk, the <code>XmlSerializableAppointmentList</code> class represents the data of the appointment list for the calendar.
+In <code>XmlSerializableAppointmentList</code>, it contains a <code>List</code> of XML formats of appointments <code>XmlAdaptedAppointment</code>.
+<code>XmlAdaptedAppointment</code> will then contain essential information of different <code>Appointment</code> in <code>AppointmentList</code> in the <code>Model</code> component, which includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>title</code> of appointment</p>
+</li>
+<li>
+<p><code>interval</code> of appointment indicating its starting and ending time</p>
+</li>
+<li>
+<p><code>fullDay</code> tag of appointment indicating whether if appointment is a full-day event</p>
+</li>
+<li>
+<p><code>calendarName</code> of which the appointment is allocated to</p>
+</li>
+<li>
+<p><code>location</code> of appointment that is going to happen</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.7.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementing-of-code-appointmentliststorage-code"><a class="link" href="#aspect-implementing-of-code-appointmentliststorage-code">Aspect: Implementing of <code>AppointmentListStorage</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Adapting existing <code>AddressBookStorage</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows similar structure that can be maintained easily in <code>Storage</code> component</p>
+</li>
+<li>
+<p>Cons: Prevents major overhaul in future if necessary</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Redefining <code>AppointmentListStorage</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows flexibility in implementation</p>
+</li>
+<li>
+<p>Cons: Confuses developer with different requirements for a single component</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-usage-of-data-structures-for-code-appointment-code"><a class="link" href="#aspect-usage-of-data-structures-for-code-appointment-code">Aspect: Usage of data structures for <code>Appointment</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Using a single <code>List</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows simplicity</p>
+</li>
+<li>
+<p>Cons: Slows the application if there are too many appointments</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using a single <code>Set</code> such as <code>TreeSet</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Lowers impact in speed when there are many appointments</p>
+</li>
+<li>
+<p>Cons: Complicates implementation when speed is not an issue</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -3829,7 +3985,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 16:58:08 UTC
+Last updated 2018-03-20 17:53:23 UTC
 </div>
 </div>
 </body>
