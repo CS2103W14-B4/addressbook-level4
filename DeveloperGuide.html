@@ -50,6 +50,7 @@
 <li><a href="#logging">4.3. Logging</a></li>
 <li><a href="#Implementation-Configuration">4.4. Configuration</a></li>
 <li><a href="#showlocation-feature">4.5. ShowLocation feature</a></li>
+<li><a href="#addappointment-feature">4.6. AddAppointment feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -454,7 +455,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Address Book data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Celeb Scheduler data is changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -1011,7 +1012,7 @@ the due to the difference in address specification details as the <code>Address<
 An example would be the details of unit number (e.g #11-111) which will not be valid for this command.</p>
 </div>
 <div class="paragraph">
-<p>The main diffrence between both model is shown below in the two diagrams.</p>
+<p>The main difference between both model is shown below in the two diagrams.</p>
 </div>
 <div class="paragraph">
 <p>The snippet code below shows the diagram of <code>Address</code> model:</p>
@@ -1179,6 +1180,171 @@ command to re-center and mark the new location which is then shown to the user.<
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="addappointment-feature"><a class="link" href="#addappointment-feature">4.6. AddAppointment feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">4.6.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The AddAppointment mechanism is facilitated by the <code>AddAppointmentCommand</code>, which resides inside <code>Logic</code>. It supports the adding of an appointment to an existing calendar.
+The appointment, if added successfully, can be viewed in our <code>CalendarPanel</code> UI. This is done by retrieving the list of calendars stored in our <code>CalendarPanel</code>
+and then adding the appointment to one or more of these calendars. This command extends <code>Command</code> so it <strong>does not support the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>To be able to create appointments, add them to calendars and view the calendar with the added appointments, the external CalendarFX package is used. The API for all the CalendarFX classes and methods used can be found <a href="http://dlsc.com/wp-content/html/calendarfx/apidocs/index.html">here</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For the calendar, the <code>CelebCalendar</code> class is used, which extends the default <code>Calendar</code> class from CalendarFX used to describe a calendar.</p>
+</li>
+<li>
+<p>For the appointment, the <code>Appointment</code> class is used, which is extended from <code>Entry</code>, the default class used to represent an entry in a <code>Calendar</code> in CalendarFX.</p>
+</li>
+<li>
+<p>All <code>CelebCalendar</code> instances reside in an instance of <code>CalendarSource</code>, the class used to store a group of calendars in CalendarFX.</p>
+</li>
+<li>
+<p>This instance of <code>CalendarSource</code> is atttached to our <code>CalendarView</code> which is the GUI for our calendar.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Inheritance from the base classes of the external package is done so that we can add in additional methods as necessary.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Right now, the addAppointment command takes in up to 6 parameters. They are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Appointment name [Compulsory field]</p>
+</li>
+<li>
+<p>Location</p>
+</li>
+<li>
+<p>Start Date</p>
+</li>
+<li>
+<p>Start Time</p>
+</li>
+<li>
+<p>End Date</p>
+</li>
+<li>
+<p>End Time</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>AddAppointmentCommandParser</code> is able to create sensible appointments even if 1 or more of the non-compulsory fields are not included. The snippet code below shows how the parsing is handled:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> AddAppointmentCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
+    ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START_TIME,
+            PREFIX_START_DATE,  PREFIX_LOCATION, PREFIX_END_TIME, PREFIX_END_DATE);
+
+    <span class="keyword">if</span> (!arePrefixesPresent(argMultiMap, PREFIX_NAME)
+            || !argMultiMap.getPreamble().isEmpty()) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddAppointmentCommand.MESSAGE_USAGE));
+    }
+
+    <span class="keyword">try</span> {
+        <span class="predefined-type">String</span> appointmentName = ParserUtil.parseGeneralName(argMultiMap.getValue(PREFIX_NAME)).get();
+        Optional&lt;LocalTime&gt; startTimeInput = ParserUtil.parseTime(argMultiMap.getValue(PREFIX_START_TIME));
+        Optional&lt;LocalDate&gt; startDateInput = ParserUtil.parseDate(argMultiMap.getValue(PREFIX_START_DATE));
+        Optional&lt;LocalTime&gt; endTimeInput = ParserUtil.parseTime(argMultiMap.getValue(PREFIX_END_TIME));
+        Optional&lt;LocalDate&gt; endDateInput = ParserUtil.parseDate(argMultiMap.getValue(PREFIX_END_DATE));
+        Optional&lt;<span class="predefined-type">String</span>&gt; locationInput = ParserUtil.parseGeneralName(argMultiMap.getValue(PREFIX_LOCATION));
+
+        <span class="predefined-type">String</span> location = <span class="predefined-constant">null</span>;
+        LocalTime startTime = LocalTime.now();
+        LocalDate startDate = LocalDate.now();
+        LocalTime endTime = LocalTime.now();
+        LocalDate endDate = LocalDate.now();
+
+        <span class="keyword">if</span> (startTimeInput.isPresent()) {
+            startTime = startTimeInput.get();
+            endTime = startTimeInput.get();
+        }
+        <span class="keyword">if</span> (endTimeInput.isPresent()) {
+            endTime = endTimeInput.get();
+        }
+        <span class="keyword">if</span> (startDateInput.isPresent()) {
+            startDate = startDateInput.get();
+            endDate = startDateInput.get();
+        }
+        <span class="keyword">if</span> (endDateInput.isPresent()) {
+            endDate = endDateInput.get();
+        }
+        <span class="keyword">if</span> (locationInput.isPresent()) {
+            location = locationInput.get();
+        }
+        ...
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The format for all the fields are located inside of <code>Appointment</code> and are as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Appointment</span> <span class="directive">extends</span> Entry {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_NAME_CONSTRAINTS =
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Appointment names should only contain alphanumeric characters and spaces, and it should not be blank</span><span class="delimiter">&quot;</span></span>; <span class="comment">// used for name and location</span>
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_TIME_CONSTRAINTS =
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Time should be a 2 digit number between 00 to 23 followed by a :</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content"> followed by a 2 digit number beetween 00 to 59. Some examples include </span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content">08:45, 13:45, 00:30</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_DATE_CONSTRAINTS =
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Date should be a 2 digit number between 01 to 31 followed by a -</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content"> followed by a 2 digit number between 01 to 12 followed by a -</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content"> followed by a 4 digit number describing a year. Some months might have less than 31 days.</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content"> Some examples include: 13-12-2018, 02-05-2019, 28-02-2018</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern(<span class="string"><span class="delimiter">&quot;</span><span class="content">HH:mm</span><span class="delimiter">&quot;</span></span>);
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern(<span class="string"><span class="delimiter">&quot;</span><span class="content">dd-MM-uuuu</span><span class="delimiter">&quot;</span></span>)
+            .withResolverStyle(ResolverStyle.STRICT); <span class="comment">// prevent incorrect dates</span>
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The snippet below shows the state of the Celeb Scheduler app before input of the <code>AddAppointmentCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BeforeAddAppointment.png" alt="BeforeAddAppointment" width="800">
+</div>
+<div class="title">Figure 16. Image of Celeb Scheduler without any appointments</div>
+</div>
+<div class="paragraph">
+<p>After input of the command we will have:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterAddAppointment.png" alt="AfterAddAppointment" width="800">
+</div>
+<div class="title">Figure 17. Image of Celeb Scheduler with newly added appointment</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1246,7 +1412,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 18. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -1397,7 +1563,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <div class="sectionbody">
 <div class="paragraph">
 <p>Dev Ops is a software engineering culture and practice that aims at unifying software development (Dev) and software operations (Ops).
-Dev Ops advocates automation and monitoring at all steps of software construction. This section illustrates how we adopt this practice in developing AddressBook.</p>
+Dev Ops advocates automation and monitoring at all steps of software construction. This section illustrates how we adopt this practice in developing Celeb Scheduler.</p>
 </div>
 <div class="sect2">
 <h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
@@ -2520,7 +2686,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>Celeb Scheduler</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
 <div class="paragraph">
@@ -2532,13 +2698,13 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to list persons</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>Celeb Scheduler shows a list of persons</p>
 </li>
 <li>
 <p>User requests to delete a specific person in the list</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>Celeb Scheduler deletes the person</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2561,7 +2727,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>3a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2579,13 +2745,13 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User keys in a partially complete command which only has one match in the AddressBook</p>
+<p>User keys in a partially complete command which only has one match in the Celeb Scheduler</p>
 </li>
 <li>
-<p>AddressBook shows the matched complete command</p>
+<p>Celeb Scheduler shows the matched complete command</p>
 </li>
 <li>
-<p>User presses tab to let AddressBook auto-fill the rest of the command</p>
+<p>User presses tab to let Celeb Scheduler auto-fill the rest of the command</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2607,7 +2773,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to undo</p>
 </li>
 <li>
-<p>AddressBook undoes the latest executed command that mutates the data</p>
+<p>Celeb Scheduler undoes the latest executed command that mutates the data</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2624,7 +2790,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. AddressBook shows an error message.</p>
+<p>2a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2646,7 +2812,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to redo</p>
 </li>
 <li>
-<p>AddressBook redoes the latest executed undo command</p>
+<p>Celeb Scheduler redoes the latest executed undo command</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2663,7 +2829,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. AddressBook shows an error message.</p>
+<p>2a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2685,7 +2851,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to email to a contact</p>
 </li>
 <li>
-<p>AddressBook opens the platform of the emailing website</p>
+<p>Celeb Scheduler opens the platform of the emailing website</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2702,7 +2868,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2724,7 +2890,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to list contacts by a tag</p>
 </li>
 <li>
-<p>AddressBook lists out contacts with the specified tag</p>
+<p>Celeb Scheduler lists out contacts with the specified tag</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2756,13 +2922,13 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to blacklist phone number</p>
 </li>
 <li>
-<p>AddressBook requests the user to confirm black list</p>
+<p>Celeb Scheduler requests the user to confirm black list</p>
 </li>
 <li>
 <p>User confirms</p>
 </li>
 <li>
-<p>AddressBook adds the phone number to black list</p>
+<p>Celeb Scheduler adds the phone number to black list</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2779,7 +2945,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2798,7 +2964,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3b1. AddressBook shows an error message.</p>
+<p>3b1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at 2.</p>
 </div>
@@ -2820,7 +2986,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User inputs the new dimension for a specific UI</p>
 </li>
 <li>
-<p>AddressBook updates the size of the UI indicated</p>
+<p>Celeb Scheduler updates the size of the UI indicated</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2837,7 +3003,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2859,7 +3025,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to add an appointment</p>
 </li>
 <li>
-<p>AddressBook adds the appointment to the calendar</p>
+<p>Celeb Scheduler adds the appointment to the calendar</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2876,7 +3042,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2889,7 +3055,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. AddressBook shows an error message.</p>
+<p>2a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2911,7 +3077,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to view an appointment</p>
 </li>
 <li>
-<p>AddressBook shows the appointment details</p>
+<p>Celeb Scheduler shows the appointment details</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2928,7 +3094,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2950,7 +3116,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to remind appointment</p>
 </li>
 <li>
-<p>AddressBook sends a pre-drafted email containing appointment details to the attendees</p>
+<p>Celeb Scheduler sends a pre-drafted email containing appointment details to the attendees</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2967,7 +3133,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2989,7 +3155,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to remove a specified appointment</p>
 </li>
 <li>
-<p>AddressBook removes the appointment</p>
+<p>Celeb Scheduler removes the appointment</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3006,7 +3172,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3028,7 +3194,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to edit a specified appointment</p>
 </li>
 <li>
-<p>AddressBook changes appointment details and displays new appointment details to user</p>
+<p>Celeb Scheduler changes appointment details and displays new appointment details to user</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3045,7 +3211,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3062,7 +3228,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. AddressBook shows an error message.</p>
+<p>1b1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3084,7 +3250,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to set an alarm for a specified appointment at a specified time</p>
 </li>
 <li>
-<p>AddressBook sends reminder whenever the user opens it after the specified time till appointment timing</p>
+<p>Celeb Scheduler sends reminder whenever the user opens it after the specified time till appointment timing</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3101,7 +3267,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3123,7 +3289,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to cancel an alarm for a specified appointment</p>
 </li>
 <li>
-<p>AddressBook cancels the alarm</p>
+<p>Celeb Scheduler cancels the alarm</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3140,7 +3306,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3157,7 +3323,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. AddressBook shows an error message.</p>
+<p>1b1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3179,7 +3345,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to consolidate payments within a specific period</p>
 </li>
 <li>
-<p>AddressBook outputs payments made and pending</p>
+<p>Celeb Scheduler outputs payments made and pending</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3196,7 +3362,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. AddressBook shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3213,7 +3379,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. AddressBook shows a message that says no payment.</p>
+<p>2a1. Celeb Scheduler shows a message that says no payment.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3235,22 +3401,22 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to access appointments.</p>
 </li>
 <li>
-<p>AddressBook provide the list of appointments User has.</p>
+<p>Celeb Scheduler provide the list of appointments User has.</p>
 </li>
 <li>
 <p>User requests to associate relevant parties to one of the appointments from the list.</p>
 </li>
 <li>
-<p>AddressBook requests input of the relevant parties’ names.</p>
+<p>Celeb Scheduler requests input of the relevant parties’ names.</p>
 </li>
 <li>
 <p>User enters the names of the parties.</p>
 </li>
 <li>
-<p>AddressBook adds the names to the appointments.</p>
+<p>Celeb Scheduler adds the names to the appointments.</p>
 </li>
 <li>
-<p>AddressBook provides confirmation.</p>
+<p>Celeb Scheduler provides confirmation.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3267,7 +3433,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. AddressBook requests User to create a new contact.</p>
+<p>4a1. Celeb Scheduler requests User to create a new contact.</p>
 </li>
 <li>
 <p>4a2. User adds new contact (refer to Add New Contact use case).</p>
@@ -3283,7 +3449,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>a1. AddressBook provides status.</p>
+<p>a1. Celeb Scheduler provides status.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3305,22 +3471,22 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to access appointments.</p>
 </li>
 <li>
-<p>AddressBook provide the list of appointments User has.</p>
+<p>Celeb Scheduler provide the list of appointments User has.</p>
 </li>
 <li>
 <p>User requests to associate points of contacts to one of the appointments from the list.</p>
 </li>
 <li>
-<p>AddressBook requests input of the points of contact’ names.</p>
+<p>Celeb Scheduler requests input of the points of contact’ names.</p>
 </li>
 <li>
 <p>User enters the names of the parties.</p>
 </li>
 <li>
-<p>AddressBook adds the names to the appointments.</p>
+<p>Celeb Scheduler adds the names to the appointments.</p>
 </li>
 <li>
-<p>AddressBook provides confirmation.</p>
+<p>Celeb Scheduler provides confirmation.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3337,7 +3503,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. AddressBook requests User to create a new contact.</p>
+<p>4a1. Celeb Scheduler requests User to create a new contact.</p>
 </li>
 <li>
 <p>4a2. User adds new contact (refer to Add New Contact use case).</p>
@@ -3353,7 +3519,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>a1. AddressBook provides status.</p>
+<p>a1. Celeb Scheduler provides status.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3375,22 +3541,22 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to access appointments.</p>
 </li>
 <li>
-<p>AddressBook provide the list of appointments User has.</p>
+<p>Celeb Scheduler provide the list of appointments User has.</p>
 </li>
 <li>
 <p>User requests to associate payments to one of the appointments from the list.</p>
 </li>
 <li>
-<p>AddressBook requests input of the payment amount.</p>
+<p>Celeb Scheduler requests input of the payment amount.</p>
 </li>
 <li>
 <p>User enters the payment amount.</p>
 </li>
 <li>
-<p>AddressBook adds payment amount to the appointments.</p>
+<p>Celeb Scheduler adds payment amount to the appointments.</p>
 </li>
 <li>
-<p>AddressBook provides confirmation.</p>
+<p>Celeb Scheduler provides confirmation.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3407,7 +3573,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. AddressBook requests User to provide valid input.</p>
+<p>4a1. Celeb Scheduler requests User to provide valid input.</p>
 </li>
 <li>
 <p>4a2. User enters new input.</p>
@@ -3430,7 +3596,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>a1. AddressBook provides status.</p>
+<p>a1. Celeb Scheduler provides status.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3464,7 +3630,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>Should respond to any user command within 10 seconds</p>
 </li>
 <li>
-<p>Should be backward compatible with data produced by earlier versions of the AddressBook</p>
+<p>Should be backward compatible with data produced by earlier versions of the Celeb Scheduler</p>
 </li>
 <li>
 <p>Should come with automated unit tests and open source code</p>
@@ -3663,7 +3829,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-20 13:46:36 UTC
+Last updated 2018-03-20 16:58:08 UTC
 </div>
 </div>
 </body>
