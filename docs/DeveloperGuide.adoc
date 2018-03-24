@@ -1262,88 +1262,74 @@ two location to allow the celebrity manager to plan appointments and trips more 
 
 Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (unlikely to have) - `*`
 
-[width="59%",cols="22%,<23%,<25%,<30%",options="header",]
+[width="90%",cols="15%,<20%,<30%,<40%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |add a new person |
+|`* * *` |user |add a new person |access contacting information of the person from the App
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* * *` |user |delete a person |remove contacts that I no longer need
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
 
-|`* * *` |user | remove appointments to a calendar |  keep my scheduling neat and tidy
+|`* * *` |user |undo a previous command |remove the change made by mistake
 
-|`* * *` |user | edit appointment timings |  change the time of the appointment when I need to re-schedule
+|`* * *` |user |redo a previous command |restore the change removed by mistake
 
-|`* * *` |user | save appointment |  retrieve information of the appointments made
+|`* * *` |user |have a calendar inside the address book |know the date and day
 
-|`* * *` |user | change appointment location |  change the venue if the original one is not available
+|`* * *` |user |display appointments on calendar by day, week, and month |check appointments in different time frames
 
-|`* * *` |user | change people involved in appointment |  add new people involved or remove people no longer involved
+|`* * *` |user |add an appointment to a calendar |schedule different appointments without time clashes
 
-|`* * *` |user | have notifications or reminder for urgent upcoming events that I need to take note of |  set my priorities straight
+|`* * *` |user |delete an appointment from a calendar |remove appointments that are cancelled
 
-|`* * *` |user |undo a previous command | remove the change made by mistake
+|`* * *` |user |edit an appointment in a calendar |change the information about the appointment when there is a change in plan or arrangement
 
-|`* * *` |user |redo a previous command | restore the change removed by mistake
+|`* * *` |user |save appointments |get appointments loaded in the calendar automatically when I re-launch the App
 
-|`* * *` |user | add appointments to a calendar | schedule different appointments without time clash
+|`* * *` |user |get alerted for upcoming appointments |set my priorities straight
 
-|`* * *` |user | see the location of a given appointment |  plan for travel
+|`* * *` |user |see the location of an appointment in a map |plan for travel
 
-|`* * *` |user | see the best route of travel between two locations |  plan for the shortest travel
+|`* * *` |user |see various landmarks around a specific location in a road map |understand better the roads around the location
 
-|`* * *` |user | know the estimated distance and time of travel between two locations |  plan for my schedules more effectively
+|`* * *` |user |see various landmarks around a specific location in a satellite map |see in real time the actual layout of the surrounding
 
-|`* * *` |celebrity manager | associate the appointment with relevant celebrities and parties |  view who are involved
+|`* * *` |user |zoom in and out of the map of a location in a map |view the location in different levels of details
 
-|`* * *` |celebrity manager | associate the appointment with relevant contacts |  contact the relevant parties easily
+|`* * *` |user |see the best route of travel by driving between two locations in a map |plan for the fastest travel
 
-|`* * *` |celebrity manager | associate certain appointments with payment |  know if payment is needed for next appointment
+|`* * *` |user |know if two locations can be reached by driving |foresee any problems and plan ahead
 
-|`* * *` |celebrity manager | have multiple schedule calendars |  manage more than 1 different schedules in the event my client is a idol group
+|`* * *` |user |know the estimated distance between two locations by driving |plan for my schedules more effectively
+
+|`* * *` |user |know the estimated time of travel between two locations by driving |plan for my schedules more effectively
+
+|`* * *` |celebrity manager |have multiple calendars to display appointments for different celebrities |manage multiple celebrities' appointments
 
 |`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
 
-|`* *` |user with many persons having long names in the address book |auto-fill the name as I key in the command | key in a person’s name without spelling out all names completely
+|`* *` |user |change the size of different windows of the App |customise the window sizes
 
-|`* *` |user | be able to email directly from the address book | do not need to use another platform to do so
+|`* *` |user who contacts different parties involved in an appointment |draft the message about appointment details automatically |save time to draft the email
 
-|`* *` |user with many international contacts | group contacts by country code | see my contacts from different countries
+|`* *` |user who frequently contacts certain people |sort the contacts by contacting frequency |find those people I frequently contact easily
 
-|`* *` |user | change the size of different windows of the address book application UI | it looks pleasing to the eyes
+|`* *` |user |change the colour scheme of the App |choose my preferred colour scheme
 
-|`* *` |user who contacts different parties involved in an appointment | draft the message about appointment details automatically | don’t have to do it
+|`* *` |celebrity manager |group celebrities by different talents |find celebrities by talent easily
 
-|`* *` |user who frequently contacts certain people | sort the contacts by contacting frequency |  find those people I frequently contact easily
+|`* *` |celebrity manager managing celebrities of the same group|add an appointment to the calendars of these celebrities at the same time |save time
 
-|`* *` |user | change the colour scheme of the application |  looks pleasing to my eyes
+|`*` |user with many international contacts |group contacts by country code |see my contacts from different countries
 
-|`* *` |user who has very bad eyesight | change the look and feel of the application such as font size and type |  look at the font properly
+|`*` |user of previous versions of the App |transfer my contacts to the new version |save the trouble of adding the contacts again
 
-|`* *` |user | blacklist phone numbers |  get rid of spams from other software.
+|`*` |user with poor eyesight |the address book to read out the contacts to me |use it more efficiently
 
-|`* *` |celebrity manager | consolidate payments for a certain period |   know if there is any outstanding payment
-
-|`* *` |celebrity manager | group celebrities up by their different talent (acting, singing, hosting etc.) |  find suitable celebrities for event quickly.
-
-|`* *` |celebrity manager managing a same group of celebrities| add event to the group of celebrities at the same time |  save time
-
-|`* *` |celebrity manager |  obtain information or details about the upcoming schedule (show) | keep my client informed and prepared on the content
-
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
-
-|`*` |user of previous versions of the address book |transfer my contacts to the new version | don’t have to add the contacts one-by-one again
-
-|`*` |user with poor eyesight | the address book to read out the contacts to me | use it more efficiently
-
-|`*` |user who is time conscious |  see the time and date |  plan schedules faster
-
-|`*` |user | output the contacts to a separate list |  have a backup copy of the contacts
-
-|`*` |celebrity manager | check the celebrities I blacklisted |  organize the blacklist
+|`*` |user |output the contacts to a separate list |have a backup copy of the contacts
 
 |=======================================================================
 
@@ -1352,15 +1338,14 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 (For all use cases below, the *System* is the `Celeb Scheduler` and the *Actor* is the `user`, unless specified otherwise)
 
-[discrete]
 === Use case: Delete person
 
 *MSS*
 
-1.  User requests to list persons
-2.  Celeb Scheduler shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  Celeb Scheduler deletes the person
+1.  User requests to list persons.
+2.  Celeb Scheduler shows a list of persons.
+3.  User requests to delete a specific person in the list.
+4.  Celeb Scheduler deletes the person.
 +
 Use case ends.
 
@@ -1378,25 +1363,12 @@ Use case ends.
 +
 Use case resumes at step 2.
 
-=== Use case: Auto-fill
-
-*MSS*
-
-1.  User keys in a partially complete command which only has one match in the Celeb Scheduler
-2.  Celeb Scheduler shows the matched complete command
-3.  User presses tab to let Celeb Scheduler auto-fill the rest of the command
-
-+
-Use case ends.
-
-*Extensions*
-
 === Use case: Undo
 
 *MSS*
 
-1.  User requests to undo
-2.  Celeb Scheduler undoes the latest executed command that mutates the data
+1.  User requests to undo.
+2.  Celeb Scheduler undoes the latest executed command that mutates the data.
 
 +
 Use case ends.
@@ -1404,7 +1376,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 2a. There is no executed command that mutates the data
+* 2a. There is no executed command that mutates the data.
 +
 [none]
 ** 2a1. Celeb Scheduler shows an error message.
@@ -1415,8 +1387,8 @@ Use case ends.
 
 *MSS*
 
-1.  User requests to redo
-2.  Celeb Scheduler redoes the latest executed undo command
+1.  User requests to redo.
+2.  Celeb Scheduler redoes the latest executed undo command.
 
 +
 Use case ends.
@@ -1431,12 +1403,12 @@ Use case ends.
 +
 Use case ends.
 
-=== Use case: Emailing
+=== Use case: Remove tag
 
 *MSS*
 
-1.  User requests to email to a contact
-2.  Celeb Scheduler opens the platform of the emailing website
+1. User requests to remove a tag.
+2. Celeb Scheduler removes the tag from any person having it.
 
 +
 Use case ends.
@@ -1444,78 +1416,7 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. Contact does not exist.
-+
-[none]
-** 1a1. Celeb Scheduler shows an error message.
-+
-Use case ends.
-
-=== Use case: List contacts by tag
-
-*MSS*
-
-1.  User requests to list contacts by a tag
-2.  Celeb Scheduler lists out contacts with the specified tag
-
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 2a. There is no people with the tag.
-+
-Use case ends.
-
-=== Use case: Blacklist phone number
-
-
-*MSS*
-
-1.  User requests to blacklist phone number
-2.  Celeb Scheduler requests the user to confirm black list
-3.  User confirms
-4.  Celeb Scheduler adds the phone number to black list
-
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. Phone number is invalid.
-+
-[none]
-** 1a1. Celeb Scheduler shows an error message.
-+
-Use case ends.
-
-* 3a. User does not confirm.
-+
-Use case ends
-
-* 3b. User enters an invalid confirmation.
-+
-[none]
-** 3b1. Celeb Scheduler shows an error message.
-+
-Use case resumes at 2.
-
-=== Use case: Change UI dimensions
-
-*MSS*
-
-1.  User inputs the new dimension for a specific UI
-2.  Celeb Scheduler updates the size of the UI indicated
-
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. New dimensions has conflict with overall dimension of the whole UI.
+* 1a. The tag does not exist.
 +
 [none]
 ** 1a1. Celeb Scheduler shows an error message.
@@ -1526,8 +1427,8 @@ Use case ends.
 
 *MSS*
 
-1.  User requests to add an appointment
-2.  Celeb Scheduler adds the appointment to the calendar
+1.  User requests to add an appointment.
+2.  Celeb Scheduler adds the appointment to the currently displayed calendar.
 
 +
 Use case ends.
@@ -1535,14 +1436,14 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. Appointment to add consist of incorrect details or format.
+* 1a. Appointment to add has incorrect details or format.
 +
 [none]
 ** 1a1. Celeb Scheduler shows an error message.
 +
 Use case ends.
 
-* 2a. Added appointment clashes with existing appointment.
+* 2a. Appointment to add clashes with existing appointment.
 +
 [none]
 ** 2a1. Celeb Scheduler shows an error message.
@@ -1553,8 +1454,8 @@ Use case ends.
 
 *MSS*
 
-1.  User requests to view an appointment
-2.  Celeb Scheduler shows the appointment details
+1.  User requests to view appointment.
+2.  Celeb Scheduler shows the appointment's details.
 
 +
 Use case ends.
@@ -1562,19 +1463,19 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. Appointment does not exist.
+* 1a. Appointment to view does not exist.
 +
 [none]
 ** 1a1. Celeb Scheduler shows an error message.
 +
 Use case ends.
 
-=== Use case: Remind attendees of appointment
+=== Use case: List appointments
 
 *MSS*
 
-1.  User requests to remind appointment
-2.  Celeb Scheduler sends a pre-drafted email containing appointment details to the attendees
+1.  User requests to list appointments from a start date to an end date.
+2.  Celeb Scheduler shows a list of appointments within the date range (inclusive).
 
 +
 Use case ends.
@@ -1582,257 +1483,113 @@ Use case ends.
 *Extensions*
 
 [none]
-* 1a. Appointment does not exist.
+* 1a. The dates are invalid or in wrong format.
 +
 [none]
-** 1a1. Celeb Scheduler shows an error message.
+** 1a1. Celeb Scheduler outputs an error message.
 +
 Use case ends.
 
-=== Use case: Remove appointment
+[none]
+* 2a. There is no appointment to show in the date range.
++
+[none]
+** 2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.
++
+Use case ends.
+
+=== Use case: Delete appointment
 
 *MSS*
 
-1.  User requests to remove a specified appointment
-2.  Celeb Scheduler removes the appointment
-
+1.  User requests to list appointments from a start date to an end date.
+2.  Celeb Scheduler shows a list of appointments within the date range (inclusive).
+3.  User requests to delete a specific appointment in the list.
+4.  Celeb Scheduler deletes the appointment.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. Appointment does not exist.
+* 1a. The dates are invalid or in wrong format.
 +
 [none]
-** 1a1. Celeb Scheduler shows an error message.
+** 1a1. Celeb Scheduler outputs an error message.
 +
 Use case ends.
+
+[none]
+* 2a. There is no appointment to show in the date range.
++
+[none]
+** 2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.
++
+Use case ends.
+
+* 3a. The given index is invalid.
++
+[none]
+** 3a1. Celeb Scheduler shows an error message.
++
+Use case resumes at step 2.
 
 === Use case: Edit appointment
 
 *MSS*
 
-1.  User requests to edit a specified appointment
-2.  Celeb Scheduler changes appointment details and displays new appointment details to user
+1.  User requests to list appointments from a start date to an end date.
+2.  Celeb Scheduler shows a list of appointments within the date range (inclusive).
+3.  User requests to edit a specified appointment.
+4.  Celeb Scheduler changes appointment details and displays new appointment details to user.
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 1a. Appointment does not exist.
+* 1a. The dates are invalid or in wrong format.
 +
 [none]
-** 1a1. Celeb Scheduler shows an error message.
+** 1a1. Celeb Scheduler outputs an error message.
 +
 Use case ends.
 
 [none]
-* 1b.  Information entered for edit is invalid.
+* 2a. There is no appointment to show in the date range.
 +
 [none]
-** 1b1. Celeb Scheduler shows an error message.
-+
-Use case ends.
-
-=== Use case: Set appointment alarm
-
-*MSS*
-
-1.  User requests to set an alarm for a specified appointment at a specified time
-2.  Celeb Scheduler sends reminder whenever the user opens it after the specified time till appointment timing
-
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. Appointment does not exist.
-+
-[none]
-** 1a1. Celeb Scheduler shows an error message.
-+
-Use case ends.
-
-=== Use case: Cancel appointment alarm
-
-*MSS*
-
-1.  User requests to cancel an alarm for a specified appointment
-2.  Celeb Scheduler cancels the alarm
-
-
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 1a. Appointment does not exist.
-+
-[none]
-** 1a1. Celeb Scheduler shows an error message.
+** 2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.
 +
 Use case ends.
 
 [none]
-* 1b. No alarm is set for the specified appointment.
+* 3a.  The given index is invalid.
 +
 [none]
-** 1b1. Celeb Scheduler shows an error message.
+** 3a1. Celeb Scheduler shows an error message.
 +
-Use case ends.
-
-=== Use case: Consolidate payments
-
-*MSS*
-
-1.  User requests to consolidate payments within a specific period
-2.  Celeb Scheduler outputs payments made and pending
-
-+
-Use case ends.
-
-*Extensions*
+Use case resumes at step 2.
 
 [none]
-* 1a. The period specified is invalid.
+* 3b.  Information entered for edit is invalid.
 +
 [none]
-** 1a1. Celeb Scheduler shows an error message.
+** 3b1. Celeb Scheduler shows an error message.
 +
-Use case ends.
-
-[none]
-* 2a. There is no payment within the specified period.
-+
-[none]
-** 2a1. Celeb Scheduler shows a message that says no payment.
-+
-Use case ends.
-
-=== Use case: Associate relevant parties to appointments
-
-*MSS*
-
-1.  User requests to access appointments.
-2.  Celeb Scheduler provide the list of appointments User has.
-3.  User requests to associate relevant parties to one of the appointments from the list.
-4.  Celeb Scheduler requests input of the relevant parties’ names.
-5.  User enters the names of the parties.
-6.  Celeb Scheduler adds the names to the appointments.
-7.  Celeb Scheduler provides confirmation.
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 4a. User provides contact that is not in contact list.
-+
-[none]
-** 4a1. Celeb Scheduler requests User to create a new contact.
-+
-[none]
-** 4a2. User adds new contact (refer to Add New Contact use case).
-+
-Use case resumes from step 5.
-+
-[none]
-* a. At any time, user chooses to cancel
-+
-[none]
-** a1. Celeb Scheduler provides status.
-+
-Use case ends.
-
-=== Use case: Associate points of contact to appointments
-
-*MSS*
-
-1.  User requests to access appointments.
-2.  Celeb Scheduler provide the list of appointments User has.
-3.  User requests to associate points of contacts to one of the appointments from the list.
-4.  Celeb Scheduler requests input of the points of contact’ names.
-5.  User enters the names of the parties.
-6.  Celeb Scheduler adds the names to the appointments.
-7.  Celeb Scheduler provides confirmation.
-
-+
-Use case ends.
-
-*Extensions*
-[none]
-* 4a. User provides contact that is not in contact list.
-+
-[none]
-** 4a1. Celeb Scheduler requests User to create a new contact.
-+
-[none]
-** 4a2. User adds new contact (refer to Add New Contact use case).
-+
-Use case resumes from step 5.
-+
-[none]
-* a. At any time, user chooses to cancel
-+
-[none]
-** a1. Celeb Scheduler provides status.
-+
-Use case ends.
-
-=== Use case: Associate payments to appointments
-
-*MSS*
-
-1.  User requests to access appointments.
-2.  Celeb Scheduler provide the list of appointments User has.
-3.  User requests to associate payments to one of the appointments from the list.
-4.  Celeb Scheduler requests input of the payment amount.
-5.  User enters the payment amount.
-6.  Celeb Scheduler adds payment amount to the appointments.
-7.  Celeb Scheduler provides confirmation.
-
-+
-Use case ends.
-
-*Extensions*
-
-[none]
-* 4a. User provides invalid input.
-+
-[none]
-** 4a1. Celeb Scheduler requests User to provide valid input.
-+
-[none]
-** 4a2. User enters new input.
-+
-Steps 4a1-4a2 are repeated until input is valid.
-+
-Use case resumes from step 5.
-
-[none]
-* a. At any time, user chooses to cancel
-+
-[none]
-** a1. Celeb Scheduler provides status.
-+
-Use case ends.
+Use case resumes at step 2.
 
 [appendix]
-
 == Non Functional Requirements
 
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-.  Should be usable by people with no knowledge about command line input
-.  Should respond to any user command within 10 seconds
-.  Should be backward compatible with data produced by earlier versions of the Celeb Scheduler
-.  Should come with automated unit tests and open source code
-.  Should favor DOS style commands over Unix-style commands
+.  Should be usable by people with no knowledge about command line input.
+.  Should respond to any user command within 10 seconds.
+.  Should be backward compatible with data produced by earlier versions of the Celeb Scheduler.
+.  Should come with automated unit tests and open source code.
+.  Should favor DOS style commands over Unix-style commands.
 
 [appendix]
 == Glossary
@@ -1843,80 +1600,72 @@ Windows, Linux, Unix, OS-X
 [[private-contact-detail]] Private contact detail::
 A contact detail that is not meant to be shared with others
 
+[[celebcalendar]] Celeb calendar::
+A calendar that contains all appointments a celebrity managed by the user has
+
+[[calendar-view]] Calendar view::
+The way in which appointments are displayed in calendar +
+[TIP]
+Celeb Scheduler currently supports displaying by day, week, month and year.
+
 [[appointment]] Appointment::
-A meeting between contacts at a specific time, date and location. An appointment has a specific name
+A meeting between contacts at a specific time, date and location +
+An appointment has a specific name
 
 [[attendees]] Attendees::
-A list of contacts being managed by the User who are attending the appointment
+A list of contacts who are attending an appointment
 
 [[points-of-contacts]] Points of Contacts::
-A list of contacts involved in an appointment but not attendees
+A list of contacts involved in an appointment but not attending it
 
 [[blacklist]] Blacklist::
-A list of contacts which should be marked for being untrustworthy or unacceptable for whatever reason
+A list of contacts which should be marked for being untrustworthy or unacceptable
 
 [[UI]] User Interface::
 The Design and looks of the software
 
 [appendix]
-== Product Survey
-
-*Product Name*
-
-Author: ...
-
-Pros:
-
-* ...
-* ...
-
-Cons:
-
-* ...
-* ...
-
-[appendix]
 == Instructions for Manual Testing
 
-Given below are instructions to test the app manually.
+Given below are instructions to test the App manually.
 
 [NOTE]
 These instructions only provide a starting point for testers to work on; testers are expected to do more _exploratory_ testing.
 
-=== Launch and Shutdown
+=== Launch
+This section includes instructions to test the launch and re-launch of the App. +
+For each subsequent launch, window size and location should be the same as the settings before closing the App for previous launch.
 
 . Initial launch
 
-.. Download the jar file and copy into an empty folder
+.. Download the jar file
+.. Copy into an empty folder
 .. Double-click the jar file +
-   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   _Expected: Celeb Scheduler shows the GUI with a set of sample contacts._
+[NOTE]
+    The window size may not be optimum.
+.. Resize the window to an optimum size
+.. Move the window to a different location
+.. Close the window
 
-. Saving window preferences
-
-.. Resize the window to an optimum size. Move the window to a different location. Close the window.
-.. Re-launch the app by double-clicking the jar file. +
-   Expected: The most recent window size and location is retained.
-
-_{ more test cases ... }_
+. Subsequent launch
+.. Re-launch the App by double-clicking the jar file +
+   _Expected: The most recent window size and location are retained._
 
 === Deleting a person
+This section includes instructions to test the delete command of the App.
+[NOTE]
+Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
-. Deleting a person while all persons are listed
-
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-.. Test case: `delete 1` +
-   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-.. Test case: `delete 0` +
-   Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
-   Expected: Similar to previous.
-
-_{ more test cases ... }_
+.. Type `delete 1` in command box and press enter +
+   _Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated._
+.. Type `delete 0` in command box and press enter +
+   _Expected: No person is deleted. Error details shown in the status message. Status bar remains the same._
+.. Type other incorrect delete command such as `delete`, `delete x` (where x is larger than the list size) in command box and press enter +
+   _Expected: Similar to previous._
 
 === Saving data
 
 . Dealing with missing/corrupted data files
 
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
-
-_{ more test cases ... }_
