@@ -93,37 +93,24 @@
 <li><a href="#user-stories">Appendix C: User Stories</a></li>
 <li><a href="#use-cases">Appendix D: Use Cases</a>
 <ul class="sectlevel2">
-<li><a href="#use-case-auto-fill">D.1. Use case: Auto-fill</a></li>
+<li><a href="#use-case-delete-person">D.1. Use case: Delete person</a></li>
 <li><a href="#use-case-undo">D.2. Use case: Undo</a></li>
 <li><a href="#use-case-redo">D.3. Use case: Redo</a></li>
-<li><a href="#use-case-emailing">D.4. Use case: Emailing</a></li>
-<li><a href="#use-case-list-contacts-by-tag">D.5. Use case: List contacts by tag</a></li>
-<li><a href="#use-case-blacklist-phone-number">D.6. Use case: Blacklist phone number</a></li>
-<li><a href="#use-case-change-ui-dimensions">D.7. Use case: Change UI dimensions</a></li>
-<li><a href="#use-case-add-appointment">D.8. Use case: Add appointment</a></li>
-<li><a href="#use-case-view-appointment">D.9. Use case: View appointment</a></li>
-<li><a href="#use-case-remind-attendees-of-appointment">D.10. Use case: Remind attendees of appointment</a></li>
-<li><a href="#use-case-remove-appointment">D.11. Use case: Remove appointment</a></li>
-<li><a href="#use-case-edit-appointment">D.12. Use case: Edit appointment</a></li>
-<li><a href="#use-case-set-appointment-alarm">D.13. Use case: Set appointment alarm</a></li>
-<li><a href="#use-case-cancel-appointment-alarm">D.14. Use case: Cancel appointment alarm</a></li>
-<li><a href="#use-case-consolidate-payments">D.15. Use case: Consolidate payments</a></li>
-<li><a href="#use-case-associate-relevant-parties-to-appointments">D.16. Use case: Associate relevant parties to appointments</a></li>
-<li><a href="#use-case-associate-points-of-contact-to-appointments">D.17. Use case: Associate points of contact to appointments</a></li>
-<li><a href="#use-case-associate-payments-to-appointments">D.18. Use case: Associate payments to appointments</a></li>
-<li><a href="#use-case-show-location-in-map">D.19. Use case: Show location in map</a></li>
-<li><a href="#use-case-show-estimated-route-by-driving-in-map">D.20. Use case: Show estimated route by driving in map</a></li>
-<li><a href="#use-case-show-estimated-distance-and-time-of-travel-by-driving">D.21. Use case: Show estimated distance and time of travel by driving</a></li>
+<li><a href="#use-case-remove-tag">D.4. Use case: Remove tag</a></li>
+<li><a href="#use-case-add-appointment">D.5. Use case: Add appointment</a></li>
+<li><a href="#use-case-view-appointment">D.6. Use case: View appointment</a></li>
+<li><a href="#use-case-list-appointments">D.7. Use case: List appointments</a></li>
+<li><a href="#use-case-delete-appointment">D.8. Use case: Delete appointment</a></li>
+<li><a href="#use-case-edit-appointment">D.9. Use case: Edit appointment</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix F: Glossary</a></li>
-<li><a href="#product-survey">Appendix G: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-person">H.2. Deleting a person</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#launch">G.1. Launch</a></li>
+<li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
+<li><a href="#saving-data">G.3. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -2770,12 +2757,12 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
+<table class="tableblock frame-all grid-all" style="width: 90%;">
 <colgroup>
-<col style="width: 22%;">
-<col style="width: 23%;">
-<col style="width: 25%;">
-<col style="width: 30%;">
+<col style="width: 14.2857%;">
+<col style="width: 19.0476%;">
+<col style="width: 28.5714%;">
+<col style="width: 38.0953%;">
 </colgroup>
 <thead>
 <tr>
@@ -2796,67 +2783,19 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access contacting information of the person from the App</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove contacts that I no longer need</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have a calendar inside the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know the date and day</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have multiple calendar views by day, week, and month</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">check appointments in different time frames</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove appointments to a calendar</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep my scheduling neat and tidy</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">edit appointment timings</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change the time of the appointment when I need to re-schedule</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">save appointment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">retrieve information of the appointments made</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change appointment location</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change the venue if the original one is not available</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change people involved in appointment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add new people involved or remove people no longer involved</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have notifications or reminder for urgent upcoming events that I need to take note of</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">set my priorities straight</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2873,13 +2812,49 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add appointments to a calendar</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">schedule different appointments without time clash</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have a calendar inside the address book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know the date and day</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see the location of a given appointment in a map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">display appointments on calendar by day, week, and month</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check appointments in different time frames</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add an appointment to a calendar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schedule different appointments without time clashes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete an appointment from a calendar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remove appointments that are cancelled</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit an appointment in a calendar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change the information about the appointment when there is a change in plan or arrangement</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save appointments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get appointments loaded in the calendar automatically when I re-launch the App</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">get alerted for upcoming appointments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set my priorities straight</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the location of an appointment in a map</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">plan for travel</p></td>
 </tr>
 <tr>
@@ -2897,8 +2872,14 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">zoom in and out of the map of given location in a map</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view the location in different level of details</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zoom in and out of the map of a location in a map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view the location in different levels of details</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the best route of travel by driving between two locations in a map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">plan for the fastest travel</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2927,26 +2908,8 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">associate the appointment with relevant celebrities and parties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">view who are involved</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">associate the appointment with relevant contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">contact the relevant parties easily</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">associate certain appointments with payment</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know if payment is needed for next appointment</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have multiple schedule calendars</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">manage more than 1 different schedules in the event my client is a idol group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have multiple calendars to display appointments for different celebrities</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manage multiple celebrities' appointments</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2956,33 +2919,15 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons having long names in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">auto-fill the name as I key in the command</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">key in a person’s name without spelling out all names completely</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">be able to email directly from the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">do not need to use another platform to do so</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many international contacts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group contacts by country code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see my contacts from different countries</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change the size of different windows of the address book application UI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">it looks pleasing to the eyes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change the size of different windows of the App</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">customise the window sizes</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user who contacts different parties involved in an appointment</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">draft the message about appointment details automatically</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">don’t have to do it</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save time to draft the email</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -2993,56 +2938,32 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change the colour scheme of the application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">looks pleasing to my eyes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who has very bad eyesight</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">change the look and feel of the application such as font size and type</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">look at the font properly</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">blacklist phone numbers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">get rid of spams from other software.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change the colour scheme of the App</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">choose my preferred colour scheme</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">consolidate payments for a certain period</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">know if there is any outstanding payment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">group celebrities by different talents</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">find celebrities by talent easily</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">group celebrities up by their different talent (acting, singing, hosting etc.)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find suitable celebrities for event quickly.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager managing a same group of celebrities</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add event to the group of celebrities at the same time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager managing celebrities of the same group</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add an appointment to the calendars of these celebrities at the same time</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">save time</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">obtain information or details about the upcoming schedule (show)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">keep my client informed and prepared on the content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user with many international contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">group contacts by country code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see my contacts from different countries</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user of previous versions of the address book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user of previous versions of the App</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">transfer my contacts to the new version</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">don’t have to add the contacts one-by-one again</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save the trouble of adding the contacts again</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -3052,21 +2973,9 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user who is time conscious</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see the time and date</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">plan schedules faster</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">output the contacts to a separate list</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">have a backup copy of the contacts</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">check the celebrities I blacklisted</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">organize the blacklist</p></td>
 </tr>
 </tbody>
 </table>
@@ -3078,23 +2987,24 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>CelebManager</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<div class="sect2">
+<h3 id="use-case-delete-person"><a class="link" href="#use-case-delete-person">D.1. Use case: Delete person</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to list persons.</p>
 </li>
 <li>
-<p>CelebManager shows a list of persons</p>
+<p>Celeb Scheduler shows a list of persons.</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User requests to delete a specific person in the list.</p>
 </li>
 <li>
-<p>CelebManager deletes the person</p>
+<p>Celeb Scheduler deletes the person.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3127,30 +3037,6 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="use-case-auto-fill"><a class="link" href="#use-case-auto-fill">D.1. Use case: Auto-fill</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User keys in a partially complete command which only has one match in the CelebManager</p>
-</li>
-<li>
-<p>CelebManager shows the matched complete command</p>
-</li>
-<li>
-<p>User presses tab to let Celeb Scheduler auto-fill the rest of the command</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="use-case-undo"><a class="link" href="#use-case-undo">D.2. Use case: Undo</a></h3>
@@ -3160,10 +3046,10 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to undo</p>
+<p>User requests to undo.</p>
 </li>
 <li>
-<p>CelebManager undoes the latest executed command that mutates the data</p>
+<p>Celeb Scheduler undoes the latest executed command that mutates the data.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3176,7 +3062,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. There is no executed command that mutates the data</p>
+<p>2a. There is no executed command that mutates the data.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
@@ -3199,10 +3085,10 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to redo</p>
+<p>User requests to redo.</p>
 </li>
 <li>
-<p>CelebManager redoes the latest executed undo command</p>
+<p>Celeb Scheduler redoes the latest executed undo command.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3231,17 +3117,17 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-emailing"><a class="link" href="#use-case-emailing">D.4. Use case: Emailing</a></h3>
+<h3 id="use-case-remove-tag"><a class="link" href="#use-case-remove-tag">D.4. Use case: Remove tag</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to email to a contact</p>
+<p>User requests to remove a tag.</p>
 </li>
 <li>
-<p>CelebManager opens the platform of the emailing website</p>
+<p>Celeb Scheduler removes the tag from any person having it.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3254,11 +3140,11 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Contact does not exist.</p>
+<p>1a. The tag does not exist.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. CelebManager shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3270,17 +3156,17 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-list-contacts-by-tag"><a class="link" href="#use-case-list-contacts-by-tag">D.5. Use case: List contacts by tag</a></h3>
+<h3 id="use-case-add-appointment"><a class="link" href="#use-case-add-appointment">D.5. Use case: Add appointment</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list contacts by a tag</p>
+<p>User requests to add an appointment.</p>
 </li>
 <li>
-<p>CelebManager lists out contacts with the specified tag</p>
+<p>Celeb Scheduler adds the appointment to the currently displayed calendar.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3293,49 +3179,11 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. There is no people with the tag.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-blacklist-phone-number"><a class="link" href="#use-case-blacklist-phone-number">D.6. Use case: Blacklist phone number</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to blacklist phone number</p>
-</li>
-<li>
-<p>CelebManager requests the user to confirm black list</p>
-</li>
-<li>
-<p>User confirms</p>
-</li>
-<li>
-<p>CelebManager adds the phone number to black list</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
+<p>1a. Appointment to add has incorrect details or format.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Phone number is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3344,56 +3192,11 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </div>
 </li>
 <li>
-<p>3a. User does not confirm.</p>
-<div class="paragraph">
-<p>Use case ends</p>
-</div>
-</li>
-<li>
-<p>3b. User enters an invalid confirmation.</p>
+<p>2a. Appointment to add clashes with existing appointment.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3b1. CelebManager shows an error message.</p>
-<div class="paragraph">
-<p>Use case resumes at 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-change-ui-dimensions"><a class="link" href="#use-case-change-ui-dimensions">D.7. Use case: Change UI dimensions</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs the new dimension for a specific UI</p>
-</li>
-<li>
-<p>CelebManager updates the size of the UI indicated</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. New dimensions has conflict with overall dimension of the whole UI.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager shows an error message.</p>
+<p>2a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3405,17 +3208,17 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-add-appointment"><a class="link" href="#use-case-add-appointment">D.8. Use case: Add appointment</a></h3>
+<h3 id="use-case-view-appointment"><a class="link" href="#use-case-view-appointment">D.6. Use case: View appointment</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to add an appointment</p>
+<p>User requests to view appointment.</p>
 </li>
 <li>
-<p>CelebManager adds the appointment to the calendar</p>
+<p>Celeb Scheduler shows the appointment&#8217;s details.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3428,24 +3231,11 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Appointment to add consist of incorrect details or format.</p>
+<p>1a. Appointment to view does not exist.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. CelebManager shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>2a. Added appointment clashes with existing appointment.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>2a1. CelebManager shows an error message.</p>
+<p>1a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3457,17 +3247,17 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-view-appointment"><a class="link" href="#use-case-view-appointment">D.9. Use case: View appointment</a></h3>
+<h3 id="use-case-list-appointments"><a class="link" href="#use-case-list-appointments">D.7. Use case: List appointments</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to view an appointment</p>
+<p>User requests to list appointments from a start date to an end date.</p>
 </li>
 <li>
-<p>CelebManager shows the appointment details</p>
+<p>Celeb Scheduler shows a list of appointments within the date range (inclusive).</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3480,11 +3270,28 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Appointment does not exist.</p>
+<p>1a. The dates are invalid or in wrong format.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. CelebManager shows an error message.</p>
+<p>1a1. Celeb Scheduler outputs an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. There is no appointment to show in the date range.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3496,17 +3303,23 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-remind-attendees-of-appointment"><a class="link" href="#use-case-remind-attendees-of-appointment">D.10. Use case: Remind attendees of appointment</a></h3>
+<h3 id="use-case-delete-appointment"><a class="link" href="#use-case-delete-appointment">D.8. Use case: Delete appointment</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to remind appointment</p>
+<p>User requests to list appointments from a start date to an end date.</p>
 </li>
 <li>
-<p>CelebManager sends a pre-drafted email containing appointment details to the attendees</p>
+<p>Celeb Scheduler shows a list of appointments within the date range (inclusive).</p>
+</li>
+<li>
+<p>User requests to delete a specific appointment in the list.</p>
+</li>
+<li>
+<p>Celeb Scheduler deletes the appointment.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3519,13 +3332,43 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Appointment does not exist.</p>
+<p>1a. The dates are invalid or in wrong format.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. CelebManager shows an error message.</p>
+<p>1a1. Celeb Scheduler outputs an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. There is no appointment to show in the date range.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Celeb Scheduler shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
 </div>
 </li>
 </ul>
@@ -3535,17 +3378,23 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-case-remove-appointment"><a class="link" href="#use-case-remove-appointment">D.11. Use case: Remove appointment</a></h3>
+<h3 id="use-case-edit-appointment"><a class="link" href="#use-case-edit-appointment">D.9. Use case: Edit appointment</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to remove a specified appointment</p>
+<p>User requests to list appointments from a start date to an end date.</p>
 </li>
 <li>
-<p>CelebManager removes the appointment</p>
+<p>Celeb Scheduler shows a list of appointments within the date range (inclusive).</p>
+</li>
+<li>
+<p>User requests to edit a specified appointment.</p>
+</li>
+<li>
+<p>Celeb Scheduler changes appointment details and displays new appointment details to user.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3558,50 +3407,11 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. Appointment does not exist.</p>
+<p>1a. The dates are invalid or in wrong format.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. CelebManager shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-edit-appointment"><a class="link" href="#use-case-edit-appointment">D.12. Use case: Edit appointment</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to edit a specified appointment</p>
-</li>
-<li>
-<p>CelebManager changes appointment details and displays new appointment details to user</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Appointment does not exist.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager shows an error message.</p>
+<p>1a1. Celeb Scheduler outputs an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3614,89 +3424,11 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b.  Information entered for edit is invalid.</p>
+<p>2a. There is no appointment to show in the date range.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. CelebManager shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-set-appointment-alarm"><a class="link" href="#use-case-set-appointment-alarm">D.13. Use case: Set appointment alarm</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to set an alarm for a specified appointment at a specified time</p>
-</li>
-<li>
-<p>CelebManager sends reminder whenever the user opens it after the specified time till appointment timing</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Appointment does not exist.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-cancel-appointment-alarm"><a class="link" href="#use-case-cancel-appointment-alarm">D.14. Use case: Cancel appointment alarm</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to cancel an alarm for a specified appointment</p>
-</li>
-<li>
-<p>CelebManager cancels the alarm</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. Appointment does not exist.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager shows an error message.</p>
+<p>2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3709,52 +3441,13 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b. No alarm is set for the specified appointment.</p>
+<p>3a.  The given index is invalid.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. CelebManager shows an error message.</p>
+<p>3a1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-consolidate-payments"><a class="link" href="#use-case-consolidate-payments">D.15. Use case: Consolidate payments</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to consolidate payments within a specific period</p>
-</li>
-<li>
-<p>CelebManager outputs payments made and pending</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. The period specified is invalid.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager shows an error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case resumes at step 2.</p>
 </div>
 </li>
 </ul>
@@ -3765,451 +3458,13 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. There is no payment within the specified period.</p>
+<p>3b.  Information entered for edit is invalid.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. CelebManager shows a message that says no payment.</p>
+<p>3b1. Celeb Scheduler shows an error message.</p>
 <div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-associate-relevant-parties-to-appointments"><a class="link" href="#use-case-associate-relevant-parties-to-appointments">D.16. Use case: Associate relevant parties to appointments</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to access appointments.</p>
-</li>
-<li>
-<p>CelebManager provide the list of appointments User has.</p>
-</li>
-<li>
-<p>User requests to associate relevant parties to one of the appointments from the list.</p>
-</li>
-<li>
-<p>CelebManager requests input of the relevant parties’ names.</p>
-</li>
-<li>
-<p>User enters the names of the parties.</p>
-</li>
-<li>
-<p>CelebManager adds the names to the appointments.</p>
-</li>
-<li>
-<p>CelebManager provides confirmation.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a. User provides contact that is not in contact list.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a1. CelebManager requests User to create a new contact.</p>
-</li>
-<li>
-<p>4a2. User adds new contact (refer to Add New Contact use case).</p>
-<div class="paragraph">
-<p>Use case resumes from step 5.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>a. At any time, user chooses to cancel</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>a1. CelebManager provides status.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-associate-points-of-contact-to-appointments"><a class="link" href="#use-case-associate-points-of-contact-to-appointments">D.17. Use case: Associate points of contact to appointments</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to access appointments.</p>
-</li>
-<li>
-<p>CelebManager provide the list of appointments User has.</p>
-</li>
-<li>
-<p>User requests to associate points of contacts to one of the appointments from the list.</p>
-</li>
-<li>
-<p>CelebManager requests input of the points of contact’ names.</p>
-</li>
-<li>
-<p>User enters the names of the parties.</p>
-</li>
-<li>
-<p>CelebManager adds the names to the appointments.</p>
-</li>
-<li>
-<p>CelebManagerr provides confirmation.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a. User provides contact that is not in contact list.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a1. CelebManager requests User to create a new contact.</p>
-</li>
-<li>
-<p>4a2. User adds new contact (refer to Add New Contact use case).</p>
-<div class="paragraph">
-<p>Use case resumes from step 5.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>a. At any time, user chooses to cancel</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>a1. CelebManager provides status.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-associate-payments-to-appointments"><a class="link" href="#use-case-associate-payments-to-appointments">D.18. Use case: Associate payments to appointments</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User requests to access appointments.</p>
-</li>
-<li>
-<p>CelebManager provide the list of appointments User has.</p>
-</li>
-<li>
-<p>User requests to associate payments to one of the appointments from the list.</p>
-</li>
-<li>
-<p>CelebManager requests input of the payment amount.</p>
-</li>
-<li>
-<p>User enters the payment amount.</p>
-</li>
-<li>
-<p>CelebManager adds payment amount to the appointments.</p>
-</li>
-<li>
-<p>CelebManager provides confirmation.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a. User provides invalid input.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a1. CelebManager requests User to provide valid input.</p>
-</li>
-<li>
-<p>4a2. User enters new input.</p>
-<div class="paragraph">
-<p>Steps 4a1-4a2 are repeated until input is valid.</p>
-</div>
-<div class="paragraph">
-<p>Use case resumes from step 5.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>a. At any time, user chooses to cancel</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>a1. CelebManager provides status.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-show-location-in-map"><a class="link" href="#use-case-show-location-in-map">D.19. Use case: Show location in map</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs location name or address.</p>
-</li>
-<li>
-<p>CelebManager converts information into LatLong form.</p>
-</li>
-<li>
-<p>Celeb Manager uses the LatLong info to update create a new location marker.</p>
-</li>
-<li>
-<p>CelebManager updates the map with the location marker and re-centre its panel view.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User provides invalid input.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager requests User to provide valid input.</p>
-</li>
-<li>
-<p>1a2. User enters new input.</p>
-<div class="paragraph">
-<p>Steps 1a1-1a2 are repeated until input is valid.</p>
-</div>
-<div class="paragraph">
-<p>Use case resumes from step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a. When there is an existing marker in the map.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a1. CelebManager removes it.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-show-estimated-route-by-driving-in-map"><a class="link" href="#use-case-show-estimated-route-by-driving-in-map">D.20. Use case: Show estimated route by driving in map</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs start and end location name or address.</p>
-</li>
-<li>
-<p>CelebManager converts information into LatLong form.</p>
-</li>
-<li>
-<p>Celeb Manager uses the LatLong info to generate the route.</p>
-</li>
-<li>
-<p>CelebManager updates the map with the route.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User provides invalid input.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager requests User to provide valid input.</p>
-</li>
-<li>
-<p>1a2. User enters new input.</p>
-<div class="paragraph">
-<p>Steps 1a1-1a2 are repeated until input is valid.</p>
-</div>
-<div class="paragraph">
-<p>Use case resumes from step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a. When both location cannot be reached by driving</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. CelebManager shows error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a. When there is an existing route in the map</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>4a1. CelebManager removes it.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="use-case-show-estimated-distance-and-time-of-travel-by-driving"><a class="link" href="#use-case-show-estimated-distance-and-time-of-travel-by-driving">D.21. Use case: Show estimated distance and time of travel by driving</a></h3>
-<div class="paragraph">
-<p><strong>MSS</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>User inputs start and end location name or address.</p>
-</li>
-<li>
-<p>CelebManager converts information into LatLong form.</p>
-</li>
-<li>
-<p>Celeb Manager uses the LatLong info to generate the distance and time required to travel.</p>
-</li>
-<li>
-<p>CelebManager shows the information.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>Extensions</strong></p>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a. User provides invalid input.</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>1a1. CelebManager requests User to provide valid input.</p>
-</li>
-<li>
-<p>1a2. User enters new input.</p>
-<div class="paragraph">
-<p>Steps 1a1-1a2 are repeated until input is valid.</p>
-</div>
-<div class="paragraph">
-<p>Use case resumes from step 2.</p>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a. When both location cannot be reached by driving</p>
-<div class="ulist none">
-<ul class="none">
-<li>
-<p>3a1. CelebManager shows error message.</p>
-<div class="paragraph">
-<p>Use case ends.</p>
+<p>Use case resumes at step 2.</p>
 </div>
 </li>
 </ul>
@@ -4235,19 +3490,19 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 <li>
-<p>Should be usable by people with no knowledge about command line input</p>
+<p>Should be usable by people with no knowledge about command line input.</p>
 </li>
 <li>
-<p>Should respond to any user command within 10 seconds</p>
+<p>Should respond to any user command within 10 seconds.</p>
 </li>
 <li>
-<p>Should be backward compatible with data produced by earlier versions of the Celeb Scheduler</p>
+<p>Should be backward compatible with data produced by earlier versions of the Celeb Scheduler.</p>
 </li>
 <li>
-<p>Should come with automated unit tests and open source code</p>
+<p>Should come with automated unit tests and open source code.</p>
 </li>
 <li>
-<p>Should favor DOS style commands over Unix-style commands</p>
+<p>Should favor DOS style commands over Unix-style commands.</p>
 </li>
 </ol>
 </div>
@@ -4266,21 +3521,46 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <dd>
 <p>A contact detail that is not meant to be shared with others</p>
 </dd>
+<dt class="hdlist1"><a id="celebcalendar"></a> Celeb calendar</dt>
+<dd>
+<p>A calendar that contains all appointments a celebrity managed by the user has</p>
+</dd>
+<dt class="hdlist1"><a id="calendar-view"></a> Calendar view</dt>
+<dd>
+<p>The way in which appointments are displayed in calendar<br></p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Celeb Scheduler currently supports displaying by day, week, month and year.
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
 <dt class="hdlist1"><a id="appointment"></a> Appointment</dt>
 <dd>
-<p>A meeting between contacts at a specific time, date and location. An appointment has a specific name</p>
+<p>A meeting between contacts at a specific time, date and location<br>
+An appointment has a specific name</p>
 </dd>
 <dt class="hdlist1"><a id="attendees"></a> Attendees</dt>
 <dd>
-<p>A list of contacts being managed by the User who are attending the appointment</p>
+<p>A list of contacts who are attending an appointment</p>
 </dd>
 <dt class="hdlist1"><a id="points-of-contacts"></a> Points of Contacts</dt>
 <dd>
-<p>A list of contacts involved in an appointment but not attendees</p>
+<p>A list of contacts involved in an appointment but not attending it</p>
 </dd>
 <dt class="hdlist1"><a id="blacklist"></a> Blacklist</dt>
 <dd>
-<p>A list of contacts which should be marked for being untrustworthy or unacceptable for whatever reason</p>
+<p>A list of contacts which should be marked for being untrustworthy or unacceptable</p>
 </dd>
 <dt class="hdlist1"><a id="UI"></a> User Interface</dt>
 <dd>
@@ -4291,47 +3571,10 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix G: Product Survey</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Given below are instructions to test the app manually.</p>
+<p>Given below are instructions to test the App manually.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4346,7 +3589,11 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">H.1. Launch and Shutdown</a></h3>
+<h3 id="launch"><a class="link" href="#launch">G.1. Launch</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the launch and re-launch of the App.<br>
+For each subsequent launch, window size and location should be the same as the settings before closing the App for previous launch.</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4354,69 +3601,89 @@ These instructions only provide a starting point for testers to work on; testers
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Download the jar file and copy into an empty folder</p>
+<p>Download the jar file</p>
+</li>
+<li>
+<p>Copy into an empty folder</p>
 </li>
 <li>
 <p>Double-click the jar file<br>
-Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+<em>Expected: Celeb Scheduler shows the GUI with a set of sample contacts.</em></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+    The window size may not be optimum.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Resize the window to an optimum size</p>
+</li>
+<li>
+<p>Move the window to a different location</p>
+</li>
+<li>
+<p>Close the window</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Saving window preferences</p>
+<p>Subsequent launch</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
-</li>
-<li>
-<p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
+<p>Re-launch the App by double-clicking the jar file<br>
+<em>Expected: The most recent window size and location are retained.</em></p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">H.2. Deleting a person</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Deleting a person while all persons are listed</p>
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the delete command of the App.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.
+</td>
+</tr>
+</table>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+<p>Type <code>delete 1</code> in command box and press enter<br>
+<em>Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</em></p>
 </li>
 <li>
-<p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+<p>Type <code>delete 0</code> in command box and press enter<br>
+<em>Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</em></p>
 </li>
 <li>
-<p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
-</li>
-<li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
-Expected: Similar to previous.</p>
+<p>Type other incorrect delete command such as <code>delete</code>, <code>delete x</code> (where x is larger than the list size) in command box and press enter<br>
+<em>Expected: Similar to previous.</em></p>
 </li>
 </ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -4431,16 +3698,13 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-25 00:56:00 UTC
+Last updated 2018-03-25 01:18:45 UTC
 </div>
 </div>
 </body>
