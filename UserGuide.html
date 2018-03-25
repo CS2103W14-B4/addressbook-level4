@@ -59,7 +59,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Celeb Scheduler (CS) is for celebrity managers who <strong>prefer to use a desktop app for managing their celebrity&#8217;s schedule with ease</strong>. More importantly, CS is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you require a versatile application that has the feature of <strong>managing contacts, organising schedules, emailing (Coming in v2.0) and trip planning</strong>. You are at the right place as CS would be the best platform for you, with its integration of address book, calendar and visual maps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>CelebManager (CM) is for celebrity managers who <strong>prefer to use a desktop app for managing their celebrity&#8217;s schedule with ease</strong>. More importantly, CM is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you require a versatile application that has the feature of <strong>managing contacts, organising schedules, emailing (Coming in v2.0) and trip planning</strong>. You are at the right place as CM would be the best platform for you, with its integration of address book, calendar and visual maps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -88,14 +88,18 @@ This app will not work with earlier versions of Java 8.
 <p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/CS2103JAN2018-W14-B4/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Celeb Scheduler.</p>
+<p>Copy the file to the folder you want to use as the home folder for your CelebManager.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<div class="paragraph">
+<p>The image below shows the current GUI of CelebManager.</p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
+<div class="title">Figure 1. GUI of CelebManager</div>
 </div>
 </li>
 <li>
@@ -139,7 +143,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Some commands have an alias, which you can also use to execute the command e.g. to add a person to Celeb Scheuler, you can type either <code>add n/John Doe</code> or <code>a n/John Doe</code>.</p>
+<p>Some commands have an alias, which you can also use to execute the command e.g. to add a person to CelebManager, you can type either <code>add n/John Doe</code> or <code>a n/John Doe</code>.</p>
 </li>
 <li>
 <p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
@@ -166,7 +170,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to Celeb Scheduler.<br>
+<p>Adds a person to CelebManager.<br>
 Alias: <code>a</code><br>
 Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -199,7 +203,7 @@ A person can have any number of tags (including 0)
 <div class="sect2">
 <h3 id="adding-an-appointment-code-addappointment-code-since-v1-2"><a class="link" href="#adding-an-appointment-code-addappointment-code-since-v1-2">3.3. Adding an appointment: <code>addAppointment</code> [Since v1.2]</a></h3>
 <div class="paragraph">
-<p>Adds an appointment to Celeb Scheduler.<br>
+<p>Adds an appointment to CelebManager.<br>
 Alias: <code>aa</code><br>
 Format: <code>addAppointment n/APPOINTMENT_NAME l/LOCATION sd/START_DATE st/START_TIME ed/END_DATE et/END_TIME</code></p>
 </div>
@@ -239,7 +243,7 @@ or minute is a 1 digit number, you need to prefix it with a 0 (e.g. 09:05)</p>
 <div class="sect2">
 <h3 id="listing-appointments-code-listappointment-code-since-v1-3"><a class="link" href="#listing-appointments-code-listappointment-code-since-v1-3">3.4. Listing appointments: <code>listAppointment</code> [Since v1.3]</a></h3>
 <div class="paragraph">
-<p>Lists all appointments in our Celeb Scheduler.<br>
+<p>Lists all appointments in our CelebManager.<br>
 Alias: <code>la</code><br>
 Format: <code>listAppointment</code></p>
 </div>
@@ -255,7 +259,7 @@ Format: <code>listAppointment</code></p>
 <div class="sect2">
 <h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.7. Listing all persons : <code>list</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in Celeb Scheduler.<br>
+<p>Shows a list of all persons in CelebManager.<br>
 Alias: <code>l</code><br>
 Format: <code>list</code></p>
 </div>
@@ -263,7 +267,7 @@ Format: <code>list</code></p>
 <div class="sect2">
 <h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.8. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in Celeb Scheduler.<br>
+<p>Edits an existing person in CelebManager.<br>
 Alias: <code>e</code><br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -355,7 +359,7 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 <div class="sect2">
 <h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.10. Deleting a person : <code>delete</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from Celeb Scheduler.<br>
+<p>Deletes the specified person from CelebManager.<br>
 Alias: <code>d</code><br>
 Format: <code>delete INDEX</code></p>
 </div>
@@ -384,7 +388,7 @@ Format: <code>delete INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>delete 2</code><br>
-Deletes the 2nd person in Celeb Scheduler.</p>
+Deletes the 2nd person in CelebManager.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
@@ -426,7 +430,7 @@ Format: <code>select INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>select 2</code><br>
-Selects the 2nd person in Celeb Scheduler.</p>
+Selects the 2nd person in CelebManager.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
@@ -461,7 +465,7 @@ Format: <code>history</code></p>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.13. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
-<p>Restores Celeb Scheduler to the state before the previous <em>undoable</em> command was executed.<br>
+<p>Restores CelebManager to the state before the previous <em>undoable</em> command was executed.<br>
 Alias: <code>u</code><br>
 Format: <code>undo</code></p>
 </div>
@@ -473,7 +477,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify Celeb Scheduler&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify CelebManager&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -540,7 +544,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect2">
 <h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.15. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from Celeb Scheduler.<br>
+<p>Clears all entries from CelebManager.<br>
 Alias: <code>c</code><br>
 Format: <code>clear</code></p>
 </div>
@@ -556,14 +560,14 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.17. Saving the data</a></h3>
 <div class="paragraph">
-<p>Celeb Scheduler data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>CelebManager data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="removing-a-tag-code-removetag-code"><a class="link" href="#removing-a-tag-code-removetag-code">3.18. Removing a tag : <code>removeTag</code></a></h3>
 <div class="paragraph">
-<p>Removes the specified tag from every person with it in Celeb Scheduler and shows the number of person(s) affected by this operation.<br>
+<p>Removes the specified tag from every person with it in CelebManager and shows the number of person(s) affected by this operation.<br>
 Alias: <code>rt</code><br>
 Format: <code>removeTag TAG</code></p>
 </div>
@@ -574,7 +578,7 @@ Format: <code>removeTag TAG</code></p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You can remove a tag that does not exist in Celeb Scheduler and it will show 0 person gets affected.
+You can remove a tag that does not exist in CelebManager and it will show 0 person gets affected.
 </td>
 </tr>
 </table>
@@ -586,7 +590,7 @@ You can remove a tag that does not exist in Celeb Scheduler and it will show 0 p
 <ul>
 <li>
 <p><code>removeTag friends</code><br>
-Removes the tag, "friends" from every person with it in Celeb Scheduler and shows the number of person(s) affected.</p>
+Removes the tag, "friends" from every person with it in CelebManager and shows the number of person(s) affected.</p>
 </li>
 </ul>
 </div>
@@ -703,7 +707,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-25 09:51:35 UTC
+Last updated 2018-03-25 10:56:10 UTC
 </div>
 </div>
 </body>
