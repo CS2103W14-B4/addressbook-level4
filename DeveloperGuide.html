@@ -438,7 +438,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the Celeb Scheduler data is changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Note how the <code>Model</code> simply raises a <code>AddressBookChangedEvent</code> when the CelebManager data is changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -629,7 +629,7 @@ its sub-components.</p>
 <h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes some noteworthy features that are implemented in Celeb Scheduler.</p>
+<p>This section describes some noteworthy features that are implemented in CelebManager.</p>
 </div>
 <div class="sect2">
 <h3 id="removetag-feature"><a class="link" href="#removetag-feature">4.1. RemoveTag Feature</a></h3>
@@ -2000,7 +2000,7 @@ two locations. (By Damien)</p>
 <th class="tableblock halign-left valign-top">Priority</th>
 <th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
 <th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">so that I can&#8230;&#8203;</th>
 </tr>
 </thead>
 <tbody>
@@ -2229,13 +2229,13 @@ two locations. (By Damien)</p>
 <p>User requests to list persons.</p>
 </li>
 <li>
-<p>Celeb Scheduler shows a list of persons.</p>
+<p>CelebManager shows a list of persons.</p>
 </li>
 <li>
 <p>User requests to delete a specific person in the list.</p>
 </li>
 <li>
-<p>Celeb Scheduler deletes the person.</p>
+<p>CelebManager deletes the person.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2280,7 +2280,7 @@ two locations. (By Damien)</p>
 <p>User requests to undo.</p>
 </li>
 <li>
-<p>Celeb Scheduler undoes the latest executed command that mutates the data.</p>
+<p>CelebManager undoes the latest executed command that mutates the data.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2319,7 +2319,7 @@ two locations. (By Damien)</p>
 <p>User requests to redo.</p>
 </li>
 <li>
-<p>Celeb Scheduler redoes the latest executed undo command.</p>
+<p>CelebManager redoes the latest executed undo command.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2358,7 +2358,7 @@ two locations. (By Damien)</p>
 <p>User requests to remove a tag.</p>
 </li>
 <li>
-<p>Celeb Scheduler removes the tag from any person having it.</p>
+<p>CelebManager removes the tag from any person having it.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2375,7 +2375,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2397,7 +2397,7 @@ two locations. (By Damien)</p>
 <p>User requests to add an appointment.</p>
 </li>
 <li>
-<p>Celeb Scheduler adds the appointment to the currently displayed calendar.</p>
+<p>CelebManager adds the appointment to the currently displayed calendar.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2414,7 +2414,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2427,7 +2427,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Celeb Scheduler shows an error message.</p>
+<p>2a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2449,7 +2449,7 @@ two locations. (By Damien)</p>
 <p>User requests to view appointment.</p>
 </li>
 <li>
-<p>Celeb Scheduler shows the appointment&#8217;s details.</p>
+<p>CelebManager shows the appointment&#8217;s details.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2466,7 +2466,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2488,7 +2488,7 @@ two locations. (By Damien)</p>
 <p>User requests to list appointments from a start date to an end date.</p>
 </li>
 <li>
-<p>Celeb Scheduler shows a list of appointments within the date range (inclusive).</p>
+<p>CelebManager shows a list of appointments within the date range (inclusive).</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2505,7 +2505,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler outputs an error message.</p>
+<p>1a1. CelebManager outputs an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2522,7 +2522,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.</p>
+<p>2a1. CelebManager outputs a message that says no appointment in the specified date range.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2544,13 +2544,13 @@ two locations. (By Damien)</p>
 <p>User requests to list appointments from a start date to an end date.</p>
 </li>
 <li>
-<p>Celeb Scheduler shows a list of appointments within the date range (inclusive).</p>
+<p>CelebManager shows a list of appointments within the date range (inclusive).</p>
 </li>
 <li>
 <p>User requests to delete a specific appointment in the list.</p>
 </li>
 <li>
-<p>Celeb Scheduler deletes the appointment.</p>
+<p>CelebManager deletes the appointment.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2567,7 +2567,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler outputs an error message.</p>
+<p>1a1. CelebManager outputs an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2584,7 +2584,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.</p>
+<p>2a1. CelebManager outputs a message that says no appointment in the specified date range.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2597,7 +2597,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. Celeb Scheduler shows an error message.</p>
+<p>3a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2619,13 +2619,13 @@ two locations. (By Damien)</p>
 <p>User requests to list appointments from a start date to an end date.</p>
 </li>
 <li>
-<p>Celeb Scheduler shows a list of appointments within the date range (inclusive).</p>
+<p>CelebManager shows a list of appointments within the date range (inclusive).</p>
 </li>
 <li>
 <p>User requests to edit a specified appointment.</p>
 </li>
 <li>
-<p>Celeb Scheduler changes appointment details and displays new appointment details to user.</p>
+<p>CelebManager changes appointment details and displays new appointment details to user.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2642,7 +2642,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler outputs an error message.</p>
+<p>1a1. CelebManager outputs an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2659,7 +2659,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Celeb Scheduler outputs a message that says no appointment in the specified date range.</p>
+<p>2a1. CelebManager outputs a message that says no appointment in the specified date range.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -2676,7 +2676,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. Celeb Scheduler shows an error message.</p>
+<p>3a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2693,7 +2693,7 @@ two locations. (By Damien)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3b1. Celeb Scheduler shows an error message.</p>
+<p>3b1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -2727,7 +2727,7 @@ two locations. (By Damien)</p>
 <p>Should respond to any user command within 10 seconds.</p>
 </li>
 <li>
-<p>Should be backward compatible with data produced by earlier versions of the Celeb Scheduler.</p>
+<p>Should be backward compatible with data produced by earlier versions of the CelebManager.</p>
 </li>
 <li>
 <p>Should come with automated unit tests and open source code.</p>
@@ -2769,7 +2769,7 @@ two locations. (By Damien)</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Celeb Scheduler currently supports displaying by day, week, month and year.
+CelebManager currently supports displaying by day, week, month and year.
 </td>
 </tr>
 </table>
@@ -2839,7 +2839,7 @@ For each subsequent launch, window size and location should be the same as the s
 </li>
 <li>
 <p>Double-click the jar file<br>
-<em>Expected: Celeb Scheduler shows the GUI with a set of sample contacts.</em></p>
+<em>Expected: CelebManager shows the GUI with a set of sample contacts.</em></p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2935,7 +2935,7 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-25 10:56:10 UTC
+Last updated 2018-03-25 11:20:01 UTC
 </div>
 </div>
 </body>
