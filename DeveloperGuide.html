@@ -5,14 +5,14 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>Celeb Scheduler - Developer Guide</title>
+<title>CelebManager - Developer Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>Celeb Scheduler - Developer Guide</h1>
+<h1>CelebManager - Developer Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -111,6 +111,9 @@
 <li><a href="#use-case-associate-relevant-parties-to-appointments">D.16. Use case: Associate relevant parties to appointments</a></li>
 <li><a href="#use-case-associate-points-of-contact-to-appointments">D.17. Use case: Associate points of contact to appointments</a></li>
 <li><a href="#use-case-associate-payments-to-appointments">D.18. Use case: Associate payments to appointments</a></li>
+<li><a href="#use-case-show-location-in-map">D.19. Use case: Show location in map</a></li>
+<li><a href="#use-case-show-estimated-route-by-driving-in-map">D.20. Use case: Show estimated route by driving in map</a></li>
+<li><a href="#use-case-show-estimated-distance-and-time-of-travel-by-driving">D.21. Use case: Show estimated distance and time of travel by driving</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
@@ -1154,6 +1157,9 @@ location and identifying it with a location marker. This command inherits from <
 <div class="title">Figure 15. Location Marker</div>
 </div>
 <div class="paragraph">
+<p><strong class="underline">Inheritance of command</strong></p>
+</div>
+<div class="paragraph">
 <p>The following diagram shows the inheritance diagram for <code>ShowLocationCommand</code>:</p>
 </div>
 <div class="imageblock">
@@ -1165,6 +1171,9 @@ location and identifying it with a location marker. This command inherits from <
 <div class="paragraph">
 <p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
 Similar to the other commands like <code>FindCommand</code> it will not be identified by the undo/redo feature.</p>
+</div>
+<div class="paragraph">
+<p><strong class="underline">Use of model</strong></p>
 </div>
 <div class="paragraph">
 <p>This command does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to
@@ -1231,10 +1240,16 @@ checks for <strong>blank space and the validity of location in google server</st
  road, block name and postal code. Any details more than that would result in a higher possibility of it being invalid.</p>
 </div>
 <div class="paragraph">
+<p><strong class="underline">Library used</strong></p>
+</div>
+<div class="paragraph">
 <p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library. The <code>GMAPFX API</code> is used to create the
 <code>Geocoding</code> function, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
 is then used by the command to find the exact location in the <code>MapPanel</code>. The <code>Google Maps Web Services API</code> allows the
 command to re-center and mark the new location which is then shown to the user.</p>
+</div>
+<div class="paragraph">
+<p><strong class="underline">Visual changes</strong></p>
 </div>
 <div class="paragraph">
 <p>Every new input of this command will remove the previous location marker and add the new marker into the map.</p>
@@ -1258,7 +1273,10 @@ command to re-center and mark the new location which is then shown to the user.<
 <div class="title">Figure 18. Image of Map Panel after command input</div>
 </div>
 <div class="paragraph">
-<p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker</p>
+<p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker.</p>
+</div>
+<div class="paragraph">
+<p><strong class="underline">Sequence of events</strong></p>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the command works:</p>
@@ -1297,7 +1315,7 @@ command to re-center and mark the new location which is then shown to the user.<
 <p>Pros: Allows for command to have the undo/redo function.</p>
 </li>
 <li>
-<p>Cons: Requires more work that may not fit in with our timeline</p>
+<p>Cons: Requires more work that may not fit in with our timeline.</p>
 </li>
 </ul>
 </div>
@@ -1314,10 +1332,10 @@ command to re-center and mark the new location which is then shown to the user.<
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion</p>
+<p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion.</p>
 </li>
 <li>
-<p>Cons: Both model are very similar</p>
+<p>Cons: Both model are very similar.</p>
 </li>
 </ul>
 </div>
@@ -1327,7 +1345,7 @@ command to re-center and mark the new location which is then shown to the user.<
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Reduces the amount of code/class in the project</p>
+<p>Pros: Reduces the amount of code/class in the project.</p>
 </li>
 <li>
 <p>Cons: Will be confusing as different requirements for a single model. Lacks proper organisation.</p>
@@ -1683,14 +1701,14 @@ Chose AsciiDoc(markup language) over markdown language format because it provide
 <div class="sect2">
 <h3 id="editing-documentation"><a class="link" href="#editing-documentation">5.1. Editing Documentation</a></h3>
 <div class="paragraph">
-<p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> for instructions on how to render <code>.adoc</code> files locally to preview the end result of your edits.
+<p>Refer to <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> for instructions on how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">5.2. Publishing Documentation</a></h3>
 <div class="paragraph">
-<p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> for instructions on how to deploy GitHub pages using Travis.</p>
+<p>Refer to <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> for instructions on how to deploy GitHub pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1699,7 +1717,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <p>Use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> to convert documents to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
 <div class="paragraph">
-<p>Here are the steps to convert the project documentation files to PDF format.</p>
+<p>Here are the steps to convert the project documentation files to PDF format:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1875,27 +1893,27 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 <div class="sectionbody">
 <div class="paragraph">
 <p>Dev Ops is a software engineering culture and practice that aims at unifying software development (Dev) and software operations (Ops).
-Dev Ops advocates automation and monitoring at all steps of software construction. This section illustrates how we adopt this practice in developing Celeb Scheduler.</p>
+Dev Ops advocates automation and monitoring at all steps of software construction. This section illustrates how we adopt this practice in developing CelebManager.</p>
 </div>
 <div class="sect2">
 <h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
 <div class="paragraph">
 <p>We use Gradle for build automation.<br>
-See <a href="UsingGradle.html">UsingGradle.adoc</a> for more details.</p>
+Refer to <a href="UsingGradle.html">UsingGradle.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="continuous-integration"><a class="link" href="#continuous-integration">7.2. Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects.<br>
-See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
+Refer to <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="coverage-reporting"><a class="link" href="#coverage-reporting">7.3. Coverage Reporting</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://coveralls.io/">Coveralls</a> to track the code coverage of our projects.<br>
-See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
+Refer to <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1903,7 +1921,7 @@ See <a href="UsingCoveralls.html">UsingCoveralls.adoc</a> for more details.</p>
 <div class="paragraph">
 <p>We use <a href="https://www.netlify.com/">Netlify</a> to see a preview of how the HTML version of changed asciidoc files will look
 like when a pull request is merged.<br>
-See <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
+Refer to <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2873,7 +2891,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see various landmarks around a specific location in a satelite map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see various landmarks around a specific location in a satellite map</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see in real time the actual layout of the surrounding</p></td>
 </tr>
 <tr>
@@ -2884,27 +2902,27 @@ two location to allow the celebrity manager to plan appointments and trips more 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager who chauffeurs celebrities</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">see the best route of travel by driving between two locations in a map</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">plan for the shortest travel</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager who chauffeurs celebrities</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know if two locations can be reached by driving</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">foresee any problems and plan ahead</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager who chauffeurs celebrities</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know the estimated distance between two locations by driving</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">plan for my schedules more effectively</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cater enough time for travelling to avoid being late</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">celebrity manager who chauffeurs celebrities</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know the estimated time of travel between two locations by driving</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">plan for my schedules more effectively</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reduce the time of travel to reach an appointment location</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -3058,7 +3076,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix D: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>Celeb Scheduler</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>CelebManager</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
 <h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
 <div class="paragraph">
@@ -3070,13 +3088,13 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to list persons</p>
 </li>
 <li>
-<p>Celeb Scheduler shows a list of persons</p>
+<p>CelebManager shows a list of persons</p>
 </li>
 <li>
 <p>User requests to delete a specific person in the list</p>
 </li>
 <li>
-<p>Celeb Scheduler deletes the person</p>
+<p>CelebManager deletes the person</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3099,7 +3117,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. Celeb Scheduler shows an error message.</p>
+<p>3a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at step 2.</p>
 </div>
@@ -3117,10 +3135,10 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User keys in a partially complete command which only has one match in the Celeb Scheduler</p>
+<p>User keys in a partially complete command which only has one match in the CelebManager</p>
 </li>
 <li>
-<p>Celeb Scheduler shows the matched complete command</p>
+<p>CelebManager shows the matched complete command</p>
 </li>
 <li>
 <p>User presses tab to let Celeb Scheduler auto-fill the rest of the command</p>
@@ -3145,7 +3163,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to undo</p>
 </li>
 <li>
-<p>Celeb Scheduler undoes the latest executed command that mutates the data</p>
+<p>CelebManager undoes the latest executed command that mutates the data</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3162,7 +3180,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Celeb Scheduler shows an error message.</p>
+<p>2a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3184,7 +3202,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to redo</p>
 </li>
 <li>
-<p>Celeb Scheduler redoes the latest executed undo command</p>
+<p>CelebManager redoes the latest executed undo command</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3201,7 +3219,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Celeb Scheduler shows an error message.</p>
+<p>2a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3223,7 +3241,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to email to a contact</p>
 </li>
 <li>
-<p>Celeb Scheduler opens the platform of the emailing website</p>
+<p>CelebManager opens the platform of the emailing website</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3240,7 +3258,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3262,7 +3280,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to list contacts by a tag</p>
 </li>
 <li>
-<p>Celeb Scheduler lists out contacts with the specified tag</p>
+<p>CelebManager lists out contacts with the specified tag</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3294,13 +3312,13 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to blacklist phone number</p>
 </li>
 <li>
-<p>Celeb Scheduler requests the user to confirm black list</p>
+<p>CelebManager requests the user to confirm black list</p>
 </li>
 <li>
 <p>User confirms</p>
 </li>
 <li>
-<p>Celeb Scheduler adds the phone number to black list</p>
+<p>CelebManager adds the phone number to black list</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3317,7 +3335,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3336,7 +3354,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3b1. Celeb Scheduler shows an error message.</p>
+<p>3b1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case resumes at 2.</p>
 </div>
@@ -3358,7 +3376,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User inputs the new dimension for a specific UI</p>
 </li>
 <li>
-<p>Celeb Scheduler updates the size of the UI indicated</p>
+<p>CelebManager updates the size of the UI indicated</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3375,7 +3393,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3397,7 +3415,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to add an appointment</p>
 </li>
 <li>
-<p>Celeb Scheduler adds the appointment to the calendar</p>
+<p>CelebManager adds the appointment to the calendar</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3414,7 +3432,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3427,7 +3445,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Celeb Scheduler shows an error message.</p>
+<p>2a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3449,7 +3467,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to view an appointment</p>
 </li>
 <li>
-<p>Celeb Scheduler shows the appointment details</p>
+<p>CelebManager shows the appointment details</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3466,7 +3484,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3488,7 +3506,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to remind appointment</p>
 </li>
 <li>
-<p>Celeb Scheduler sends a pre-drafted email containing appointment details to the attendees</p>
+<p>CelebManager sends a pre-drafted email containing appointment details to the attendees</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3505,7 +3523,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3527,7 +3545,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to remove a specified appointment</p>
 </li>
 <li>
-<p>Celeb Scheduler removes the appointment</p>
+<p>CelebManager removes the appointment</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3544,7 +3562,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3566,7 +3584,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to edit a specified appointment</p>
 </li>
 <li>
-<p>Celeb Scheduler changes appointment details and displays new appointment details to user</p>
+<p>CelebManager changes appointment details and displays new appointment details to user</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3583,7 +3601,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3600,7 +3618,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. Celeb Scheduler shows an error message.</p>
+<p>1b1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3622,7 +3640,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to set an alarm for a specified appointment at a specified time</p>
 </li>
 <li>
-<p>Celeb Scheduler sends reminder whenever the user opens it after the specified time till appointment timing</p>
+<p>CelebManager sends reminder whenever the user opens it after the specified time till appointment timing</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3639,7 +3657,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3661,7 +3679,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to cancel an alarm for a specified appointment</p>
 </li>
 <li>
-<p>Celeb Scheduler cancels the alarm</p>
+<p>CelebManager cancels the alarm</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3678,7 +3696,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3695,7 +3713,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1b1. Celeb Scheduler shows an error message.</p>
+<p>1b1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3717,7 +3735,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to consolidate payments within a specific period</p>
 </li>
 <li>
-<p>Celeb Scheduler outputs payments made and pending</p>
+<p>CelebManager outputs payments made and pending</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3734,7 +3752,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a1. Celeb Scheduler shows an error message.</p>
+<p>1a1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3751,7 +3769,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a1. Celeb Scheduler shows a message that says no payment.</p>
+<p>2a1. CelebManager shows a message that says no payment.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3773,22 +3791,22 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to access appointments.</p>
 </li>
 <li>
-<p>Celeb Scheduler provide the list of appointments User has.</p>
+<p>CelebManager provide the list of appointments User has.</p>
 </li>
 <li>
 <p>User requests to associate relevant parties to one of the appointments from the list.</p>
 </li>
 <li>
-<p>Celeb Scheduler requests input of the relevant parties’ names.</p>
+<p>CelebManager requests input of the relevant parties’ names.</p>
 </li>
 <li>
 <p>User enters the names of the parties.</p>
 </li>
 <li>
-<p>Celeb Scheduler adds the names to the appointments.</p>
+<p>CelebManager adds the names to the appointments.</p>
 </li>
 <li>
-<p>Celeb Scheduler provides confirmation.</p>
+<p>CelebManager provides confirmation.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3805,7 +3823,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. Celeb Scheduler requests User to create a new contact.</p>
+<p>4a1. CelebManager requests User to create a new contact.</p>
 </li>
 <li>
 <p>4a2. User adds new contact (refer to Add New Contact use case).</p>
@@ -3821,7 +3839,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>a1. Celeb Scheduler provides status.</p>
+<p>a1. CelebManager provides status.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3843,22 +3861,22 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to access appointments.</p>
 </li>
 <li>
-<p>Celeb Scheduler provide the list of appointments User has.</p>
+<p>CelebManager provide the list of appointments User has.</p>
 </li>
 <li>
 <p>User requests to associate points of contacts to one of the appointments from the list.</p>
 </li>
 <li>
-<p>Celeb Scheduler requests input of the points of contact’ names.</p>
+<p>CelebManager requests input of the points of contact’ names.</p>
 </li>
 <li>
 <p>User enters the names of the parties.</p>
 </li>
 <li>
-<p>Celeb Scheduler adds the names to the appointments.</p>
+<p>CelebManager adds the names to the appointments.</p>
 </li>
 <li>
-<p>Celeb Scheduler provides confirmation.</p>
+<p>CelebManagerr provides confirmation.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3875,7 +3893,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. Celeb Scheduler requests User to create a new contact.</p>
+<p>4a1. CelebManager requests User to create a new contact.</p>
 </li>
 <li>
 <p>4a2. User adds new contact (refer to Add New Contact use case).</p>
@@ -3891,7 +3909,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>a1. Celeb Scheduler provides status.</p>
+<p>a1. CelebManager provides status.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3913,22 +3931,22 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <p>User requests to access appointments.</p>
 </li>
 <li>
-<p>Celeb Scheduler provide the list of appointments User has.</p>
+<p>CelebManager provide the list of appointments User has.</p>
 </li>
 <li>
 <p>User requests to associate payments to one of the appointments from the list.</p>
 </li>
 <li>
-<p>Celeb Scheduler requests input of the payment amount.</p>
+<p>CelebManager requests input of the payment amount.</p>
 </li>
 <li>
 <p>User enters the payment amount.</p>
 </li>
 <li>
-<p>Celeb Scheduler adds payment amount to the appointments.</p>
+<p>CelebManager adds payment amount to the appointments.</p>
 </li>
 <li>
-<p>Celeb Scheduler provides confirmation.</p>
+<p>CelebManager provides confirmation.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3945,7 +3963,7 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. Celeb Scheduler requests User to provide valid input.</p>
+<p>4a1. CelebManager requests User to provide valid input.</p>
 </li>
 <li>
 <p>4a2. User enters new input.</p>
@@ -3968,7 +3986,228 @@ two location to allow the celebrity manager to plan appointments and trips more 
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>a1. Celeb Scheduler provides status.</p>
+<p>a1. CelebManager provides status.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-show-location-in-map"><a class="link" href="#use-case-show-location-in-map">D.19. Use case: Show location in map</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs location name or address.</p>
+</li>
+<li>
+<p>CelebManager converts information into LatLong form.</p>
+</li>
+<li>
+<p>Celeb Manager uses the LatLong info to update create a new location marker.</p>
+</li>
+<li>
+<p>CelebManager updates the map with the location marker and re-centre its panel view.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User provides invalid input.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CelebManager requests User to provide valid input.</p>
+</li>
+<li>
+<p>1a2. User enters new input.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until input is valid.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. When there is an existing marker in the map.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. CelebManager removes it.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-show-estimated-route-by-driving-in-map"><a class="link" href="#use-case-show-estimated-route-by-driving-in-map">D.20. Use case: Show estimated route by driving in map</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs start and end location name or address.</p>
+</li>
+<li>
+<p>CelebManager converts information into LatLong form.</p>
+</li>
+<li>
+<p>Celeb Manager uses the LatLong info to generate the route.</p>
+</li>
+<li>
+<p>CelebManager updates the map with the route.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User provides invalid input.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CelebManager requests User to provide valid input.</p>
+</li>
+<li>
+<p>1a2. User enters new input.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until input is valid.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. When both location cannot be reached by driving</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. CelebManager shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. When there is an existing route in the map</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. CelebManager removes it.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-show-estimated-distance-and-time-of-travel-by-driving"><a class="link" href="#use-case-show-estimated-distance-and-time-of-travel-by-driving">D.21. Use case: Show estimated distance and time of travel by driving</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs start and end location name or address.</p>
+</li>
+<li>
+<p>CelebManager converts information into LatLong form.</p>
+</li>
+<li>
+<p>Celeb Manager uses the LatLong info to generate the distance and time required to travel.</p>
+</li>
+<li>
+<p>CelebManager shows the information.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User provides invalid input.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CelebManager requests User to provide valid input.</p>
+</li>
+<li>
+<p>1a2. User enters new input.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until input is valid.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. When both location cannot be reached by driving</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. CelebManager shows error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -4201,7 +4440,7 @@ Expected: Similar to previous.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-23 08:42:31 UTC
+Last updated 2018-03-25 00:56:00 UTC
 </div>
 </div>
 </body>
