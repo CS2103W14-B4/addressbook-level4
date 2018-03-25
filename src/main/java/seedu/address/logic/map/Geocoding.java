@@ -64,6 +64,10 @@ public class Geocoding {
         return location.lng;
     }
 
+    public LatLng getLatLng() {
+        return location;
+    }
+
     /**
      * Checks if the {@code address} can be found in google server
      * @param address

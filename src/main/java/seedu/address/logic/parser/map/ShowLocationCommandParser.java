@@ -20,7 +20,7 @@ public class ShowLocationCommandParser implements Parser<ShowLocationCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the ShowLocationCommand
      * and returns an ShowLocationCommand object for execution
-     * @throws ParseException if the user input does not comform to the expected format
+     * @throws ParseException if the user input does not conform to the expected format
      */
     @Override
     public ShowLocationCommand parse(String args) throws ParseException {

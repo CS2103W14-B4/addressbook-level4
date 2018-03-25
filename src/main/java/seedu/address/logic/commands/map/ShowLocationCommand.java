@@ -68,9 +68,10 @@ public class ShowLocationCommand extends Command {
     public void addNewMarkerToMap() {
 
         removeExistingMarker();
+
         LatLong center = getLatLong();
 
-        location = getMarker(center);
+        location = getMarkerOptions(center);
 
         setMarkerOnMap(center, location);
     }
@@ -87,7 +88,7 @@ public class ShowLocationCommand extends Command {
         map.setZoom(15);
     }
 
-    private Marker getMarker(LatLong center) {
+    private Marker getMarkerOptions(LatLong center) {
         MarkerOptions markOptions = new MarkerOptions();
         markOptions.animation(Animation.DROP)
                 .position(center)
@@ -101,4 +102,11 @@ public class ShowLocationCommand extends Command {
         return new LatLong(convertToLatLng.getLat(), convertToLatLng.getLong());
     }
 
+    public static Marker getCurrentMarker() {
+        if (location != null) {
+            return location;
+        } else {
+            return null;
+        }
+    }
 }

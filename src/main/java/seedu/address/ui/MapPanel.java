@@ -23,8 +23,8 @@ public class MapPanel extends UiPart<Region> implements MapComponentInitializedL
     public static final int DEFAULT_ZOOM_LEVEL = 10;
     private static final String FXML = "MapsPanel.fxml";
     private static GoogleMap actualMap;
-    private GoogleMapView mapView;
 
+    private GoogleMapView mapView;
     public MapPanel() {
         super(FXML);
         registerAsAnEventHandler(this);
@@ -56,7 +56,6 @@ public class MapPanel extends UiPart<Region> implements MapComponentInitializedL
         LatLong center = new LatLong(LATITUDE_SG, LONGITUDE_SG);
         MapOptions options = new MapOptions();
         options.center(center)
-                .mapMarker(true)
                 .zoom(DEFAULT_ZOOM_LEVEL)
                 .overviewMapControl(false)
                 .panControl(false)
@@ -65,7 +64,6 @@ public class MapPanel extends UiPart<Region> implements MapComponentInitializedL
                 .streetViewControl(false)
                 .zoomControl(true)
                 .mapType(MapTypeIdEnum.ROADMAP);
-
         return mapView.createMap(options);
     }
 

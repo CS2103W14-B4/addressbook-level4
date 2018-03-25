@@ -1,4 +1,4 @@
-package systemtests;
+package systemtests.map;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_MAP_DESC1;
@@ -12,13 +12,12 @@ import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.map.ShowLocationCommand;
 import seedu.address.model.Model;
 import seedu.address.model.map.MapAddress;
-import seedu.address.model.tag.Tag;
+import systemtests.AddressBookSystemTest;
 
 public class ShowLocationCommandSystemTest extends AddressBookSystemTest {
 
     @Test
     public void showLocation() {
-        Model model = getModel();
 
         /* ------------------------------ Perform valid showLocation operations --------------------------------- */
 
@@ -42,7 +41,7 @@ public class ShowLocationCommandSystemTest extends AddressBookSystemTest {
 
         /* ----------------------------------- Perform invalid removeTag operations --------------------------------- */
 
-        /* Case: missing address and prefix-> rejected */
+        /* Case: missing MapAddress and prefix-> rejected */
         String command = ShowLocationCommand.COMMAND_WORD + "";
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowLocationCommand.MESSAGE_USAGE));
 
@@ -50,15 +49,15 @@ public class ShowLocationCommandSystemTest extends AddressBookSystemTest {
         command = "showslocation " + VALID_ADDRESS_MAP_BOB;
         assertCommandFailure(command, Messages.MESSAGE_UNKNOWN_COMMAND);
 
-        /* Case: correct prefix but missing address -> rejected */
+        /* Case: correct prefix but missing MapAddress -> rejected */
         command = ShowLocationCommand.COMMAND_WORD + INVALID_ADDRESS_MAP_DESC2;
         assertCommandFailure(command, MapAddress.MESSAGE_ADDRESS_MAP_CONSTRAINTS);
 
-        /* Case: correct prefix but invalid address -> rejected */
+        /* Case: correct prefix but invalid MapAddress -> rejected */
         command = ShowLocationCommand.COMMAND_WORD + INVALID_ADDRESS_MAP_DESC1;
         assertCommandFailure(command, MapAddress.MESSAGE_ADDRESS_MAP_CONSTRAINTS);
 
-        /* Case: missing address prefix -> rejected */
+        /* Case: missing MapAddress prefix -> rejected */
         command = ShowLocationCommand.COMMAND_WORD + " " + VALID_ADDRESS_MAP_BOB;
         assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, ShowLocationCommand.MESSAGE_USAGE));
     }
@@ -80,9 +79,9 @@ public class ShowLocationCommandSystemTest extends AddressBookSystemTest {
     }
 
     /**
-     * Performs the same verification as {@code assertCommandSuccess(Tag)}. Executes {@code command}
+     * Performs the same verification as {@code assertCommandSuccess(MapAddress)}. Executes {@code command}
      * instead.
-     * @see RemoveTagCommandSystemTest#assertCommandSuccess(Tag)
+     * @see ShowLocationCommandSystemTest#assertCommandSuccess(MapAddress)
      */
     private void assertCommandSuccess(String command) {
         Model expectedModel = getModel();
@@ -97,7 +96,7 @@ public class ShowLocationCommandSystemTest extends AddressBookSystemTest {
      * 1. Result display box displays {@code expectedResultMessage}.<br>
      * 2. {@code Model}, {@code Storage} and {@code PersonListPanel} equal to the corresponding components in
      * {@code expectedModel}.<br>
-     * @see RemoveTagCommandSystemTest#assertCommandSuccess(String, Tag)
+     * @see ShowLocationCommandSystemTest#assertCommandSuccess(String)
      */
     private void assertCommandSuccess(String command, Model expectedModel, String expectedResultMessage) {
         executeCommand(command);

@@ -11,6 +11,7 @@ import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.DistanceMatrixElement;
 import com.google.maps.model.DistanceMatrixRow;
 import com.google.maps.model.Duration;
+import com.google.maps.model.LatLng;
 import com.google.maps.model.TravelMode;
 
 /**
@@ -71,12 +72,12 @@ public class DistanceEstimate {
      * {@code startPostalCode},{@code endPostalCode} and {@code modeOfTravel} to google server, details
      * extracted from result {@code estimate} and stored into {@code distOriginDest} and {@code travelTime}
      */
-    public void calculateDistanceMatrix(String startPostalCode, String endPostalCode, TravelMode modeOfTravel) {
+    public void calculateDistanceMatrix(LatLng startLocation, LatLng endLocation, TravelMode modeOfTravel) {
         DistanceMatrixApiRequest request = getApprovalForRequest(context);
         DistanceMatrix estimate = null;
         try {
-            estimate = request.origins(startPostalCode)
-                    .destinations(endPostalCode)
+            estimate = request.origins(startLocation)
+                    .destinations(endLocation)
                     .mode(modeOfTravel)
                     .language("en-EN")
                     .await();
