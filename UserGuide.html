@@ -28,26 +28,11 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code-since-v1-0">3.1. Viewing help : <code>help</code> [Since v1.0]</a></li>
-<li><a href="#adding-a-person-code-add-code-since-v1-0">3.2. Adding a person: <code>add</code> [Since v1.0]</a></li>
-<li><a href="#adding-an-appointment-code-addappointment-code-since-v1-2">3.3. Adding an appointment: <code>addAppointment</code> [Since v1.2]</a></li>
-<li><a href="#listing-appointments-code-listappointment-code-since-v1-3">3.4. Listing appointments: <code>listAppointment</code> [Since v1.3]</a></li>
-<li><a href="#editing-an-appointment-code-coming-in-v1-3-code">3.5. Editing an appointment <code>[coming in v1.3]</code></a></li>
-<li><a href="#deleting-an-appointment-code-coming-in-v1-3-code">3.6. Deleting an appointment <code>[coming in v1.3]</code></a></li>
-<li><a href="#listing-all-persons-code-list-code-since-v1-0">3.7. Listing all persons : <code>list</code> [Since v1.0]</a></li>
-<li><a href="#editing-a-person-code-edit-code-since-v1-0">3.8. Editing a person : <code>edit</code> [Since v1.0]</a></li>
-<li><a href="#changing-the-calendar-view-code-viewcalendarby-code-since-v1-3">3.9. Changing the calendar view: <code>viewCalendarBy</code> [Since v1.3]</a></li>
-<li><a href="#locating-persons-by-name-code-find-code-since-v1-0">3.10. Locating persons by name: <code>find</code> [Since v1.0]</a></li>
-<li><a href="#deleting-a-person-code-delete-code-since-v1-0">3.11. Deleting a person : <code>delete</code> [Since v1.0]</a></li>
-<li><a href="#selecting-a-person-code-select-code-since-v1-0">3.12. Selecting a person : <code>select</code> [Since v1.0]</a></li>
-<li><a href="#listing-entered-commands-code-history-code-since-v1-0">3.13. Listing entered commands : <code>history</code> [Since v1.0]</a></li>
-<li><a href="#undoing-previous-command-code-undo-code-since-v1-0">3.14. Undoing previous command : <code>undo</code> [Since v1.0]</a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code-since-v1-0">3.15. Redoing the previously undone command : <code>redo</code> [Since v1.0]</a></li>
-<li><a href="#clearing-all-entries-code-clear-code-since-v1-0">3.16. Clearing all entries : <code>clear</code> [Since v1.0]</a></li>
-<li><a href="#exiting-the-program-code-exit-code-since-v1-0">3.17. Exiting the program : <code>exit</code> [Since v1.0]</a></li>
-<li><a href="#saving-the-data-since-v1-0">3.18. Saving the data [Since v1.0]</a></li>
-<li><a href="#removing-a-tag-code-removetag-code-since-v1-2">3.19. Removing a tag : <code>removeTag</code> [Since v1.2]</a></li>
-<li><a href="#show-location-on-map-code-showlocation-code-since-v1-2">3.20. Show location on map : <code>showLocation</code> [Since v1.2]</a></li>
+<li><a href="#general-features">3.1. General Features</a></li>
+<li><a href="#address-book-features">3.2. Address Book Features</a></li>
+<li><a href="#appointment-features">3.3. Appointment Features</a></li>
+<li><a href="#calendar-features">3.4. Calendar Features</a></li>
+<li><a href="#map-features">3.5. Map Features</a></li>
 </ul>
 </li>
 <li><a href="#faq-frequently-asked-questions">4. FAQ - Frequently Asked Questions</a></li>
@@ -171,14 +156,147 @@ acceptable.</p>
 <p>The following are all the commands available to you:</p>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code-since-v1-0"><a class="link" href="#viewing-help-code-help-code-since-v1-0">3.1. Viewing help : <code>help</code> [Since v1.0]</a></h3>
+<h3 id="general-features"><a class="link" href="#general-features">3.1. General Features</a></h3>
+<div class="sect3">
+<h4 id="clearing-all-entries-code-clear-code-since-v1-0"><a class="link" href="#clearing-all-entries-code-clear-code-since-v1-0">3.1.1. Clearing all entries : <code>clear</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Clears all entries from CelebManager.<br>
+Alias: <code>c</code><br>
+Format: <code>clear</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="exiting-the-program-code-exit-code-since-v1-0"><a class="link" href="#exiting-the-program-code-exit-code-since-v1-0">3.1.2. Exiting the program : <code>exit</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Exits the program.<br>
+Alias: <code>x</code><br>
+Format: <code>exit</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-entered-commands-code-history-code-since-v1-0"><a class="link" href="#listing-entered-commands-code-history-code-since-v1-0">3.1.3. Listing entered commands : <code>history</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Lists all the commands that you have entered in reverse chronological order.<br>
+Alias: <code>h</code><br>
+Format: <code>history</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command
+box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-help-code-help-code-since-v1-0"><a class="link" href="#viewing-help-code-help-code-since-v1-0">3.1.4. Viewing help : <code>help</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Shows a help window that contains this User Guide.<br>
 Format: <code>help</code></p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="undoing-previous-command-code-undo-code-since-v1-0"><a class="link" href="#undoing-previous-command-code-undo-code-since-v1-0">3.1.5. Undoing previous command : <code>undo</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Restores CelebManager to the state before the previous <em>undoable</em> command was executed.<br>
+Alias: <code>u</code><br>
+Format: <code>undo</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoable commands: those commands that modify CelebManager&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>, etc).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>list</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>select 1</code><br>
+<code>list</code><br>
+<code>undo</code><br>
+The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="redoing-the-previously-undone-command-code-redo-code-since-v1-0"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-since-v1-0">3.1.6. Redoing the previously undone command : <code>redo</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Reverses the most recent <code>undo</code> command.<br>
+Alias: <code>r</code><br>
+Format: <code>redo</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code><br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>redo</code><br>
+The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+<code>clear</code><br>
+<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
+<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="saving-the-data-since-v1-0"><a class="link" href="#saving-the-data-since-v1-0">3.1.7. Saving the data [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>CelebManager data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.</p>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code-since-v1-0"><a class="link" href="#adding-a-person-code-add-code-since-v1-0">3.2. Adding a person: <code>add</code> [Since v1.0]</a></h3>
+<h3 id="address-book-features"><a class="link" href="#address-book-features">3.2. Address Book Features</a></h3>
+<div class="sect3">
+<h4 id="adding-a-person-code-add-code-since-v1-0"><a class="link" href="#adding-a-person-code-add-code-since-v1-0">3.2.1. Adding a person: <code>add</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Adds a person to CelebManager.<br>
 Alias: <code>a</code><br>
@@ -210,12 +328,29 @@ A person can have any number of tags, including 0.
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="adding-an-appointment-code-addappointment-code-since-v1-2"><a class="link" href="#adding-an-appointment-code-addappointment-code-since-v1-2">3.3. Adding an appointment: <code>addAppointment</code> [Since v1.2]</a></h3>
+<div class="sect3">
+<h4 id="deleting-a-person-code-delete-code-since-v1-0"><a class="link" href="#deleting-a-person-code-delete-code-since-v1-0">3.2.2. Deleting a person : <code>delete</code> [Since v1.0]</a></h4>
 <div class="paragraph">
-<p>Adds an appointment to CelebManager.<br>
-Alias: <code>aa</code><br>
-Format: <code>addAppointment n/APPOINTMENT_NAME l/LOCATION sd/START_DATE st/START_TIME ed/END_DATE et/END_TIME</code></p>
+<p>Deletes the specified person from CelebManager.<br>
+Alias: <code>d</code><br>
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -223,59 +358,62 @@ Format: <code>addAppointment n/APPOINTMENT_NAME l/LOCATION sd/START_DATE st/STAR
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/Oscars 2018 l/Hollywood sd/23/03/2018 st/14:00 ed/23/03/2018 et/20:00</code></p>
+<p><code>list</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd person in CelebManager.</p>
 </li>
 <li>
-<p><code>add n/Dentist Appointment l/Dental Clinic st/15:45</code></p>
+<p><code>find Betsy</code><br>
+<code>delete 1</code><br>
+Deletes the 1st person in the results of the <code>find</code> command.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-a-person-code-select-code-since-v1-0"><a class="link" href="#selecting-a-person-code-select-code-since-v1-0">3.2.3. Selecting a person : <code>select</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Selects the person identified by the index number used in the last person listing.<br>
+Alias: <code>s</code><br>
+Format: <code>select INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Start and end dates must be of the format dd/mm/yyyy. If the day is a 1 digit number such as the 3rd of July
-it must be prefixed with a 0, e.g. <code>03/07/2017</code>.</p>
+<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>Start and end times must be of the format hh:mm. 24 hour format is used for the hour. If either the hour
-or minute is a 1 digit number, you need to prefix it with a 0, e.g. <code>09:05</code>.</p>
+<p>The index refers to the index number shown in the most recent listing.</p>
 </li>
 <li>
-<p>You can omit one or more of the time, date and location fields when using this command.</p>
+<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="listing-appointments-code-listappointment-code-since-v1-3"><a class="link" href="#listing-appointments-code-listappointment-code-since-v1-3">3.4. Listing appointments: <code>listAppointment</code> [Since v1.3]</a></h3>
 <div class="paragraph">
-<p>Lists all appointments in our CelebManager.<br>
-Alias: <code>la</code><br>
-Format: <code>listAppointment</code></p>
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+Selects the 2nd person in CelebManager.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>select 1</code><br>
+Selects the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-an-appointment-code-coming-in-v1-3-code"><a class="link" href="#editing-an-appointment-code-coming-in-v1-3-code">3.5. Editing an appointment <code>[coming in v1.3]</code></a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="deleting-an-appointment-code-coming-in-v1-3-code"><a class="link" href="#deleting-an-appointment-code-coming-in-v1-3-code">3.6. Deleting an appointment <code>[coming in v1.3]</code></a></h3>
-
-</div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code-since-v1-0"><a class="link" href="#listing-all-persons-code-list-code-since-v1-0">3.7. Listing all persons : <code>list</code> [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>Shows a list of all persons in CelebManager.<br>
-Alias: <code>l</code><br>
-Format: <code>list</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code-since-v1-0"><a class="link" href="#editing-a-person-code-edit-code-since-v1-0">3.8. Editing a person : <code>edit</code> [Since v1.0]</a></h3>
+<div class="sect3">
+<h4 id="editing-a-person-code-edit-code-since-v1-0"><a class="link" href="#editing-a-person-code-edit-code-since-v1-0">3.2.4. Editing a person : <code>edit</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Edits an existing person in CelebManager.<br>
 Alias: <code>e</code><br>
@@ -321,44 +459,16 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="changing-the-calendar-view-code-viewcalendarby-code-since-v1-3"><a class="link" href="#changing-the-calendar-view-code-viewcalendarby-code-since-v1-3">3.9. Changing the calendar view: <code>viewCalendarBy</code> [Since v1.3]</a></h3>
+<div class="sect3">
+<h4 id="listing-all-persons-code-list-code-since-v1-0"><a class="link" href="#listing-all-persons-code-list-code-since-v1-0">3.2.5. Listing all persons : <code>list</code> [Since v1.0]</a></h4>
 <div class="paragraph">
-<p>Changes the calendar view to a different one specified by the user.<br>
-Alias: <code>vcb</code><br>
-Format: <code>viewCalendarBy VIEW</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Changes the calendar view to the specified <code>VIEW</code>.</p>
-</li>
-<li>
-<p><code>VIEW</code> <strong>must be</strong> <code>day</code>, <code>week</code>, <code>month</code> or <code>year</code>.</p>
-</li>
-<li>
-<p><code>VIEW</code> is not case-sensitive, e.g. you can type <code>viewCalendarBy WeEK</code> to change to weekly calendar view.</p>
-</li>
-</ul>
+<p>Shows a list of all persons in CelebManager.<br>
+Alias: <code>l</code><br>
+Format: <code>list</code></p>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>viewCalendarBy week</code><br>
-Changes the calendar view to weekly view.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code-since-v1-0"><a class="link" href="#locating-persons-by-name-code-find-code-since-v1-0">3.10. Locating persons by name: <code>find</code> [Since v1.0]</a></h3>
+<div class="sect3">
+<h4 id="locating-persons-by-name-code-find-code-since-v1-0"><a class="link" href="#locating-persons-by-name-code-find-code-since-v1-0">3.2.6. Locating persons by name: <code>find</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Finds persons whose names contain any of the given keywords.<br>
 Alias: <code>f</code><br>
@@ -404,222 +514,27 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code-since-v1-0"><a class="link" href="#deleting-a-person-code-delete-code-since-v1-0">3.11. Deleting a person : <code>delete</code> [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>Deletes the specified person from CelebManager.<br>
-Alias: <code>d</code><br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in CelebManager.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="selecting-a-person-code-select-code-since-v1-0"><a class="link" href="#selecting-a-person-code-select-code-since-v1-0">3.12. Selecting a person : <code>select</code> [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
-Alias: <code>s</code><br>
-Format: <code>select INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in CelebManager.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-entered-commands-code-history-code-since-v1-0"><a class="link" href="#listing-entered-commands-code-history-code-since-v1-0">3.13. Listing entered commands : <code>history</code> [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Alias: <code>h</code><br>
-Format: <code>history</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command
-box.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code-since-v1-0"><a class="link" href="#undoing-previous-command-code-undo-code-since-v1-0">3.14. Undoing previous command : <code>undo</code> [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>Restores CelebManager to the state before the previous <em>undoable</em> command was executed.<br>
-Alias: <code>u</code><br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify CelebManager&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>, etc).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code-since-v1-0"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-since-v1-0">3.15. Redoing the previously undone command : <code>redo</code> [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Alias: <code>r</code><br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code-since-v1-0"><a class="link" href="#clearing-all-entries-code-clear-code-since-v1-0">3.16. Clearing all entries : <code>clear</code> [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>Clears all entries from CelebManager.<br>
-Alias: <code>c</code><br>
-Format: <code>clear</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code-since-v1-0"><a class="link" href="#exiting-the-program-code-exit-code-since-v1-0">3.17. Exiting the program : <code>exit</code> [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Alias: <code>x</code><br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-the-data-since-v1-0"><a class="link" href="#saving-the-data-since-v1-0">3.18. Saving the data [Since v1.0]</a></h3>
-<div class="paragraph">
-<p>CelebManager data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="removing-a-tag-code-removetag-code-since-v1-2"><a class="link" href="#removing-a-tag-code-removetag-code-since-v1-2">3.19. Removing a tag : <code>removeTag</code> [Since v1.2]</a></h3>
+<div class="sect3">
+<h4 id="removing-a-tag-code-removetag-code-since-v1-2"><a class="link" href="#removing-a-tag-code-removetag-code-since-v1-2">3.2.7. Removing a tag : <code>removeTag</code> [Since v1.2]</a></h4>
 <div class="paragraph">
 <p>Removes the specified tag from every person with it in CelebManager and shows the number of person(s) affected by this
 operation.<br>
 Alias: <code>rt</code><br>
 Format: <code>removeTag TAG</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Removes the tag from every person with it in CelebManager.</p>
+</li>
+<li>
+<p><code>TAG</code> removed <strong>must not be</strong> <code>celebrity</code>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -630,11 +545,125 @@ Format: <code>removeTag TAG</code></p>
 <p><code>removeTag friends</code><br>
 Removes the tag, <code>friends</code> from every person with it in CelebManager and shows the number of person(s) affected.</p>
 </li>
+<li>
+<p><code>removeTag celebrity</code><br>
+Does not modify CelebManager and outputs an error message.</p>
+</li>
 </ul>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">3.20. Show location on map : <code>showLocation</code> [Since v1.2]</a></h3>
+<h3 id="appointment-features"><a class="link" href="#appointment-features">3.3. Appointment Features</a></h3>
+<div class="sect3">
+<h4 id="adding-an-appointment-code-addappointment-code-since-v1-2"><a class="link" href="#adding-an-appointment-code-addappointment-code-since-v1-2">3.3.1. Adding an appointment: <code>addAppointment</code> [Since v1.2]</a></h4>
+<div class="paragraph">
+<p>Adds an appointment to CelebManager.<br>
+Alias: <code>aa</code><br>
+Format: <code>addAppointment n/APPOINTMENT_NAME l/LOCATION sd/START_DATE st/START_TIME ed/END_DATE et/END_TIME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addAppointment n/Oscars 2018 l/Hollywood sd/23/03/2018 st/14:00 ed/23/03/2018 et/20:00</code></p>
+</li>
+<li>
+<p><code>addAppointment n/Dentist Appointment l/Dental Clinic st/15:45</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Start and end dates must be of the format dd/mm/yyyy. If the day is a 1 digit number such as the 3rd of July
+it must be prefixed with a 0, e.g. <code>03/07/2017</code>.</p>
+</li>
+<li>
+<p>Start and end times must be of the format hh:mm. 24 hour format is used for the hour. If either the hour
+or minute is a 1 digit number, you need to prefix it with a 0, e.g. <code>09:05</code>.</p>
+</li>
+<li>
+<p>You can omit one or more of the time, date and location fields when using this command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-an-appointment-code-coming-in-v1-3-code"><a class="link" href="#editing-an-appointment-code-coming-in-v1-3-code">3.3.2. Editing an appointment <code>[coming in v1.3]</code></a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="deleting-an-appointment-code-coming-in-v1-3-code"><a class="link" href="#deleting-an-appointment-code-coming-in-v1-3-code">3.3.3. Deleting an appointment <code>[coming in v1.3]</code></a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="listing-appointments-code-listappointment-code-since-v1-3"><a class="link" href="#listing-appointments-code-listappointment-code-since-v1-3">3.3.4. Listing appointments: <code>listAppointment</code> [Since v1.3]</a></h4>
+<div class="paragraph">
+<p>Lists all appointments in our CelebManager.<br>
+Alias: <code>la</code><br>
+Format: <code>listAppointment</code></p>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="calendar-features"><a class="link" href="#calendar-features">3.4. Calendar Features</a></h3>
+<div class="sect3">
+<h4 id="changing-the-calendar-view-code-viewcalendarby-code-since-v1-3"><a class="link" href="#changing-the-calendar-view-code-viewcalendarby-code-since-v1-3">3.4.1. Changing the calendar view: <code>viewCalendarBy</code> [Since v1.3]</a></h4>
+<div class="paragraph">
+<p>Changes the calendar view to a different one specified by the user.<br>
+Alias: <code>vcb</code><br>
+Format: <code>viewCalendarBy VIEW</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Changes the calendar view to the specified <code>VIEW</code>.</p>
+</li>
+<li>
+<p><code>VIEW</code> <strong>must be</strong> <code>day</code>, <code>week</code>, <code>month</code> or <code>year</code>.</p>
+</li>
+<li>
+<p><code>VIEW</code> is not case-sensitive, e.g. you can type <code>viewCalendarBy WeEK</code> to change to weekly calendar view.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewCalendarBy week</code><br>
+Changes the calendar view to weekly view.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="map-features"><a class="link" href="#map-features">3.5. Map Features</a></h3>
+<div class="sect3">
+<h4 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">3.5.1. Show location on map : <code>showLocation</code> [Since v1.2]</a></h4>
 <div class="paragraph">
 <p>Shows the specific location in the map interface, by marking the latitude and longitude with a location marker.<br>
 Alias: <code>sl</code><br>
@@ -666,6 +695,7 @@ Updates the map by re-centering to the new location <code>Punggol</code> and add
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="faq-frequently-asked-questions"><a class="link" href="#faq-frequently-asked-questions">4. FAQ - Frequently Asked Questions</a></h2>
 <div class="sectionbody">
@@ -680,15 +710,20 @@ data of your previous CelebManager folder.</p>
 <h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following are summarized versions of all the commands introduced above, with their command format and an example
-highlighting the usage. An optional field is enclosed within a pair of <code>[]</code>. A field that can be repeatedly entered
-with different input values is followed by <code>&#8230;&#8203;</code>.</p>
+<p>The following are summarized versions of all the commands introduced above displayed in alphabetical order. The commands
+are displayed with their respective command format and an example highlighting the usage. An optional field is enclosed
+within a pair of <code>[]</code>. A field that can be repeatedly entered with different input values is followed by <code>&#8230;&#8203;</code>.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+</li>
+<li>
+<p><strong>Add Appointment</strong> : <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE]
+[et/END_TIME]</code><br>
+e.g. <code>add n/Oscars 2018 l/Hollywood sd/23/03/2018 st/14:00 ed/23/03/2018 et/20:00</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -702,22 +737,23 @@ e.g. <code>delete 3</code></p>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
-<p><strong>Add Appointment</strong> : <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE]
-[et/END_TIME]</code>
-e.g. <code>add n/Oscars 2018 l/Hollywood sd/23/03/2018 st/14:00 ed/23/03/2018 et/20:00</code></p>
-</li>
-<li>
-<p><strong>List Appointments</strong> : <code>listAppointment</code></p>
-</li>
-<li>
 <p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
 e.g. <code>find James Jake</code></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
 </li>
 <li>
 <p><strong>List</strong> : <code>list</code></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><strong>List Appointments</strong> : <code>listAppointment</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
 </li>
 <li>
 <p><strong>Remove Tag</strong> : <code>removeTag TAG</code><br>
@@ -728,20 +764,14 @@ e.g.<code>removeTag friends</code></p>
 e.g.<code>select 2</code></p>
 </li>
 <li>
-<p><strong>View Calendar By</strong> : <code>viewCalendarBy VIEW</code><br>
-e.g.<code>viewCalendarBy week</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
+<p><strong>ShowLocation</strong> : <code>showLocation ma/LOCATION</code></p>
 </li>
 <li>
 <p><strong>Undo</strong> : <code>undo</code></p>
 </li>
 <li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
-<li>
-<p><strong>ShowLocation</strong> : <code>showLocation ma/LOCATION</code></p>
+<p><strong>View Calendar By</strong> : <code>viewCalendarBy VIEW</code><br>
+e.g.<code>viewCalendarBy week</code></p>
 </li>
 </ul>
 </div>
@@ -750,7 +780,7 @@ e.g.<code>viewCalendarBy week</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-25 14:44:11 UTC
+Last updated 2018-03-26 07:45:42 UTC
 </div>
 </div>
 </body>
