@@ -47,6 +47,7 @@
 <li><a href="#addappointment-feature">4.3. AddAppointment Feature</a></li>
 <li><a href="#appointment-storage-feature">4.4. Appointment Storage Feature</a></li>
 <li><a href="#showlocation-feature">4.5. ShowLocation Feature</a></li>
+<li><a href="#estimateroute-feature">4.6. EstimateRoute Feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1492,9 +1493,9 @@ checks for <strong>blank space and the validity of location in google server</st
  road, block name and postal code. Any details more than that would result in a higher possibility of it being invalid.</p>
 </div>
 <div class="paragraph">
-<p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library. The <code>GMAPFX API</code> is used to create the
+<p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library. The <code>Google Maps Web Services API</code> is used to create the
 <code>Geocoding</code> function, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
-is then used by the command to find the exact location in the <code>MapPanel</code>. The <code>Google Maps Web Services API</code> allows the
+is then used by the command to find the exact location in the <code>MapPanel</code>. The <code>GMAPSFX API</code> allows the
 command to re-center and mark the new location which is then shown to the user.</p>
 </div>
 <div class="paragraph">
@@ -1505,7 +1506,7 @@ command to re-center and mark the new location which is then shown to the user.<
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/BeforeInput.png" alt="BeforeInput" width="400">
+<img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
 <div class="title">Figure 23. Default State of <code>MapPanel</code></div>
 </div>
@@ -1568,6 +1569,158 @@ command to re-center and mark the new location which is then shown to the user.<
 </div>
 <div class="sect4">
 <h5 id="aspect-use-of-address-model"><a class="link" href="#aspect-use-of-address-model">Aspect: Use of address model</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>MapAddress</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion</p>
+</li>
+<li>
+<p>Cons: Both model are very similar</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>Address</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces the amount of code/class in the project</p>
+</li>
+<li>
+<p>Cons: Will be confusing as different requirements for a single model. Lacks proper organisation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="estimateroute-feature"><a class="link" href="#estimateroute-feature">4.6. EstimateRoute Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.6.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The EstimateRoute mechanism is facilitated by the <code>EstimateRouteCommand</code>, which resides inside <code>Logic</code>. It supports the viewing of estimated route
+in the <code>MapPanel</code> UI by updating the state of the <code>MapPanel</code>. This is done by re-centering the <code>MapPanel</code> to the new route. This command inherits from <code>Command</code> so it <strong>does not support the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The following figure shows the marker that is used to identify the start and end location in the <code>MapPanel</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LocationMarker.png" alt="LocationMarker" width="50">
+</div>
+<div class="title">Figure 26. Location marker</div>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the inheritance diagram for <code>EstimateRouteCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
+</div>
+<div class="title">Figure 27. Inheritance diagram for <code>Command</code></div>
+</div>
+<div class="paragraph">
+<p>As you can see from the diagram, <code>EstimateRouteCommand</code> inherits from the Command class and is not part of the Undoable Command.
+Similar to the other commands like <code>FindCommand</code> it will not be identified by the undo/redo feature.</p>
+</div>
+<div class="paragraph">
+<p>This command is similar to the <code>ShowLocation</code> feature which does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to the difference in address specification details as the <code>Address</code> model is too specific for the command to work.
+An example would be the details of unit number (e.g #11-111) which will not be valid for this command.</p>
+</div>
+<div class="paragraph">
+<p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library which can be found <a href="http://rterp.github.io/GMapsFX/apidocs/">here</a> and <a href="https://googlemaps.github.io/google-maps-services-java/v0.2.6/javadoc/">here</a> respectively.</p>
+</div>
+<div class="paragraph">
+<p>The <code>GMAPSFX</code> is used to create the <code>MapPanel</code> which allows the
+command to re-center the map view, create the route, mark the start and end location which is then shown to the user.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Google Maps Web Services API</code> is used to create the
+<code>Geocoding</code> class, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
+is then used by the command to find the exact location in the <code>MapPanel</code>. <code>Google Maps Web Services API</code> is also used to create the <code>DistanceEstimate</code> class, which allows
+the calculation of estimated time and distance of travel between two location by driving. <code>DistanceMatrix</code> is also used to check if two locations
+can be reached by driving.</p>
+</div>
+<div class="paragraph">
+<p>Every new input of this command will remove the previous route and add the new route into the map.</p>
+</div>
+<div class="paragraph">
+<p>The snippet below shows the state of <code>MapPanel</code> before input of <code>estimateRoute</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
+</div>
+<div class="title">Figure 28. Default State of <code>MapPanel</code></div>
+</div>
+<div class="paragraph">
+<p>After the input of "estimateRoute sma/Punggol ema/NUS" the <code>MapPanel</code> will be updated to the diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
+</div>
+<div class="title">Figure 29. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+</div>
+<div class="paragraph">
+<p>Any subsequent inputs will remove any existing marker or route and update the <code>MapPanel</code> with the new route.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EstimateRouteSequenceDiagram.png" alt="EstimateRouteSequenceDiagram" width="">
+</div>
+<div class="title">Figure 30. Sequence Diagram of <code>estimateRoute</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-estimatecommand-code"><a class="link" href="#aspect-implementation-of-code-estimatecommand-code">Aspect: Implementation of <code>estimateCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Extend <code>Command</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to understand for new developers who will be developing this project as the command is at the same abstraction level as other commands.</p>
+</li>
+<li>
+<p>Cons: Does not have the undo/redo feature as it is not part of <code>UndoableCommand</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Extend <code>UndoableCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for command to have the undo/redo function.</p>
+</li>
+<li>
+<p>Cons: Requires more work that may not fit in with our timeline</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-use-of-address-model-2"><a class="link" href="#aspect-use-of-address-model-2">Aspect: Use of address model</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1668,7 +1821,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 26. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 31. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2888,7 +3041,7 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 16:44:19 UTC
+Last updated 2018-03-27 16:44:28 UTC
 </div>
 </div>
 </body>

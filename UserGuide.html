@@ -662,8 +662,69 @@ Changes the calendar view to weekly view.</p>
 </div>
 <div class="sect2">
 <h3 id="map-features"><a class="link" href="#map-features">3.5. Map Features</a></h3>
+<div class="paragraph">
+<p>Figure 2 is a snippet of the <code>MapPanel</code> which show the results of all map related features.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
+</div>
+<div class="title">Figure 2. Default State of <code>MapPanel</code></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Do not click on the <code>Google</code> logo or <code>Terms of Use</code> button.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect3">
-<h4 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">3.5.1. Show location on map : <code>showLocation</code> [Since v1.2]</a></h4>
+<h4 id="estimate-route-on-map-code-estimateroute-code-since-v1-3"><a class="link" href="#estimate-route-on-map-code-estimateroute-code-since-v1-3">3.5.1. Estimate route on map : <code>estimateRoute</code> [Since v1.3]</a></h4>
+<div class="paragraph">
+<p>Shows the estimated route in the map interface and displays the estimated distance and time of travel in result display.<br>
+Alias: <code>er</code><br>
+Format: <code>estimateRoute sma/MapAddress ema/MapAddress</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The address can be a postal code, road name, location name or building name.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>estimateRoute sma/Punggol ema/NUS</code><br>
+Updates the map by re-centering to the new route of <code>Punggol</code> and <code>NUS</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The snippet in Figure 3 shows the map before updated after the command input.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
+</div>
+<div class="title">Figure 3. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">3.5.2. Show location on map : <code>showLocation</code> [Since v1.2]</a></h4>
 <div class="paragraph">
 <p>Shows the specific location in the map interface, by marking the latitude and longitude with a location marker.<br>
 Alias: <code>sl</code><br>
@@ -691,6 +752,15 @@ The address can be a postal code, road name, location name or building name.
 Updates the map by re-centering to the new location <code>Punggol</code> and adding a location marker to it.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The snippet in Figure 4 shows the map before updated after the command input.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
+</div>
+<div class="title">Figure 4. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 </div>
 </div>
@@ -737,6 +807,9 @@ e.g. <code>delete 3</code></p>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
+<p><strong>Estimate Route</strong> : <code>estimateRoute sma/LOCATION ema/LOCATION</code></p>
+</li>
+<li>
 <p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
 e.g. <code>find James Jake</code></p>
 </li>
@@ -764,7 +837,7 @@ e.g.<code>removeTag friends</code></p>
 e.g.<code>select 2</code></p>
 </li>
 <li>
-<p><strong>ShowLocation</strong> : <code>showLocation ma/LOCATION</code></p>
+<p><strong>Show Location</strong> : <code>showLocation ma/LOCATION</code></p>
 </li>
 <li>
 <p><strong>Undo</strong> : <code>undo</code></p>
@@ -780,7 +853,7 @@ e.g.<code>viewCalendarBy week</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-03-27 16:44:19 UTC
+Last updated 2018-03-27 16:44:28 UTC
 </div>
 </div>
 </body>
