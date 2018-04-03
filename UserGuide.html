@@ -152,22 +152,25 @@ acceptable.</p>
 </div>
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
+<p><strong>Precaution</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You should not click inside the calendar at all times, except for scrolling up and down using the scroll bar.</p>
+</li>
+<li>
 <p>Commands that modify the people and appointments stored in CelebManager (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>undo</code>, <code>redo</code>,
 <code>addAppointment</code>) must be performed in combined calendar view unless specified otherwise.<br>
 Information about combined calendar view can be found in<br>
-<a href="#changing-to-view-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3">Section 3.4.2, &#8220;Changing to view the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]&#8221;</a></p>
+<a href="#changing-to-view-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3">Section 3.4.2, &#8220;Changing to view the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]&#8221;</a>.</p>
+</li>
+</ul>
 </div>
-</td>
-</tr>
-</table>
+</div>
 </div>
 <div class="paragraph">
 <p>The following are all the commands available to you:</p>
@@ -678,23 +681,38 @@ Format: <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION
 </li>
 </ul>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can only edit an appointment when you are in appointment list view. Refer to
+<a href="#listing-appointments-code-listappointment-code-since-v1-3">Section 3.3.4, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.3]&#8221;</a> for more information.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>To use this command you need to be in the appointment list page which you can go to using the <code>listAppointment</code> command.</p>
+<p>Edits the appointment at the specified <code>INDEX</code>. The index refers to the index number shown in the current
+appointment listing. The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The appointment index needs to be a valid index corresponding to an appointment in the list of appointments. The index must be a
-positive number greater than 0 and not greater than the total number of appointments being displayed.</p>
+<p>At least one of the optional fields must be provided.</p>
 </li>
 <li>
-<p>Compared to <code>addAppointment</code>, here it is optional to specify a new appointment name.</p>
+<p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p>Other than that, the constraints on the other fields are exactly the same as our <code>addAppointment</code>. Do look under section
-3.3.1 for more details.</p>
+<p>For more information on constraints of the different fields,
+refer to <a href="#adding-an-appointment-code-addappointment-code-since-v1-2">Section 3.3.1, &#8220;Adding an appointment: <code>addAppointment</code> [Since v1.2]&#8221;</a>.</p>
 </li>
 </ul>
 </div>
@@ -702,14 +720,26 @@ positive number greater than 0 and not greater than the total number of appointm
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-appointment-code-since-in-v1-4-code"><a class="link" href="#deleting-an-appointment-code-since-in-v1-4-code">3.3.3. Deleting an appointment <code>[Since in v1.4]</code></a></h4>
+<h4 id="deleting-an-appointment-code-deleteappointment-code-since-v1-4"><a class="link" href="#deleting-an-appointment-code-deleteappointment-code-since-v1-4">3.3.3. Deleting an appointment <code>deleteAppointment</code> [Since v1.4]</a></h4>
 <div class="paragraph">
 <p>Deletes the specified appointment from CelebManager.<br>
 Alias: <code>da</code><br>
 Format: <code>deleteAppointment INDEX</code></p>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>[IMPORTANT] You can only delete an appointment when you are in appointment list view.</p>
+<p>You can only delete an appointment when you are in appointment list view. Refer to
+<a href="#listing-appointments-code-listappointment-code-since-v1-3">Section 3.3.4, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.3]&#8221;</a> for more information.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -886,7 +916,10 @@ Format: <code>viewCalendarBy VIEW</code></p>
 <p><code>VIEW</code> <strong>must be</strong> <code>day</code>, <code>week</code>, or <code>month</code>.</p>
 </li>
 <li>
-<p><code>VIEW</code> is not case-sensitive, e.g. you can type <code>viewCalendarBy WeEK</code> to change to weekly calendar view.</p>
+<p><code>VIEW</code> is not case-sensitive, e.g. you can type <code>viewCalendarBy WeEK</code> to change to view calendar by week.</p>
+</li>
+<li>
+<p>CelebManger only supports showing calendar for <strong>current</strong> <code>day</code>, <code>week</code> or <code>month</code>.</p>
 </li>
 </ul>
 </div>
@@ -898,10 +931,59 @@ Format: <code>viewCalendarBy VIEW</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewCalendarBy week</code><br>
-Changes the calendar view to weekly view.</p>
+<p><code>viewCalendarBy day</code><br>
+Changes the calendar view to day view that looks similar to the calendar in red rectangle in the figure below.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewCalendarByDay.jpg" alt="ViewCalendarByDay" width="">
+</div>
+<div class="title">Figure 4. State of application after <code>viewCalendarBy day</code> input</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>CelebManger by default shows calendar in day view whenever it gets launched. Hence you need to first change to other
+calendar view before using <code>viewCalendarBy day</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewCalendarBy week</code><br>
+Changes the calendar view to week view that looks similar to the calendar in red rectangle in the figure below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewCalendarByWeek.jpg" alt="ViewCalendarByWeek" width="">
+</div>
+<div class="title">Figure 5. State of application after <code>viewCalendarBy week</code> input</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewCalendarBy month</code><br>
+Changes the calendar view to month view that looks similar to the calendar in red rectangle in the figure below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewCalendarByMonth.jpg" alt="ViewCalendarByMonth" width="">
+</div>
+<div class="title">Figure 6. State of application after <code>viewCalendarBy month</code> input</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -917,7 +999,7 @@ Changes the calendar view to weekly view.</p>
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 4. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 7. Default State of <code>MapPanel</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -973,7 +1055,7 @@ Updates the map by re-centering to the new route of <code>Punggol</code> and <co
 <div class="content">
 <img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
 </div>
-<div class="title">Figure 5. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 8. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1015,7 +1097,7 @@ Updates the map by re-centering to the new location <code>Punggol</code> and add
 <div class="content">
 <img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 6. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 9. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 </div>
 </div>
@@ -1126,7 +1208,7 @@ e.g.<code>viewCalendarBy week</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 15:09:38 UTC
+Last updated 2018-04-03 15:16:23 UTC
 </div>
 </div>
 </body>
