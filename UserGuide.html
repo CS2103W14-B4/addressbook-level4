@@ -563,7 +563,7 @@ Does not modify CelebManager and outputs an error message.</p>
 <div class="paragraph">
 <p>Adds an appointment to CelebManager.<br>
 Alias: <code>aa</code><br>
-Format: <code>addAppointment n/APPOINTMENT_NAME l/LOCATION sd/START_DATE st/START_TIME ed/END_DATE et/END_TIME</code></p>
+Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -571,10 +571,10 @@ Format: <code>addAppointment n/APPOINTMENT_NAME l/LOCATION sd/START_DATE st/STAR
 <div class="ulist">
 <ul>
 <li>
-<p><code>addAppointment n/Oscars 2018 l/Hollywood sd/23/03/2018 st/14:00 ed/23/03/2018 et/20:00</code></p>
+<p><code>addAppointment n/Oscars 2018 l/Hollywood sd/23-03-2018 st/14:00 ed/23-03-2018 et/20:00</code></p>
 </li>
 <li>
-<p><code>addAppointment n/Dentist Appointment l/Dental Clinic st/15:45</code></p>
+<p><code>addAppointment n/Dentist Appointment l/Dental Clinic st/15:45 c/1 c/3</code></p>
 </li>
 </ul>
 </div>
@@ -591,7 +591,17 @@ it must be prefixed with a 0, e.g. <code>03/07/2017</code>.</p>
 or minute is a 1 digit number, you need to prefix it with a 0, e.g. <code>09:05</code>.</p>
 </li>
 <li>
-<p>You can omit one or more of the time, date and location fields when using this command.</p>
+<p>Celebrity index refers to the person&#8217;s index on the person list displayed inside of our app. This person must be a celebrity,
+failing which you will receive an error message stating so.</p>
+</li>
+<li>
+<p>Similar to our other commands, the celebrity index must be a positive number greater than 0 and at most the number of person being shown.</p>
+</li>
+<li>
+<p>You can choose multiple celebrities to whom you want to add the appointment as shown in our example.</p>
+</li>
+<li>
+<p>All the fields with brackets as shown in the format are optional and can be omitted.</p>
 </li>
 </ul>
 </div>
@@ -599,11 +609,50 @@ or minute is a 1 digit number, you need to prefix it with a 0, e.g. <code>09:05<
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-an-appointment-code-coming-in-v1-3-code"><a class="link" href="#editing-an-appointment-code-coming-in-v1-3-code">3.3.2. Editing an appointment <code>[coming in v1.3]</code></a></h4>
-
+<h4 id="editing-an-appointment-code-editappointment-code-since-v1-4"><a class="link" href="#editing-an-appointment-code-editappointment-code-since-v1-4">3.3.2. Editing an appointment <code>editAppointment</code> [Since v1.4]</a></h4>
+<div class="paragraph">
+<p>Edits an appointment currently stored in CelebManager.<br>
+Alias: <code>ea</code><br>
+Format: <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>`editAppointment 2 n/Dentist Appointment l/Orchard Road</p>
+</li>
+<li>
+<p><code>editAppointment 1 st/16:00 et/20:00 sd/23-03-2018 c/1 c/2</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>To use this command you need to be in the appointment list page which you can go to using the <code>listAppointment</code> command.</p>
+</li>
+<li>
+<p>The appointment index needs to be a valid index corresponding to an appointment in the list of appointments. The index must be a
+positive number greater than 0 and not greater than the total number of appointments being displayed.</p>
+</li>
+<li>
+<p>Compared to <code>addAppointment</code>, here it is optional to specify a new appointment name.</p>
+</li>
+<li>
+<p>Other than that, the constraints on the other fields are exactly the same as our <code>addAppointment</code>. Do look under section
+3.3.1 for more details.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-appointment-code-coming-in-v1-3-code"><a class="link" href="#deleting-an-appointment-code-coming-in-v1-3-code">3.3.3. Deleting an appointment <code>[coming in v1.3]</code></a></h4>
+<h4 id="deleting-an-appointment-code-deleteappointment-code-since-v1-4"><a class="link" href="#deleting-an-appointment-code-deleteappointment-code-since-v1-4">3.3.3. Deleting an appointment <code>deleteAppointment</code> [Since v1.4]</a></h4>
 
 </div>
 <div class="sect3">
@@ -792,8 +841,8 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 </li>
 <li>
 <p><strong>Add Appointment</strong> : <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE]
-[et/END_TIME]</code><br>
-e.g. <code>add n/Oscars 2018 l/Hollywood sd/23/03/2018 st/14:00 ed/23/03/2018 et/20:00</code></p>
+[et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203;</code><br>
+e.g. <code>addAppointment n/Oscars 2018 l/Hollywood sd/23-03-2018 st/14:00 ed/23-03-2018 et/20:00 c/1 c/2</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -805,6 +854,11 @@ e.g. <code>delete 3</code></p>
 <li>
 <p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Edit Appointment</strong> : <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE]
+[et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203;</code><br>
+e.g. <code>editAppointment n/Dentist Appointment l/Clementi Road st/15:00 et/16:00 c/3</code></p>
 </li>
 <li>
 <p><strong>Estimate Route</strong> : <code>estimateRoute sma/LOCATION ema/LOCATION</code></p>
@@ -853,7 +907,7 @@ e.g.<code>viewCalendarBy week</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-02 18:09:53 UTC
+Last updated 2018-04-03 05:17:18 UTC
 </div>
 </div>
 </body>
