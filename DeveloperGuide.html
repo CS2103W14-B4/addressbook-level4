@@ -1439,7 +1439,7 @@ location and identifying it with a location marker. This command inherits from <
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
-Similar to the other commands like <code>FindCommand</code> it will not be identified by the undo/redo feature.</p>
+Similar to the other commands like <code>FindCommand</code> <strong>it will not be identified by the undo/redo feature</strong>.</p>
 </div>
 <div class="paragraph">
 <p>This command does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to
@@ -1447,10 +1447,10 @@ Similar to the other commands like <code>FindCommand</code> it will not be ident
 An example would be the details of unit number (e.g #11-111) which will not be valid for this command.</p>
 </div>
 <div class="paragraph">
-<p>The main difference between both model is shown below in the two diagrams.</p>
+<p>The main difference between both model is shown below in the two code snippets.</p>
 </div>
 <div class="paragraph">
-<p>The snippet code below shows the diagram of <code>Address</code> model:</p>
+<p>The snippet code below shows the <code>Address</code> model:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1473,7 +1473,7 @@ An example would be the details of unit number (e.g #11-111) which will not be v
 </div>
 </div>
 <div class="paragraph">
-<p>The snippet code below shows the diagram of <code>MapAddress</code> model:</p>
+<p>The snippet code below shows the <code>MapAddress</code> model:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1503,7 +1503,7 @@ An example would be the details of unit number (e.g #11-111) which will not be v
 <div class="paragraph">
 <p>The difference to note is the <code>isValidAddress</code> method, where <code>Address</code> only checks for <strong>blank space</strong> whereas <code>MapAddress</code>
 checks for <strong>blank space and the validity of location in google server</strong>. Thus, making the command more restrictive to location,
- road, block name and postal code. Any details more than that would result in a higher possibility of it being invalid.</p>
+ road, block name and postal code. Any details more than that would result in a higher possibility of it being invalid or inaccurate.</p>
 </div>
 <div class="paragraph">
 <p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library which can be found <a href="http://rterp.github.io/GMapsFX/apidocs/">here</a> and <a href="https://googlemaps.github.io/google-maps-services-java/v0.2.6/javadoc/">here</a> respectively.</p>
@@ -1522,7 +1522,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 </ul>
 </div>
 <div class="paragraph">
-<p>Every new input of this command will remove the previous location marker and add the new marker into the map.</p>
+<p>Every new input of this command will remove the previous route or location marker and add the new marker into the map.</p>
 </div>
 <div class="paragraph">
 <p>The snippet below shows the state of <code>MapPanel</code> before input of <code>ShowLocation</code> command:</p>
@@ -1543,7 +1543,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="title">Figure 25. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="paragraph">
-<p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker</p>
+<p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker.</p>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the command works:</p>
@@ -1602,7 +1602,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion</p>
 </li>
 <li>
-<p>Cons: Both model are very similar</p>
+<p>Cons: Confusing as both <code>MapAddress</code> and <code>Address</code> model are quite similar.</p>
 </li>
 </ul>
 </div>
@@ -1615,7 +1615,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <p>Pros: Reduces the amount of code/class in the project</p>
 </li>
 <li>
-<p>Cons: Will be confusing as different requirements for a single model. Lacks proper organisation.</p>
+<p>Cons: Confusing as different requirements for a single model. Lacks proper organisation.</p>
 </li>
 </ul>
 </div>
@@ -1631,7 +1631,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">4.6.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The EstimateRoute mechanism is facilitated by the <code>EstimateRouteCommand</code>, which resides inside <code>Logic</code>. It supports the viewing of estimated route
-in the <code>MapPanel</code> UI by updating the state of the <code>MapPanel</code>. This is done by re-centering the <code>MapPanel</code> to the new route. This command inherits from <code>Command</code> so it <strong>does not support the undo/redo feature</strong>.</p>
+in the <code>MapPanel</code> UI by updating the state of the <code>MapPanel</code>. This is done by re-centering the <code>MapPanel</code> to the new route.</p>
 </div>
 <div class="paragraph">
 <p>The following figure shows the marker that is used to identify the start and end location in the <code>MapPanel</code>:</p>
@@ -1650,7 +1650,7 @@ in the <code>MapPanel</code> UI by updating the state of the <code>MapPanel</cod
 </div>
 <div class="paragraph">
 <p><code>EstimateRouteCommand</code> inherits from the Command class and is not part of the Undoable Command.
-Similar to the other commands like <code>FindCommand</code> it will not be identified by the undo/redo feature.</p>
+Similar to the other commands like <code>FindCommand</code> <strong>it will not be identified by the undo/redo feature</strong>.</p>
 </div>
 <div class="paragraph">
 <p>This command is similar to the <code>ShowLocation</code> feature which does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to the difference in address specification details as the <code>Address</code> model is too specific for the command to work.
@@ -1756,7 +1756,7 @@ can be reached by driving.</p>
 <p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion.</p>
 </li>
 <li>
-<p>Cons: Both model are very similar.</p>
+<p>Cons: Confusing as the two models are similar.</p>
 </li>
 </ul>
 </div>
@@ -1769,7 +1769,7 @@ can be reached by driving.</p>
 <p>Pros: Reduces the amount of code/class in the project.</p>
 </li>
 <li>
-<p>Cons: Will be confusing as different requirements for a single model. Lacks proper organisation.</p>
+<p>Cons: Confusing as different requirements for a single model. Lacks proper organisation.</p>
 </li>
 </ul>
 </div>
@@ -1831,7 +1831,7 @@ from <code>ListAppointmentCommand</code>, which is used to generate the appointm
 This is done by <code>getChosenAppointment()</code> method.</p>
 </div>
 <div class="paragraph">
-<p>The snippet code below shows the code that generates the list of appointments.</p>
+<p>The snippet code below shows the code that retrieves the selected appointment.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3435,7 +3435,7 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 15:16:23 UTC
+Last updated 2018-04-03 15:48:59 UTC
 </div>
 </div>
 </body>
