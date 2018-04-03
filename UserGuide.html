@@ -152,6 +152,23 @@ acceptable.</p>
 </div>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Commands that modify the people and appointments stored in CelebManager (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>undo</code>, <code>redo</code>,
+<code>addAppointment</code>) must be performed in combined calendar view unless specified otherwise.<br>
+Information about combined calendar view can be found in<br>
+<a href="#changing-to-view-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3">Section 3.4.2, &#8220;Changing to view the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]&#8221;</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>The following are all the commands available to you:</p>
 </div>
@@ -224,6 +241,21 @@ Format: <code>undo</code></p>
 </tr>
 </table>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoing deletion of a <code>celebrity</code> or removal of <code>celebrity</code> tag through <code>edit</code> will not undo changes made to the
+<code>celebrity</code> 's calendar. A new calendar will be created for the restored <code>celebrity</code> instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -234,6 +266,24 @@ Format: <code>undo</code></p>
 <code>list</code><br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a <code>celebrity</code> is at index <code>1</code>, the <code>celebrity</code> 's calendar will be re-created and become empty after <code>undo</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>select 1</code><br>
 <code>list</code><br>
@@ -243,7 +293,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <li>
 <p><code>delete 1</code><br>
 <code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>clear</code> command and creates new calendars for all <code>celebrity</code> s restored by <code>undo</code>)<br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
@@ -546,8 +596,8 @@ Format: <code>removeTag TAG</code></p>
 Removes the tag, <code>friends</code> from every person with it in CelebManager and shows the number of person(s) affected.</p>
 </li>
 <li>
-<p><code>removeTag celebrity</code><br>
-Does not modify CelebManager and outputs an error message.</p>
+<p><code>removeTag colleagues</code><br>
+Removes the tag, <code>colleagues</code> from every person with it in CelebManager and shows the number of person(s) affected.</p>
 </li>
 </ul>
 </div>
@@ -652,8 +702,53 @@ positive number greater than 0 and not greater than the total number of appointm
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-an-appointment-code-deleteappointment-code-since-v1-4"><a class="link" href="#deleting-an-appointment-code-deleteappointment-code-since-v1-4">3.3.3. Deleting an appointment <code>deleteAppointment</code> [Since v1.4]</a></h4>
-
+<h4 id="deleting-an-appointment-code-since-in-v1-4-code"><a class="link" href="#deleting-an-appointment-code-since-in-v1-4-code">3.3.3. Deleting an appointment <code>[Since in v1.4]</code></a></h4>
+<div class="paragraph">
+<p>Deletes the specified appointment from CelebManager.<br>
+Alias: <code>da</code><br>
+Format: <code>deleteAppointment INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>[IMPORTANT] You can only delete an appointment when you are in appointment list view.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the appointment at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the current listing of appointments.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>If there is no more appointment in the list, CelebManager will switch back from appointment list view to
+calendar view</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listAppointment</code><br>
+<code>deleteAppointment 2</code><br>
+Deletes the 2nd appointment in the appointment list from CelebManager.</p>
+</li>
+<li>
+<p><code>listAppointment</code><br>
+<code>deleteAppointment 1</code><br>
+Deletes the 1st appointment in the appointment list from CelebManager.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect3">
 <h4 id="listing-appointments-code-listappointment-code-since-v1-3"><a class="link" href="#listing-appointments-code-listappointment-code-since-v1-3">3.3.4. Listing appointments: <code>listAppointment</code> [Since v1.3]</a></h4>
@@ -661,6 +756,63 @@ positive number greater than 0 and not greater than the total number of appointm
 <p>Lists all appointments in our CelebManager.<br>
 Alias: <code>la</code><br>
 Format: <code>listAppointment</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-appointment-code-viewappointment-code-since-v1-4"><a class="link" href="#view-appointment-code-viewappointment-code-since-v1-4">3.3.5. View appointment: <code>viewAppointment</code> [Since v1.4]</a></h4>
+<div class="paragraph">
+<p>View a specific appointment based on list generated by <code>listAppointment</code> in CelebManager.<br>
+Alias: <code>va</code><br>
+Format: <code>viewAppointment INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewAppointment 1</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Index should be within the list size.</p>
+</li>
+<li>
+<p>Smallest index is 1 and largest index is size of list.</p>
+</li>
+<li>
+<p>List generated by <code>listAppointment</code> should have at least one appointment.</p>
+</li>
+<li>
+<p>Location will not be shown if <code>Appointment</code> does not have location data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The state of CelebManager in figure 2 after input of <code>listAppointment</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/listAppointmentInput.png" alt="listAppointmentInput" width="">
+</div>
+<div class="title">Figure 2. State of application after <code>listAppointment</code> input</div>
+</div>
+<div class="paragraph">
+<p>The state of CelebManager in figure 3 after the example input `viewAppointment i/1'.
+Which selects the first appointment in the list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/viewAppointmentInput.png" alt="viewAppointmentInput" width="">
+</div>
+<div class="title">Figure 3. State of application after <code>viewAppointment i/1</code> input</div>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -670,7 +822,54 @@ Format: <code>listAppointment</code></p>
 <div class="sect2">
 <h3 id="calendar-features"><a class="link" href="#calendar-features">3.4. Calendar Features</a></h3>
 <div class="sect3">
-<h4 id="changing-the-calendar-view-code-viewcalendarby-code-since-v1-3"><a class="link" href="#changing-the-calendar-view-code-viewcalendarby-code-since-v1-3">3.4.1. Changing the calendar view: <code>viewCalendarBy</code> [Since v1.3]</a></h4>
+<h4 id="changing-the-calendar-code-viewcalendar-code-since-v1-3"><a class="link" href="#changing-the-calendar-code-viewcalendar-code-since-v1-3">3.4.1. Changing the calendar: <code>viewCalendar</code> [Since v1.3]</a></h4>
+<div class="paragraph">
+<p>Changes to view the calendar of the specified <code>celebrity</code>.<br>
+Alias: <code>vc</code><br>
+Format: <code>viewCalendar INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Changes to view the calendar of the <code>celebrity</code> at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the last shown list of contacts.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The person at the specified index <strong>must be</strong> a <code>celebrity</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewCalendar 1</code><br>
+Changes to view the calendar of the 1st person in the list of contacts, if the 1st person is a <code>celebrity</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-to-view-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3"><a class="link" href="#changing-to-view-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3">3.4.2. Changing to view the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]</a></h4>
+<div class="paragraph">
+<p>Changes to view the combined calendar that shows all <code>celebrity</code> 's appointments in one calendar.<br>
+Alias: <code>vcc</code><br>
+Format: <code>viewCombinedCalendar</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changing-the-calendar-view-code-viewcalendarby-code-since-v1-3"><a class="link" href="#changing-the-calendar-view-code-viewcalendarby-code-since-v1-3">3.4.3. Changing the calendar view: <code>viewCalendarBy</code> [Since v1.3]</a></h4>
 <div class="paragraph">
 <p>Changes the calendar view to a different one specified by the user.<br>
 Alias: <code>vcb</code><br>
@@ -684,7 +883,7 @@ Format: <code>viewCalendarBy VIEW</code></p>
 <p>Changes the calendar view to the specified <code>VIEW</code>.</p>
 </li>
 <li>
-<p><code>VIEW</code> <strong>must be</strong> <code>day</code>, <code>week</code>, <code>month</code> or <code>year</code>.</p>
+<p><code>VIEW</code> <strong>must be</strong> <code>day</code>, <code>week</code>, or <code>month</code>.</p>
 </li>
 <li>
 <p><code>VIEW</code> is not case-sensitive, e.g. you can type <code>viewCalendarBy WeEK</code> to change to weekly calendar view.</p>
@@ -712,13 +911,13 @@ Changes the calendar view to weekly view.</p>
 <div class="sect2">
 <h3 id="map-features"><a class="link" href="#map-features">3.5. Map Features</a></h3>
 <div class="paragraph">
-<p>Figure 2 is a snippet of the <code>MapPanel</code> which show the results of all map related features.</p>
+<p>Figure 2 is a snippet of the <code>MapPanel</code> which shows the results of all map related features.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 2. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 4. Default State of <code>MapPanel</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -735,21 +934,12 @@ Do not click on the <code>Google</code> logo or <code>Terms of Use</code> button
 <div class="sect3">
 <h4 id="estimate-route-on-map-code-estimateroute-code-since-v1-3"><a class="link" href="#estimate-route-on-map-code-estimateroute-code-since-v1-3">3.5.1. Estimate route on map : <code>estimateRoute</code> [Since v1.3]</a></h4>
 <div class="paragraph">
-<p>Shows the estimated route in the map interface and displays the estimated distance and time of travel in result display.<br>
-Alias: <code>er</code><br>
-Format: <code>estimateRoute sma/MapAddress ema/MapAddress</code></p>
+<p>Shows the estimated route in the map interface and displays the estimated distance and time of travel in result display.
+ Any existing location marker or route will be removed.<br></p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The address can be a postal code, road name, location name or building name.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Alias: <code>er</code><br>
+Format: <code>estimateRoute sma/MapAddress ema/MapAddress</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -762,34 +952,39 @@ Updates the map by re-centering to the new route of <code>Punggol</code> and <co
 </li>
 </ul>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Address should be a postal code, road name, location name or building name.</p>
+</li>
+<li>
+<p>Start and end address should be reachable by driving.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
-<p>The snippet in Figure 3 shows the map before updated after the command input.</p>
+<p>The snippet in Figure 5 shows the updated map after the command input of <code>estimateRoute sma/Punggol ema/NUS</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
 </div>
-<div class="title">Figure 3. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 5. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">3.5.2. Show location on map : <code>showLocation</code> [Since v1.2]</a></h4>
 <div class="paragraph">
-<p>Shows the specific location in the map interface, by marking the latitude and longitude with a location marker.<br>
-Alias: <code>sl</code><br>
-Format: <code>showLocation ma/MapAddress</code></p>
+<p>Shows the specific location in the map interface, by marking the latitude and longitude with a location marker.
+Any existing location marker or route will be removed.<br></p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The address can be a postal code, road name, location name or building name.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Alias: <code>sl</code><br>
+Format: <code>showLocation ma/MapAddress</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -802,14 +997,25 @@ Updates the map by re-centering to the new location <code>Punggol</code> and add
 </li>
 </ul>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Address should be a postal code, road name, location name or building name.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
-<p>The snippet in Figure 4 shows the map before updated after the command input.</p>
+<p>The snippet in Figure 6 shows the updated map after the command input of <code>showLocation ma/Punggol</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 4. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 6. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 </div>
 </div>
@@ -861,7 +1067,8 @@ e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 e.g. <code>editAppointment n/Dentist Appointment l/Clementi Road st/15:00 et/16:00 c/3</code></p>
 </li>
 <li>
-<p><strong>Estimate Route</strong> : <code>estimateRoute sma/LOCATION ema/LOCATION</code></p>
+<p><strong>Estimate Route</strong> : <code>estimateRoute sma/LOCATION ema/LOCATION</code><br>
+e.g.<code>estimateRoute sma/Punggol ema/NUS</code></p>
 </li>
 <li>
 <p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
@@ -891,14 +1098,26 @@ e.g.<code>removeTag friends</code></p>
 e.g.<code>select 2</code></p>
 </li>
 <li>
-<p><strong>Show Location</strong> : <code>showLocation ma/LOCATION</code></p>
+<p><strong>Show Location</strong> : <code>showLocation ma/LOCATION</code><br>
+e.g.<code>showLocation ma/Punggol</code></p>
 </li>
 <li>
 <p><strong>Undo</strong> : <code>undo</code></p>
 </li>
 <li>
+<p><strong>View Appointment By</strong> : <code>viewAppointment i/INDEX</code><br>
+e.g.<code>viewAppointment i/1</code></p>
+</li>
+<li>
+<p><strong>View Calendar</strong> : <code>viewCalendar INDEX</code><br>
+e.g.<code>viewCalendar 1</code></p>
+</li>
+<li>
 <p><strong>View Calendar By</strong> : <code>viewCalendarBy VIEW</code><br>
 e.g.<code>viewCalendarBy week</code></p>
+</li>
+<li>
+<p><strong>View Combined Calendar</strong> : <code>viewCombinedCalendar</code></p>
 </li>
 </ul>
 </div>
@@ -907,7 +1126,7 @@ e.g.<code>viewCalendarBy week</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 07:21:24 UTC
+Last updated 2018-04-03 11:59:54 UTC
 </div>
 </div>
 </body>

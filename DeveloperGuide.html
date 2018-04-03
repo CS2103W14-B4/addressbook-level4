@@ -48,6 +48,7 @@
 <li><a href="#appointment-storage-feature">4.4. Appointment Storage Feature</a></li>
 <li><a href="#showlocation-feature">4.5. ShowLocation Feature</a></li>
 <li><a href="#estimateroute-feature">4.6. EstimateRoute Feature</a></li>
+<li><a href="#viewappointment-feature">4.7. ViewAppointment Feature</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -87,6 +88,9 @@
 <li><a href="#use-case-list-appointments">C.7. Use case: List appointments</a></li>
 <li><a href="#use-case-delete-appointment">C.8. Use case: Delete appointment</a></li>
 <li><a href="#use-case-edit-appointment">C.9. Use case: Edit appointment</a></li>
+<li><a href="#use-case-show-location-in-map">C.10. Use case: Show location in map</a></li>
+<li><a href="#use-case-show-estimated-route-by-driving-in-map">C.11. Use case: Show estimated route by driving in map</a></li>
+<li><a href="#use-case-show-estimated-distance-and-time-of-travel-by-driving">C.12. Use case: Show estimated distance and time of travel by driving</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -1439,7 +1443,7 @@ Similar to the other commands like <code>FindCommand</code> it will not be ident
 </div>
 <div class="paragraph">
 <p>This command does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to
-the due to the difference in address specification details as the <code>Address</code> model is too specific for the command to work.
+ the difference in address specification details as the <code>Address</code> model is too specific for the command to work.
 An example would be the details of unit number (e.g #11-111) which will not be valid for this command.</p>
 </div>
 <div class="paragraph">
@@ -1502,10 +1506,20 @@ checks for <strong>blank space and the validity of location in google server</st
  road, block name and postal code. Any details more than that would result in a higher possibility of it being invalid.</p>
 </div>
 <div class="paragraph">
-<p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library. The <code>Google Maps Web Services API</code> is used to create the
-<code>Geocoding</code> function, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
-is then used by the command to find the exact location in the <code>MapPanel</code>. The <code>GMAPSFX API</code> allows the
+<p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library which can be found <a href="http://rterp.github.io/GMapsFX/apidocs/">here</a> and <a href="https://googlemaps.github.io/google-maps-services-java/v0.2.6/javadoc/">here</a> respectively.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>GMAPSFX API</code> is used to create the <code>MapPanel</code> class which allows the
 command to re-center and mark the new location which is then shown to the user.</p>
+</li>
+<li>
+<p><code>Google Maps Web Services API</code> is used to create the
+<code>Geocoding</code> class, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
+is then used by the command to find the exact location in the <code>MapPanel</code>.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Every new input of this command will remove the previous location marker and add the new marker into the map.</p>
@@ -1624,43 +1638,45 @@ in the <code>MapPanel</code> UI by updating the state of the <code>MapPanel</cod
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/LocationMarker.png" alt="LocationMarker" width="50">
+<img src="images/Start_Location_Marker.png" alt="Start Location Marker" width="100">
 </div>
-<div class="title">Figure 27. Location marker</div>
-</div>
-<div class="paragraph">
-<p>The following diagram shows the inheritance diagram for <code>EstimateRouteCommand</code>:</p>
+<div class="title">Figure 27. Start Location marker</div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
+<img src="images/End_Location_Marker.png" alt="End Location Marker" width="100">
 </div>
-<div class="title">Figure 28. Inheritance diagram for <code>Command</code></div>
+<div class="title">Figure 28. End Location marker</div>
 </div>
 <div class="paragraph">
-<p>As you can see from the diagram, <code>EstimateRouteCommand</code> inherits from the Command class and is not part of the Undoable Command.
+<p><code>EstimateRouteCommand</code> inherits from the Command class and is not part of the Undoable Command.
 Similar to the other commands like <code>FindCommand</code> it will not be identified by the undo/redo feature.</p>
 </div>
 <div class="paragraph">
 <p>This command is similar to the <code>ShowLocation</code> feature which does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to the difference in address specification details as the <code>Address</code> model is too specific for the command to work.
-An example would be the details of unit number (e.g #11-111) which will not be valid for this command.</p>
+Even if it works the results may not be accurate.
+An example would be the details of unit number (e.g #11-111) which will not be accurate for this command.</p>
 </div>
 <div class="paragraph">
 <p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library which can be found <a href="http://rterp.github.io/GMapsFX/apidocs/">here</a> and <a href="https://googlemaps.github.io/google-maps-services-java/v0.2.6/javadoc/">here</a> respectively.</p>
 </div>
-<div class="paragraph">
-<p>The <code>GMAPSFX</code> is used to create the <code>MapPanel</code> which allows the
+<div class="ulist">
+<ul>
+<li>
+<p><code>GMAPSFX</code> is used to create the <code>MapPanel</code> which allows the
 command to re-center the map view, create the route, mark the start and end location which is then shown to the user.</p>
-</div>
-<div class="paragraph">
-<p>The <code>Google Maps Web Services API</code> is used to create the
+</li>
+<li>
+<p><code>Google Maps Web Services API</code> is used to create the
 <code>Geocoding</code> class, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
-is then used by the command to find the exact location in the <code>MapPanel</code>. <code>Google Maps Web Services API</code> is also used to create the <code>DistanceEstimate</code> class, which allows
-the calculation of estimated time and distance of travel between two location by driving. <code>DistanceMatrix</code> is also used to check if two locations
+is then used by the command to find the exact location in the <code>MapPanel</code>.</p>
+</li>
+<li>
+<p><code>Google Maps Web Services API</code> is also used to create the <code>DistanceEstimate</code> class, which allows
+the calculation of estimated time and distance of travel between two location by driving. <code>DistanceEstimate</code> class is also used to check if two locations
 can be reached by driving.</p>
-</div>
-<div class="paragraph">
-<p>Every new input of this command will remove the previous route and add the new route into the map.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The snippet below shows the state of <code>MapPanel</code> before input of <code>estimateRoute</code> command:</p>
@@ -1681,7 +1697,7 @@ can be reached by driving.</p>
 <div class="title">Figure 30. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="paragraph">
-<p>Any subsequent inputs will remove any existing marker or route and update the <code>MapPanel</code> with the new route.</p>
+<p>Any subsequent <code>estimateRoute</code> command will remove any existing marker or route and update the <code>MapPanel</code> with the new route.</p>
 </div>
 <div class="paragraph">
 <p>The following sequence diagram shows how the command works:</p>
@@ -1720,7 +1736,7 @@ can be reached by driving.</p>
 <p>Pros: Allows for command to have the undo/redo function.</p>
 </li>
 <li>
-<p>Cons: Requires more work that may not fit in with our timeline</p>
+<p>Cons: Requires more work that may not fit in with our timeline.</p>
 </li>
 </ul>
 </div>
@@ -1737,10 +1753,10 @@ can be reached by driving.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion</p>
+<p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion.</p>
 </li>
 <li>
-<p>Cons: Both model are very similar</p>
+<p>Cons: Both model are very similar.</p>
 </li>
 </ul>
 </div>
@@ -1750,10 +1766,167 @@ can be reached by driving.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Reduces the amount of code/class in the project</p>
+<p>Pros: Reduces the amount of code/class in the project.</p>
 </li>
 <li>
 <p>Cons: Will be confusing as different requirements for a single model. Lacks proper organisation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-input-using-appointment-index"><a class="link" href="#aspect-input-using-appointment-index">Aspect: Input using appointment index</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use Location name</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the function to be used independently</p>
+</li>
+<li>
+<p>Cons: Requires keying in of location instead of just an index.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>Appointment</code> index</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces the amount of typing.</p>
+</li>
+<li>
+<p>Cons: Restricts the use of function, as without an appointment index you will not be able to use it.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewappointment-feature"><a class="link" href="#viewappointment-feature">4.7. ViewAppointment Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">4.7.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The ViewAppointment mechanism is facilitated by the <code>ViewAppointmentCommand</code>, which resides inside <code>Logic</code>. It supports the viewing of a specific appointment
+in the <code>ResultDisplayPanel</code> UI by displaying the <code>Appointment</code> details. The specific <code>Appointment</code> is selected using an index based on the list generated by <code>ListAppointmentCommand</code>.
+ This command inherits from <code>Command</code> so it <strong>does not support the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The input index is <strong>one-based</strong> which means that the smallest possible index is '1' and the largest possible index is the size of list
+generated by <code>ListAppointmentCommand</code> (total number of <code>Appointment</code>).</p>
+</div>
+<div class="paragraph">
+<p>As this command relies on the list generated by <code>ListAppointmentCommand</code>, the command retrieves the start (earliest) and end (latest) date
+from <code>ListAppointmentCommand</code>, which is used to generate the appointment list internally from the <code>StorageCalendar</code> in <code>Model</code>.
+This is done by <code>getChosenAppointment()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the code that generates the list of appointments.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+        selectedAppointment = model.getChosenAppointment(chosenIndex);
+        <span class="keyword">try</span> {
+            ShowLocationCommand showLocation = <span class="keyword">new</span> ShowLocationCommand(
+                    <span class="keyword">new</span> MapAddress(selectedAppointment.getLocation()));
+            showLocation.execute();
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS + getAppointmentDetailsResult());
+        } <span class="keyword">catch</span> (<span class="exception">NullPointerException</span> npe) {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS + getAppointmentDetailsResult());
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To show the location in the <code>MapPanel</code>, <code>ShowLocationCommand</code> is used to update the location marker in <code>MapPanel</code> to
+point to the <code>Appointment</code> location.</p>
+</div>
+<div class="paragraph">
+<p>In the case where the <code>Appointment</code> do not have any location data, the result will still be displayed without the
+location being shown in the map.</p>
+</div>
+<div class="paragraph">
+<p>The diagram below in figure 32 shows the sequence diagram of <code>ViewAppointmentCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewAppointmentSequenceDiagram.png" alt="ViewAppointmentSequenceDiagram" width="">
+</div>
+<div class="title">Figure 32. Sequence Diagram of <code>viewAppointment</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.7.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-viewappointment-code"><a class="link" href="#aspect-implementation-of-code-viewappointment-code">Aspect: Implementation of <code>viewAppointment</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Extend <code>Command</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to understand for new developers who will be developing this project as the command is at the same abstraction level as other commands.</p>
+</li>
+<li>
+<p>Cons: Does not have the undo/redo feature as it is not part of <code>UndoableCommand</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Extend <code>UndoableCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for command to have the undo/redo function.</p>
+</li>
+<li>
+<p>Cons: Requires more work that may not fit in with our timeline.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-inclusion-of-showing-location-on-map"><a class="link" href="#aspect-inclusion-of-showing-location-on-map">Aspect: Inclusion of showing location on map</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Show location of appointment on map</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces the hassle of keying an extra command to show <code>Appointment</code> location on map.</p>
+</li>
+<li>
+<p>Cons: Reduces independent usage of <code>ShowLocationCommand</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Does not show location on map</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces unnecessary showing of location.</p>
+</li>
+<li>
+<p>Cons: Requires an extra command input to show location when required.</p>
 </li>
 </ul>
 </div>
@@ -1830,7 +2003,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 32. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 33. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -2083,7 +2256,7 @@ There is no need to include those libraries in the repo or download them manuall
 <p><strong>Showing location on map</strong>: Able to show the location of an appointment using address in maps. (By Damien)</p>
 </div>
 <div class="paragraph">
-<p><strong>Showing route on map</strong>: Able to show the rough route used to calculate the distance and time of travel. (By Damien)</p>
+<p><strong>Showing route on map</strong>: Able to show the rough route used to calculate the distance and time of travel. With the estimated distance and time of travel being shown in result display panel. (By Damien)</p>
 </div>
 <div class="paragraph">
 <p><strong>Storing appointments</strong>: Able to parse appointments information from storage, and save new and edited appointment
@@ -2108,8 +2281,8 @@ information into storage. (By Tzer Bin)</p>
 <p><strong>Removing a tag</strong>: Able to remove a tag from each person with it in the application. (By Jinyi)</p>
 </div>
 <div class="paragraph">
-<p><strong>Calculating distance and time of travel between 2 location</strong>: Able to calculate the distance and time required to travel between
-two locations. (By Damien)</p>
+<p><strong>View appointment</strong>: Able to view a specific appointment in result display from list of appointments based on index. Location will
+ also be shown in map. (By Damien)</p>
 </div>
 </div>
 </div>
@@ -2237,12 +2410,6 @@ two locations. (By Damien)</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">zoom in and out of the map of a location in a map</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view the location in different levels of details</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see the best route of travel by driving between two locations in a map</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">plan for the fastest travel</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
@@ -2836,6 +3003,224 @@ two locations. (By Damien)</p>
 </ul>
 </div>
 </div>
+<div class="sect2">
+<h3 id="use-case-show-location-in-map"><a class="link" href="#use-case-show-location-in-map">C.10. Use case: Show location in map</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs location name or address.</p>
+</li>
+<li>
+<p>CelebManager converts information into LatLong form.</p>
+</li>
+<li>
+<p>Celeb Manager uses the LatLong info to update create a new location marker.</p>
+</li>
+<li>
+<p>CelebManager updates the map with the location marker and re-centre its panel view.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User provides invalid input.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CelebManager requests User to provide valid input.</p>
+</li>
+<li>
+<p>1a2. User enters new input.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until input is valid.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. When there is an existing marker in the map.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. CelebManager removes it.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-show-estimated-route-by-driving-in-map"><a class="link" href="#use-case-show-estimated-route-by-driving-in-map">C.11. Use case: Show estimated route by driving in map</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs start and end location name or address.</p>
+</li>
+<li>
+<p>CelebManager converts information into LatLong form.</p>
+</li>
+<li>
+<p>Celeb Manager uses the LatLong info to generate the route.</p>
+</li>
+<li>
+<p>CelebManager updates the map with the route.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User provides invalid input.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CelebManager requests User to provide valid input.</p>
+</li>
+<li>
+<p>1a2. User enters new input.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until input is valid.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. When both location cannot be reached by driving</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. CelebManager shows error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. When there is an existing route in the map</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. CelebManager removes it.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-show-estimated-distance-and-time-of-travel-by-driving"><a class="link" href="#use-case-show-estimated-distance-and-time-of-travel-by-driving">C.12. Use case: Show estimated distance and time of travel by driving</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User inputs start and end location name or address.</p>
+</li>
+<li>
+<p>CelebManager converts information into LatLong form.</p>
+</li>
+<li>
+<p>Celeb Manager uses the LatLong info to generate the distance and time required to travel.</p>
+</li>
+<li>
+<p>CelebManager shows the information.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User provides invalid input.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a1. CelebManager requests User to provide valid input.</p>
+</li>
+<li>
+<p>1a2. User enters new input.</p>
+<div class="paragraph">
+<p>Steps 1a1-1a2 are repeated until input is valid.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes from step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. When both location cannot be reached by driving</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. CelebManager shows error message.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3050,7 +3435,7 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 07:21:24 UTC
+Last updated 2018-04-03 11:59:54 UTC
 </div>
 </div>
 </body>

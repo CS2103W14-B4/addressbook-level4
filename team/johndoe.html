@@ -172,6 +172,21 @@ Format: <code>undo</code></p>
 </tr>
 </table>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Undoing deletion of a <code>celebrity</code> or removal of <code>celebrity</code> tag through <code>edit</code> will not undo changes made to the
+<code>celebrity</code> 's calendar. A new calendar will be created for the restored <code>celebrity</code> instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -182,6 +197,24 @@ Format: <code>undo</code></p>
 <code>list</code><br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If a <code>celebrity</code> is at index <code>1</code>, the <code>celebrity</code> 's calendar will be re-created and become empty after <code>undo</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p><code>select 1</code><br>
 <code>list</code><br>
@@ -191,7 +224,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 <li>
 <p><code>delete 1</code><br>
 <code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
+<code>undo</code> (reverses the <code>clear</code> command and creates new calendars for all <code>celebrity</code> s restored by <code>undo</code>)<br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
@@ -573,7 +606,7 @@ An <code>Exception</code> will be thrown when popping the <code>redoStack</code>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-03 07:21:24 UTC
+Last updated 2018-04-03 11:59:54 UTC
 </div>
 </div>
 </body>
