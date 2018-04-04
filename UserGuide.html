@@ -985,6 +985,85 @@ Changes the calendar view to month view that looks similar to the calendar in re
 </div>
 <div class="title">Figure 6. State of application after <code>viewCalendarBy month</code> input</div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="changing-the-base-date-of-calendar-code-viewdate-code-since-v1-5"><a class="link" href="#changing-the-base-date-of-calendar-code-viewdate-code-since-v1-5">3.4.4. Changing the base date of calendar: <code>viewDate</code> [Since v1.5]</a></h4>
+<div class="paragraph">
+<p>Changes the base date of calendar and displays the calendar by day for the specified <code>date</code>.<br>
+Alias: <code>vd</code><br>
+Format: <code>viewDate [DATE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Changes base date to the specified <code>date</code>.</p>
+</li>
+<li>
+<p>When no date is given, it takes on the value of current date.</p>
+</li>
+<li>
+<p>The date <strong>must be in the format of</strong> <code>YYYY-MM-DD</code>.</p>
+</li>
+<li>
+<p>The date <strong>must be</strong> a valid date, eg, <code>2018-13-01</code> and <code>2018-02-30</code> are not valid dates.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewDate</code><br>
+Changes the base date of calendar to current date and displays the calendar by day for current date.<br></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Whenever CelebManager gets launched, its base date is reset to the current date by default. Hence <code>viewDate</code> can only
+be performed after performing <code>viewDate [SOME OTHER DATE]</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewDate 2018-05-03</code><br>
+Changes the base date of calendar to <code>2018-05-03</code> and displays the calendar by day for <code>2018-05-03</code>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Change in base date allows you to view calendar for different weeks and months.
+For example, after <code>viewDate 2018-05-03</code>, you can type <code>viewCalendarBy week</code> - which will show you the
+calendar for the first week of May of 2018, or <code>viewCalendarBy month</code> - which will show you the calendar
+for May of 2018.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p> <br></p>
 </div>
@@ -1140,6 +1219,10 @@ e.g. <code>addAppointment n/Oscars 2018 l/Hollywood sd/23-03-2018 st/14:00 ed/23
 e.g. <code>delete 3</code></p>
 </li>
 <li>
+<p><strong>Delete Appointment</strong> : <code>deleteAppointment INDEX</code><br>
+e.g. <code>deleteAppointment 1</code></p>
+</li>
+<li>
 <p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
@@ -1201,6 +1284,10 @@ e.g.<code>viewCalendarBy week</code></p>
 <li>
 <p><strong>View Combined Calendar</strong> : <code>viewCombinedCalendar</code></p>
 </li>
+<li>
+<p><strong>View Date</strong> : <code>viewDate [DATE]</code><br>
+e.g.<code>viewDate 2018-05-03</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -1208,7 +1295,7 @@ e.g.<code>viewCalendarBy week</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-04 05:28:10 UTC
+Last updated 2018-04-04 08:52:55 UTC
 </div>
 </div>
 </body>
