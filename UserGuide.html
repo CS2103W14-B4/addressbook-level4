@@ -160,7 +160,8 @@ acceptable.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>You should not click inside the calendar at all times, except for scrolling up and down using the scroll bar.</p>
+<p>Refrain from clicking inside the calendar at all times, except for scrolling up and down using the scroll bar.
+This bug will be fixed in v2.0.</p>
 </li>
 <li>
 <p>Commands that modify the people and appointments stored in CelebManager (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>undo</code>, <code>redo</code>,
@@ -252,8 +253,9 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoing deletion of a <code>celebrity</code> or removal of <code>celebrity</code> tag through <code>edit</code> will not undo changes made to the
-<code>celebrity</code> 's calendar. A new calendar will be created for the restored <code>celebrity</code> instead.</p>
+<p>Undoing deletion of a person will not restore this person to the appointment he/she should attend before deletion.
+If a person gets deleted, he/she will be removed from all appointments that have him/her as attendess or
+point-of-contacts. This removal is not undone by undoing the deletion.</p>
 </div>
 </td>
 </tr>
@@ -435,7 +437,7 @@ Format: <code>select INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
+<p>Selects the person at the specified <code>INDEX</code> in the last shown person list.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -491,6 +493,12 @@ The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</c
 </li>
 <li>
 <p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+</li>
+<li>
+<p>If <code>celebrity</code> tag gets removed, the person&#8217;s calendar will be removed.</p>
+</li>
+<li>
+<p>If the person now has <code>celebrity</code> tag, a calendar will be created for him/her.</p>
 </li>
 </ul>
 </div>
@@ -1027,6 +1035,9 @@ Format: <code>viewDate [DATE]</code></p>
 <li>
 <p>The date <strong>must be</strong> a valid date, eg, <code>2018-13-01</code> and <code>2018-02-30</code> are not valid dates.</p>
 </li>
+<li>
+<p>This command can take slightly longer to load than other view-related commands.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -1038,7 +1049,8 @@ Format: <code>viewDate [DATE]</code></p>
 <ul>
 <li>
 <p><code>viewDate</code><br>
-Changes the base date of calendar to current date and displays the calendar by day for current date.<br></p>
+Changes the base date of calendar to current date and displays the calendar by day for current date.<br>
+Changes the date at the top right corner of the calendar panel.</p>
 </li>
 </ul>
 </div>
@@ -1357,7 +1369,7 @@ e.g.<code>viewDate 2018-05-03</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 16:23:29 UTC
+Last updated 2018-04-05 16:35:45 UTC
 </div>
 </div>
 </body>

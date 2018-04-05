@@ -180,8 +180,9 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoing deletion of a <code>celebrity</code> or removal of <code>celebrity</code> tag through <code>edit</code> will not undo changes made to the
-<code>celebrity</code> 's calendar. A new calendar will be created for the restored <code>celebrity</code> instead.</p>
+<p>Undoing deletion of a person will not restore this person to the appointment he/she should attend before deletion.
+If a person gets deleted, he/she will be removed from all appointments that have him/her as attendess or
+point-of-contacts. This removal is not undone by undoing the deletion.</p>
 </div>
 </td>
 </tr>
@@ -606,7 +607,7 @@ An <code>Exception</code> will be thrown when popping the <code>redoStack</code>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-05 16:23:29 UTC
+Last updated 2018-04-05 16:35:45 UTC
 </div>
 </div>
 </body>
