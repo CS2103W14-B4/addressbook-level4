@@ -144,7 +144,7 @@
 <div class="sect2">
 <h3 id="prerequisites"><a class="link" href="#prerequisites">2.1. Prerequisites</a></h3>
 <div class="paragraph">
-<p>There are two prerequisites before you can work on this software.</p>
+<p>There are two prerequisites before you can work on this software. They are (in the order you should obtain them):</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1151,7 +1151,7 @@ Inheritance from the base classes of the external package is done so that we can
 </table>
 </div>
 <div class="paragraph">
-<p>Right now, the addAppointment command takes in up to 6 parameters. They are:</p>
+<p>Right now, the addAppointment command takes in up to 8 parameters. They are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1173,6 +1173,12 @@ Inheritance from the base classes of the external package is done so that we can
 <li>
 <p>End Time</p>
 </li>
+<li>
+<p>Celebrity indices</p>
+</li>
+<li>
+<p>Point of Contact Indices</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -1181,46 +1187,49 @@ Inheritance from the base classes of the external package is done so that we can
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> AddAppointmentCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
-    ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START_TIME,
-            PREFIX_START_DATE,  PREFIX_LOCATION, PREFIX_END_TIME, PREFIX_END_DATE);
+        ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START_TIME,
+                PREFIX_START_DATE,  PREFIX_LOCATION, PREFIX_END_TIME, PREFIX_END_DATE, PREFIX_CELEBRITY,
+                PREFIX_POINT_OF_CONTACT);
 
-    <span class="keyword">if</span> (!arePrefixesPresent(argMultiMap, PREFIX_NAME)
-            || !argMultiMap.getPreamble().isEmpty()) {
-        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                AddAppointmentCommand.MESSAGE_USAGE));
-    }
+        <span class="keyword">if</span> (!arePrefixesPresent(argMultiMap, PREFIX_NAME)
+                || !argMultiMap.getPreamble().isEmpty()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddAppointmentCommand.MESSAGE_USAGE));
+        }
 
-    <span class="keyword">try</span> {
-        <span class="predefined-type">String</span> appointmentName = ParserUtil.parseGeneralName(argMultiMap.getValue(PREFIX_NAME)).get();
-        Optional&lt;LocalTime&gt; startTimeInput = ParserUtil.parseTime(argMultiMap.getValue(PREFIX_START_TIME));
-        Optional&lt;LocalDate&gt; startDateInput = ParserUtil.parseDate(argMultiMap.getValue(PREFIX_START_DATE));
-        Optional&lt;LocalTime&gt; endTimeInput = ParserUtil.parseTime(argMultiMap.getValue(PREFIX_END_TIME));
-        Optional&lt;LocalDate&gt; endDateInput = ParserUtil.parseDate(argMultiMap.getValue(PREFIX_END_DATE));
-        Optional&lt;<span class="predefined-type">String</span>&gt; locationInput = ParserUtil.parseGeneralName(argMultiMap.getValue(PREFIX_LOCATION));
+        <span class="keyword">try</span> {
+            <span class="predefined-type">String</span> appointmentName = ParserUtil.parseGeneralName(argMultiMap.getValue(PREFIX_NAME)).get();
+            Optional&lt;LocalTime&gt; startTimeInput = ParserUtil.parseTime(argMultiMap.getValue(PREFIX_START_TIME));
+            Optional&lt;LocalDate&gt; startDateInput = ParserUtil.parseDate(argMultiMap.getValue(PREFIX_START_DATE));
+            Optional&lt;LocalTime&gt; endTimeInput = ParserUtil.parseTime(argMultiMap.getValue(PREFIX_END_TIME));
+            Optional&lt;LocalDate&gt; endDateInput = ParserUtil.parseDate(argMultiMap.getValue(PREFIX_END_DATE));
+            Optional&lt;MapAddress&gt; locationInput = ParserUtil.parseMapAddress(argMultiMap.getValue(PREFIX_LOCATION));
+            <span class="predefined-type">Set</span>&lt;Index&gt; celebrityIndices = ParserUtil.parseIndices(argMultiMap.getAllValues(PREFIX_CELEBRITY));
+            <span class="predefined-type">Set</span>&lt;Index&gt; pointOfContactIndices = ParserUtil.parseIndices(argMultiMap.getAllValues(PREFIX_POINT_OF_CONTACT));
 
-        <span class="predefined-type">String</span> location = <span class="predefined-constant">null</span>;
-        LocalTime startTime = LocalTime.now();
-        LocalDate startDate = LocalDate.now();
-        LocalTime endTime = LocalTime.now();
-        LocalDate endDate = LocalDate.now();
+            MapAddress location = <span class="predefined-constant">null</span>;
+            LocalTime startTime = LocalTime.now();
+            LocalDate startDate = LocalDate.now();
+            LocalTime endTime = LocalTime.now();
+            LocalDate endDate = LocalDate.now();
 
-        <span class="keyword">if</span> (startTimeInput.isPresent()) {
-            startTime = startTimeInput.get();
-            endTime = startTimeInput.get();
-        }
-        <span class="keyword">if</span> (endTimeInput.isPresent()) {
-            endTime = endTimeInput.get();
-        }
-        <span class="keyword">if</span> (startDateInput.isPresent()) {
-            startDate = startDateInput.get();
-            endDate = startDateInput.get();
-        }
-        <span class="keyword">if</span> (endDateInput.isPresent()) {
-            endDate = endDateInput.get();
-        }
-        <span class="keyword">if</span> (locationInput.isPresent()) {
-            location = locationInput.get();
-        }
+            <span class="keyword">if</span> (startTimeInput.isPresent()) {
+                startTime = startTimeInput.get();
+                endTime = startTimeInput.get();
+            }
+            <span class="keyword">if</span> (endTimeInput.isPresent()) {
+                endTime = endTimeInput.get();
+            }
+            <span class="keyword">if</span> (startDateInput.isPresent()) {
+                startDate = startDateInput.get();
+                endDate = startDateInput.get();
+            }
+            <span class="keyword">if</span> (endDateInput.isPresent()) {
+                endDate = endDateInput.get();
+            }
+            <span class="keyword">if</span> (locationInput.isPresent()) {
+                location = locationInput.get();
+            }
         ...
     }
     ...
@@ -1282,6 +1291,50 @@ the added appointment will be reflected in the calendar as shown in the figure b
 <img src="images/AfterAddAppointment.jpg" alt="AfterAddAppointment" width="800">
 </div>
 <div class="title">Figure 20. State of application with newly added appointment</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-ability-to-undo-code-addappointment-code-command"><a class="link" href="#aspect-ability-to-undo-code-addappointment-code-command">Aspect: Ability to undo <code>addAppointment</code> command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Cannot be undone</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Needs not remember previous state of the storage calendar.</p>
+</li>
+<li>
+<p>Pros: If user made small mistake in one or more of the fields, can use <code>editAppointment</code> command instead of undo and re-add
+the new appointment with the correct fields.</p>
+</li>
+<li>
+<p>If user instead just want to cancel the appointment, can use <code>deleteAppointment</code> command</p>
+</li>
+<li>
+<p>Cons: Cannot remove or edit additions made by mistake without looking at the list of appointments.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Can be undone</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can remove additions made by mistake.</p>
+</li>
+<li>
+<p>Cons: Requires drastic change in the way calendars are currently saved and loaded, as calendars currently only stay
+in UI component while appointments in Model component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1420,7 +1473,7 @@ attending celebrity&#8217;s calendar. So when this appointment gets deleted, bot
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-status-of-code-calendarpanel-code-after-deletion-of-the-only-appointment"><a class="link" href="#aspect-status-of-code-calendarpanel-code-after-deletion-of-the-only-appointment">Aspect: Status of <code>CalendarPanel</code> after deletion of the only appointment</a></h5>
 <div class="ulist">
@@ -1471,9 +1524,8 @@ deleted visually on calendar.</p>
 </ul>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="aspect-undoability-of-code-deleteappointment-code-command"><a class="link" href="#aspect-undoability-of-code-deleteappointment-code-command">4.4.3. Aspect: Undoability of <code>deleteAppointment</code> command</a></h4>
+<div class="sect4">
+<h5 id="aspect-ability-to-undo-code-deleteappointment-code-command"><a class="link" href="#aspect-ability-to-undo-code-deleteappointment-code-command">Aspect: Ability to undo <code>deleteAppointment</code> command</a></h5>
 <div class="ulist">
 <ul>
 <li>
@@ -1504,6 +1556,7 @@ in UI component while appointments in Model component.</p>
 </div>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -1574,7 +1627,7 @@ Whenever an <code>Appointment</code> has no location data, any existing location
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-viewappointment-code"><a class="link" href="#aspect-implementation-of-code-viewappointment-code">Aspect: Implementation of <code>viewAppointment</code></a></h5>
 <div class="ulist">
@@ -1726,7 +1779,7 @@ In <code>XmlSerializableStorageCalendar</code>, it contains a <code>List</code> 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementing-of-code-storagecalendarstorage-code"><a class="link" href="#aspect-implementing-of-code-storagecalendarstorage-code">Aspect: Implementing of <code>StorageCalendarStorage</code></a></h5>
 <div class="ulist">
@@ -1953,7 +2006,7 @@ Whenever an invalid <code>showlocation</code> command is done, any existing loca
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.7.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-showlocationcommand-code"><a class="link" href="#aspect-implementation-of-code-showlocationcommand-code">Aspect: Implementation of <code>showLocationCommand</code></a></h5>
 <div class="ulist">
@@ -2119,7 +2172,7 @@ Whenever an invalid <code>estimateRoute</code> command is done, any existing loc
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.8.2. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.8.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-estimatecommand-code"><a class="link" href="#aspect-implementation-of-code-estimatecommand-code">Aspect: Implementation of <code>estimateCommand</code></a></h5>
 <div class="ulist">
@@ -3720,7 +3773,7 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-07 07:49:43 UTC
+Last updated 2018-04-07 07:59:18 UTC
 </div>
 </div>
 </body>
