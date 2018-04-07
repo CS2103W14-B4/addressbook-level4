@@ -1102,10 +1102,10 @@ Format: <code>viewDate [DATE]</code></p>
 <p>When no date is given, it takes on the value of current date.</p>
 </li>
 <li>
-<p>The date <strong>must be in the format of</strong> <code>YYYY-MM-DD</code>.</p>
+<p>The date <strong>must be in the format of</strong> <code>DD-MM-YYYY</code> or <code>DD-MM</code>. For the latter, year will be set to current year.</p>
 </li>
 <li>
-<p>The date <strong>must be</strong> a valid date, eg, <code>2018-13-01</code> and <code>2018-02-30</code> are not valid dates.</p>
+<p>The date <strong>must be</strong> a valid date, eg, <code>01-13-2018</code> and <code>30-02</code> are not valid dates.</p>
 </li>
 <li>
 <p>This command can take slightly longer to load than other view-related commands.</p>
@@ -1144,8 +1144,8 @@ be performed after performing <code>viewDate [SOME OTHER DATE]</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewDate 2018-05-03</code><br>
-Changes the base date of calendar to <code>2018-05-03</code> and displays the calendar by day for <code>2018-05-03</code>.</p>
+<p><code>viewDate 03-05-2018</code><br>
+Changes the base date of calendar to <code>03-05-2018</code> and displays the calendar by day for <code>03-05-2018</code>.</p>
 </li>
 </ul>
 </div>
@@ -1158,7 +1158,7 @@ Changes the base date of calendar to <code>2018-05-03</code> and displays the ca
 <td class="content">
 <div class="paragraph">
 <p>Change in base date allows you to view calendar for different weeks and months.
-For example, after <code>viewDate 2018-05-03</code>, you can type <code>viewCalendarBy week</code> - which will show you the
+For example, after <code>viewDate 03-05-2018</code>, you can type <code>viewCalendarBy week</code> - which will show you the
 calendar for the first week of May of 2018, or <code>viewCalendarBy month</code> - which will show you the calendar
 for May of 2018.</p>
 </div>
@@ -1432,7 +1432,7 @@ e.g.<code>viewCalendarBy week</code></p>
 </li>
 <li>
 <p><strong>View Date</strong> : <code>viewDate [DATE]</code><br>
-e.g.<code>viewDate 2018-05-03</code></p>
+e.g.<code>viewDate 03-05-2018</code></p>
 </li>
 </ul>
 </div>
@@ -1441,7 +1441,7 @@ e.g.<code>viewDate 2018-05-03</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-06 15:34:46 UTC
+Last updated 2018-04-07 07:49:43 UTC
 </div>
 </div>
 </body>
