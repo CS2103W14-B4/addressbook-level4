@@ -1356,9 +1356,7 @@ taken from the currently displayed appointment list.</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteAppointmentCommand</span> <span class="directive">extends</span> Command {
     ...
-    public <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_MUST_SHOW_LIST_OF_APPOINTMENTS = <span class="string"><span class="delimiter">&quot;</span><span class="content">List of appointments must be shown </span><span class="delimiter">&quot;</span></span>
-            + <span class="string"><span class="delimiter">&quot;</span><span class="content">before deleting an appointment</span><span class="delimiter">&quot;</span></span>;
-    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Deleted Appointment: %1$s</span><span class="delimiter">&quot;</span></span>;
+    public <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Deleted Appointment: %1$s</span><span class="delimiter">&quot;</span></span>;
     <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_APPOINTMENT_LIST_BECOMES_EMPTY = <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="content">Appointment list becomes empty, </span><span class="delimiter">&quot;</span></span>
             + <span class="string"><span class="delimiter">&quot;</span><span class="content">Switching back to calendar view by day</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>
             + <span class="string"><span class="delimiter">&quot;</span><span class="content">Currently showing %1$s calendar</span><span class="delimiter">&quot;</span></span>;
@@ -1368,7 +1366,7 @@ taken from the currently displayed appointment list.</p>
     <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
         <span class="comment">// throw exception if the user is not currently viewing an appointment list</span>
         <span class="keyword">if</span> (!model.getIsListingAppointments()) {
-            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_MUST_SHOW_LIST_OF_APPOINTMENTS);
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_MUST_SHOW_LIST_OF_APPOINTMENTS);
         }
         apptToDelete = model.deleteAppointment(targetIndex.getZeroBased());
         <span class="predefined-type">List</span>&lt;Appointment&gt; currentAppointmentList = model.getAppointmentList();
@@ -3773,7 +3771,7 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-08 16:12:26 UTC
+Last updated 2018-04-09 07:23:36 UTC
 </div>
 </div>
 </body>
