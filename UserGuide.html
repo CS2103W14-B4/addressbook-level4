@@ -419,7 +419,7 @@ A person can have any number of tags, including 0.
 <td class="content">
 <div class="paragraph">
 <p>You can only edit an appointment when you are in appointment list view. Refer to
-<a href="#listing-appointments-code-listappointment-code-since-v1-3">Section 3.3.4, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.3]&#8221;</a> for more information.</p>
+<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
 </div>
 </td>
 </tr>
@@ -773,7 +773,7 @@ Format: <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION
 <td class="content">
 <div class="paragraph">
 <p>You can only edit an appointment when you are in appointment list view. Refer to
-<a href="#listing-appointments-code-listappointment-code-since-v1-3">Section 3.3.4, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.3]&#8221;</a> for more information.</p>
+<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
 </div>
 </td>
 </tr>
@@ -817,8 +817,8 @@ Format: <code>deleteAppointment INDEX</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can only delete an appointment when you are in appointment list view. Refer to
-<a href="#listing-appointments-code-listappointment-code-since-v1-3">Section 3.3.4, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.3]&#8221;</a> for more information.</p>
+<p>You can only delete an appointment when you are listing appointments. Refer to
+<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
 </div>
 </td>
 </tr>
@@ -864,11 +864,62 @@ Deletes the 1st appointment in the appointment list from CelebManager.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-appointments-code-listappointment-code-since-v1-3"><a class="link" href="#listing-appointments-code-listappointment-code-since-v1-3">3.3.4. Listing appointments: <code>listAppointment</code> [Since v1.3]</a></h4>
+<h4 id="listing-appointments-code-listappointment-code-since-v1-5"><a class="link" href="#listing-appointments-code-listappointment-code-since-v1-5">3.3.4. Listing appointments: <code>listAppointment</code> [Since v1.5]</a></h4>
 <div class="paragraph">
-<p>Lists all appointments in our CelebManager.<br>
+<p>Lists all appointments from the specified start date to end date (inclusive).<br>
 Alias: <code>la</code><br>
-Format: <code>listAppointment</code></p>
+Format: <code>listAppointment [STARTDATE ENDDATE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Lists appointments according to the specified date range.</p>
+</li>
+<li>
+<p>When no date range is given, all appointments in CelebManager will be listed.</p>
+</li>
+<li>
+<p>The date <strong>must be in the format of</strong> <code>DD-MM-YYYY</code> or <code>DD-MM</code>. For the latter, year will be set to current year.</p>
+</li>
+<li>
+<p>The date <strong>must be</strong> a valid date, eg, <code>01-13-2018</code> and <code>30-02</code> are not valid dates.</p>
+</li>
+<li>
+<p><code>STARTDATE</code> <strong>must not be</strong> after <code>ENDDATE</code>.</p>
+</li>
+<li>
+<p>If there is no appointment within the specified date range, an error message will be shown instead of an empty list.</p>
+</li>
+<li>
+<p>If an appointment starts within the date range specified but ends after the <code>ENDDATE</code>, it will also be shown.</p>
+</li>
+<li>
+<p>If an appointment ends within the date range specified but starts before the <code>STARTDATE</code>, it will also be shown.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listAppointment 01-04-2018 10-04-2018</code><br>
+Lists all appointments, if any, scheduled between 1st April and 10th April in 2018.</p>
+</li>
+<li>
+<p><code>listAppointment 10-04 20-04</code><br>
+Lists all appointments, if any, scheduled between 10th April and 20th April h in the current year.</p>
+</li>
+<li>
+<p><code>listAppointment 20-04-2018 01-05</code>
+Lists all appointments, if any, scheduled between 20th April of 2018 and 1st May of the current year.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -1441,7 +1492,7 @@ e.g.<code>viewDate 03-05-2018</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 17:55:51 UTC
+Last updated 2018-04-10 18:01:50 UTC
 </div>
 </div>
 </body>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Wang Jinyi - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Wang Jinyi - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-celebmanager"><a class="link" href="#project-celebmanager">PROJECT: CelebManager</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>CelebManager is a desktop application designed to help celebrity managers to manage their contacts and different
+celebrities' schedules. Managers interact with CelebManager using the Command Line Input (CLI).
+CelebManager makes use of CalendarFX to integrate a calendar, and Google Map API to integrate a map inside the
+application, to display information about appointments.
+CelebManager consists of a GUI created with JavaFX and is written in Java. The project overall has over 10k LoC.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>support for interacting with the calendar using CLI</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This enhancement includes commands: <code>viewCalendar</code>, <code>viewCombinedCalendar</code>, <code>viewCalendarBy</code>, and
+<code>viewDate</code>. With these commands, users can view different celebrities' calendars, a joint calendar of all celebrities,
+a day&#8217;s or week&#8217;s or month&#8217;s appointments, and change base date of the calendar.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because it allows users to interact with the
+calendar inside CeleManager, and makes calendar a powerful visualisation tool to view timings of appointments.</p>
+</li>
+<li>
+<p>Highlights: The implementation requires comprehension of CalendarFX&#8217;s API and experimenting with the API to
+understand which methods to be used to update the calendar UI. Also, additional variables were created
+to keep track of the current calendar&#8217;s status to preserve the original ways of interaction between different
+components.</p>
+</li>
+<li>
+<p>Credits: [<a href="http://dlsc.com/wp-content/html/calendarfx/apidocs/index.html">CalendarFX</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to delete an appointment</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This enhancement refers to the command, <code>deleteAppointment</code>. It allows users to delete an existing
+appointment.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because users can delete a specified appointment to
+get rid of appointments that are cancelled or no longer needed.</p>
+</li>
+<li>
+<p>Highlights: This enhancement requires an understanding of how appointments are stored and can be removed from the
+calendar visually.</p>
+</li>
+<li>
+<p>Credits: [<a href="http://dlsc.com/wp-content/html/calendarfx/apidocs/index.html">CalendarFX</a>]</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added <strong>the ability to list appointments within a given date range</strong></p>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added <strong>the ability to remove a tag from all contacts</strong></p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added support for deleting celebrity using the existing command <code>delete</code>. This enhancement ensures the removal
+of the deleted celebrity from the appointments he/she is attending, as well as the deletion of his/her calendar.
+(Pull request:)</p>
+</li>
+<li>
+<p>Created TypicalCelebrities, modified getTypicalPersons to facilitate testing of new features (Pull request:)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Standardised the language of existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+</li>
+<li>
+<p>Collated codes for <code>v1.4</code> release</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide.
+They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>include::../UserGuide.adoc[tag=view-calendar]<br>
+include::../UserGuide.adoc[tag=deleteAppointment]<br>
+==== Removing a tag : <code>removeTag</code> [Since v1.2]</p>
+</div>
+<div class="paragraph">
+<p>Removes the specified tag from every person with it in CelebManager and shows the number of person(s) affected by this
+operation.<br>
+Alias: <code>rt</code><br>
+Format: <code>removeTag TAG</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Removes the tag from every person with it in CelebManager.</p>
+</li>
+<li>
+<p><code>TAG</code> removed <strong>must not be</strong> <code>celebrity</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removeTag friends</code><br>
+Removes the tag, <code>friends</code> from every person with it in CelebManager and shows the number of person(s) affected.</p>
+</li>
+<li>
+<p><code>removeTag colleagues</code><br>
+Removes the tag, <code>colleagues</code> from every person with it in CelebManager and shows the number of person(s) affected.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide.
+They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>include::../DeveloperGuide.adoc[tag=removeTag]<br>
+=== DeleteAppointment Feature
+==== Current Implementation</p>
+</div>
+<div class="paragraph">
+<p>The mechanism to delete an appointment is facilitated by the <code>DeleteAppointmentCommand</code>, which resides inside <code>Logic</code>,
+and <code>deleteAppointment</code> in <code>Model</code>. It supports the deletion of an appointment.
+Deletion of an appointment can only be done when the <code>CalendarPanel</code> is in appointment list view, instead of showing
+calendars. The command requires users to put in an index which represents the appointment to be deleted. This index is
+taken from the currently displayed appointment list.</p>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the implementation of <code>execute</code> in <code>DeleteAppointmentCommand</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteAppointmentCommand</span> <span class="directive">extends</span> Command {
+    ...
+    public <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_SUCCESS = <span class="string"><span class="delimiter">&quot;</span><span class="content">Deleted Appointment: %1$s</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_APPOINTMENT_LIST_BECOMES_EMPTY = <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="content">Appointment list becomes empty, </span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content">Switching back to calendar view by day</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content">Currently showing %1$s calendar</span><span class="delimiter">&quot;</span></span>;
+    ...
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+        <span class="comment">// throw exception if the user is not currently viewing an appointment list</span>
+        <span class="keyword">if</span> (!model.getIsListingAppointments()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_MUST_SHOW_LIST_OF_APPOINTMENTS);
+        }
+        apptToDelete = model.deleteAppointment(targetIndex.getZeroBased());
+        <span class="predefined-type">List</span>&lt;Appointment&gt; currentAppointmentList = model.getAppointmentList();
+
+        <span class="comment">// if the list becomes empty, switch back to combined calendar day view</span>
+        <span class="keyword">if</span> (currentAppointmentList.size() &lt; <span class="integer">1</span>) {
+            EventsCenter.getInstance().post(<span class="keyword">new</span> ChangeCalendarViewPageRequestEvent(DAY_VIEW_PAGE));
+            EventsCenter.getInstance().post(<span class="keyword">new</span> ShowCalendarEvent());
+
+            Celebrity currentCalendarOwner = model.getCurrentCelebCalendarOwner();
+            <span class="keyword">if</span> (currentCalendarOwner == <span class="predefined-constant">null</span>) {
+                <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(
+                        <span class="predefined-type">String</span>.format(MESSAGE_SUCCESS, apptToDelete.getTitle())
+                                + <span class="predefined-type">String</span>.format(MESSAGE_APPOINTMENT_LIST_BECOMES_EMPTY,
+                                <span class="string"><span class="delimiter">&quot;</span><span class="content">combined</span><span class="delimiter">&quot;</span></span>));
+            } <span class="keyword">else</span> {
+                <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(
+                        <span class="predefined-type">String</span>.format(MESSAGE_SUCCESS, apptToDelete.getTitle())
+                                + <span class="predefined-type">String</span>.format(MESSAGE_APPOINTMENT_LIST_BECOMES_EMPTY,
+                                currentCalendarOwner.getName().toString() + <span class="string"><span class="delimiter">&quot;</span><span class="content">'s</span><span class="delimiter">&quot;</span></span>));
+            }
+        }
+
+        <span class="comment">// if the list is not empty yet, update appointment list view</span>
+        EventsCenter.getInstance().post(<span class="keyword">new</span> ShowAppointmentListEvent(currentAppointmentList));
+
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS, apptToDelete.getTitle()));
+    }
+
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>From the snippet above, it can be seen that <code>DeleteAppointmentCommand</code> changes <code>CalendarPanel</code> back to combined
+calendar view if there is no more appointment in the appointment list after deletion. Otherwise, the appointment list
+with the specified appointment deleted will be shown.</p>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the implementation of <code>deleteAppointment</code> in <code>Model</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ModelManager</span> <span class="directive">extends</span> ComponentManager <span class="directive">implements</span> Model {
+    ...
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> Appointment deleteAppointment(<span class="type">int</span> index) <span class="directive">throws</span> CommandException {
+        Appointment apptToDelete = getChosenAppointment(index);
+        apptToDelete.removeAppointment();
+        indicateAppointmentListChanged();
+
+        apptToDelete = removeAppointmentFromInternalList(index);
+
+        <span class="keyword">if</span> (getAppointmentList().size() &lt; <span class="integer">1</span>) {
+            setIsListingAppointments(<span class="predefined-constant">false</span>);
+            setCelebCalendarViewPage(DAY_VIEW_PAGE);
+        }
+        <span class="keyword">return</span> apptToDelete;
+    }
+
+    <span class="comment">/** Makes changes to model's internal appointment list */</span>
+    <span class="directive">private</span> Appointment removeAppointmentFromInternalList(<span class="type">int</span> index) {
+        <span class="keyword">return</span> getAppointmentList().remove(index);
+
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that <code>getAppointmentList()</code> retrieves the list of appointments currently being displayed.
+The method <code>removeAppointment</code> is in <code>Appointment</code> class, and removes all child entries of an appointment. For example,
+an appointment may have two celebrities attending. Then this appointment will have two child entries, one each in each
+attending celebrity&#8217;s calendar. So when this appointment gets deleted, both entries should get removed as well.</p>
+</div>
+<div class="paragraph">
+<p>Suppose the current address book has two appointments in the appointment list as shown in the figure below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BeforeDeleteAppointment_2.png" alt="BeforeDeleteAppointment 2" width="">
+</div>
+<div class="title">Figure 1. State of application before executing <code>deleteAppointment 2</code></div>
+</div>
+<div class="paragraph">
+<p>After the successful execution of <code>deleteAppointment 2</code>, appointment list will be updated to the diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterDeleteAppointment_2.png" alt="AfterDeleteAppointment 2" width="">
+</div>
+<div class="title">Figure 2. State of <code>PersonListPanel</code> after executing <code>removeTag friends</code></div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows the interaction within classes in <code>Logic</code> to process <code>removeTag</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteAppointmentCommand-logic-seq-diagram.png" alt="DeleteAppointmentCommand logic seq diagram" width="">
+</div>
+<div class="title">Figure 3. Sequence diagram of deleteAppointment command</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-status-of-code-calendarpanel-code-after-deletion-of-the-only-appointment"><a class="link" href="#aspect-status-of-code-calendarpanel-code-after-deletion-of-the-only-appointment">Aspect: Status of <code>CalendarPanel</code> after deletion of the only appointment</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Switch back to combined calendar view</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Keeps consistent with <code>listAppointment</code> as CelebManager does not show an empty list when there is no
+appointment to list, but instead outputs an error message.</p>
+</li>
+<li>
+<p>Cons: Makes it difficult for users to see if the appointment gets deleted correctly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Stay at the appointment list view and shows an empty list</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Shows the effect of deletion immediately.</p>
+</li>
+<li>
+<p>Cons: Becomes inconsistent with <code>listAppointment</code> command&#8217;s inability to show an empty list when there is no
+appointment to list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 3:</strong> Switch back to combined calendar view and goes to the day when the deleted appointment should
+happen</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Keeps consistent with <code>listAppointment</code> while making it easy for users to check if the appointment gets
+deleted visually on calendar.</p>
+</li>
+<li>
+<p>Cons: Takes long time to run.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-ability-to-undo-code-deleteappointment-code-command"><a class="link" href="#aspect-ability-to-undo-code-deleteappointment-code-command">Aspect: Ability to undo <code>deleteAppointment</code> command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Cannot be undone</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Needs not remember previous appointments' and calendar&#8217;s status.</p>
+</li>
+<li>
+<p>Cons: Cannot restore deletions made by mistake.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Can be undone</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can restore deletions made by mistake.</p>
+</li>
+<li>
+<p>Cons: Requires drastic change in the way calendars are currently saved and loaded, as calendars currently only stay
+in UI component while appointments in Model component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-10 18:01:50 UTC
+</div>
+</div>
+</body>
+</html>
