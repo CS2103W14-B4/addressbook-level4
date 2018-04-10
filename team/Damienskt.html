@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Damienskt - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Damienskt - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-celebmanager"><a class="link" href="#project-celebmanager">PROJECT: CelebManager</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>CelebManager is a software application that aims to allow celebrity managers to maintain schedule of celebrities under them. CelebManager is optimized for users who prefer to work with a Command Line Interface (CLI) while still having a Graphical User Interface (GUI) for visual feedback.</p>
+</div>
+<div class="paragraph">
+<p>In this software, the users should be able to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Manage contacts</p>
+</li>
+<li>
+<p>Manage appointments</p>
+</li>
+<li>
+<p>Manage calendars</p>
+</li>
+<li>
+<p>Plan efficient routes</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to show location in map</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allow the celebrity manager to have a view of the exact location in a map. Notify celebrity manager if a location cannot be found on the map.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly by allowing the celebrity manager to be familiar with the location.
+This is important as they are responsible of ensuring that their celebrities reaches the correct location for their appointment.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+The implementation was challenging as it requires a clear understanding of the external libraries used and how the libraries function integrates with the existing structure.</p>
+</li>
+<li>
+<p>Credits: Third party library used, which are <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library which can be found <a href="http://rterp.github.io/GMapsFX/apidocs/">here</a> and <a href="https://googlemaps.github.io/google-maps-services-java/v0.2.6/javadoc/">here</a> respectively.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to estimate route, distance and travel time between two location by driving in map</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allow the celebrity manager to have a view of the best route by driving between two location in a map. Provides information of estimated distance and time of travel by driving between two location. Notifies the celebrity manager if two location cannot be reached by driving.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly by allowing the celebrity manager to find the best travel route between two location.
+This is important as they are responsible of chauffeuring their celebrities for their appointment.</p>
+</li>
+<li>
+<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+The implementation was challenging as it requires a clear understanding of the external libraries used and how the libraries function integrates with the existing structure.</p>
+</li>
+<li>
+<p>Credits: Third party library used, which are <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library which can be found <a href="http://rterp.github.io/GMapsFX/apidocs/">here</a> and <a href="https://googlemaps.github.io/google-maps-services-java/v0.2.6/javadoc/">here</a> respectively.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added a View Appointment command which allow the celebrity manager to view a specific appointment details.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/functional/Damienskt.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/test/Damienskt.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.4</code> on GitHub</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the GUI color scheme (Pull requests <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/117">#117</a>)</p>
+</li>
+<li>
+<p>Added Map panel UI into GUI (Pull requests <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/41">#41</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated features content in User Guide: <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/108">#108</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/93">#93</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/138">#138</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/20">#20</a>
+<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/21">#21</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/58">#58</a></p>
+</li>
+<li>
+<p>Updated features implementation content in developer guide: <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/108">#108</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/93">#93</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/138">#138</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/124">#124</a>
+<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/58">#58</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/1">#1</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-F11-B3/main/issues/138">1</a>, <a href="https://github.com/CS2103JAN2018-F11-B3/main/issues/113">2</a>, <a href="https://github.com/CS2103JAN2018-F11-B3/main/issues/114">3</a> <a href="https://github.com/CS2103JAN2018-F11-B3/main/issues/115">4</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Integrated three third party library (CalendarFX, GMAPSFX and Google Map Web Services) to the project (<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/24">#24</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/8">#8</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/23">#23</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="map-features"><a class="link" href="#map-features">Map Features</a></h3>
+<div class="paragraph">
+<p>Figure 7 is a snippet of the <code>MapPanel</code> which shows the results of all map related features.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
+</div>
+<div class="title">Figure 1. Default State of <code>MapPanel</code></div>
+</div>
+<div class="paragraph">
+<p>Button features:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click the Map or Satellite button to toggle between road map or satellite view.</p>
+</li>
+<li>
+<p>Click the <code>+</code> to zoom in and <code>-</code> button to zoom out.</p>
+</li>
+<li>
+<p>Click, hold and move the mouse cursor to shift the current view of the map.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Do not click on the <code>Google</code> logo or <code>Terms of Use</code> button. [To be resolved in v2.0].
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="estimate-route-on-map-code-estimateroute-code-since-v1-3"><a class="link" href="#estimate-route-on-map-code-estimateroute-code-since-v1-3">Estimate route on map : <code>estimateRoute</code> [Since v1.3]</a></h4>
+<div class="paragraph">
+<p>Shows the estimated route in the map interface and display the estimated distance and time of travel in result display.
+ Any existing location marker or route will be removed.<br></p>
+</div>
+<div class="paragraph">
+<p>Alias: <code>er</code><br>
+Format: <code>estimateRoute sma/MapAddress ema/MapAddress</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>estimateRoute sma/Punggol ema/NUS</code><br>
+Updates the map by re-centering to the new route of <code>Punggol</code> and <code>NUS</code>.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Address should be a postal code, road name, location name or building name.</p>
+</li>
+<li>
+<p>Start and end address should be reachable by driving.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The snippet in Figure 8 shows the updated map after the command input of <code>estimateRoute sma/Punggol ema/NUS</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
+</div>
+<div class="title">Figure 2. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Whenever a new valid or invalid <code>estimateRoute</code> command is done, any existing route or location marker will be removed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">Show location on map : <code>showLocation</code> [Since v1.2]</a></h4>
+<div class="paragraph">
+<p>Shows the specific location in the map interface, by marking the latitude and longitude with a location marker.
+Any existing location marker or route will be removed.<br></p>
+</div>
+<div class="paragraph">
+<p>Alias: <code>sl</code><br>
+Format: <code>showLocation ma/MapAddress</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>showLocation ma/Punggol</code><br>
+Updates the map by re-centering to the new location <code>Punggol</code> and adding a location marker to it.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Address should be a postal code, road name, location name or building name.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The snippet in Figure 9 shows the updated map after the command input of <code>showLocation ma/Punggol</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
+</div>
+<div class="title">Figure 3. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Whenever a new valid or invalid <code>showLocation</code> command is done, any existing route and location marker will be removed.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-appointment-code-viewappointment-code-since-v1-4"><a class="link" href="#view-appointment-code-viewappointment-code-since-v1-4">View appointment: <code>viewAppointment</code> [Since v1.4]</a></h4>
+<div class="paragraph">
+<p>View a specific appointment based on list generated by <code>listAppointment</code> in CelebManager.
+<code>listAppointment</code> has to be done before the input of <code>viewAppointment</code> command.<br>
+Alias: <code>va</code><br>
+Format: <code>viewAppointment INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewAppointment 1</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Index should be within the list size.</p>
+</li>
+<li>
+<p>Smallest index is 1 and largest index is size of list.</p>
+</li>
+<li>
+<p>List generated by <code>listAppointment</code> should have at least one appointment.</p>
+</li>
+<li>
+<p>Location will not be shown if <code>Appointment</code> does not have location data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The state of CelebManager in figure 2 after input of <code>listAppointment</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/listAppointmentInput.png" alt="listAppointmentInput" width="">
+</div>
+<div class="title">Figure 4. State of application after <code>listAppointment</code> input</div>
+</div>
+<div class="paragraph">
+<p>The state of CelebManager in figure 3 after the example input `viewAppointment i/1'.
+Which selects the first appointment in the list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/viewAppointmentInput.png" alt="viewAppointmentInput" width="">
+</div>
+<div class="title">Figure 5. State of application after <code>viewAppointment i/1</code> input</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Whenever the appointment has an invalid location, the map will remove any existing marker or route.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="showlocation-feature"><a class="link" href="#showlocation-feature">ShowLocation Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The ShowLocation mechanism is facilitated by the <code>ShowLocationCommand</code>, which resides inside <code>Logic</code>. It supports the viewing of location
+in the <code>MapPanel</code> by updating the state of the <code>MapPanel</code>. This is done by re-centering the <code>MapPanel</code> to the latitude and longitude of the
+location and identifying it with a location marker. This command inherits from <code>Command</code> so it <strong>does not support the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The following figure shows the marker that is used to identify the location in the <code>MapPanel</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LocationMarker.png" alt="LocationMarker" width="50">
+</div>
+<div class="title">Figure 6. Location marker</div>
+</div>
+<div class="paragraph">
+<p>The following diagram shows the inheritance diagram for <code>ShowLocationCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
+</div>
+<div class="title">Figure 7. Inheritance diagram for <code>Command</code></div>
+</div>
+<div class="paragraph">
+<p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
+Similar to the other commands like <code>FindCommand</code> <strong>it will not be identified by the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>This command does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to
+ the difference in address specification details as the <code>Address</code> model is too specific for the command to work.
+An example would be the details of unit number (e.g #11-111) which will result in an invalid command or inaccurate result.</p>
+</div>
+<div class="paragraph">
+<p>The main difference between both model is shown below in the two code snippets.</p>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the <code>Address</code> model:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Address</span> {
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_ADDRESS_CONSTRAINTS =
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">Person addresses can take any values, and it should not be blank</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">/*
+     * The first character of the address must not be a whitespace,
+     * otherwise &quot; &quot; (a blank string) becomes a valid input.
+     */</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ADDRESS_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="content">[^</span><span class="char">\\</span><span class="content">s].*</span><span class="delimiter">&quot;</span></span>;
+    <span class="comment">/**
+     * Returns true if a given string is a valid person email.
+     */</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> isValidAddress(<span class="predefined-type">String</span> test) {
+        <span class="keyword">return</span> test.matches(ADDRESS_VALIDATION_REGEX);
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the <code>MapAddress</code> model:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MapAddress</span> {
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_ADDRESS_MAP_CONSTRAINTS =
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Address should be in location name, road name, block and road name or postal code format.</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>
+                    + <span class="string"><span class="delimiter">&quot;</span><span class="content">Note:(Person address may not be valid as it consist of too many details like unit number)</span><span class="delimiter">&quot;</span></span>
+    <span class="comment">/*
+     * The first character of the address must not be a whitespace,
+     * otherwise &quot; &quot; (a blank string) becomes a valid input.
+     */</span>
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> ADDRESS_VALIDATION_REGEX = <span class="string"><span class="delimiter">&quot;</span><span class="content">[^</span><span class="char">\\</span><span class="content">s].*</span><span class="delimiter">&quot;</span></span>;
+    ...
+    <span class="comment">/**
+     * Returns true if a given string is a valid map address.
+     */</span>
+    public <span class="directive">static</span> <span class="type">boolean</span> isValidAddress(<span class="predefined-type">String</span> test) {
+        <span class="type">boolean</span> isValid;
+        Geocoding testAddress = <span class="keyword">new</span> Geocoding();
+        isValid = testAddress.checkIfAddressCanBeFound(test);
+        <span class="keyword">return</span> test.matches(ADDRESS_MAP_VALIDATION_REGEX) &amp;&amp; isValid;
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The difference to note is the <code>isValidAddress</code> method, where <code>Address</code> only checks for <strong>blank space</strong> whereas <code>MapAddress</code>
+checks for <strong>blank space and the validity of location in google server</strong>. Thus, making the command more restrictive to location,
+ road, block name and postal code. Any details more than that, would result in a higher possibility of it being invalid or inaccurate.</p>
+</div>
+<div class="paragraph">
+<p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library which can be found <a href="http://rterp.github.io/GMapsFX/apidocs/">here</a> and <a href="https://googlemaps.github.io/google-maps-services-java/v0.2.6/javadoc/">here</a> respectively.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>GMAPSFX API</code> is used to create the <code>MapPanel</code> class which allows the
+command to re-center and mark the new location which is then shown to the user.</p>
+</li>
+<li>
+<p><code>Google Maps Web Services API</code> is used to create the
+<code>Geocoding</code> class, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
+is then used by the command to find the exact location in the <code>MapPanel</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Every new input of this command will remove the previous route or location marker and add the new marker into the map.</p>
+</div>
+<div class="paragraph">
+<p>The snippet below shows the state of <code>MapPanel</code> before input of <code>ShowLocation</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
+</div>
+<div class="title">Figure 8. Default State of <code>MapPanel</code></div>
+</div>
+<div class="paragraph">
+<p>After the input of "showLocation ma/Punggol" the <code>MapPanel</code> will be updated to the diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
+</div>
+<div class="title">Figure 9. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+</div>
+<div class="paragraph">
+<p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Whenever an invalid <code>showlocation</code> command is done, any existing location marker or route will be removed from the map.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ShowLocationSequenceDiagram.png" alt="ShowLocationSequenceDiagram" width="">
+</div>
+<div class="title">Figure 10. Sequence Diagram of <code>showLocation</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-showlocationcommand-code"><a class="link" href="#aspect-implementation-of-code-showlocationcommand-code">Aspect: Implementation of <code>showLocationCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Extend <code>Command</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows new developers to understand easily as the command is at the same abstraction level as other commands.</p>
+</li>
+<li>
+<p>Cons: Does not have the undo/redo feature as it is not part of <code>UndoableCommand</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Extend <code>UndoableCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for command to have the undo/redo function.</p>
+</li>
+<li>
+<p>Cons: Requires more work that may not fit in with our timeline</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-use-of-address-model"><a class="link" href="#aspect-use-of-address-model">Aspect: Use of address model</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>MapAddress</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion</p>
+</li>
+<li>
+<p>Cons: Confusing as both <code>MapAddress</code> and <code>Address</code> model are quite similar.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>Address</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces the amount of code/class in the project</p>
+</li>
+<li>
+<p>Cons: Confusing as different requirements for a single model. Lacks proper organisation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="estimateroute-feature"><a class="link" href="#estimateroute-feature">EstimateRoute Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The EstimateRoute mechanism is facilitated by the <code>EstimateRouteCommand</code>, which resides inside <code>Logic</code>. It supports the viewing of estimated route
+in the <code>MapPanel</code> by updating the state of the <code>MapPanel</code>. This is done by re-centering the <code>MapPanel</code> to the new route.</p>
+</div>
+<div class="paragraph">
+<p>The following figure shows the marker that is used to identify the start and end location in the <code>MapPanel</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Start_Location_Marker.png" alt="Start Location Marker" width="100">
+</div>
+<div class="title">Figure 11. Start Location marker</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/End_Location_Marker.png" alt="End Location Marker" width="100">
+</div>
+<div class="title">Figure 12. End Location marker</div>
+</div>
+<div class="paragraph">
+<p><code>EstimateRouteCommand</code> inherits from the Command class and is not part of the Undoable Command.
+Similar to the other commands like <code>FindCommand</code> <strong>it will not be identified by the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>This command is similar to the <code>ShowLocation</code> feature which does not use the <code>Person</code> <code>Address</code> model to search for a specific location, it uses the <code>MapAddress</code> model. This is due to the difference in address specification details as the <code>Address</code> model is too specific for the command to work.
+Even if it works the results may not be accurate.
+An example would be the details of unit number (e.g #11-111) which will result in an invalid command or inaccurate results.</p>
+</div>
+<div class="paragraph">
+<p>This command uses the <code>GMAPSFX API</code> and  <code>Google Maps Web Services API</code> library which can be found <a href="http://rterp.github.io/GMapsFX/apidocs/">here</a> and <a href="https://googlemaps.github.io/google-maps-services-java/v0.2.6/javadoc/">here</a> respectively.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>GMAPSFX</code> is used to create the <code>MapPanel</code> which allows the
+command to re-center the map view, create the route, mark the start and end location which is then shown to the user.</p>
+</li>
+<li>
+<p><code>Google Maps Web Services API</code> is used to create the
+<code>Geocoding</code> class, which is used to convert <code>MapAddress</code> into latitude and longitude form (<code>LatLng</code>). The <code>LatLng</code> form
+is then used by the command to find the exact location in the <code>MapPanel</code>.</p>
+</li>
+<li>
+<p><code>Google Maps Web Services API</code> is also used to create the <code>DistanceEstimate</code> class, which allows
+the calculation of estimated time and distance of travel between two location by driving. <code>DistanceEstimate</code> class is also used to check if two locations
+can be reached by driving.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The snippet below shows the state of <code>MapPanel</code> before input of <code>estimateRoute</code> command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
+</div>
+<div class="title">Figure 13. Default State of <code>MapPanel</code></div>
+</div>
+<div class="paragraph">
+<p>After the input of "estimateRoute sma/Punggol ema/NUS" the <code>MapPanel</code> will be updated to the diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
+</div>
+<div class="title">Figure 14. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+</div>
+<div class="paragraph">
+<p>Any subsequent <code>estimateRoute</code> command will remove any existing marker or route before updating the <code>MapPanel</code> with the new route.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Whenever an invalid <code>estimateRoute</code> command is done, any existing location marker or route will be removed from the map.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EstimateRouteSequenceDiagram.png" alt="EstimateRouteSequenceDiagram" width="">
+</div>
+<div class="title">Figure 15. Sequence Diagram of <code>estimateRoute</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-estimatecommand-code"><a class="link" href="#aspect-implementation-of-code-estimatecommand-code">Aspect: Implementation of <code>estimateCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Extend <code>Command</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows new developers to understand easily as the command is at the same abstraction level as other commands.</p>
+</li>
+<li>
+<p>Cons: Does not have the undo/redo feature as it is not part of <code>UndoableCommand</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Extend <code>UndoableCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for command to have the undo/redo function.</p>
+</li>
+<li>
+<p>Cons: Requires more work that may not fit in with our timeline.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-use-of-address-model-2"><a class="link" href="#aspect-use-of-address-model-2">Aspect: Use of address model</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>MapAddress</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the clear distinction of requirements between <code>MapAddress</code> and <code>Address</code> to avoid confusion.</p>
+</li>
+<li>
+<p>Cons: Confusing as the two models are similar.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>Address</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces the amount of code/class in the project.</p>
+</li>
+<li>
+<p>Cons: Confusing as different requirements for a single model. Lacks proper organisation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-input-using-appointment-index"><a class="link" href="#aspect-input-using-appointment-index">Aspect: Input using appointment index</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use <code>Location</code> name</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows the function to be used independently</p>
+</li>
+<li>
+<p>Cons: Requires keying in of location instead of just an index.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Use <code>Appointment</code> index</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces the amount of typing.</p>
+</li>
+<li>
+<p>Cons: Restricts the use of function as without an appointment index you will not be able to use it.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewappointment-feature"><a class="link" href="#viewappointment-feature">ViewAppointment Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The ViewAppointment mechanism is facilitated by the <code>ViewAppointmentCommand</code>, which resides inside <code>Logic</code>. It supports the viewing of a specific appointment
+in the <code>ResultDisplayPanel</code>  by displaying the <code>Appointment</code> details. The specific <code>Appointment</code> is selected using an index based on the list generated by <code>ListAppointmentCommand</code>.
+ This command inherits from <code>Command</code> so it <strong>does not support the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The input index is <strong>one-based</strong> which means that the smallest possible index is '1' and the largest possible index is the size of list
+generated by <code>ListAppointmentCommand</code> (total number of <code>Appointment</code>).</p>
+</div>
+<div class="paragraph">
+<p>As this command relies on the list generated by <code>ListAppointmentCommand</code>, the command retrieves the start (earliest) and end (latest) date
+from <code>ListAppointmentCommand</code>, which is used to generate the appointment list internally from the <code>StorageCalendar</code> in <code>Model</code>.
+This is done by <code>getChosenAppointment()</code> method.</p>
+</div>
+<div class="paragraph">
+<p>The snippet code below shows the code that retrieves the selected appointment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+        selectedAppointment = model.getChosenAppointment(chosenIndex);
+        <span class="keyword">try</span> {
+            ShowLocationCommand showLocation = <span class="keyword">new</span> ShowLocationCommand(
+                    <span class="keyword">new</span> MapAddress(selectedAppointment.getLocation()));
+            showLocation.execute();
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS + getAppointmentDetailsResult());
+        } <span class="keyword">catch</span> (<span class="exception">NullPointerException</span> npe) {
+            <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS + getAppointmentDetailsResult());
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To show the location in the <code>MapPanel</code>, <code>ShowLocationCommand</code> is used to update the location marker in <code>MapPanel</code> to
+point to the <code>Appointment</code> location.</p>
+</div>
+<div class="paragraph">
+<p>In the case where the <code>Appointment</code> do not have any location data, the result will still be displayed without the
+location being shown in the map.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Whenever an <code>Appointment</code> has no location data, any existing location marker or route will be removed from the map.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The diagram below in figure 32 shows the sequence diagram of <code>ViewAppointmentCommand</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ViewAppointmentSequenceDiagram.png" alt="ViewAppointmentSequenceDiagram" width="">
+</div>
+<div class="title">Figure 16. Sequence Diagram of <code>viewAppointment</code> Command</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-viewappointment-code"><a class="link" href="#aspect-implementation-of-code-viewappointment-code">Aspect: Implementation of <code>viewAppointment</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Extend <code>Command</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to understand for new developers who will be developing this project as the command is at the same abstraction level as other commands.</p>
+</li>
+<li>
+<p>Cons: Does not have the undo/redo feature as it is not part of <code>UndoableCommand</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Extend <code>UndoableCommand</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Allows for command to have the undo/redo function.</p>
+</li>
+<li>
+<p>Cons: Requires more work that may not fit in with our timeline.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-inclusion-of-showing-location-on-map"><a class="link" href="#aspect-inclusion-of-showing-location-on-map">Aspect: Inclusion of showing location on map</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Show location of appointment on map</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces the hassle of keying an extra command to show <code>Appointment</code> location on map.</p>
+</li>
+<li>
+<p>Cons: Reduces independent usage of <code>ShowLocationCommand</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Does not show location on map</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduces unnecessary showing of location.</p>
+</li>
+<li>
+<p>Cons: Requires an extra command input to show location when required.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-10 07:49:15 UTC
+</div>
+</div>
+</body>
+</html>
