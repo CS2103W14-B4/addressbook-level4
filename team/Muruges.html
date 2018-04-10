@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Muruges - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Muruges - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-celebmanager"><a class="link" href="#project-celebmanager">PROJECT: CelebManager</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>CelebManager is a software application that aims to allow celebrity managers to maintain schedule of celebrities under them. CelebManager is optimized for users who prefer to work with a Command Line Interface (CLI) while still having a Graphical User Interface (GUI) for visual feedback.</p>
+</div>
+<div class="paragraph">
+<p>In this software, the users should be able to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Manage contacts</p>
+</li>
+<li>
+<p>Manage appointments</p>
+</li>
+<li>
+<p>Manage calendars</p>
+</li>
+<li>
+<p>Plan efficient routes</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to add and edit appointments</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allows users to add new appointments or edit existing appointments in CelebManager. For each appointment, CelebManager takes in an appointment an appointment name field and other optional fields
+such as the list of celebrities attending the appointment.</p>
+</li>
+<li>
+<p>Justification: This feature is in fact the main feature of the appointment, as we want to be able to manage the schedules of celebrities.
+The only way to do this would be to store and make corrections to these appointments that the celebrities are attending, which is what this feature allows for.</p>
+</li>
+<li>
+<p>Highlights: Creating this feature was something that was done over the entirety of the project, due to how we changed how we wanted to implement storing of the appointments.
+There was difficulties in implementation due to the fact that each appointment could only be associated with a single celebrities' calendar at a time. Hence, it was eventually decided that appointments will be stored
+centrally in a <code>StorageCalendar</code> and then cloned for each celebrity attending the appointment.</p>
+</li>
+<li>
+<p>Credits: A third party library called <code>CalendarFX</code> which can be found <a href="https://github.com/dlemmermann/CalendarFX">here</a> was used to implement this feature.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Major enhancement</strong>: added <strong>the ability to add, edit and delete celebrities</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Allow the celebrity manager to create, edit and delete celebrities. The existence of a celebrity will add a calendar to the UI.</p>
+</li>
+<li>
+<p>Justification: This feature works hand in hand with the previous enhancement mentioned. By creating a celebrity, a calendar is created. Now, when we create an appointment and
+add a celebrity to the appointment, the appointment will display on the UI. This means that we are now able to view the appointments and effectively the schedule of the celebrity we are managing.</p>
+</li>
+<li>
+<p>Highlights: This enhancement was carried out through modifications to how the add, edit and delete commands worked. By recognizing a <code>celebrity</code> tag to indicate that the person is a celebrity,
+the add and edit commands now create a calendar for the added or modified celebrity. There were a lot of difficulties as we had to make sure the celebrities
+were synchronized with the calendars even when the commands were undoed or redoed, as add, edit and delete are meant to be undoable.</p>
+</li>
+<li>
+<p>Credits: A third party library called <code>CalendarFX</code> which can be found <a href="https://github.com/dlemmermann/CalendarFX">here</a> was used to implement this feature.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: added an appointment list panel and individual appointment card for viewing the list of appointments stored using the <code>listAppointment</code> command.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/functional/muruges95.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/test/muruges95.md">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:<br>
+Managed releases <code>v1.1</code>, <code>v1.2</code> and <code>v1.3</code> on GitHub</p>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added alias for all commands (Pull request <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/3">#3</a>)</p>
+</li>
+<li>
+<p>Added Calendar panel UI into GUI (Pull request <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/16">#16</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated features content in User Guide: <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/3">#3</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/168">#168</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/122">#122</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/105">#105</a>
+<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/101">#101</a></p>
+</li>
+<li>
+<p>Updated features implementation content in developer guide: <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/168">#168</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/126">#126</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/101">#101</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/59">#59</a>
+<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/51">#51</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/32">#32</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/12">#12</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/1">#1</a>, <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/2">#2</a>, <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/5">#5</a></p>
+</li>
+<li>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/CS2103JAN2018-T15-B4/main/issues/123">1</a>, <a href="https://github.com/CS2103JAN2018-T15-B4/main/issues/122">2</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="address-book-features"><a class="link" href="#address-book-features">Address Book Features</a></h3>
+<div class="sect3">
+<h4 id="person-vs-celebrity-what-s-the-difference"><a class="link" href="#person-vs-celebrity-what-s-the-difference">Person vs Celebrity: What&#8217;s the difference?</a></h4>
+<div class="paragraph">
+<p>In our application, Celebrities are meant to be the celebrities that you, the manager, are currently managing. The other people are each referred to as a Person. The way you create or edit a Person is almost exactly the same as a Celebrity. Both have the same necessary and optional fields to them such as a name, phone number, address, email and some descriptive tags. The only difference is that if you want to create a Celebrity instead of a regular Person in our app, you need to have a compulsory <code>celebrity</code> tag, in small letters. This will signal to the program that you want to create a Celebrity instead of a normal Person. In other words, the usage of <code>celebrity</code> as a tag is reserved for creation of Celebrities. In some of the commands which deal with the adding and editing of a person this will be further explained.</p>
+</div>
+<div class="paragraph">
+<p>Each celebrity has their own calendar, which will displays the appointments he/she will be attending.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-person-code-add-code-since-v1-0"><a class="link" href="#adding-a-person-code-add-code-since-v1-0">Adding a person: <code>add</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Adds a person to CelebManager.<br>
+Alias: <code>a</code><br>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A person can have any number of tags, including 0.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+</li>
+<li>
+<p><code>add n/Betsy Crower t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you want to instead create a <strong>Celebrity</strong>, you <strong>must</strong> include the tag <code>celebrity</code> along with any other tags you wish to add.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/John Lennon p/91827364 e/johnlennon@example.com a/John Lennon Rd, Block 321, #03-04 t/celebrity t/singer</code></p>
+</li>
+<li>
+<p><code>add n/Paul McCartney p/91827364 e/paulmccartney@example.com a/Paul McCartney Rd, Block 789, #05-06 t/celebrity</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can only edit an appointment when you are in appointment list view. Refer to
+<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-person-code-edit-code-since-v1-0"><a class="link" href="#editing-a-person-code-edit-code-since-v1-0">Editing a person : <code>edit</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Edits an existing person in CelebManager.<br>
+Alias: <code>e</code><br>
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing.
+The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+</li>
+<li>
+<p>If <code>celebrity</code> tag gets removed, the person&#8217;s calendar will be removed.</p>
+</li>
+<li>
+<p>If the person now has <code>celebrity</code> tag, a calendar will be created for him/her.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
+Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+</li>
+<li>
+<p><code>edit 2 n/Betsy Crower t/</code><br>
+Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Similar to our <code>add</code> command, if you wish to convert a Person to a Celebrity, you have to include the <code>celebrity</code> tag along with any other tags you wish to add. Conversely, if you wish to convert a Celebrity into a Person, you would have to make sure at least one tag field is included and that the <code>celebrity</code> tag is not used.</p>
+</div>
+<div class="paragraph">
+<p>Example of converting Person into a Celebrity:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>edit 3 n/Jay Chou t/celebrity t/singer</p>
+</li>
+<li>
+<p>edit 1 t/celebrity</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example of converting Celebrity into a Person:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>edit 2 n/Michael Jackson t/Singer</p>
+</li>
+<li>
+<p>edit 4 t/</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="appointment-features"><a class="link" href="#appointment-features">Appointment Features</a></h3>
+<div class="sect3">
+<h4 id="adding-an-appointment-code-addappointment-code-since-v1-2"><a class="link" href="#adding-an-appointment-code-addappointment-code-since-v1-2">Adding an appointment: <code>addAppointment</code> [Since v1.2]</a></h4>
+<div class="paragraph">
+<p>Adds an appointment to CelebManager.<br>
+Alias: <code>aa</code><br>
+Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_CONTACT_INDEX]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addAppointment n/Oscars 2018 l/Hollywood sd/23-03-2018 st/14:00 ed/23-03-2018 et/20:00 p/1 p/5</code></p>
+</li>
+<li>
+<p><code>addAppointment n/Dentist Appointment l/Dental Clinic st/15:45 c/1 c/3</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Start and end dates must be of the format dd/mm/yyyy. If the day is a 1 digit number such as the 3rd of July
+it must be prefixed with a 0, e.g. <code>03/07/2017</code>.</p>
+</li>
+<li>
+<p>Start and end times must be of the format hh:mm. 24 hour format is used for the hour. If either the hour
+or minute is a 1 digit number, you need to prefix it with a 0, e.g. <code>09:05</code>.</p>
+</li>
+<li>
+<p>The celebrity index refers to the person&#8217;s index on the person list displayed inside of our app. This person <strong>must</strong> be a celebrity,
+failing which you will receive an error message stating so.</p>
+</li>
+<li>
+<p>The point of contact index refers to an ordinary person associated with the appointment. This person <strong>must not</strong> be a Celebrity.</p>
+</li>
+<li>
+<p>Similar to our other commands, the celebrity and point of contact indices must be positive numbers greater than 0 and at most the number of person being shown.</p>
+</li>
+<li>
+<p>You can choose multiple celebrities or points of contact whom you want to add the appointment as shown in our example.</p>
+</li>
+<li>
+<p>All the fields with brackets as shown in the format are optional and can be omitted.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-an-appointment-code-editappointment-code-since-v1-4"><a class="link" href="#editing-an-appointment-code-editappointment-code-since-v1-4">Editing an appointment <code>editAppointment</code> [Since v1.4]</a></h4>
+<div class="paragraph">
+<p>Edits an appointment currently stored in CelebManager.<br>
+Alias: <code>ea</code><br>
+Format: <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_CONTACT_INDEX]&#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editAppointment 2 n/Dentist Appointment l/Orchard Road p/3</code></p>
+</li>
+<li>
+<p><code>editAppointment 1 st/16:00 et/20:00 sd/23-03-2018 c/1 c/2</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can only edit an appointment when you are in appointment list view. Refer to
+<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the appointment at the specified <code>INDEX</code>. The index refers to the index number shown in the current
+appointment listing. The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>For more information on constraints of the different fields,
+refer to <a href="#adding-an-appointment-code-addappointment-code-since-v1-2">Adding an appointment: <code>addAppointment</code> [Since v1.2]</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="addappointment-feature"><a class="link" href="#addappointment-feature">AddAppointment Feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The AddAppointment mechanism is facilitated by the <code>AddAppointmentCommand</code>, which resides inside <code>Logic</code>. It supports the adding of an appointment to an existing calendar.
+The appointment, if added successfully, can be viewed in our <code>CalendarPanel</code> UI. This is done by retrieving the list of calendars stored in our <code>CalendarPanel</code>
+and then adding the appointment to one or more of these calendars. This command extends <code>Command</code> so it <strong>does not support the undo/redo feature</strong>.</p>
+</div>
+<div class="paragraph">
+<p>To be able to create appointments, add them to calendars and view the calendar with the added appointments, the external CalendarFX package is used. The API for all the CalendarFX classes and methods used can be found <a href="http://dlsc.com/wp-content/html/calendarfx/apidocs/index.html">here</a>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For the calendar, the <code>CelebCalendar</code> class is used, which extends the default <code>Calendar</code> class from CalendarFX used to describe a calendar.</p>
+</li>
+<li>
+<p>For the appointment, the <code>Appointment</code> class is used, which is extended from <code>Entry</code>, the default class used to represent an entry in a <code>Calendar</code> in CalendarFX.</p>
+</li>
+<li>
+<p>All <code>CelebCalendar</code> instances reside in an instance of <code>CalendarSource</code>, the class used to store a group of calendars in CalendarFX.</p>
+</li>
+<li>
+<p>This instance of <code>CalendarSource</code> is atttached to our <code>CalendarView</code> which is the GUI for our calendar.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Inheritance from the base classes of the external package is done so that we can add in additional methods as necessary.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Right now, the addAppointment command takes in up to 8 parameters. They are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Appointment name [Compulsory field]</p>
+</li>
+<li>
+<p>Location</p>
+</li>
+<li>
+<p>Start Date</p>
+</li>
+<li>
+<p>Start Time</p>
+</li>
+<li>
+<p>End Date</p>
+</li>
+<li>
+<p>End Time</p>
+</li>
+<li>
+<p>Celebrity indices</p>
+</li>
+<li>
+<p>Point of Contact Indices</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <code>AddAppointmentCommandParser</code> is able to create sensible appointments even if 1 or more of the non-compulsory fields are not included. The snippet code below shows how the parsing is handled:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> AddAppointmentCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
+        ArgumentMultimap argMultiMap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_START_TIME,
+                PREFIX_START_DATE,  PREFIX_LOCATION, PREFIX_END_TIME, PREFIX_END_DATE, PREFIX_CELEBRITY,
+                PREFIX_POINT_OF_CONTACT);
+
+        <span class="keyword">if</span> (!arePrefixesPresent(argMultiMap, PREFIX_NAME)
+                || !argMultiMap.getPreamble().isEmpty()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(<span class="predefined-type">String</span>.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddAppointmentCommand.MESSAGE_USAGE));
+        }
+
+        <span class="keyword">try</span> {
+            <span class="predefined-type">String</span> appointmentName = ParserUtil.parseGeneralName(argMultiMap.getValue(PREFIX_NAME)).get();
+            Optional&lt;LocalTime&gt; startTimeInput = ParserUtil.parseTime(argMultiMap.getValue(PREFIX_START_TIME));
+            Optional&lt;LocalDate&gt; startDateInput = ParserUtil.parseDate(argMultiMap.getValue(PREFIX_START_DATE));
+            Optional&lt;LocalTime&gt; endTimeInput = ParserUtil.parseTime(argMultiMap.getValue(PREFIX_END_TIME));
+            Optional&lt;LocalDate&gt; endDateInput = ParserUtil.parseDate(argMultiMap.getValue(PREFIX_END_DATE));
+            Optional&lt;MapAddress&gt; locationInput = ParserUtil.parseMapAddress(argMultiMap.getValue(PREFIX_LOCATION));
+            <span class="predefined-type">Set</span>&lt;Index&gt; celebrityIndices = ParserUtil.parseIndices(argMultiMap.getAllValues(PREFIX_CELEBRITY));
+            <span class="predefined-type">Set</span>&lt;Index&gt; pointOfContactIndices = ParserUtil.parseIndices(argMultiMap.getAllValues(PREFIX_POINT_OF_CONTACT));
+
+            MapAddress location = <span class="predefined-constant">null</span>;
+            LocalTime startTime = LocalTime.now();
+            LocalDate startDate = LocalDate.now();
+            LocalTime endTime = LocalTime.now();
+            LocalDate endDate = LocalDate.now();
+
+            <span class="keyword">if</span> (startTimeInput.isPresent()) {
+                startTime = startTimeInput.get();
+                endTime = startTimeInput.get();
+            }
+            <span class="keyword">if</span> (endTimeInput.isPresent()) {
+                endTime = endTimeInput.get();
+            }
+            <span class="keyword">if</span> (startDateInput.isPresent()) {
+                startDate = startDateInput.get();
+                endDate = startDateInput.get();
+            }
+            <span class="keyword">if</span> (endDateInput.isPresent()) {
+                endDate = endDateInput.get();
+            }
+            <span class="keyword">if</span> (locationInput.isPresent()) {
+                location = locationInput.get();
+            }
+        ...
+    }
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The format for all the fields are located inside of <code>Appointment</code> and are as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Appointment</span> <span class="directive">extends</span> Entry {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_NAME_CONSTRAINTS =
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Appointment names should only contain alphanumeric characters and spaces, and it should not be blank</span><span class="delimiter">&quot;</span></span>; <span class="comment">// used for name and location</span>
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_TIME_CONSTRAINTS =
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Time should be a 2 digit number between 00 to 23 followed by a :</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content"> followed by a 2 digit number beetween 00 to 59. Some examples include </span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content">08:45, 13:45, 00:30</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> MESSAGE_DATE_CONSTRAINTS =
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">Date should be a 2 digit number between 01 to 31 followed by a -</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content"> followed by a 2 digit number between 01 to 12 followed by a -</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content"> followed by a 4 digit number describing a year. Some months might have less than 31 days.</span><span class="delimiter">&quot;</span></span>
+            + <span class="string"><span class="delimiter">&quot;</span><span class="content"> Some examples include: 13-12-2018, 02-05-2019, 28-02-2018</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern(<span class="string"><span class="delimiter">&quot;</span><span class="content">HH:mm</span><span class="delimiter">&quot;</span></span>);
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern(<span class="string"><span class="delimiter">&quot;</span><span class="content">dd-MM-uuuu</span><span class="delimiter">&quot;</span></span>)
+            .withResolverStyle(ResolverStyle.STRICT); <span class="comment">// prevent incorrect dates</span>
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram (Figure 1) gives an overview of how the command works and interacts with the other components:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddAppointmentSequenceDiagram.png" alt="AddAppointmentSequenceDiagram" width="">
+</div>
+<div class="title">Figure 1. Sequence diagram of addAppointment command</div>
+</div>
+<div class="paragraph">
+<p>The figure below (Figure 2) shows the state of the application before input of the <code>AddAppointmentCommand</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/BeforeAddAppointment.jpg" alt="BeforeAddAppointment" width="800">
+</div>
+<div class="title">Figure 2. State of application without any appointments</div>
+</div>
+<div class="paragraph">
+<p>After input of <code>addAppointment n/Oscars 2018 st/18:00 sd/06-04-2018 l/Hollywood et/20:00 ed/06-04-2018 c/1</code>,
+the added appointment will be reflected in the calendar as shown in the figure below (Figure 3):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterAddAppointment.jpg" alt="AfterAddAppointment" width="800">
+</div>
+<div class="title">Figure 3. State of application with newly added appointment</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-ability-to-undo-code-addappointment-code-command"><a class="link" href="#aspect-ability-to-undo-code-addappointment-code-command">Aspect: Ability to undo <code>addAppointment</code> command</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Cannot be undone</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Needs not remember previous state of the storage calendar.</p>
+</li>
+<li>
+<p>Pros: If user made small mistake in one or more of the fields, can use <code>editAppointment</code> command instead of undo and re-add
+the new appointment with the correct fields.</p>
+</li>
+<li>
+<p>If user instead just want to cancel the appointment, can use <code>deleteAppointment</code> command</p>
+</li>
+<li>
+<p>Cons: Cannot remove or edit additions made by mistake without looking at the list of appointments.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Can be undone</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can remove additions made by mistake.</p>
+</li>
+<li>
+<p>Cons: Requires drastic change in the way calendars are currently saved and loaded, as calendars currently only stay
+in UI component while appointments in Model component.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-04-10 17:55:52 UTC
+</div>
+</div>
+</body>
+</html>
