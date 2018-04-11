@@ -1725,6 +1725,15 @@ It supports the retrieval and storage for appointments made by the user.</p>
 </div>
 </div>
 <div class="paragraph">
+<p>The following figure shows the sequence diagram for reading <code>StorageCalendar</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ReadStorageCalendarSequenceDiagram.png" alt="ReadStorageCalendarSequenceDiagram" width="">
+</div>
+<div class="title">Figure 25. Sequence Diagram for reading <code>StorageCalendar</code></div>
+</div>
+<div class="paragraph">
 <p>In the <code>XmlStorageCalendarStorage</code> class, it allows developers to use methods:</p>
 </div>
 <div class="ulist">
@@ -1762,16 +1771,25 @@ In <code>XmlSerializableStorageCalendar</code>, it contains a <code>List</code> 
 <p><code>title</code> of appointment</p>
 </li>
 <li>
-<p><code>interval</code> of appointment indicating its starting and ending time</p>
+<p><code>startTime</code> of appointment indicating its starting time</p>
 </li>
 <li>
-<p><code>fullDay</code> tag of appointment indicating whether if appointment is a full-day event</p>
+<p><code>startDate</code> of appointment indicating its starting date</p>
 </li>
 <li>
-<p><code>calendarName</code> of which the appointment is allocated to</p>
+<p><code>endTime</code> of appointment indicating its ending time</p>
+</li>
+<li>
+<p><code>endDate</code> of appointment indicating its ending date</p>
 </li>
 <li>
 <p><code>location</code> of appointment that is going to happen</p>
+</li>
+<li>
+<p><code>celebrityIds</code> of celebrities that are attending the appointment</p>
+</li>
+<li>
+<p><code>pointOfContactIds</code> of non-celebrities that are attending the appointment</p>
 </li>
 </ul>
 </div>
@@ -1862,7 +1880,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="images/LocationMarker.png" alt="LocationMarker" width="50">
 </div>
-<div class="title">Figure 25. Location marker</div>
+<div class="title">Figure 26. Location marker</div>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the inheritance diagram for <code>ShowLocationCommand</code>:</p>
@@ -1871,7 +1889,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
 </div>
-<div class="title">Figure 26. Inheritance diagram for <code>Command</code></div>
+<div class="title">Figure 27. Inheritance diagram for <code>Command</code></div>
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
@@ -1967,7 +1985,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 27. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 28. Default State of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
 <p>After the input of "showLocation ma/Punggol" the <code>MapPanel</code> will be updated to the diagram below:</p>
@@ -1976,7 +1994,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="content">
 <img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 28. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 29. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="paragraph">
 <p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker.</p>
@@ -2000,7 +2018,7 @@ Whenever an invalid <code>showlocation</code> command is done, any existing loca
 <div class="content">
 <img src="images/ShowLocationSequenceDiagram.png" alt="ShowLocationSequenceDiagram" width="">
 </div>
-<div class="title">Figure 29. Sequence Diagram of <code>showLocation</code> Command</div>
+<div class="title">Figure 30. Sequence Diagram of <code>showLocation</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -2088,13 +2106,13 @@ in the <code>MapPanel</code> by updating the state of the <code>MapPanel</code>.
 <div class="content">
 <img src="images/Start_Location_Marker.png" alt="Start Location Marker" width="100">
 </div>
-<div class="title">Figure 30. Start Location marker</div>
+<div class="title">Figure 31. Start Location marker</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/End_Location_Marker.png" alt="End Location Marker" width="100">
 </div>
-<div class="title">Figure 31. End Location marker</div>
+<div class="title">Figure 32. End Location marker</div>
 </div>
 <div class="paragraph">
 <p><code>EstimateRouteCommand</code> inherits from the Command class and is not part of the Undoable Command.
@@ -2133,7 +2151,7 @@ can be reached by driving.</p>
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 32. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 33. Default State of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
 <p>After the input of "estimateRoute sma/Punggol ema/NUS" the <code>MapPanel</code> will be updated to the diagram below:</p>
@@ -2142,7 +2160,7 @@ can be reached by driving.</p>
 <div class="content">
 <img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
 </div>
-<div class="title">Figure 33. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 34. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="paragraph">
 <p>Any subsequent <code>estimateRoute</code> command will remove any existing marker or route before updating the <code>MapPanel</code> with the new route.</p>
@@ -2166,7 +2184,7 @@ Whenever an invalid <code>estimateRoute</code> command is done, any existing loc
 <div class="content">
 <img src="images/EstimateRouteSequenceDiagram.png" alt="EstimateRouteSequenceDiagram" width="">
 </div>
-<div class="title">Figure 34. Sequence Diagram of <code>estimateRoute</code> Command</div>
+<div class="title">Figure 35. Sequence Diagram of <code>estimateRoute</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -2339,7 +2357,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 35. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 36. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3771,7 +3789,7 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-10 18:01:50 UTC
+Last updated 2018-04-11 02:26:52 UTC
 </div>
 </div>
 </body>
