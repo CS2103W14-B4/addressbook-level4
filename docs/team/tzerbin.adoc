@@ -1,4 +1,4 @@
-= tzerbin - Project Portfolio
+= Ng Tzer Bin - Project Portfolio
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
@@ -6,97 +6,102 @@
 
 ---
 
-== Overview
+== Introduction
 
-CelebManager is a software application that aims to allow celebrity managers to maintain schedule of celebrities under them. CelebManager is optimized for users who prefer to work with a Command Line Interface (CLI) while still having a Graphical User Interface (GUI) for visual feedback.
+CelebManager is a software that aims to allow celebrity managers to maintain the schedule of celebrities under them efficiently. CelebManager is optimized for celebrity managers (users) who prefer to work with a Command Line Interface (CLI) while still having a Graphical User Interface (GUI) for visual feedback.
 
-In this software, the users should be able to:
+In CelebManager, the celebrity managers should be able to enter commands using CLI to:
 
-.   Manage contacts
-.	Manage appointments
-.	Manage calendars
-.	Plan efficient routes
+.   Manage contacts (including celebrities) in an address book,
+.   Manage appointments for celebrities with calendars, and;
+.   Plan efficient routes for celebrities with interactive map.
 
-== Summary of contributions
-
-* *Major enhancement*: Provide functionalities for storing calendar and appointment data
-** What it does: Allow functionalities for celebrity manager to automaticallly save appointments in an .xml file, and read appointments data from a .xml file to run the application.
-
-** Justification: This feature allows other components to communicate with `Storage` component so that other features related to appointments can be saved and retrieved.
-
-** Highlights: This feature affects commands related to appointments, and commands to be added in future.
+This software is developed by a team of 4 for a project in CS2103T Software Engineering in National University of Singapore. This project portfolio aims to demonstrate my project contribution for academic grading, and my programming ability for potential employers or interested parties.
 
 
-* *Code contributed*: [https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/functional/tzerbin.md[Functional code]] [https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/test/tzerbin.md[Test code]]
+== Contributions Summary
 
-* *Other contributions*:
+*Enhancement*
 
-** Project management:
-*** Managed documentation as a whole for project submissions in CS2103T and CS2101.
+In this project, I have added the ability for users to save user data in the hard disk for commands involving calendars and appointments.
 
-** Documentation:
-*** Updated features content in User Guide: https://github.com/CS2103JAN2018-W14-B4/main/pull/108[#108] https://github.com/CS2103JAN2018-W14-B4/main/pull/93[#93] https://github.com/CS2103JAN2018-W14-B4/main/pull/138[#138] https://github.com/CS2103JAN2018-W14-B4/main/pull/20[#20]
-https://github.com/CS2103JAN2018-W14-B4/main/pull/21[#21] https://github.com/CS2103JAN2018-W14-B4/main/pull/58[#58]
-*** Updated features implementation content in developer guide: https://github.com/CS2103JAN2018-W14-B4/main/pull/108[#108] https://github.com/CS2103JAN2018-W14-B4/main/pull/93[#93] https://github.com/CS2103JAN2018-W14-B4/main/pull/138[#138] https://github.com/CS2103JAN2018-W14-B4/main/pull/124[#124]
-https://github.com/CS2103JAN2018-W14-B4/main/pull/58[#58] https://github.com/CS2103JAN2018-W14-B4/main/pull/1[#1]
+* What it does
+** It allows the user to save appointments automatically after adding, editing or deleting appointments in the software using an .xml file.
+** It allows the user to retrieve saved appointments automatically from the .xml file automatically when using the software.
 
-** Community:
-*** Reported bugs and suggestions for other teams in the class
-**** https://github.com/CS2103JAN2018-F11-B2/main/issues/119[Issue 1]
-**** https://github.com/CS2103JAN2018-F11-B2/main/issues/118[Issue 2]
-**** https://github.com/CS2103JAN2018-F11-B2/main/issues/117[Issue 3]
-**** https://github.com/CS2103JAN2018-F11-B2/main/issues/115[Issue 4]
-**** https://github.com/CS2103JAN2018-F11-B2/main/issues/113[Issue 5]
-**** https://github.com/CS2103JAN2018-F11-B2/main/issues/112[Issue 6]
-**** https://github.com/CS2103JAN2018-F11-B2/main/issues/111[Issue 7]
-**** https://github.com/CS2103JAN2018-F11-B2/main/issues/110[Issue 8]
+* Justification
+** This enhancement allows other software components to communicate with the Storage component so that the other features can be saved and retrieved.
+
+* Highlight
+** This enhancement affects current commands related to appointments, and commands that will be added in the future.
+
+* Credit
+** This enhancement is adapted from the existing code base in the Storage component given to the project team.
+
+*Code Contribution*
+
+Please refer to the [https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/functional/tzerbin.md[Functional code]] and [https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/test/tzerbin.md[Test code]] that I have contributed in GitHub. 
+
+*Other Contributions*
+
+I am also responsible for other contributions which does not involve project enhancements.
+
+* Project Management
+** I managed the release of v1.5rc on GitHub.
+* Documentation
+** I was responsible for documentations as a whole for project submissions in CS2103T Software Engineering and CS2101 Effective Communication for Computing Professionals. This includes the formating, layout, language use and consistency for both documentation.
+* Community
+** I reported bugs for other teams working in different projects for CS2103T Software Engineering. The issues can be found in:
+*** https://github.com/CS2103JAN2018-F11-B2/main/issues/119[Issue 1]
+*** https://github.com/CS2103JAN2018-F11-B2/main/issues/118[Issue 2]
+*** https://github.com/CS2103JAN2018-F11-B2/main/issues/117[Issue 3]
+*** https://github.com/CS2103JAN2018-F11-B2/main/issues/115[Issue 4]
+*** https://github.com/CS2103JAN2018-F11-B2/main/issues/113[Issue 5]
+*** https://github.com/CS2103JAN2018-F11-B2/main/issues/112[Issue 6]
+*** https://github.com/CS2103JAN2018-F11-B2/main/issues/111[Issue 7]
+*** https://github.com/CS2103JAN2018-F11-B2/main/issues/110[Issue 8]
 
 
-== Contributions to the User Guide
+== User Guide Contribution
 
 |===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|_The following are sections of the user guide that I had contributed, which showcase my ability to write documentation targeting end-users._
 |===
 
-=== Introduction
+=== Adding a person: `add` [Since v1.0]
 
-CelebManager (CM) is for celebrity managers who *prefer to use a desktop app for managing their celebrity's schedule
-with ease*. More importantly, CM is *optimized for those who prefer to work with a Command Line Interface* (CLI) while
-still having the benefits of a Graphical User Interface (GUI). If you require a versatile application that has the
-feature of *managing contacts, organising schedules, emailing (Coming in v2.0) and trip planning*. You are at the right
-place as CM would be the best platform for you, with its integration of address book, calendar and visual maps.
-Interested? Jump to the <<Quick Start>> to get started. Enjoy!
+Adds a person to CelebManager. +
+Alias: `a` +
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
 
-=== Quick Start
-
-Follow this series of steps to have the CelebManager app quickly up and running on your computer.
-
-.  Ensure you have Java version `1.8.0_60` or later installed in your Computer. The link to the latest version of Java
-can be found
-https://java.com/en/download/[here].
-+
-[NOTE]
-Having any Java 8 version is not enough. +
-This app will not work with earlier versions of Java 8.
-+
-.  Download the latest `addressbook.jar` link:{repoURL}/releases[here].
-.  Copy the file to the folder you want to use as the home folder for your CelebManager.
-.  Double-click the file to start the app. The interface should appear in a few seconds.
-+
-The image below (Figure 1) shows the current interface of CelebManager.
-+
-.Interface of CelebManager
-image::Ui_UserGuide.png[width="790"]
-+
-.  Type `help` in the command box and press kbd:[Enter] to execute it. A help window should be opened.
-+
 [TIP]
-Refer to <<Features>> for details of all commands available in CelebManager and their example usage.
+A person can have any number of tags, including 0.
 
-== Contributions to the Developer Guide
+Examples:
+
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+* `add n/Betsy Crower t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+
+If you want to instead create a *Celebrity*, you *must* include the tag `celebrity` along with any other tags you wish to add.
+
+Examples:
+
+* `add n/John Lennon p/91827364 e/johnlennon@example.com a/John Lennon Rd, Block 321, #03-04 t/celebrity t/singer`
+* `add n/Paul McCartney p/91827364 e/paulmccartney@example.com a/Paul McCartney Rd, Block 789, #05-06 t/celebrity`
+
+Examples:
+
+[IMPORTANT]
+====
+You can only edit an appointment when you are in appointment list view. Refer to
+<<Listing appointments: `listAppointment` [Since v1.3]>> for more information.
+====
+
+
+== Developer Guide Contribution
 
 |===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|_The following are sections of the user guide that I had contributed, which showcase my ability to write technical documentation targeting developers and show technical depth in my contributions._
 |===
 
 === Storage Component
