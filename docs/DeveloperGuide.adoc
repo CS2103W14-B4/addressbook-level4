@@ -2021,14 +2021,6 @@ This section includes instructions to test the estimateRoute command of the appl
    _Expected: Error details shown in the result display. Status bar remains the same. Map removes any existing marker or route._
 .. Type other incorrect  command such as `estimateRoute`, `estimateRoute Punggol NUS`, `estimateRoute sma/Punggol NUS`, `estimateRoute NUS ema/Punggol` in command box and press enter +
    _Expected: Similar to previous._
-////
-=== Saving data
-
-. Dealing with missing/corrupted data files
-
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
-////
-   
 === Viewing a celebrity's calendar
 This section includes instructions to test the `viewCalendar` command of the application.
 [NOTE]
@@ -2044,7 +2036,7 @@ Prerequisites: At least one celebrity in the last shown list and the celebrity's
    _Expected: No change in calendar. Error details shown in the status message._   
 .. Type other incorrect `viewCalendar` commands such as `viewCalendar`, `viewCalendar x` (where `x` is larger than the last shown contact list size or not a valid index number or the index of the celebrity whose calendar is currently displayed) in command box and press enter +
    _Expected: No change in calendar. Error details shown in the status message._
-   
+
 === Viewing the combined calendar
 This section includes instructions to test the `viewCombinedCalendar` command of the application.
 [NOTE]
@@ -2074,7 +2066,7 @@ Prerequisites: Calendar is currently in `day` view.
    _Expected: No change in calendar. Error details shown in the status message._
 .. Type other incorrect `viewCalendarBy` commands such as `viewCalendarBy`, `viewCalendarBy x` (where x is not `day`, `week`, `month` or mixed uppercase and lowercase of one of them) in command box and press enter +
    _Expected: No change in calendar. Error details shown in the status message._
-   
+
 === Viewing a particular day's calendar
 This section includes instructions to test the `viewDate` command of the application.
 [NOTE]
@@ -2095,6 +2087,11 @@ Prerequisites: Calendar is currently in `day` view and displays the current day'
 .. Type `viewDate !` in command box and press enter +
    _Expected: No change in calendar. Error details shown in the status message._
 .. Type other incorrect `viewDate` commands such as `viewDate`, `viewDate x` (where `x` is not a date in `DD-MM-YYYY` or `DD-MM` format) in command box and press enter +
-   _Expected: No change in calendar. Error details shown in the status message._      
-   
-   
+   _Expected: No change in calendar. Error details shown in the status message._
+////
+=== Saving data
+
+. Dealing with missing/corrupted data files
+
+.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
+////

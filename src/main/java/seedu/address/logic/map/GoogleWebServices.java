@@ -14,7 +14,7 @@ import com.google.maps.model.LatLng;
 public class GoogleWebServices {
 
     // 5 API keys for accessing google server
-    public static final String API_KEY_1 = "AIzaSyD__AeJPs2lM6ktAoRrrYMfFfP-_mZckQI";
+    public static final String API_KEY_1 = "AIzaSyBKemZo4WFMDaJ1q_vWxquZxTyYF24skCI";
     public static final String API_KEY_2 = "AIzaSyAplrsZatzM_d2ynML097uqXd1-usgscOA";
     public static final String API_KEY_3 = "AIzaSyDdJMB6Jug8D_45K72FpbEL8S5XQF_98Oc";
     public static final String API_KEY_4 = "AIzaSyA-gBgtvaQU4NMEmO37UJEyx5YHnuFU30E";

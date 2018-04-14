@@ -49,7 +49,6 @@ public class TypicalStorageCalendar {
             new AppointmentBuilder().withName("Grammy Awards")
                     .withStartTime("18:00")
                     .withStartDate("10-10-2019")
-                    .withLocation("Commonwealth Ave")
                     .withEndTime("19:00")
                     .withEndDate("10-10-2019").build());
 
