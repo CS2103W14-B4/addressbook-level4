@@ -1924,7 +1924,7 @@ Prerequisites: List all persons using the `list` command. Multiple persons in th
    _Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated._
 .. Type `delete 0` in command box and press enter. +
    _Expected: No person is deleted. Error details shown in the status message. Status bar remains the same._
-.. Type other incorrect delete command such as `delete`, `delete x` (where x is larger than the list size) in command box and press enter +
+.. Type other incorrect delete command such as `delete`, `delete x` (where `x` is larger than the list size) in command box and press enter +
    _Expected: Similar to previous._
 
 === Adding an appointment
@@ -1954,3 +1954,104 @@ Prerequisites: List all persons using the `list` command. At least one celebrity
 
 .. _{explain how to simulate a missing/corrupted file and the expected behavior}_
 ////
+
+=== Removing a tag
+This section includes instructions to test the `removeTag` command of the application.
+[NOTE]
+Prerequisites: At least one person in the full contact list (not necessarily the last shown list) has `friends` tag.
+
+.. Type `removeTag friends` in command box and press enter +
+   _Expected: `friends` tag is removed from any person who has it. Number of persons affected shown in the status message._
+.. Type `removeTag !@#` in command box and press enter +
+   _Expected: No tag is removed. Error details shown in the status message._
+.. Type `removeTag celebrity` in command box and press enter +
+   _Expected: `celeberity` tag is not removed. Error details shown in the status message._
+.. Type other incorrect `removeTag` commands such as `removeTag`, `removeTag x` (where `x` is a tag that nobody has in the full contact list or an invalid tag name) in command box and press enter +
+   _Expected: No tag is removed. Error details shown in the status message._
+   
+=== Deleting an appointment
+This section includes instructions to test the `deleteAppointment` command of the application.
+[NOTE]
+Prerequisites: List appointments using the `listAppointment` command. At least one appointment in the list.
+
+. while listing appointments:
+.. Type `deleteAppointment 0` in command box and press enter +
+   _Expected: No appointment is deleted. Error details shown in the status message. Appointment list remains the same._
+.. Type `deleteAppointment 1` in command box and press enter +
+   _Expected: First appointment is deleted from the list. If the deleted appointment is the only appointment in the list, CelebManager will switch back to the calendar of the current day._
+.. Type other incorrect `deleteAppointment` commands such as `deleteAppointment`, `deleteAppointment x` (where `x` is larger than the appointment list size) in command box and press enter +
+   _Expected: No appointment is deleted. Error details shown in the status message. Appointment list remains the same._
+
+. While not listing appointments
+.. Type correct deletAppointment commands such as `deleteAppointment 1` in command box and press enter +
+   _Expected: No appointment is deleted. Error details shown in the status message._
+   
+=== Viewing a celebrity's calendar
+This section includes instructions to test the `viewCalendar` command of the application.
+[NOTE]
+Prerequisites: At least one celebrity in the last shown list and the celebrity's calendar is not currently displayed.
+
+.. Type `viewCalendar c` (where `c` is the index of the celebrity) in command box and press enter +
+   _Expected: `CalendarPanel` now displays the celebrity's calendar. If the celebrity is the only celebrity in the full contact list, there won't be any change in terms of the outlook of calendar._
+.. Type `viewCalendar c` (where `c` is the index of the same celebrity in the previous command) again after previous execution in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+.. Type `viewCalendar p` (where `p` is the index of a non-celebrity person) in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+.. Type `viewCalendar 0` in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._   
+.. Type other incorrect `viewCalendar` commands such as `viewCalendar`, `viewCalendar x` (where `x` is larger than the last shown contact list size or not a valid index number or the index of the celebrity whose calendar is currently displayed) in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+   
+=== Viewing the combined calendar
+This section includes instructions to test the `viewCombinedCalendar` command of the application.
+[NOTE]
+Prerequisites: Combined calendar is not currently displayed.
+
+.. Type `viewCombinedCalendar` in command box and press enter +
+   _Expected: `CalendarPanel` now displays the combined calendar. If there is only one celebrity in the full contact list, there won't be any change in terms of the outlook of calendar._
+.. Type `viewCombinedCalendar` again after previous execution in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+
+=== Changing to a different calendar view
+This section includes instructions to test the `viewCalendarBy` command of the application.
+[NOTE]
+Prerequisites: Calendar is currently in `day` view.
+
+.. Type `viewCalendarBy week` in command box and press enter +
+   _Expected: Calendar shows the week which the original day is in._
+.. Type `viewCalendarBy month` in command box and press enter +
+   _Expected: Calendar shows the month which the original day is in._
+.. Type `viewCalendarBy day` in command box and press enter +
+   _Expected: Calendar shows the day which is the original day._
+.. Type `viewCalendarBy day` again after executing the previous command in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._ 
+.. Type `viewCalendarBy MOnTh` in command box and press enter +
+   _Expected: Calendar shows the week which the original day is in._
+.. Type `viewCalendarBy 1` in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+.. Type other incorrect `viewCalendarBy` commands such as `viewCalendarBy`, `viewCalendarBy x` (where x is not `day`, `week`, `month` or mixed uppercase and lowercase of one of them) in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+   
+=== Viewing a particular day's calendar
+This section includes instructions to test the `viewDate` command of the application.
+[NOTE]
+Prerequisites: Calendar is currently in `day` view and displays the current day's calendar. Current day is not 1st April of 2018.
+
+.. Type `viewDate 01-04-2018` in command box and press enter +
+   _Expected: `CalendarPanel` displays the calendar for 1st April of 2018._
+.. Type `viewDate d` (where `d` is a date that is different from the current day's date, in DD-MM format) in command box and press enter +
+   _Expected: `CalendarPanel` displays the calendar for date `d` of current year._
+.. Type `viewDate` in command box and press enter +
+   _Expected: `CalendarPanel` displays the calendar for the current day._
+.. Type `viewDate` again after executing the previous command in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+.. Type `viewDate 01-04` again after executing the previous command in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._ 
+.. Type `viewDate 0` in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+.. Type `viewDate !` in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._
+.. Type other incorrect `viewDate` commands such as `viewDate`, `viewDate x` (where `x` is not a date in `DD-MM-YYYY` or `DD-MM` format) in command box and press enter +
+   _Expected: No change in calendar. Error details shown in the status message._      
+   
+   
