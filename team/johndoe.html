@@ -166,7 +166,8 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify CelebManager&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>, etc).</p>
+<p>Undoable commands: those commands that modify CelebManager&#8217;s persons (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>,
+<code>removeTag</code> etc).</p>
 </div>
 </td>
 </tr>
@@ -180,9 +181,10 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoing deletion of a person will not restore this person to the appointment he/she should attend before deletion.
-If a person gets deleted, he/she will be removed from all appointments that have him/her as attendess or
-point-of-contacts. This removal is not undone by undoing the deletion.</p>
+<p>Undoing deletion of a person will not restore this person to the appointment he/she is associated with before deletion.
+When a person gets deleted, he/she will be removed from all appointments that have him/her as attendess or
+point-of-persons. Undoing the deletion can only restore the person&#8217;s information but not the appointments. If the
+person is a celebrity, appointments previously stored in his/her calendar will not be undone as well.</p>
 </div>
 </td>
 </tr>
@@ -198,29 +200,11 @@ point-of-contacts. This removal is not undone by undoing the deletion.</p>
 <code>list</code><br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If a <code>celebrity</code> is at index <code>1</code>, the <code>celebrity</code> 's calendar will be re-created and become empty after <code>undo</code>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><code>select 1</code><br>
 <code>list</code><br>
 <code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+The operation fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
 <p><code>delete 1</code><br>
@@ -607,7 +591,7 @@ An <code>Exception</code> will be thrown when popping the <code>redoStack</code>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:26:42 UTC
+Last updated 2018-04-14 07:47:25 UTC
 </div>
 </div>
 </body>

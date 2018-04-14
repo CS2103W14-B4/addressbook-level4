@@ -44,11 +44,11 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CelebManager (CM) is for celebrity managers who <strong>prefer to use a desktop app for managing their celebrity&#8217;s schedule
-with ease</strong>. More importantly, CM is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while
+<p>CelebManager is a computer software designed to help celebrity managers <strong>to manage their celebrities' schedules</strong>.
+It is <strong>optimized for managers who prefer to work with a Command Line Interface</strong> (CLI) while
 still having the benefits of a Graphical User Interface (GUI). If you require a versatile application that has the
-feature of <strong>managing contacts, organising schedules, emailing (Coming in v2.0) and trip planning</strong>. You are at the right
-place as CM would be the best platform for you, with its integration of address book, calendar and visual maps.
+feature of <strong>managing persons, organising schedules, emailing (Coming in v2.0) and trip planning</strong>. You are at the right
+place as CelebManager would be the best platform for you, with its integration of address book, calendar and visual maps.
 Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
@@ -57,7 +57,7 @@ Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#82
 <h2 id="quick-start"><a class="link" href="#quick-start">2. Quick Start</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Follow this series of steps to have the CelebManager app quickly up and running on your computer.</p>
+<p>Follow this series of steps to have CelebManager quickly up and running on your computer.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -80,7 +80,7 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/CS2103JAN2018-W14-B4/main/releases">here</a>.</p>
+<p>Download the latest <code>CelebManager.jar</code> <a href="https://github.com/CS2103JAN2018-W14-B4/main/releases">here</a>.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for your CelebManager.</p>
@@ -88,17 +88,38 @@ This app will not work with earlier versions of Java 8.
 <li>
 <p>Double-click the file to start the app. The interface should appear in a few seconds.</p>
 <div class="paragraph">
-<p>The image below (Figure 1) shows the current interface of CelebManager.</p>
+<p>The image below (Figure 1) shows the interface of CelebManager after the first launch.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui_UserGuide.png" alt="Ui UserGuide" width="790">
+<img src="images/Ui_UserGuide.jpg" alt="Ui UserGuide" width="790">
 </div>
-<div class="title">Figure 1. Interface of CelebManager</div>
+<div class="title">Figure 1. Interface of CelebManager upon the first launch</div>
+</div>
+<div class="paragraph">
+<p>CelebManager&#8217;s interface comprises of 5 panels: <code>CommandBox</code> (top), <code>ResultDisplay</code> (right below <code>CommandBox</code>),
+<code>PersonListPanel</code> (left), <code>MapPanel</code> (bottom left), and <code>CalendarPanel</code> (bottom right), as labelled in the figure below.
+Note that the labelling is for illustration purpose and will not appear in the actual interface.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui_labelled_UserGuide.jpg" alt="Ui labelled UserGuide" width="790">
+</div>
+<div class="title">Figure 2. Interface of CelebManager with labels</div>
+</div>
+<div class="paragraph">
+<p><code>CommandBox</code> is for you to enter the commands.<br>
+<code>ResultsDisplay</code> shows the execution result of the command entered in <code>CommandBox</code>.<br>
+<code>PersonListPanel</code> displays the details of each person stored in CelebManager. There are some persons created to
+provide you a quick view of how each person looks like in <code>PersonListPanel</code>. You can follow this guide to clear these
+persons in the later part.<br>
+<code>MapPanel</code> provides you a map view.<br>
+<code>CalendarPanel</code> provides you a calendar view of the appointments stored in CelebManager.<br>
+These panel names will be used to help explain the functionality of different commands.</p>
 </div>
 </li>
 <li>
-<p>Type <code>help</code> in the command box and press <kbd>Enter</kbd> to execute it. A help window should be opened.</p>
+<p>Type <code>help</code> in <code>CommandBox</code> and press <kbd>Enter</kbd> to execute it. A help window should be opened.</p>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -130,22 +151,23 @@ Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details o
 <div class="ulist">
 <ul>
 <li>
-<p>Some commands have an alias, which you can also use to execute the command e.g. to add a person to CelebManager,
-you can type either <code>add n/John Doe</code> or <code>a n/John Doe</code>.</p>
+<p>All commands have an alias, which you can also use to execute the command, e.g. to add a contact to CelebManager,
+you can type either <code>add n/John Doe p/123456 e/john@gmail.com a/Clementi</code> or <code>a n/John Doe p/123456 e/john@gmail.com a/Clementi</code>.</p>
 </li>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which
-can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by you, e.g. in <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS</code>,
+<code>NAME</code>, <code>PHONE_NUMBER</code>, <code>EMAIL</code>, <code>ADDRESS</code>, and <code>TAG</code> are parameters which can be used as
+<code>add n/John Doe p/123456 e/john@gmail.com a/Clementi</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional, e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times, e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code>
 (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also
+<p>Parameters can be in any order, e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also
 acceptable.</p>
 </li>
 </ul>
@@ -164,40 +186,59 @@ acceptable.</p>
 This bug will be fixed in v2.0.</p>
 </li>
 <li>
-<p>Commands that modify the people and appointments stored in CelebManager (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>undo</code>, <code>redo</code>,
-<code>addAppointment</code>) must be performed in combined calendar view unless specified otherwise.<br>
+<p>Commands that modify the persons and appointments stored in CelebManager (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>undo</code>, <code>redo</code>,
+<code>addAppointment</code>, <code>deleteAppointment</code>, <code>editAppointment</code> etc) must be performed in combined calendar view unless
+specified otherwise.<br>
 Information about combined calendar view can be found in<br>
-<a href="#changing-to-view-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3">Section 3.4.2, &#8220;Changing to view the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]&#8221;</a>.</p>
+<a href="#Changing to view the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]">[Changing to view the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]]</a>.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
+<p>In this section, screenshots of CelebManager are provided for your reference. The screenshots assume that CelebManager
+is launched for the first time and commands are executed in the same format as the example usage, and in the same order
+as they are listed here.<br></p>
+</div>
+<div class="paragraph">
 <p>The following are all the commands available to you:</p>
 </div>
 <div class="sect2">
 <h3 id="general-features"><a class="link" href="#general-features">3.1. General Features</a></h3>
+<div class="paragraph">
+<p>General features include commands that affect and are affected by the overall status of CelebManager.</p>
+</div>
 <div class="sect3">
-<h4 id="clearing-all-entries-code-clear-code-since-v1-0"><a class="link" href="#clearing-all-entries-code-clear-code-since-v1-0">3.1.1. Clearing all entries : <code>clear</code> [Since v1.0]</a></h4>
+<h4 id="viewing-help-code-help-code-since-v1-0"><a class="link" href="#viewing-help-code-help-code-since-v1-0">3.1.1. Viewing help : <code>help</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Shows a help window that contains this User Guide.<br>
+Format: <code>help</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="clearing-all-entries-code-clear-code-since-v1-0"><a class="link" href="#clearing-all-entries-code-clear-code-since-v1-0">3.1.2. Clearing all entries : <code>clear</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Clears all entries from CelebManager.<br>
 Alias: <code>c</code><br>
-Format: <code>clear</code></p>
+Format: <code>clear</code><br>
+The picture below shows how CelebManager looks like after executing <code>clear</code>.<br></p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui_clean_state.jpg" alt="Ui clean state" width="790">
 </div>
-<div class="sect3">
-<h4 id="exiting-the-program-code-exit-code-since-v1-0"><a class="link" href="#exiting-the-program-code-exit-code-since-v1-0">3.1.2. Exiting the program : <code>exit</code> [Since v1.0]</a></h4>
+<div class="title">Figure 3. Status of CelebManager after executing <code>clear</code></div>
+</div>
 <div class="paragraph">
-<p>Exits the program.<br>
-Alias: <code>x</code><br>
-Format: <code>exit</code></p>
+<p><code>PersonListPanel</code> and <code>CalendarPanel</code> should become empty. It is possible that your calendar in <code>CalendarPanel</code> shows
+a different date as it should show the current date.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="listing-entered-commands-code-history-code-since-v1-0"><a class="link" href="#listing-entered-commands-code-history-code-since-v1-0">3.1.3. Listing entered commands : <code>history</code> [Since v1.0]</a></h4>
 <div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
+<p>Lists all the commands that you have entered in reverse chronological order in <code>ResultDisplay</code>.<br>
 Alias: <code>h</code><br>
 Format: <code>history</code></p>
 </div>
@@ -218,14 +259,362 @@ box.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing-help-code-help-code-since-v1-0"><a class="link" href="#viewing-help-code-help-code-since-v1-0">3.1.4. Viewing help : <code>help</code> [Since v1.0]</a></h4>
+<h4 id="exiting-the-program-code-exit-code-since-v1-0"><a class="link" href="#exiting-the-program-code-exit-code-since-v1-0">3.1.4. Exiting the program : <code>exit</code> [Since v1.0]</a></h4>
 <div class="paragraph">
-<p>Shows a help window that contains this User Guide.<br>
-Format: <code>help</code></p>
+<p>Exits the program.<br>
+Alias: <code>x</code><br>
+Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code-since-v1-0"><a class="link" href="#undoing-previous-command-code-undo-code-since-v1-0">3.1.5. Undoing previous command : <code>undo</code> [Since v1.0]</a></h4>
+<h4 id="saving-the-data-since-v1-0"><a class="link" href="#saving-the-data-since-v1-0">3.1.5. Saving the data [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>CelebManager data are saved in the hard disk automatically after any command that changes the data.<br>
+There is no need to save manually.</p>
+</div>
+<div class="paragraph">
+<p> <br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="address-book-features"><a class="link" href="#address-book-features">3.2. Address Book Features</a></h3>
+<div class="paragraph">
+<p>Address book features allow you to modify and interact with the person list displayed in <code>PersonListPanel</code> located at
+the middle left of CelebManager.</p>
+</div>
+<div class="sect3">
+<h4 id="adding-a-person-code-add-code-since-v1-0"><a class="link" href="#adding-a-person-code-add-code-since-v1-0">3.2.1. Adding a person: <code>add</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Adds a person to CelebManager.<br>
+Alias: <code>a</code><br>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+A person can have any number of tags, including 0.
+</td>
+</tr>
+</table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You can add two types of persons to CelebManager: contacts and celebrities.</p>
+</li>
+<li>
+<p>Celebrities refer to the celebrities that you, the manager, are currently managing, while contacts refer to other persons.</p>
+</li>
+<li>
+<p>Contacts refer to contacts other than celebrities.</p>
+</li>
+<li>
+<p>If you want to add a celebrity to CelebManager, you need to tag him/her with <code>celebrity</code> tag.
+Refer to examples below for more information.</p>
+</li>
+<li>
+<p>For each celebrity added, CelebManager creates a calendar in <code>CalendarPanel</code> for him/her. This calendar displays the appointments
+he/she will be attending.</p>
+</li>
+<li>
+<p>CelebManager assumes that any celebrity added is a celebrity that you are managing. If you want to add an actual celebrity
+who is not managed by you, you need to avoid using <code>celebrity</code> tag and find another tag name to indicate this information.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code><br>
+Adds a contact named <code>John Doe</code> to CelebManager.</p>
+</li>
+<li>
+<p><code>add n/Betsy Crower t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code><br>
+Adds a contact named <code>Betsy Crower</code> to CelebManager.</p>
+</li>
+<li>
+<p><code>add n/John Lennon p/91827364 e/johnlennon@example.com a/John Lennon Rd, Block 321, #03-04 t/celebrity t/singer</code><br>
+Adds a celebrity named <code>John Lennon</code> to CelebManager and creates an empty calendar named <code>John Lennon</code>.</p>
+</li>
+<li>
+<p><code>add n/Paul McCartney p/91827364 e/paulmccartney@example.com a/Paul McCartney Rd, Block 789, #05-06 t/celebrity</code><br>
+Adds a celebrity named <code>Paul McCartney</code> to CelebManager and creates an empty calendar named <code>Paul McCartney</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="locating-persons-by-name-code-find-code-since-v1-0"><a class="link" href="#locating-persons-by-name-code-find-code-since-v1-0">3.2.2. Locating persons by name: <code>find</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Shows a list of all persons whose names contain any of the given keywords.<br>
+Alias: <code>f</code><br>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This search is case insensitive, e.g <code>hans</code> will match <code>Hans</code>.</p>
+</li>
+<li>
+<p>The order of keywords does not matter, e.g. <code>Hans Bo</code> will match <code>Bo Hans</code>.</p>
+</li>
+<li>
+<p>Only full words are matched, e.g. <code>Han</code> will not match <code>Hans</code>.</p>
+</li>
+<li>
+<p>persons matching at least one keyword will be returned (i.e. <code>OR</code> search), e.g. <code>Hans Bo</code> will list out <code>Hans Gruber</code>
+and <code>Bo Yang</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John</code><br>
+Lists out any person having the name <code>John</code>.</p>
+</li>
+<li>
+<p><code>find Betsy John</code><br>
+Lists out any person having any of the names: <code>Betsy</code> or <code>John</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-persons-code-list-code-since-v1-0"><a class="link" href="#listing-all-persons-code-list-code-since-v1-0">3.2.3. Listing all persons : <code>list</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Shows a list of all persons in CelebManager.<br>
+Alias: <code>l</code><br>
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-a-person-code-delete-code-since-v1-0"><a class="link" href="#deleting-a-person-code-delete-code-since-v1-0">3.2.4. Deleting a person : <code>delete</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Deletes the specified person from CelebManager.<br>
+Alias: <code>d</code><br>
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the person at the specified <code>INDEX</code> from <code>PersonListPanel</code>. This deletion is undoable.</p>
+</li>
+<li>
+<p>If the person is a contact, he/she will be deleted from points of contacts of appointments he/she is associated with.
+Deletion of the contact from appointments <strong>is not undoable</strong>.</p>
+</li>
+<li>
+<p>If the person is a celebrity, his/her calendar will be deleted. He/She will be deleted from appointments that he/she
+will be attending. Deletion of the calendar and the celebrity from appointments <strong>is not undoable</strong>.</p>
+</li>
+<li>
+<p>When you undo deletion of a celebrity, a new empty calendar will be created for the restored celebrity.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>delete 2</code><br>
+Deletes the 2nd person displayed in <code>PersonListPanel</code>. If <code>PersonListPanel</code> is empty, an error message will be shown.</p>
+</li>
+<li>
+<p><code>find Paul</code><br>
+<code>delete 1</code><br>
+Deletes the 1st person in the results of the <code>find</code> command. If the list is empty, an error message will be shown.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="selecting-a-person-code-select-code-since-v1-0"><a class="link" href="#selecting-a-person-code-select-code-since-v1-0">3.2.5. Selecting a person : <code>select</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Selects the person identified by the index number used in the last person listing.<br>
+Alias: <code>s</code><br>
+Format: <code>select INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Selects the person at the specified <code>INDEX</code> in the last shown person list.</p>
+</li>
+<li>
+<p>The selected person&#8217;s information will be highlited with yellow colour.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+Selects the 2nd person in <code>PersonListPanel</code>.</p>
+</li>
+<li>
+<p><code>find Betsy</code><br>
+<code>select 1</code><br>
+Selects the 1st person in the results of the <code>find</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-a-person-code-edit-code-since-v1-0"><a class="link" href="#editing-a-person-code-edit-code-since-v1-0">3.2.6. Editing a person : <code>edit</code> [Since v1.0]</a></h4>
+<div class="paragraph">
+<p>Edits an existing person in CelebManager.<br>
+Alias: <code>e</code><br>
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the last person listing.</p>
+</li>
+<li>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.</p>
+</li>
+<li>
+<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tag after it.</p>
+</li>
+<li>
+<p>If <code>celebrity</code> tag gets removed, the person&#8217;s calendar will be removed and person will be removed from appointments
+he/she will be attending. Removal of the calendar and person from appointments <strong>is not undoable</strong>.</p>
+</li>
+<li>
+<p>If the person now has <code>celebrity</code> tag, a calendar will be created for him/her.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>edit 1 p/91234567 e/johndoe@example.com</code><br>
+Changes the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+</li>
+<li>
+<p><code>edit 2 n/Betsy Crowen t/</code><br>
+Changes the name of the 2nd person to be <code>Betsy Crowen</code> and clears all existing tags.</p>
+</li>
+<li>
+<p><code>edit 1 t/celebrity</code>
+Converts the 1st person to a celebrity.
+If you follow all the examples so far, a new calendar should be created for this person as shown below.</p>
+</li>
+<li>
+<p><code>edit 3 n/Michael Jackson t/Singer</code>
+Converts the 3rd person to a contact.
+If you follow all the examples so far, this person&#8217;s calendar should be deleted as shown below.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removing-a-tag-code-removetag-code-since-v1-2"><a class="link" href="#removing-a-tag-code-removetag-code-since-v1-2">3.2.7. Removing a tag : <code>removeTag</code> [Since v1.2]</a></h4>
+<div class="paragraph">
+<p>Removes the specified tag from every person in CelebManager and shows the number of person(s) affected by this
+operation.<br>
+Alias: <code>rt</code><br>
+Format: <code>removeTag TAG</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Removes the tag from every person in CelebManager.</p>
+</li>
+<li>
+<p><code>TAG</code> removed <strong>must not be</strong> <code>celebrity</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>removeTag friends</code><br>
+Removes the tag, <code>friends</code> from every person and shows the number of person(s) affected.</p>
+</li>
+<li>
+<p><code>removeTag colleagues</code><br>
+Removes the tag, <code>colleagues</code> from every person and shows the number of person(s) affected.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="undoing-previous-command-code-undo-code-since-v1-0"><a class="link" href="#undoing-previous-command-code-undo-code-since-v1-0">3.2.8. Undoing previous command : <code>undo</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Restores CelebManager to the state before the previous <em>undoable</em> command was executed.<br>
 Alias: <code>u</code><br>
@@ -239,7 +628,8 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify CelebManager&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>, etc).</p>
+<p>Undoable commands: those commands that modify CelebManager&#8217;s persons (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>,
+<code>removeTag</code> etc).</p>
 </div>
 </td>
 </tr>
@@ -253,9 +643,10 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoing deletion of a person will not restore this person to the appointment he/she should attend before deletion.
-If a person gets deleted, he/she will be removed from all appointments that have him/her as attendess or
-point-of-contacts. This removal is not undone by undoing the deletion.</p>
+<p>Undoing deletion of a person will not restore this person to the appointment he/she is associated with before deletion.
+When a person gets deleted, he/she will be removed from all appointments that have him/her as attendess or
+point-of-persons. Undoing the deletion can only restore the person&#8217;s information but not the appointments. If the
+person is a celebrity, appointments previously stored in his/her calendar will not be undone as well.</p>
 </div>
 </td>
 </tr>
@@ -271,29 +662,11 @@ point-of-contacts. This removal is not undone by undoing the deletion.</p>
 <code>list</code><br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If a <code>celebrity</code> is at index <code>1</code>, the <code>celebrity</code> 's calendar will be re-created and become empty after <code>undo</code>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><code>select 1</code><br>
 <code>list</code><br>
 <code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+The operation fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
 <p><code>delete 1</code><br>
@@ -305,7 +678,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code-since-v1-0"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-since-v1-0">3.1.6. Redoing the previously undone command : <code>redo</code> [Since v1.0]</a></h4>
+<h4 id="redoing-the-previously-undone-command-code-redo-code-since-v1-0"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-since-v1-0">3.2.9. Redoing the previously undone command : <code>redo</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Alias: <code>r</code><br>
@@ -336,354 +709,6 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="saving-the-data-since-v1-0"><a class="link" href="#saving-the-data-since-v1-0">3.1.7. Saving the data [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>CelebManager data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
-</div>
-<div class="paragraph">
-<p> <br></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="address-book-features"><a class="link" href="#address-book-features">3.2. Address Book Features</a></h3>
-<div class="sect3">
-<h4 id="person-vs-celebrity-what-s-the-difference"><a class="link" href="#person-vs-celebrity-what-s-the-difference">3.2.1. Person vs Celebrity: What&#8217;s the difference?</a></h4>
-<div class="paragraph">
-<p>In our application, Celebrities are meant to be the celebrities that you, the manager, are currently managing. The other people are each referred to as a Person. The way you create or edit a Person is almost exactly the same as a Celebrity. Both have the same necessary and optional fields to them such as a name, phone number, address, email and some descriptive tags. The only difference is that if you want to create a Celebrity instead of a regular Person in our app, you need to have a compulsory <code>celebrity</code> tag, in small letters. This will signal to the program that you want to create a Celebrity instead of a normal Person. In other words, the usage of <code>celebrity</code> as a tag is reserved for creation of Celebrities. In some of the commands which deal with the adding and editing of a person this will be further explained.</p>
-</div>
-<div class="paragraph">
-<p>Each celebrity has their own calendar, which will displays the appointments he/she will be attending.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="adding-a-person-code-add-code-since-v1-0"><a class="link" href="#adding-a-person-code-add-code-since-v1-0">3.2.2. Adding a person: <code>add</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Adds a person to CelebManager.<br>
-Alias: <code>a</code><br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags, including 0.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
-</li>
-<li>
-<p><code>add n/Betsy Crower t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>If you want to instead create a <strong>Celebrity</strong>, you <strong>must</strong> include the tag <code>celebrity</code> along with any other tags you wish to add.</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/John Lennon p/91827364 e/johnlennon@example.com a/John Lennon Rd, Block 321, #03-04 t/celebrity t/singer</code></p>
-</li>
-<li>
-<p><code>add n/Paul McCartney p/91827364 e/paulmccartney@example.com a/Paul McCartney Rd, Block 789, #05-06 t/celebrity</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>You can only edit an appointment when you are in appointment list view. Refer to
-<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-a-person-code-delete-code-since-v1-0"><a class="link" href="#deleting-a-person-code-delete-code-since-v1-0">3.2.3. Deleting a person : <code>delete</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Deletes the specified person from CelebManager.<br>
-Alias: <code>d</code><br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in CelebManager.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="selecting-a-person-code-select-code-since-v1-0"><a class="link" href="#selecting-a-person-code-select-code-since-v1-0">3.2.4. Selecting a person : <code>select</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
-Alias: <code>s</code><br>
-Format: <code>select INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the person at the specified <code>INDEX</code> in the last shown person list.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in CelebManager.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>select 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="editing-a-person-code-edit-code-since-v1-0"><a class="link" href="#editing-a-person-code-edit-code-since-v1-0">3.2.5. Editing a person : <code>edit</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Edits an existing person in CelebManager.<br>
-Alias: <code>e</code><br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing.
-The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-<li>
-<p>If <code>celebrity</code> tag gets removed, the person&#8217;s calendar will be removed.</p>
-</li>
-<li>
-<p>If the person now has <code>celebrity</code> tag, a calendar will be created for him/her.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Similar to our <code>add</code> command, if you wish to convert a Person to a Celebrity, you have to include the <code>celebrity</code> tag along with any other tags you wish to add. Conversely, if you wish to convert a Celebrity into a Person, you would have to make sure at least one tag field is included and that the <code>celebrity</code> tag is not used.</p>
-</div>
-<div class="paragraph">
-<p>Example of converting Person into a Celebrity:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>edit 3 n/Jay Chou t/celebrity t/singer</p>
-</li>
-<li>
-<p>edit 1 t/celebrity</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Example of converting Celebrity into a Person:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>edit 2 n/Michael Jackson t/Singer</p>
-</li>
-<li>
-<p>edit 4 t/</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="listing-all-persons-code-list-code-since-v1-0"><a class="link" href="#listing-all-persons-code-list-code-since-v1-0">3.2.6. Listing all persons : <code>list</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Shows a list of all persons in CelebManager.<br>
-Alias: <code>l</code><br>
-Format: <code>list</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="locating-persons-by-name-code-find-code-since-v1-0"><a class="link" href="#locating-persons-by-name-code-find-code-since-v1-0">3.2.7. Locating persons by name: <code>find</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Alias: <code>f</code><br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code>.</p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code>.</p>
-</li>
-<li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code>.</p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>,
-<code>Bo Yang</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code>.</p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="removing-a-tag-code-removetag-code-since-v1-2"><a class="link" href="#removing-a-tag-code-removetag-code-since-v1-2">3.2.8. Removing a tag : <code>removeTag</code> [Since v1.2]</a></h4>
-<div class="paragraph">
-<p>Removes the specified tag from every person with it in CelebManager and shows the number of person(s) affected by this
-operation.<br>
-Alias: <code>rt</code><br>
-Format: <code>removeTag TAG</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Removes the tag from every person with it in CelebManager.</p>
-</li>
-<li>
-<p><code>TAG</code> removed <strong>must not be</strong> <code>celebrity</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>removeTag friends</code><br>
-Removes the tag, <code>friends</code> from every person with it in CelebManager and shows the number of person(s) affected.</p>
-</li>
-<li>
-<p><code>removeTag colleagues</code><br>
-Removes the tag, <code>colleagues</code> from every person with it in CelebManager and shows the number of person(s) affected.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p> <br></p>
 </div>
@@ -691,12 +716,79 @@ Removes the tag, <code>colleagues</code> from every person with it in CelebManag
 </div>
 <div class="sect2">
 <h3 id="appointment-features"><a class="link" href="#appointment-features">3.3. Appointment Features</a></h3>
+<div class="paragraph">
+<p>Appointment features allow you to modify appointments stored in CelebManager. The commands introduced in this section
+are all <strong>not undoable</strong>.</p>
+</div>
 <div class="sect3">
 <h4 id="adding-an-appointment-code-addappointment-code-since-v1-2"><a class="link" href="#adding-an-appointment-code-addappointment-code-since-v1-2">3.3.1. Adding an appointment: <code>addAppointment</code> [Since v1.2]</a></h4>
 <div class="paragraph">
-<p>Adds an appointment to CelebManager.<br>
-Alias: <code>aa</code><br>
-Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_CONTACT_INDEX]&#8230;&#8203;</code></p>
+<p>Adds an appointment and shows the calendar of the start date of the added appointment.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To change the date displayed by the calendar in <code>CalendarPanel</code>,
+refer to <a href="#Changing the base date of calendar: <code>viewDate</code> [Since v1.5]">[Changing the base date of calendar: <code>viewDate</code> [Since v1.5]]</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Alias: <code>aa</code><br>
+Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME]
+[c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>START_DATE</code> and <code>END_DATE</code> must be of the format <code>DD-MM-YYYY</code>, e.g. <code>03-07-2018</code>.</p>
+</li>
+<li>
+<p><code>START_DATE</code> <strong>must not be</strong> after <code>END_DATE</code>.</p>
+</li>
+<li>
+<p>If <code>START_DATE</code> or <code>END_DATE</code> is omitted, it will take on the value of the current date.</p>
+</li>
+<li>
+<p><code>START_TIME</code> and <code>END_TIME</code> must be of the format <code>HH:MM</code> and 24-hour format is used, e.g. <code>14:05</code>.</p>
+</li>
+<li>
+<p><code>START_TIME</code> <strong>must be</strong> at least 15 minutes before <code>END_TIME</code> if <code>START_DATE</code> is equal to <code>END_DATE</code>.</p>
+</li>
+<li>
+<p>If <code>START_TIME</code> and <code>END_TIME</code> are both omitted, <code>START_TIME</code> will take on the current time and <code>END_TIME</code> will be
+15 minutes after <code>START_TIME</code>.</p>
+</li>
+<li>
+<p>If <code>START_TIME</code> is omitted while <code>END_TIME</code> is not, <code>START_TIME</code> will be 15 minutes before <code>END_TIME</code>.</p>
+</li>
+<li>
+<p>If <code>END_TIME</code> is omitted while <code>START_TIME</code> is not, <code>END_TIME</code> will be 15 minutes after <code>START_TIME</code>.</p>
+</li>
+<li>
+<p><code>CELEBRITY_INDEX</code> and <code>POINT_OF_person_INDEX</code> refer to the index shwon in the last shown person list in <code>PersonListPanel</code>.</p>
+</li>
+<li>
+<p>The person at <code>CELEBRITY_INDEX</code> <strong>must be</strong> a celebrity.</p>
+</li>
+<li>
+<p>The person at <code>POINT_OF_person_INDEX</code> <strong>must not be</strong> a celebrity.</p>
+</li>
+<li>
+<p><code>CELEBRITY_INDEX</code> and <code>POINT_OF_person_INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -711,164 +803,13 @@ Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Start and end dates must be of the format dd/mm/yyyy. If the day is a 1 digit number such as the 3rd of July
-it must be prefixed with a 0, e.g. <code>03/07/2017</code>.</p>
-</li>
-<li>
-<p>Start and end times must be of the format hh:mm. 24 hour format is used for the hour. If either the hour
-or minute is a 1 digit number, you need to prefix it with a 0, e.g. <code>09:05</code>.</p>
-</li>
-<li>
-<p>The celebrity index refers to the person&#8217;s index on the person list displayed inside of our app. This person <strong>must</strong> be a celebrity,
-failing which you will receive an error message stating so.</p>
-</li>
-<li>
-<p>The point of contact index refers to an ordinary person associated with the appointment. This person <strong>must not</strong> be a Celebrity.</p>
-</li>
-<li>
-<p>Similar to our other commands, the celebrity and point of contact indices must be positive numbers greater than 0 and at most the number of person being shown.</p>
-</li>
-<li>
-<p>You can choose multiple celebrities or points of contact whom you want to add the appointment as shown in our example.</p>
-</li>
-<li>
-<p>All the fields with brackets as shown in the format are optional and can be omitted.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 </div>
 <div class="sect3">
-<h4 id="editing-an-appointment-code-editappointment-code-since-v1-4"><a class="link" href="#editing-an-appointment-code-editappointment-code-since-v1-4">3.3.2. Editing an appointment <code>editAppointment</code> [Since v1.4]</a></h4>
-<div class="paragraph">
-<p>Edits an appointment currently stored in CelebManager.<br>
-Alias: <code>ea</code><br>
-Format: <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_CONTACT_INDEX]&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editAppointment 2 n/Dentist Appointment l/Orchard Road p/3</code></p>
-</li>
-<li>
-<p><code>editAppointment 1 st/16:00 et/20:00 sd/23-03-2018 c/1 c/2</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>You can only edit an appointment when you are in appointment list view. Refer to
-<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the appointment at the specified <code>INDEX</code>. The index refers to the index number shown in the current
-appointment listing. The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>For more information on constraints of the different fields,
-refer to <a href="#adding-an-appointment-code-addappointment-code-since-v1-2">Section 3.3.1, &#8220;Adding an appointment: <code>addAppointment</code> [Since v1.2]&#8221;</a>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deleting-an-appointment-code-deleteappointment-code-since-v1-4"><a class="link" href="#deleting-an-appointment-code-deleteappointment-code-since-v1-4">3.3.3. Deleting an appointment <code>deleteAppointment</code> [Since v1.4]</a></h4>
-<div class="paragraph">
-<p>Deletes the specified appointment from CelebManager.<br>
-Alias: <code>da</code><br>
-Format: <code>deleteAppointment INDEX</code></p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>You can only delete an appointment when you are listing appointments. Refer to
-<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the appointment at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the current listing of appointments.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-<li>
-<p>If there is no more appointment in the list, CelebManager will switch back from appointment list view to
-calendar view</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>listAppointment</code><br>
-<code>deleteAppointment 2</code><br>
-Deletes the 2nd appointment in the appointment list from CelebManager.</p>
-</li>
-<li>
-<p><code>listAppointment</code><br>
-<code>deleteAppointment 1</code><br>
-Deletes the 1st appointment in the appointment list from CelebManager.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="listing-appointments-code-listappointment-code-since-v1-5"><a class="link" href="#listing-appointments-code-listappointment-code-since-v1-5">3.3.4. Listing appointments: <code>listAppointment</code> [Since v1.5]</a></h4>
+<h4 id="listing-appointments-code-listappointment-code-since-v1-5"><a class="link" href="#listing-appointments-code-listappointment-code-since-v1-5">3.3.2. Listing appointments: <code>listAppointment</code> [Since v1.5]</a></h4>
 <div class="paragraph">
 <p>Lists all appointments from the specified start date to end date (inclusive).<br>
 Alias: <code>la</code><br>
-Format: <code>listAppointment [STARTDATE ENDDATE]</code></p>
+Format: <code>listAppointment [START_DATE END_DATE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -876,6 +817,9 @@ Format: <code>listAppointment [STARTDATE ENDDATE]</code></p>
 <ul>
 <li>
 <p>Lists appointments according to the specified date range.</p>
+</li>
+<li>
+<p><code>CalendarPanel</code> will replace the calendar by an appointment list.</p>
 </li>
 <li>
 <p>When no date range is given, all appointments in CelebManager will be listed.</p>
@@ -887,16 +831,19 @@ Format: <code>listAppointment [STARTDATE ENDDATE]</code></p>
 <p>The date <strong>must be</strong> a valid date, eg, <code>01-13-2018</code> and <code>30-02</code> are not valid dates.</p>
 </li>
 <li>
-<p><code>STARTDATE</code> <strong>must not be</strong> after <code>ENDDATE</code>.</p>
+<p><code>START_DATE</code> <strong>must not be</strong> after <code>END_DATE</code>.</p>
+</li>
+<li>
+<p><code>START_DATE</code> and <code>END_DATE</code> must be separated by a space.</p>
 </li>
 <li>
 <p>If there is no appointment within the specified date range, an error message will be shown instead of an empty list.</p>
 </li>
 <li>
-<p>If an appointment starts within the date range specified but ends after the <code>ENDDATE</code>, it will also be shown.</p>
+<p>If an appointment starts within the date range specified but ends after <code>END_DATE</code>, it will be listed.</p>
 </li>
 <li>
-<p>If an appointment ends within the date range specified but starts before the <code>STARTDATE</code>, it will also be shown.</p>
+<p>If an appointment ends within the date range specified but starts before <code>START_DATE</code>, it will be listed.</p>
 </li>
 </ul>
 </div>
@@ -923,12 +870,44 @@ Lists all appointments, if any, scheduled between 20th April of 2018 and 1st May
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-appointment-code-viewappointment-code-since-v1-4"><a class="link" href="#view-appointment-code-viewappointment-code-since-v1-4">3.3.5. View appointment: <code>viewAppointment</code> [Since v1.4]</a></h4>
+<h4 id="editing-an-appointment-code-editappointment-code-since-v1-4"><a class="link" href="#editing-an-appointment-code-editappointment-code-since-v1-4">3.3.3. Editing an appointment <code>editAppointment</code> [Since v1.4]</a></h4>
 <div class="paragraph">
-<p>View a specific appointment based on list generated by <code>listAppointment</code> in CelebManager.
-<code>listAppointment</code> has to be done before the input of <code>viewAppointment</code> command.<br>
-Alias: <code>va</code><br>
-Format: <code>viewAppointment INDEX</code></p>
+<p>Pre-requisite: you can only edit an appointment when <code>CalendarPanel</code> is showing an appointment list.
+Refer to <a href="#listing-appointments-code-listappointment-code-since-v1-5">Section 3.3.2, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.5]&#8221;</a> for more information.<br></p>
+</div>
+<div class="paragraph">
+<p>Edits the specified appointment and replaces the appointment list with the calendar in
+<code>CalendarPanel</code> upon successful execution.<br>
+Alias: <code>ea</code><br>
+Format: <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME]
+[ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the appointment at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the current appointment list.</p>
+</li>
+<li>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>For more information on constraints of the different fields,
+refer to <a href="#adding-an-appointment-code-addappointment-code-since-v1-2">Section 3.3.1, &#8220;Adding an appointment: <code>addAppointment</code> [Since v1.2]&#8221;</a>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -936,62 +915,129 @@ Format: <code>viewAppointment INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewAppointment 1</code></p>
+<p><code>listAppointment</code><br>
+<code>editAppointment 2 n/Dentist Appointment l/Orchard Road p/3</code>
+Edits the 2nd appointment in the appointment list.</p>
+</li>
+<li>
+<p><code>listAppointment 01-04 01-05</code><br>
+<code>editAppointment 1 st/16:00 et/20:00 sd/23-03-2018 c/1 c/2</code>
+Edits the 1st appointment in the result of <code>listAppointment 01-04 01-05</code>.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-appointment-code-deleteappointment-code-since-v1-4"><a class="link" href="#deleting-an-appointment-code-deleteappointment-code-since-v1-4">3.3.4. Deleting an appointment <code>deleteAppointment</code> [Since v1.4]</a></h4>
+<div class="paragraph">
+<p>Pre-requisite: you can only edit an appointment when <code>CalendarPanel</code> is showing an appointment list.
+Refer to <a href="#listing-appointments-code-listappointment-code-since-v1-5">Section 3.3.2, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.5]&#8221;</a> for more information.<br></p>
+</div>
+<div class="paragraph">
+<p>Deletes the specified appointment.<br>
+Alias: <code>da</code><br>
+Format: <code>deleteAppointment INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Index should be within the list size.</p>
+<p>Deletes the appointment at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>Smallest index is 1 and largest index is size of list.</p>
+<p><code>INDEX</code> refers to the index number shown in the current appointment list.</p>
 </li>
 <li>
-<p>List generated by <code>listAppointment</code> should have at least one appointment.</p>
+<p><code>INDEX</code> index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
 </li>
 <li>
-<p>Location will not be shown if <code>Appointment</code> does not have location data.</p>
+<p>If there is no more appointment in the list after deletion, <code>CalendarPanel</code> will switch back from the appointment list
+to the calendar.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>The state of CelebManager in figure 2 after input of <code>listAppointment</code>.</p>
+<p>Examples:</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/listAppointmentInput.png" alt="listAppointmentInput" width="">
+<div class="ulist">
+<ul>
+<li>
+<p><code>listAppointment</code><br>
+<code>deleteAppointment 2</code><br>
+Deletes the 2nd appointment in the appointment list.</p>
+</li>
+<li>
+<p><code>listAppointment 01-04 01-05</code><br>
+<code>deleteAppointment 1</code><br>
+Deletes the 1st appointment in the result of <code>listAppointment 01-04 01-05</code>.</p>
+</li>
+</ul>
 </div>
-<div class="title">Figure 2. State of application after <code>listAppointment</code> input</div>
+</div>
+<div class="sect3">
+<h4 id="viewing-an-appointment-code-viewappointment-code-since-v1-4"><a class="link" href="#viewing-an-appointment-code-viewappointment-code-since-v1-4">3.3.5. Viewing an appointment: <code>viewAppointment</code> [Since v1.4]</a></h4>
+<div class="paragraph">
+<p>Pre-requisite: you can only edit an appointment when <code>CalendarPanel</code> is showing an appointment list.
+Refer to <a href="#listing-appointments-code-listappointment-code-since-v1-5">Section 3.3.2, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.5]&#8221;</a> for more information.<br></p>
 </div>
 <div class="paragraph">
-<p>The state of CelebManager in figure 3 after the example input `viewAppointment i/1'.
-Which selects the first appointment in the list.</p>
+<p>Views the specified appointment.
+<code>ResultDisplay</code> will show details of the appointment and <code>MapPanel</code> will show the location, if any, of the appointment
+on Google Map.<br>
+Alias: <code>va</code><br>
+Format: <code>viewAppointment INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Views the appointment at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the current appointment list.</p>
+</li>
+<li>
+<p><code>INDEX</code> index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>If the specified appointment has an invalid location, Google Map will remove any existing marker or route displayed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listAppointment</code><br>
+<code>viewAppointment 3</code><br>
+Shows the details of the 3rd appointment in the appointment list.</p>
+</li>
+<li>
+<p><code>listAppointment 22-04-2018 01-05-2018</code><br>
+<code>viewAppointment 1</code><br>
+Shows the details of the 1st appointment in the result of <code>listAppointment 01-04-2018 01-05-2018</code>.<br>
+The figure below shows a possible state of CelebManager after executing the commands in the second example above.<br></p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/viewAppointmentInput.png" alt="viewAppointmentInput" width="">
 </div>
-<div class="title">Figure 3. State of application after <code>viewAppointment i/1</code> input</div>
+<div class="title">Figure 4. State of CelebManager after executing <code>viewAppointment 1</code></div>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>Whenever the appointment has an invalid location, the map will remove any existing marker or route.</p>
-</div>
-</td>
-</tr>
-</table>
+<p>The red boxes are used to highlight the two panels that display the specified appointment&#8217;s information. These red boxes
+will not appear in your CelebManager. Note that the marker in <code>MapPanel</code> now moves to HollyWood - the location of the
+appointment, and <code>ResultDisplay</code> shows texts that contain the appointment&#8217;s details.</p>
 </div>
 <div class="paragraph">
 <p> <br></p>
@@ -1000,10 +1046,28 @@ Which selects the first appointment in the list.</p>
 </div>
 <div class="sect2">
 <h3 id="calendar-features"><a class="link" href="#calendar-features">3.4. Calendar Features</a></h3>
-<div class="sect3">
-<h4 id="changing-the-calendar-code-viewcalendar-code-since-v1-3"><a class="link" href="#changing-the-calendar-code-viewcalendar-code-since-v1-3">3.4.1. Changing the calendar: <code>viewCalendar</code> [Since v1.3]</a></h4>
 <div class="paragraph">
-<p>Changes to view the calendar of the specified <code>celebrity</code>.<br>
+<p>Calendar features allow you to interact with the calendar displayed in <code>CalendarPanel</code> located at the bottom right of
+CelebManager. The figure below shows the default state of <code>CalendarPanel</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewCalendarByDay.jpg" alt="ViewCalendarByDay" width="">
+</div>
+<div class="title">Figure 5. Default state of <code>CalendarPanel</code></div>
+</div>
+<div class="paragraph">
+<p>The date on the top right corner can be different as it should be the current date.
+There can be a red line that runs across the calendar. That line indicates the current time.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="#listing-appointments-code-listappointment-code-since-v1-5">Section 3.3.2, &#8220;Listing appointments: <code>listAppointment</code> [Since v1.5]&#8221;</a>, <code>listAppointment</code> command is introduced to replace the calendar in <code>CalendarPanel</code> with an
+appointment list. To bring back the calendar, you can use any of the commands under this section.</p>
+</div>
+<div class="sect3">
+<h4 id="displaying-a-celebrity-s-calendar-code-viewcalendar-code-since-v1-3"><a class="link" href="#displaying-a-celebrity-s-calendar-code-viewcalendar-code-since-v1-3">3.4.1. Displaying a celebrity&#8217;s calendar: <code>viewCalendar</code> [Since v1.3]</a></h4>
+<div class="paragraph">
+<p>Changes to view the calendar of the specified celebrity.<br>
 Alias: <code>vc</code><br>
 Format: <code>viewCalendar INDEX</code></p>
 </div>
@@ -1012,16 +1076,16 @@ Format: <code>viewCalendar INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Changes to view the calendar of the <code>celebrity</code> at the specified <code>INDEX</code>.</p>
+<p>Changes to view the calendar of the celebrity at the specified <code>INDEX</code>.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the last shown list of contacts.</p>
+<p><code>INDEX</code> refers to the index number shown in the last shown list of persons.</p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
 </li>
 <li>
-<p>The person at the specified index <strong>must be</strong> a <code>celebrity</code>.</p>
+<p>The person at <code>INDEX</code> <strong>must be</strong> a celebrity.</p>
 </li>
 </ul>
 </div>
@@ -1034,21 +1098,21 @@ Format: <code>viewCalendar INDEX</code></p>
 <ul>
 <li>
 <p><code>viewCalendar 1</code><br>
-Changes to view the calendar of the 1st person in the list of contacts, if the 1st person is a <code>celebrity</code>.</p>
+Changes to view the calendar of the 1st person in the last shown person list, if he/she is a celebrity.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-to-view-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3"><a class="link" href="#changing-to-view-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3">3.4.2. Changing to view the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]</a></h4>
+<h4 id="displaying-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3"><a class="link" href="#displaying-the-combined-calendar-code-viewcombinedcalendar-code-since-v1-3">3.4.2. Displaying the combined calendar: <code>viewCombinedCalendar</code> [Since v1.3]</a></h4>
 <div class="paragraph">
-<p>Changes to view the combined calendar that shows all <code>celebrity</code> 's appointments in one calendar.<br>
+<p>Changes to shows all celebrities' appointments in one calendar.<br>
 Alias: <code>vcc</code><br>
 Format: <code>viewCombinedCalendar</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-the-calendar-view-code-viewcalendarby-code-since-v1-3"><a class="link" href="#changing-the-calendar-view-code-viewcalendarby-code-since-v1-3">3.4.3. Changing the calendar view: <code>viewCalendarBy</code> [Since v1.3]</a></h4>
+<h4 id="changing-the-calendar-view-type-code-viewcalendarby-code-since-v1-3"><a class="link" href="#changing-the-calendar-view-type-code-viewcalendarby-code-since-v1-3">3.4.3. Changing the calendar view type: <code>viewCalendarBy</code> [Since v1.3]</a></h4>
 <div class="paragraph">
 <p>Changes the calendar view to a different one specified by the user.<br>
 Alias: <code>vcb</code><br>
@@ -1065,14 +1129,27 @@ Format: <code>viewCalendarBy VIEW</code></p>
 <p><code>VIEW</code> <strong>must be</strong> <code>day</code>, <code>week</code>, or <code>month</code>.</p>
 </li>
 <li>
-<p><code>VIEW</code> is not case-sensitive, e.g. you can type <code>viewCalendarBy WeEK</code> to change to view calendar by week.</p>
-</li>
-<li>
-<p>CelebManger only supports showing calendar for <strong>current</strong> <code>day</code>, <code>week</code> or <code>month</code>.</p>
+<p><code>VIEW</code> is case insensitive, e.g. you can type <code>viewCalendarBy WeEK</code> to change to view calendar by week.</p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You may notice that in <code>month</code> view, the dates on the calendar are clickable. However, this feature will only be integrated
+into our <code>v2.0</code> product and hence you should not click on those dates. If you want to view a certain date&#8217;s appointments,
+use <code>viewDate</code> command. Refer to <a href="#Changing the base date of calendar: <code>viewDate</code> [Since v1.5]">[Changing the base date of calendar: <code>viewDate</code> [Since v1.5]]</a> for more information.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1081,7 +1158,7 @@ Format: <code>viewCalendarBy VIEW</code></p>
 <ul>
 <li>
 <p><code>viewCalendarBy day</code><br>
-Changes the calendar view to day view that looks similar to the calendar in red rectangle in the figure below.</p>
+Changes the calendar view to <code>day</code> view that is similar to the figure below.</p>
 </li>
 </ul>
 </div>
@@ -1089,7 +1166,7 @@ Changes the calendar view to day view that looks similar to the calendar in red 
 <div class="content">
 <img src="images/ViewCalendarByDay.jpg" alt="ViewCalendarByDay" width="">
 </div>
-<div class="title">Figure 4. State of application after <code>viewCalendarBy day</code> input</div>
+<div class="title">Figure 6. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy day</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1099,7 +1176,7 @@ Changes the calendar view to day view that looks similar to the calendar in red 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>CelebManger by default shows calendar in day view whenever it gets launched. Hence you need to first change to other
+<p>CelebManger by default shows calendar in <code>day</code> view whenever it gets launched. Hence you need to first change to other
 calendar view before using <code>viewCalendarBy day</code>.</p>
 </div>
 </td>
@@ -1110,7 +1187,8 @@ calendar view before using <code>viewCalendarBy day</code>.</p>
 <ul>
 <li>
 <p><code>viewCalendarBy week</code><br>
-Changes the calendar view to week view that looks similar to the calendar in red rectangle in the figure below.</p>
+Changes the calendar view to <code>week</code> view that is similar to the figure below.
+The column highlighted in red indicates the current day.</p>
 </li>
 </ul>
 </div>
@@ -1118,13 +1196,14 @@ Changes the calendar view to week view that looks similar to the calendar in red
 <div class="content">
 <img src="images/ViewCalendarByWeek.jpg" alt="ViewCalendarByWeek" width="">
 </div>
-<div class="title">Figure 5. State of application after <code>viewCalendarBy week</code> input</div>
+<div class="title">Figure 7. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy week</code></div>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>viewCalendarBy month</code><br>
-Changes the calendar view to month view that looks similar to the calendar in red rectangle in the figure below.</p>
+Changes the calendar view to <code>month</code> view that is similar to the figure below.
+The box highlighted in red indicates the current day.</p>
 </li>
 </ul>
 </div>
@@ -1132,13 +1211,15 @@ Changes the calendar view to month view that looks similar to the calendar in re
 <div class="content">
 <img src="images/ViewCalendarByMonth.jpg" alt="ViewCalendarByMonth" width="">
 </div>
-<div class="title">Figure 6. State of application after <code>viewCalendarBy month</code> input</div>
+<div class="title">Figure 8. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy month</code></div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing-the-base-date-of-calendar-code-viewdate-code-since-v1-5"><a class="link" href="#changing-the-base-date-of-calendar-code-viewdate-code-since-v1-5">3.4.4. Changing the base date of calendar: <code>viewDate</code> [Since v1.5]</a></h4>
+<h4 id="displaying-a-specific-date-s-calendar-code-viewdate-code-since-v1-5"><a class="link" href="#displaying-a-specific-date-s-calendar-code-viewdate-code-since-v1-5">3.4.4. Displaying a specific date&#8217;s calendar: <code>viewDate</code> [Since v1.5]</a></h4>
 <div class="paragraph">
-<p>Changes the base date of calendar and displays the calendar by day for the specified <code>date</code>.<br>
+<p>Changes the base date of calendar and displays the calendar by day for the specified <code>date</code>.
+The base date is different from the current date. It is a date which <code>viewCalendarBy</code> is based on. Refer to the tip
+below examples for more information.<br>
 Alias: <code>vd</code><br>
 Format: <code>viewDate [DATE]</code></p>
 </div>
@@ -1153,10 +1234,10 @@ Format: <code>viewDate [DATE]</code></p>
 <p>When no date is given, it takes on the value of current date.</p>
 </li>
 <li>
-<p>The date <strong>must be in the format of</strong> <code>DD-MM-YYYY</code> or <code>DD-MM</code>. For the latter, year will be set to current year.</p>
+<p><code>DATE</code> <strong>must be in the format of</strong> <code>DD-MM-YYYY</code> or <code>DD-MM</code>. For the latter, year will be set to current year.</p>
 </li>
 <li>
-<p>The date <strong>must be</strong> a valid date, eg, <code>01-13-2018</code> and <code>30-02</code> are not valid dates.</p>
+<p><code>DATE</code> <strong>must be</strong> a valid date, eg, <code>01-13-2018</code> and <code>30-02</code> are not valid dates.</p>
 </li>
 <li>
 <p>This command can take slightly longer to load than other view-related commands.</p>
@@ -1171,32 +1252,22 @@ Format: <code>viewDate [DATE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewDate</code><br>
-Changes the base date of calendar to current date and displays the calendar by day for current date.<br>
-Changes the date at the top right corner of the calendar panel.</p>
+<p><code>viewDate 03-05-2018</code><br>
+Changes the base date of calendar to <code>03-05-2018</code> and displays the calendar by day for <code>03-05-2018</code> as shown below.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Whenever CelebManager gets launched, its base date is reset to the current date by default. Hence <code>viewDate</code> can only
-be performed after performing <code>viewDate [SOME OTHER DATE]</code>.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/ViewDate03-05-2018.jpg" alt="ViewDate03 05 2018" width="">
 </div>
-</td>
-</tr>
-</table>
+<div class="title">Figure 9. State of <code>CalendarPanel</code> after executing <code>viewDate 03-05-2018</code></div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>viewDate 03-05-2018</code><br>
-Changes the base date of calendar to <code>03-05-2018</code> and displays the calendar by day for <code>03-05-2018</code>.</p>
+<p><code>viewDate</code><br>
+Changes the base date of calendar to current date and displays the calendar by day for current date.<br></p>
 </li>
 </ul>
 </div>
@@ -1225,19 +1296,27 @@ for May of 2018.</p>
 <div class="sect2">
 <h3 id="map-features"><a class="link" href="#map-features">3.5. Map Features</a></h3>
 <div class="paragraph">
-<p>Figure 7 is a snippet of the <code>MapPanel</code> which shows the results of all map related features.</p>
+<p>Map features allow you to interact with Google Map in <code>MapPanel</code> located at the bottom left of CelebManager.
+The figure below shows the default state of <code>MapPanel</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 7. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 10. Default state of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
-<p>Button features:</p>
+<p>Whenever a new valid or invalid command belonging to map features is executed, any existing route or location marker will be removed.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="sect3">
+<h4 id="click-inside-the-map-since-v1-3"><a class="link" href="#click-inside-the-map-since-v1-3">3.5.1. Click inside the map [Since v1.3]</a></h4>
+<div class="paragraph">
+<p>Google Map in <code>MapPanel</code> supports mouse clicking. You can:<br></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
 <li>
 <p>Click the Map or Satellite button to toggle between road map or satellite view.</p>
 </li>
@@ -1247,7 +1326,9 @@ for May of 2018.</p>
 <li>
 <p>Click, hold and move the mouse cursor to shift the current view of the map.</p>
 </li>
-</ol>
+</ul>
+</div>
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1256,20 +1337,33 @@ for May of 2018.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Do not click on the <code>Google</code> logo or <code>Terms of Use</code> button. [To be resolved in v2.0].
+Do not click the <code>Google</code> logo or <code>Terms of Use</code> button.
+Clicking these two things triggers a bug which we plan to fix in <code>v2.0</code>.
 </td>
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="estimate-route-on-map-code-estimateroute-code-since-v1-3"><a class="link" href="#estimate-route-on-map-code-estimateroute-code-since-v1-3">3.5.1. Estimate route on map : <code>estimateRoute</code> [Since v1.3]</a></h4>
-<div class="paragraph">
-<p>Shows the estimated route in the map interface and display the estimated distance and time of travel in result display.
- Any existing location marker or route will be removed.<br></p>
 </div>
+<div class="sect3">
+<h4 id="estimate-route-on-map-code-estimateroute-code-since-v1-3"><a class="link" href="#estimate-route-on-map-code-estimateroute-code-since-v1-3">3.5.2. Estimate route on map : <code>estimateRoute</code> [Since v1.3]</a></h4>
 <div class="paragraph">
-<p>Alias: <code>er</code><br>
-Format: <code>estimateRoute sma/MapAddress ema/MapAddress</code></p>
+<p>Shows the estimated route on Google map in <code>MapPanel</code> and displays the estimated distance and time of travel in <code>ResultDisplay</code>.<br>
+Alias: <code>er</code><br>
+Format: <code>estimateRoute sma/START_ADDRESS ema/END_ADDRESS</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>START_ADDRESS</code> and <code>END_ADDRESS</code> should be postal code, road name, location name or building name.</p>
+</li>
+<li>
+<p><code>END_ADDRESS</code> must be reachable from <code>START_ADDRESS</code> by driving.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1278,57 +1372,34 @@ Format: <code>estimateRoute sma/MapAddress ema/MapAddress</code></p>
 <ul>
 <li>
 <p><code>estimateRoute sma/Punggol ema/NUS</code><br>
-Updates the map by re-centering to the new route of <code>Punggol</code> and <code>NUS</code>.</p>
+Updates the map by re-centering to the new route of <code>Punggol</code> and <code>NUS</code> as shown in the figure below.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
+</div>
+<div class="title">Figure 11. State of <code>MapPanel</code> after executing <code>estimateRoute sma/Punggol ema/NUS</code></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">3.5.3. Show location on map : <code>showLocation</code> [Since v1.2]</a></h4>
+<div class="paragraph">
+<p>Shows the specified location by marking the latitude and longitude with a location marker on Google Map.<br>
+Alias: <code>sl</code><br>
+Format: <code>showLocation ma/ADDRESS</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Address should be a postal code, road name, location name or building name.</p>
-</li>
-<li>
-<p>Start and end address should be reachable by driving.</p>
+<p><code>ADDRESS</code> should be a postal code, road name, location name or building name.</p>
 </li>
 </ul>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>The snippet in Figure 8 shows the updated map after the command input of <code>estimateRoute sma/Punggol ema/NUS</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
-</div>
-<div class="title">Figure 8. State of <code>MapPanel</code> after <code>CommandInput</code></div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Whenever a new valid or invalid <code>estimateRoute</code> command is done, any existing route or location marker will be removed.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">3.5.2. Show location on map : <code>showLocation</code> [Since v1.2]</a></h4>
-<div class="paragraph">
-<p>Shows the specific location in the map interface, by marking the latitude and longitude with a location marker.
-Any existing location marker or route will be removed.<br></p>
-</div>
-<div class="paragraph">
-<p>Alias: <code>sl</code><br>
-Format: <code>showLocation ma/MapAddress</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -1337,43 +1408,15 @@ Format: <code>showLocation ma/MapAddress</code></p>
 <ul>
 <li>
 <p><code>showLocation ma/Punggol</code><br>
-Updates the map by re-centering to the new location <code>Punggol</code> and adding a location marker to it.</p>
+Updates the map by re-centering to the new location <code>Punggol</code> and adds a location marker to it as shown below.</p>
 </li>
 </ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Address should be a postal code, road name, location name or building name.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>The snippet in Figure 9 shows the updated map after the command input of <code>showLocation ma/Punggol</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 9. State of <code>MapPanel</code> after <code>CommandInput</code></div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Whenever a new valid or invalid <code>showLocation</code> command is done, any existing route and location marker will be removed.</p>
-</div>
-</td>
-</tr>
-</table>
+<div class="title">Figure 12. State of <code>MapPanel</code> after executing <code>showLocation ma/Punggol</code></div>
 </div>
 </div>
 </div>
@@ -1394,7 +1437,7 @@ data of your previous CelebManager folder.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following are summarized versions of all the commands introduced above displayed in alphabetical order. The commands
-are displayed with their respective command format and an example highlighting the usage. An optional field is enclosed
+are displayed with their respective command formats and examples highlighting their usage. An optional field is enclosed
 within a pair of <code>[]</code>. A field that can be repeatedly entered with different input values is followed by <code>&#8230;&#8203;</code>.</p>
 </div>
 <div class="ulist">
@@ -1405,7 +1448,7 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 </li>
 <li>
 <p><strong>Add Appointment</strong> : <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE]
-[et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_CONTACT_INDEX]&#8230;&#8203;</code><br>
+[et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code><br>
 e.g. <code>addAppointment n/Oscars 2018 l/Hollywood sd/23-03-2018 st/14:00 ed/23-03-2018 et/20:00 c/1 c/2 p/3 p/4</code></p>
 </li>
 <li>
@@ -1425,7 +1468,7 @@ e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
 <p><strong>Edit Appointment</strong> : <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE]
-[et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_CONTACT_INDEX]&#8230;&#8203;</code><br>
+[et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code><br>
 e.g. <code>editAppointment n/Dentist Appointment l/Clementi Road st/15:00 et/16:00 c/3</code></p>
 </li>
 <li>
@@ -1492,7 +1535,7 @@ e.g.<code>viewDate 03-05-2018</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:26:42 UTC
+Last updated 2018-04-14 07:47:25 UTC
 </div>
 </div>
 </body>
