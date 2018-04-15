@@ -180,15 +180,6 @@ Managed releases <code>v1.1</code>, <code>v1.2</code> and <code>v1.3</code> on G
 <div class="sect2">
 <h3 id="address-book-features"><a class="link" href="#address-book-features">Address Book Features</a></h3>
 <div class="sect3">
-<h4 id="person-vs-celebrity-what-s-the-difference"><a class="link" href="#person-vs-celebrity-what-s-the-difference">Person vs Celebrity: What&#8217;s the difference?</a></h4>
-<div class="paragraph">
-<p>In our application, Celebrities are meant to be the celebrities that you, the manager, are currently managing. The other people are each referred to as a Person. The way you create or edit a Person is almost exactly the same as a Celebrity. Both have the same necessary and optional fields to them such as a name, phone number, address, email and some descriptive tags. The only difference is that if you want to create a Celebrity instead of a regular Person in our app, you need to have a compulsory <code>celebrity</code> tag, in small letters. This will signal to the program that you want to create a Celebrity instead of a normal Person. In other words, the usage of <code>celebrity</code> as a tag is reserved for creation of Celebrities. In some of the commands which deal with the adding and editing of a person this will be further explained.</p>
-</div>
-<div class="paragraph">
-<p>Each celebrity has their own calendar, which will displays the appointments he/she will be attending.</p>
-</div>
-</div>
-<div class="sect3">
 <h4 id="adding-a-person-code-add-code-since-v1-0"><a class="link" href="#adding-a-person-code-add-code-since-v1-0">Adding a person: <code>add</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Adds a person to CelebManager.<br>
@@ -256,76 +247,6 @@ Adds a celebrity named <code>John Lennon</code> to CelebManager and creates an e
 <li>
 <p><code>add n/Paul McCartney p/91827364 e/paulmccartney@example.com a/Paul McCartney Rd, Block 789, #05-06 t/celebrity</code><br>
 Adds a celebrity named <code>Paul McCartney</code> to CelebManager and creates an empty calendar named <code>Paul McCartney</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="editing-a-person-code-edit-code-since-v1-0"><a class="link" href="#editing-a-person-code-edit-code-since-v1-0">Editing a person : <code>edit</code> [Since v1.0]</a></h4>
-<div class="paragraph">
-<p>Edits an existing person in CelebManager.<br>
-Alias: <code>e</code><br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p><code>INDEX</code> refers to the index number shown in the last person listing.</p>
-</li>
-<li>
-<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tag after it.</p>
-</li>
-<li>
-<p>If <code>celebrity</code> tag gets removed, the person&#8217;s calendar will be removed and person will be removed from appointments
-he/she will be attending. Removal of the calendar and person from appointments <strong>is not undoable</strong>.</p>
-</li>
-<li>
-<p>If the person now has <code>celebrity</code> tag, a calendar will be created for him/her.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Changes the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crowen t/</code><br>
-Changes the name of the 2nd person to be <code>Betsy Crowen</code> and clears all existing tags.</p>
-</li>
-<li>
-<p><code>edit 1 t/celebrity</code>
-Converts the 1st person to a celebrity.
-If you follow all the examples so far, a new calendar should be created for this person as shown below.</p>
-</li>
-<li>
-<p><code>edit 3 n/Michael Jackson t/Singer</code>
-Converts the 3rd person to a contact.
-If you follow all the examples so far, this person&#8217;s calendar should be deleted as shown below.</p>
 </li>
 </ul>
 </div>
@@ -666,7 +587,7 @@ in UI component while appointments in Model component.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:55:02 UTC
+Last updated 2018-04-15 09:14:10 UTC
 </div>
 </div>
 </body>

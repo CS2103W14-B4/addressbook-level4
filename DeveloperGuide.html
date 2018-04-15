@@ -641,16 +641,20 @@ It describes how the overall structure of the <code>Storage</code> component and
 </div>
 <div class="sect2">
 <h3 id="removetag-feature"><a class="link" href="#removetag-feature">4.1. RemoveTag Feature</a></h3>
+<div class="paragraph">
+<p>This feature allows the user to remove a specified tag from all the contacts.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The tag removal mechanism is facilitated by both <code>RemoveTagCommand</code>, which resides inside <code>LogicManager</code>, and
-<code>removeTag</code>, which resides in <code>AddressBook</code>. This feature removes a specified tag from each person who has it in the
-address book. <code>RemoveTagCommand</code> class inherits from the <code>UndoableCommand</code>
-class and hence supports the <code>undo</code> and <code>redo</code> features.</p>
+<p>The tag removal mechanism is facilitated by both <code>RemoveTagCommand</code> class, which resides inside <code>LogicManager</code>, and
+<code>removeTag</code> method, which resides in <code>AddressBook</code>. This feature removes a specified tag from each person who has it in the
+address book. <code>RemoveTagCommand</code> class inherits from the <code>UndoableCommand</code> class and hence supports the <code>undo</code> and <code>redo</code> features.</p>
 </div>
 <div class="paragraph">
-<p>The snippet code below shows the implementation of <code>executeUndoableCommand</code> in <code>RemoveTagCommand</code>:</p>
+<p>When a user enters <code>removeTag</code> command, an object of <code>RemoveTagCommand</code> class will be created. To understand this class’
+contribution to remove tag feature, please refer to the following code snippet which shows the implementation of
+<code>executeUndoableCommand</code> in <code>RemoveTagCommand</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -688,25 +692,25 @@ class and hence supports the <code>undo</code> and <code>redo</code> features.</
 </div>
 </div>
 <div class="paragraph">
-<p>From the snippet above, it can be seen that <code>RemoveTagCommand</code> disallows the removal of <code>celebrity</code> tag, or a non-existing
-tag. Upon successful execution, <code>RemoveTagCommand</code> will print out successful message with the number of person(s)
-affected by this removal.</p>
+<p>From the snippet above, <code>RemoveTagCommand</code> class filters out <code>celebrity</code> tag or a non-existent tag to disallow the removal
+of both. It is also in-charge of printing the successful message upon a successful execution.</p>
 </div>
 <div class="paragraph">
-<p>The snippet code below shows the implementation of <code>removeTag</code> in <code>AddressBook</code>:</p>
+<p>Within RemoveTagCommand class,  <code>removeTag</code> method is called to actually remove the tag, which calls <code>removeTag</code> method of
+<code>AddressBook</code>. The snippet code below shows the implementation of <code>removeTag</code> in <code>AddressBook</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">AddressBook</span> {
     <span class="comment">/**
-    * Removes {@code tag} from all persons in this {@code AddressBook}.
-    * @return the number of {@code person}s with this {@code tag} removed.
-    */</span>
+     * Removes {@code tag} from all persons in this {@code AddressBook}.
+     * @return the number of {@code person}s with this {@code tag} removed.
+     */</span>
     <span class="directive">public</span> <span class="type">int</span> removeTag(Tag tag) <span class="directive">throws</span> PersonNotFoundException, DuplicatePersonException, TagNotFoundException {
         <span class="type">boolean</span> tagExists = <span class="predefined-constant">false</span>;
         <span class="keyword">for</span> (Tag existingTag: tags) {
             <span class="keyword">if</span> (existingTag.equals(tag)) {
-                    tagExists = <span class="predefined-constant">true</span>;
+                tagExists = <span class="predefined-constant">true</span>;
             }
         }
         <span class="keyword">if</span> (!tagExists) {
@@ -753,32 +757,14 @@ This is because <code>removeTag</code> removes the tag from each person with it 
 address book should have the tag. Hence the unused tag should be removed from <code>tags</code> inside the address book.</p>
 </div>
 <div class="paragraph">
-<p>Suppose the current address book has two types of tags, <code>friends</code> and <code>husband</code>.
-The figure below shows a possible state of <code>PersonListPanel</code>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/BeforeRemoveTag.png" alt="BeforeRemoveTag" width="">
-</div>
-<div class="title">Figure 10. State of <code>PersonListPanel</code> before executing <code>removeTag friends</code></div>
-</div>
-<div class="paragraph">
-<p>After the successful execution of <code>removeTag friends</code>, <code>PersonListPanel</code> will be updated to the diagram below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AfterRemoveTag.png" alt="AfterRemoveTag" width="">
-</div>
-<div class="title">Figure 11. State of <code>PersonListPanel</code> after executing <code>removeTag friends</code></div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows the interaction within classes in <code>Logic</code> to process <code>removeTag</code> command:</p>
+<p>As an example, the following sequence diagram shows the interaction within classes in <code>Logic</code> package when
+the user executes <code>removeTag friends</code> successfully:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/RemoveTagSequenceDiagram.png" alt="RemoveTagSequenceDiagram" width="">
 </div>
-<div class="title">Figure 12. Sequence diagram of removeTag command</div>
+<div class="title">Figure 10. Sequence diagram of <code>removeTag</code> command</div>
 </div>
 </div>
 <div class="sect3">
@@ -839,7 +825,7 @@ UI component, which logic component has no directly access to.</p>
 <div class="content">
 <img src="images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
 </div>
-<div class="title">Figure 13. Inheritance diagram for undoable commands</div>
+<div class="title">Figure 11. Inheritance diagram for undoable commands</div>
 </div>
 <div class="paragraph">
 <p>From the figure, the <code>UndoableCommand</code> class provides an interface between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>.</p>
@@ -920,7 +906,7 @@ The following figure shows the illustration after executing the command.</p>
 <div class="content">
 <img src="images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
 </div>
-<div class="title">Figure 14. Execution of <code>delete 5</code> command</div>
+<div class="title">Figure 12. Execution of <code>delete 5</code> command</div>
 </div>
 <div class="paragraph">
 <p>As the user continues to execute commands that are undoable in the application, more commands are added into the <code>undoStack</code>.
@@ -931,7 +917,7 @@ The following figure shows the illustration after executing the second command.<
 <div class="content">
 <img src="images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
 </div>
-<div class="title">Figure 15. Execution of <code>add n/David &#8230;&#8203;</code> command</div>
+<div class="title">Figure 13. Execution of <code>add n/David &#8230;&#8203;</code> command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -954,7 +940,7 @@ The following figure shows the illustration after executing the <code>undo</code
 <div class="content">
 <img src="images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
 </div>
-<div class="title">Figure 16. Execution of <code>undo</code> command</div>
+<div class="title">Figure 14. Execution of <code>undo</code> command</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -976,7 +962,7 @@ An <code>Exception</code> will be thrown when popping the <code>undoStack</code>
 <div class="content">
 <img src="images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 17. Sequence diagram of <code>undo</code> command</div>
+<div class="title">Figure 15. Sequence diagram of <code>undo</code> command</div>
 </div>
 <div class="paragraph">
 <p>The <code>redo</code> command pops the most recent undone command from <code>redoStack</code>, and push the command to the <code>undoStack</code>.
@@ -1294,7 +1280,7 @@ Inheritance from the base classes of the external package is done so that we can
 <div class="content">
 <img src="images/AddAppointmentSequenceDiagram.png" alt="AddAppointmentSequenceDiagram" width="">
 </div>
-<div class="title">Figure 18. Sequence diagram of addAppointment command</div>
+<div class="title">Figure 16. Sequence diagram of addAppointment command</div>
 </div>
 <div class="paragraph">
 <p>The figure below (Figure 20) shows the state of the application before input of the <code>AddAppointmentCommand</code>:</p>
@@ -1303,7 +1289,7 @@ Inheritance from the base classes of the external package is done so that we can
 <div class="content">
 <img src="images/BeforeAddAppointment.jpg" alt="BeforeAddAppointment" width="800">
 </div>
-<div class="title">Figure 19. State of application without any appointments</div>
+<div class="title">Figure 17. State of application without any appointments</div>
 </div>
 <div class="paragraph">
 <p>After input of <code>addAppointment n/Oscars 2018 st/18:00 sd/06-04-2018 l/Hollywood et/20:00 ed/06-04-2018 c/1</code>,
@@ -1313,7 +1299,7 @@ the added appointment will be reflected in the calendar as shown in the figure b
 <div class="content">
 <img src="images/AfterAddAppointment.jpg" alt="AfterAddAppointment" width="800">
 </div>
-<div class="title">Figure 20. State of application with newly added appointment</div>
+<div class="title">Figure 18. State of application with newly added appointment</div>
 </div>
 </div>
 <div class="sect3">
@@ -1363,17 +1349,21 @@ in UI component while appointments in Model component.</p>
 </div>
 <div class="sect2">
 <h3 id="deleteappointment-feature"><a class="link" href="#deleteappointment-feature">4.4. DeleteAppointment Feature</a></h3>
+<div class="paragraph">
+<p>This feature allows the user to delete appointments.</p>
+</div>
 <div class="sect3">
 <h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">4.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The mechanism to delete an appointment is facilitated by the <code>DeleteAppointmentCommand</code>, which resides inside <code>Logic</code>,
-and <code>deleteAppointment</code> in <code>Model</code>. It supports the deletion of an appointment.
-Deletion of an appointment can only be done when the <code>CalendarPanel</code> is in appointment list view, instead of showing
-calendars. The command requires users to put in an index which represents the appointment to be deleted. This index is
-taken from the currently displayed appointment list.</p>
+<p>The mechanism to delete an appointment is facilitated by the <code>DeleteAppointmentCommand</code> class, which resides inside <code>Logic</code>,
+and <code>deleteAppointment</code> method in <code>Model</code>. The command requires the user to put in an index to refer to the appointment
+to be deleted. This index is taken from the currently displayed appointment list. As such, deletion of an appointment
+can only be done when CelebManager is showing an appointment list.</p>
 </div>
 <div class="paragraph">
-<p>The snippet code below shows the implementation of <code>execute</code> in <code>DeleteAppointmentCommand</code>:</p>
+<p><code>DeleteAppointmentCommand</code> class is responsible for checking whether an appointment list is currently being shown.
+If so, <code>DeleteAppointmentCommand</code> class will call <code>deleteAppointment</code> method. Refer to the code snippet below to see
+how this method deletes the specified appointment:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1436,32 +1426,20 @@ with the specified appointment deleted will be shown.</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ModelManager</span> <span class="directive">extends</span> ComponentManager <span class="directive">implements</span> Model {
     ...
     <span class="annotation">@Override</span>
-    <span class="directive">public</span> Appointment deleteAppointment(<span class="type">int</span> index) <span class="directive">throws</span> CommandException {
+    <span class="directive">public</span> Appointment deleteAppointment(<span class="type">int</span> index) <span class="directive">throws</span> <span class="exception">IndexOutOfBoundsException</span> {
         Appointment apptToDelete = getChosenAppointment(index);
         apptToDelete.removeAppointment();
+        removeAppointmentFromInternalList(index);
+        currentlyDisplayedAppointments.remove(apptToDelete);
         indicateAppointmentListChanged();
-
-        apptToDelete = removeAppointmentFromInternalList(index);
-
-        <span class="keyword">if</span> (getAppointmentList().size() &lt; <span class="integer">1</span>) {
-            setIsListingAppointments(<span class="predefined-constant">false</span>);
-            setCelebCalendarViewPage(DAY_VIEW_PAGE);
-        }
         <span class="keyword">return</span> apptToDelete;
-    }
-
-    <span class="comment">/** Makes changes to model's internal appointment list */</span>
-    <span class="directive">private</span> Appointment removeAppointmentFromInternalList(<span class="type">int</span> index) {
-        <span class="keyword">return</span> getAppointmentList().remove(index);
-
     }
     ...
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that <code>getAppointmentList()</code> retrieves the list of appointments currently being displayed.
-The method <code>removeAppointment</code> is in <code>Appointment</code> class, and removes all child entries of an appointment. For example,
+<p>The method <code>removeAppointment</code> is in <code>Appointment</code> class, and removes all child entries of an appointment. For example,
 an appointment may have two celebrities attending. Then this appointment will have two child entries, one each in each
 attending celebrity&#8217;s calendar. So when this appointment gets deleted, both entries should get removed as well.</p>
 </div>
@@ -1469,7 +1447,7 @@ attending celebrity&#8217;s calendar. So when this appointment gets deleted, bot
 <div class="content">
 <img src="images/DeleteAppointmentCommand-logic-seq-diagram.jpg" alt="DeleteAppointmentCommand logic seq diagram" width="">
 </div>
-<div class="title">Figure 21. Sequence diagram of deleteAppointment command</div>
+<div class="title">Figure 19. Sequence diagram of deleteAppointment command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1631,7 +1609,7 @@ Whenever an <code>Appointment</code> has no location data, any existing location
 <div class="content">
 <img src="images/ViewAppointmentSequenceDiagram.png" alt="ViewAppointmentSequenceDiagram" width="">
 </div>
-<div class="title">Figure 22. Sequence Diagram of <code>viewAppointment</code> Command</div>
+<div class="title">Figure 20. Sequence Diagram of <code>viewAppointment</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1741,7 +1719,7 @@ It supports the retrieval and storage for appointments made by the user.</p>
 <div class="content">
 <img src="images/ReadStorageCalendarSequenceDiagram.png" alt="ReadStorageCalendarSequenceDiagram" width="">
 </div>
-<div class="title">Figure 23. Sequence Diagram for reading <code>StorageCalendar</code></div>
+<div class="title">Figure 21. Sequence Diagram for reading <code>StorageCalendar</code></div>
 </div>
 <div class="paragraph">
 <p>In the <code>XmlStorageCalendarStorage</code> class, it allows developers to use methods:</p>
@@ -1890,7 +1868,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="images/LocationMarker.png" alt="LocationMarker" width="50">
 </div>
-<div class="title">Figure 24. Location marker</div>
+<div class="title">Figure 22. Location marker</div>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the inheritance diagram for <code>ShowLocationCommand</code>:</p>
@@ -1899,7 +1877,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
 </div>
-<div class="title">Figure 25. Inheritance diagram for <code>Command</code></div>
+<div class="title">Figure 23. Inheritance diagram for <code>Command</code></div>
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
@@ -1995,7 +1973,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 26. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 24. Default State of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
 <p>After the input of "showLocation ma/Punggol" the <code>MapPanel</code> will be updated to the diagram below:</p>
@@ -2004,7 +1982,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="content">
 <img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 27. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 25. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2025,7 +2003,7 @@ Whenever an invalid <code>showLocation</code> command is done, any existing loca
 <div class="content">
 <img src="images/ShowLocationSequenceDiagram.png" alt="ShowLocationSequenceDiagram" width="">
 </div>
-<div class="title">Figure 28. Sequence Diagram of <code>showLocation</code> Command</div>
+<div class="title">Figure 26. Sequence Diagram of <code>showLocation</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -2113,13 +2091,13 @@ in the <code>MapPanel</code> by updating the state of the <code>MapPanel</code>.
 <div class="content">
 <img src="images/Start_Location_Marker.png" alt="Start Location Marker" width="100">
 </div>
-<div class="title">Figure 29. Start Location marker</div>
+<div class="title">Figure 27. Start Location marker</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/End_Location_Marker.png" alt="End Location Marker" width="100">
 </div>
-<div class="title">Figure 30. End Location marker</div>
+<div class="title">Figure 28. End Location marker</div>
 </div>
 <div class="paragraph">
 <p><code>EstimateRouteCommand</code> inherits from the Command class and is not part of the Undoable Command.
@@ -2158,7 +2136,7 @@ can be reached by driving.</p>
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 31. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 29. Default State of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
 <p>After the input of "estimateRoute sma/Punggol ema/NUS" the <code>MapPanel</code> will be updated to the diagram below:</p>
@@ -2167,7 +2145,7 @@ can be reached by driving.</p>
 <div class="content">
 <img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
 </div>
-<div class="title">Figure 32. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 30. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="paragraph">
 <p>Any subsequent <code>estimateRoute</code> command will remove any existing marker or route before updating the <code>MapPanel</code> with the new route.</p>
@@ -2191,7 +2169,7 @@ Whenever an invalid <code>estimateRoute</code> command is done, any existing loc
 <div class="content">
 <img src="images/EstimateRouteSequenceDiagram.png" alt="EstimateRouteSequenceDiagram" width="">
 </div>
-<div class="title">Figure 33. Sequence Diagram of <code>estimateRoute</code> Command</div>
+<div class="title">Figure 31. Sequence Diagram of <code>estimateRoute</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -2364,7 +2342,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 34. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 32. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -4372,7 +4350,7 @@ Preprequisites: The file is a valid .xml file for storage calendar, and is named
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:55:01 UTC
+Last updated 2018-04-15 09:14:10 UTC
 </div>
 </div>
 </body>

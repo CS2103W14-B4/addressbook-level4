@@ -25,11 +25,31 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CelebManager is a desktop application designed to help celebrity managers to manage their contacts and different
-celebrities' schedules. Managers interact with CelebManager using the Command Line Input (CLI).
-CelebManager makes use of CalendarFX to integrate a calendar, and Google Map API to integrate a map inside the
-application, to display information about appointments.
-CelebManager consists of a GUI created with JavaFX and is written in Java. The project overall has over 10k LoC.</p>
+<p>CelebManager is a software application that allows celebrity managers to maintain schedules of celebrities under them.
+It is optimized for users who prefer to work with a Command Line Interface (CLI) while still having a
+Graphical User Interface (GUI) for visual feedback.</p>
+</div>
+<div class="paragraph">
+<p>In this software, the users will be able to:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Manage contacts</p>
+</li>
+<li>
+<p>Manage appointments</p>
+</li>
+<li>
+<p>Manage calendars</p>
+</li>
+<li>
+<p>Plan efficient routes</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This project portfolio summarises my contribution towards the development of CelebManager.</p>
 </div>
 </div>
 </div>
@@ -49,7 +69,7 @@ a day&#8217;s or week&#8217;s or month&#8217;s appointments, and change base dat
 </li>
 <li>
 <p>Justification: This feature improves the product significantly because it allows users to interact with the
-calendar inside CeleManager, and makes calendar a powerful visualisation tool to view timings of appointments.</p>
+calendar inside CeleManager and makes the calendar a powerful visualisation tool to view timings of appointments.</p>
 </li>
 <li>
 <p>Highlights: The implementation requires comprehension of CalendarFX&#8217;s API and experimenting with the API to
@@ -92,7 +112,7 @@ calendar visually.</p>
 <p><strong>Minor enhancement</strong>: added <strong>the ability to remove a tag from all contacts</strong></p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>:</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -105,10 +125,11 @@ calendar visually.</p>
 <li>
 <p>Added support for deleting celebrity using the existing command <code>delete</code>. This enhancement ensures the removal
 of the deleted celebrity from the appointments he/she is attending, as well as the deletion of his/her calendar.
-(Pull request:)</p>
+(Pull request: <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/119" class="bare">https://github.com/CS2103JAN2018-W14-B4/main/pull/119</a>)</p>
 </li>
 <li>
-<p>Created TypicalCelebrities, modified getTypicalPersons to facilitate testing of new features (Pull request:)</p>
+<p>Created TypicalCelebrities, modified getTypicalPersons to facilitate testing of new features
+(Pull request: <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/121" class="bare">https://github.com/CS2103JAN2018-W14-B4/main/pull/121</a>)</p>
 </li>
 </ul>
 </div>
@@ -118,7 +139,9 @@ of the deleted celebrity from the appointments he/she is attending, as well as t
 <div class="ulist">
 <ul>
 <li>
-<p>Standardised the language of existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Standardised the language of existing contents of the User Guide and Developer Guide:<br>
+<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/179" class="bare">https://github.com/CS2103JAN2018-W14-B4/main/pull/179</a><br>
+<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/188" class="bare">https://github.com/CS2103JAN2018-W14-B4/main/pull/188</a></p>
 </li>
 <li>
 <p>Collated codes for <code>v1.4</code> release</p>
@@ -131,7 +154,8 @@ of the deleted celebrity from the appointments he/she is attending, as well as t
 <div class="ulist">
 <ul>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class
+(examples:  <a href="https://github.com/CS2103JAN2018-T09-B3/main/issues/195" class="bare">https://github.com/CS2103JAN2018-T09-B3/main/issues/195</a>)</p>
 </li>
 </ul>
 </div>
@@ -157,11 +181,172 @@ They showcase my ability to write documentation targeting end-users.</em></p></t
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="displaying-a-celebrity-s-calendar-code-viewcalendar-code-since-v1-3"><a class="link" href="#displaying-a-celebrity-s-calendar-code-viewcalendar-code-since-v1-3">Displaying a celebrity&#8217;s calendar: <code>viewCalendar</code> [Since v1.3]</a></h4>
 <div class="paragraph">
-<p>include::../UserGuide.adoc[tag=view-calendar]<br>
-include::../UserGuide.adoc[tag=deleteAppointment]<br>
-==== Removing a tag : <code>removeTag</code> [Since v1.2]</p>
+<p>Changes to view the calendar of the specified celebrity.<br>
+Alias: <code>vc</code><br>
+Format: <code>viewCalendar INDEX</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Changes to view the calendar of the celebrity at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the last shown list of persons.</p>
+</li>
+<li>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>The person at <code>INDEX</code> <strong>must be</strong> a celebrity.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewCalendar 1</code><br>
+Changes to view the calendar of the 1st person in the last shown person list, if he/she is a celebrity.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="displaying-a-specific-date-s-calendar-code-viewdate-code-since-v1-5"><a class="link" href="#displaying-a-specific-date-s-calendar-code-viewdate-code-since-v1-5">Displaying a specific date&#8217;s calendar: <code>viewDate</code> [Since v1.5]</a></h4>
+<div class="paragraph">
+<p>Changes the base date of calendar and displays the calendar by day for the specified <code>date</code>.
+The base date is different from the current date. It is a date which <code>viewCalendarBy</code> is based on. Refer to the tip
+below examples for more information.<br>
+Alias: <code>vd</code><br>
+Format: <code>viewDate [DATE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Changes base date to the specified <code>date</code>.</p>
+</li>
+<li>
+<p>When no date is given, it takes on the value of current date.</p>
+</li>
+<li>
+<p><code>DATE</code> <strong>must be in the format of</strong> <code>DD-MM-YYYY</code> or <code>DD-MM</code>. For the latter, year will be set to current year.</p>
+</li>
+<li>
+<p><code>DATE</code> <strong>must be</strong> a valid date, eg, <code>01-13-2018</code> and <code>30-02</code> are not valid dates.</p>
+</li>
+<li>
+<p>This command can take slightly longer to load than other view-related commands.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewDate 03-05-2018</code><br>
+Changes the base date of calendar to <code>03-05-2018</code> and displays the calendar by day for <code>03-05-2018</code> as shown below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ViewDate03-05-2018.jpg" alt="ViewDate03 05 2018" width="">
+</div>
+<div class="title">Figure 1. State of <code>CalendarPanel</code> after executing <code>viewDate 03-05-2018</code></div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>viewDate</code><br>
+Changes the base date of calendar to current date and displays the calendar by day for current date.<br></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Change in base date allows you to view calendar for different weeks and months.
+For example, after <code>viewDate 03-05-2018</code>, you can type <code>viewCalendarBy week</code> - which will show you the
+calendar for the first week of May of 2018, or <code>viewCalendarBy month</code> - which will show you the calendar
+for May of 2018.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deleting-an-appointment-code-deleteappointment-code-since-v1-4"><a class="link" href="#deleting-an-appointment-code-deleteappointment-code-since-v1-4">Deleting an appointment <code>deleteAppointment</code> [Since v1.4]</a></h4>
+<div class="paragraph">
+<p>Pre-requisite: you can only edit an appointment when <code>CalendarPanel</code> is showing an appointment list.
+Refer to <a href="#Listing appointments: <code>listAppointment</code> [Since v1.5]">[Listing appointments: <code>listAppointment</code> [Since v1.5]]</a> for more information.<br></p>
+</div>
+<div class="paragraph">
+<p>Deletes the specified appointment.<br>
+Alias: <code>da</code><br>
+Format: <code>deleteAppointment INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes the appointment at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the current appointment list.</p>
+</li>
+<li>
+<p><code>INDEX</code> index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>If there is no more appointment in the list after deletion, <code>CalendarPanel</code> will switch back from the appointment list
+to the calendar.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listAppointment</code><br>
+<code>deleteAppointment 2</code><br>
+Deletes the 2nd appointment in the appointment list.</p>
+</li>
+<li>
+<p><code>listAppointment 01-04 01-05</code><br>
+<code>deleteAppointment 1</code><br>
+Deletes the 1st appointment in the result of <code>listAppointment 01-04 01-05</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="removing-a-tag-code-removetag-code-since-v1-2"><a class="link" href="#removing-a-tag-code-removetag-code-since-v1-2">Removing a tag : <code>removeTag</code> [Since v1.2]</a></h4>
 <div class="paragraph">
 <p>Removes the specified tag from every person in CelebManager and shows the number of person(s) affected by this
 operation.<br>
@@ -199,7 +384,7 @@ After execution, <code>PersonListPanel</code> should get updated to the one on t
 <div class="content">
 <img src="../images/removeTag.png" alt="removeTag" width="800">
 </div>
-<div class="title">Figure 1. State of <code>PersonListPanel</code> before (left) and after (right) executing <code>removeTag friends</code></div>
+<div class="title">Figure 2. State of <code>PersonListPanel</code> before (left) and after (right) executing <code>removeTag friends</code></div>
 </div>
 <div class="ulist">
 <ul>
@@ -208,6 +393,7 @@ After execution, <code>PersonListPanel</code> should get updated to the one on t
 Removes the tag, <code>owesMoney</code> from every person and shows the number of person(s) affected.</p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
@@ -225,20 +411,23 @@ They showcase my ability to write technical documentation and the technical dept
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="deleteappointment-feature"><a class="link" href="#deleteappointment-feature">DeleteAppointment Feature</a></h3>
 <div class="paragraph">
-<p>include::../DeveloperGuide.adoc[tag=removeTag]<br>
-=== DeleteAppointment Feature
-==== Current Implementation</p>
+<p>This feature allows the user to delete appointments.</p>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The mechanism to delete an appointment is facilitated by the <code>DeleteAppointmentCommand</code> class, which resides inside <code>Logic</code>,
+and <code>deleteAppointment</code> method in <code>Model</code>. The command requires the user to put in an index to refer to the appointment
+to be deleted. This index is taken from the currently displayed appointment list. As such, deletion of an appointment
+can only be done when CelebManager is showing an appointment list.</p>
 </div>
 <div class="paragraph">
-<p>The mechanism to delete an appointment is facilitated by the <code>DeleteAppointmentCommand</code>, which resides inside <code>Logic</code>,
-and <code>deleteAppointment</code> in <code>Model</code>. It supports the deletion of an appointment.
-Deletion of an appointment can only be done when the <code>CalendarPanel</code> is in appointment list view, instead of showing
-calendars. The command requires users to put in an index which represents the appointment to be deleted. This index is
-taken from the currently displayed appointment list.</p>
-</div>
-<div class="paragraph">
-<p>The snippet code below shows the implementation of <code>execute</code> in <code>DeleteAppointmentCommand</code>:</p>
+<p><code>DeleteAppointmentCommand</code> class is responsible for checking whether an appointment list is currently being shown.
+If so, <code>DeleteAppointmentCommand</code> class will call <code>deleteAppointment</code> method. Refer to the code snippet below to see
+how this method deletes the specified appointment:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -301,32 +490,20 @@ with the specified appointment deleted will be shown.</p>
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ModelManager</span> <span class="directive">extends</span> ComponentManager <span class="directive">implements</span> Model {
     ...
     <span class="annotation">@Override</span>
-    <span class="directive">public</span> Appointment deleteAppointment(<span class="type">int</span> index) <span class="directive">throws</span> CommandException {
+    <span class="directive">public</span> Appointment deleteAppointment(<span class="type">int</span> index) <span class="directive">throws</span> <span class="exception">IndexOutOfBoundsException</span> {
         Appointment apptToDelete = getChosenAppointment(index);
         apptToDelete.removeAppointment();
+        removeAppointmentFromInternalList(index);
+        currentlyDisplayedAppointments.remove(apptToDelete);
         indicateAppointmentListChanged();
-
-        apptToDelete = removeAppointmentFromInternalList(index);
-
-        <span class="keyword">if</span> (getAppointmentList().size() &lt; <span class="integer">1</span>) {
-            setIsListingAppointments(<span class="predefined-constant">false</span>);
-            setCelebCalendarViewPage(DAY_VIEW_PAGE);
-        }
         <span class="keyword">return</span> apptToDelete;
-    }
-
-    <span class="comment">/** Makes changes to model's internal appointment list */</span>
-    <span class="directive">private</span> Appointment removeAppointmentFromInternalList(<span class="type">int</span> index) {
-        <span class="keyword">return</span> getAppointmentList().remove(index);
-
     }
     ...
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that <code>getAppointmentList()</code> retrieves the list of appointments currently being displayed.
-The method <code>removeAppointment</code> is in <code>Appointment</code> class, and removes all child entries of an appointment. For example,
+<p>The method <code>removeAppointment</code> is in <code>Appointment</code> class, and removes all child entries of an appointment. For example,
 an appointment may have two celebrities attending. Then this appointment will have two child entries, one each in each
 attending celebrity&#8217;s calendar. So when this appointment gets deleted, both entries should get removed as well.</p>
 </div>
@@ -334,7 +511,8 @@ attending celebrity&#8217;s calendar. So when this appointment gets deleted, bot
 <div class="content">
 <img src="../images/DeleteAppointmentCommand-logic-seq-diagram.jpg" alt="DeleteAppointmentCommand logic seq diagram" width="">
 </div>
-<div class="title">Figure 2. Sequence diagram of deleteAppointment command</div>
+<div class="title">Figure 3. Sequence diagram of deleteAppointment command</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
@@ -426,9 +604,10 @@ in UI component while appointments in Model component.</p>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 07:55:02 UTC
+Last updated 2018-04-15 09:14:10 UTC
 </div>
 </div>
 </body>
