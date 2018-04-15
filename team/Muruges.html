@@ -54,11 +54,11 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to add and edit appointments</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to add appointments</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allows users to add new appointments or edit existing appointments in CelebManager. For each appointment, CelebManager takes in an appointment an appointment name field and other optional fields
+<p>What it does: Allows users to add new appointments into CelebManager. For each appointment, CelebManager takes in an appointment an appointment name field and other optional fields
 such as the list of celebrities attending the appointment.</p>
 </li>
 <li>
@@ -203,52 +203,57 @@ A person can have any number of tags, including 0.
 </tr>
 </table>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You can add two types of persons to CelebManager: contacts and celebrities.</p>
+</li>
+<li>
+<p>Celebrities refer to the celebrities that you, the manager, are currently managing, while contacts refer to other persons.</p>
+</li>
+<li>
+<p>Contacts refer to contacts other than celebrities.</p>
+</li>
+<li>
+<p>If you want to add a celebrity to CelebManager, you need to tag him/her with <code>celebrity</code> tag.
+Refer to examples below for more information.</p>
+</li>
+<li>
+<p>For each celebrity added, CelebManager creates a calendar in <code>CalendarPanel</code> for him/her. This calendar displays the appointments
+he/she will be attending.</p>
+</li>
+<li>
+<p>CelebManager assumes that any celebrity added is a celebrity that you are managing. If you want to add an actual celebrity
+who is not managed by you, you need to avoid using <code>celebrity</code> tag and find another tag name to indicate this information.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code><br>
+Adds a contact named <code>John Doe</code> to CelebManager.</p>
 </li>
 <li>
-<p><code>add n/Betsy Crower t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add n/Betsy Crower t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code><br>
+Adds a contact named <code>Betsy Crower</code> to CelebManager.</p>
+</li>
+<li>
+<p><code>add n/John Lennon p/91827364 e/johnlennon@example.com a/John Lennon Rd, Block 321, #03-04 t/celebrity t/singer</code><br>
+Adds a celebrity named <code>John Lennon</code> to CelebManager and creates an empty calendar named <code>John Lennon</code>.</p>
+</li>
+<li>
+<p><code>add n/Paul McCartney p/91827364 e/paulmccartney@example.com a/Paul McCartney Rd, Block 789, #05-06 t/celebrity</code><br>
+Adds a celebrity named <code>Paul McCartney</code> to CelebManager and creates an empty calendar named <code>Paul McCartney</code>.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>If you want to instead create a <strong>Celebrity</strong>, you <strong>must</strong> include the tag <code>celebrity</code> along with any other tags you wish to add.</p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/John Lennon p/91827364 e/johnlennon@example.com a/John Lennon Rd, Block 321, #03-04 t/celebrity t/singer</code></p>
-</li>
-<li>
-<p><code>add n/Paul McCartney p/91827364 e/paulmccartney@example.com a/Paul McCartney Rd, Block 789, #05-06 t/celebrity</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>You can only edit an appointment when you are in appointment list view. Refer to
-<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect3">
@@ -263,8 +268,13 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing.
-The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+<p>Edits the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the last person listing.</p>
+</li>
+<li>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -273,13 +283,14 @@ The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</c
 <p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tag after it.</p>
 </li>
 <li>
-<p>If <code>celebrity</code> tag gets removed, the person&#8217;s calendar will be removed.</p>
+<p>If <code>celebrity</code> tag gets removed, the person&#8217;s calendar will be removed and person will be removed from appointments
+he/she will be attending. Removal of the calendar and person from appointments <strong>is not undoable</strong>.</p>
 </li>
 <li>
 <p>If the person now has <code>celebrity</code> tag, a calendar will be created for him/her.</p>
@@ -294,41 +305,23 @@ The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</c
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>list</code><br>
+<code>edit 1 p/91234567 e/johndoe@example.com</code><br>
+Changes the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Similar to our <code>add</code> command, if you wish to convert a Person to a Celebrity, you have to include the <code>celebrity</code> tag along with any other tags you wish to add. Conversely, if you wish to convert a Celebrity into a Person, you would have to make sure at least one tag field is included and that the <code>celebrity</code> tag is not used.</p>
-</div>
-<div class="paragraph">
-<p>Example of converting Person into a Celebrity:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>edit 3 n/Jay Chou t/celebrity t/singer</p>
+<p><code>edit 2 n/Betsy Crowen t/</code><br>
+Changes the name of the 2nd person to be <code>Betsy Crowen</code> and clears all existing tags.</p>
 </li>
 <li>
-<p>edit 1 t/celebrity</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Example of converting Celebrity into a Person:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>edit 2 n/Michael Jackson t/Singer</p>
+<p><code>edit 1 t/celebrity</code>
+Converts the 1st person to a celebrity.
+If you follow all the examples so far, a new calendar should be created for this person as shown below.</p>
 </li>
 <li>
-<p>edit 4 t/</p>
+<p><code>edit 3 n/Michael Jackson t/Singer</code>
+Converts the 3rd person to a contact.
+If you follow all the examples so far, this person&#8217;s calendar should be deleted as shown below.</p>
 </li>
 </ul>
 </div>
@@ -339,9 +332,72 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <div class="sect3">
 <h4 id="adding-an-appointment-code-addappointment-code-since-v1-2"><a class="link" href="#adding-an-appointment-code-addappointment-code-since-v1-2">Adding an appointment: <code>addAppointment</code> [Since v1.2]</a></h4>
 <div class="paragraph">
-<p>Adds an appointment to CelebManager.<br>
-Alias: <code>aa</code><br>
-Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_CONTACT_INDEX]&#8230;&#8203;</code></p>
+<p>Adds an appointment and shows the calendar of the start date of the added appointment.<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To change the date displayed by the calendar in <code>CalendarPanel</code>,
+refer to <a href="#Changing the base date of calendar: <code>viewDate</code> [Since v1.5]">[Changing the base date of calendar: <code>viewDate</code> [Since v1.5]]</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Alias: <code>aa</code><br>
+Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME]
+[c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>START_DATE</code> and <code>END_DATE</code> must be of the format <code>DD-MM-YYYY</code>, e.g. <code>03-07-2018</code>.</p>
+</li>
+<li>
+<p><code>START_DATE</code> <strong>must not be</strong> after <code>END_DATE</code>.</p>
+</li>
+<li>
+<p>If <code>START_DATE</code> or <code>END_DATE</code> is omitted, it will take on the value of the current date.</p>
+</li>
+<li>
+<p><code>START_TIME</code> and <code>END_TIME</code> must be of the format <code>HH:MM</code> and 24-hour format is used, e.g. <code>14:05</code>.</p>
+</li>
+<li>
+<p><code>START_TIME</code> <strong>must be</strong> at least 15 minutes before <code>END_TIME</code> if <code>START_DATE</code> is equal to <code>END_DATE</code>.</p>
+</li>
+<li>
+<p>If <code>START_TIME</code> and <code>END_TIME</code> are both omitted, <code>START_TIME</code> will take on the current time and <code>END_TIME</code> will be
+15 minutes after <code>START_TIME</code>.</p>
+</li>
+<li>
+<p>If <code>START_TIME</code> is omitted while <code>END_TIME</code> is not, <code>START_TIME</code> will be 15 minutes before <code>END_TIME</code>.</p>
+</li>
+<li>
+<p>If <code>END_TIME</code> is omitted while <code>START_TIME</code> is not, <code>END_TIME</code> will be 15 minutes after <code>START_TIME</code>.</p>
+</li>
+<li>
+<p><code>CELEBRITY_INDEX</code> and <code>POINT_OF_person_INDEX</code> refer to the index shwon in the last shown person list in <code>PersonListPanel</code>.</p>
+</li>
+<li>
+<p>The person at <code>CELEBRITY_INDEX</code> <strong>must be</strong> a celebrity.</p>
+</li>
+<li>
+<p>The person at <code>POINT_OF_person_INDEX</code> <strong>must not be</strong> a celebrity.</p>
+</li>
+<li>
+<p><code>CELEBRITY_INDEX</code> and <code>POINT_OF_person_INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -355,96 +411,6 @@ Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st
 <p><code>addAppointment n/Dentist Appointment l/Dental Clinic st/15:45 c/1 c/3</code></p>
 </li>
 </ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Start and end dates must be of the format dd/mm/yyyy. If the day is a 1 digit number such as the 3rd of July
-it must be prefixed with a 0, e.g. <code>03/07/2017</code>.</p>
-</li>
-<li>
-<p>Start and end times must be of the format hh:mm. 24 hour format is used for the hour. If either the hour
-or minute is a 1 digit number, you need to prefix it with a 0, e.g. <code>09:05</code>.</p>
-</li>
-<li>
-<p>The celebrity index refers to the person&#8217;s index on the person list displayed inside of our app. This person <strong>must</strong> be a celebrity,
-failing which you will receive an error message stating so.</p>
-</li>
-<li>
-<p>The point of contact index refers to an ordinary person associated with the appointment. This person <strong>must not</strong> be a Celebrity.</p>
-</li>
-<li>
-<p>Similar to our other commands, the celebrity and point of contact indices must be positive numbers greater than 0 and at most the number of person being shown.</p>
-</li>
-<li>
-<p>You can choose multiple celebrities or points of contact whom you want to add the appointment as shown in our example.</p>
-</li>
-<li>
-<p>All the fields with brackets as shown in the format are optional and can be omitted.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="editing-an-appointment-code-editappointment-code-since-v1-4"><a class="link" href="#editing-an-appointment-code-editappointment-code-since-v1-4">Editing an appointment <code>editAppointment</code> [Since v1.4]</a></h4>
-<div class="paragraph">
-<p>Edits an appointment currently stored in CelebManager.<br>
-Alias: <code>ea</code><br>
-Format: <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_CONTACT_INDEX]&#8230;&#8203;</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>editAppointment 2 n/Dentist Appointment l/Orchard Road p/3</code></p>
-</li>
-<li>
-<p><code>editAppointment 1 st/16:00 et/20:00 sd/23-03-2018 c/1 c/2</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>You can only edit an appointment when you are in appointment list view. Refer to
-<a href="#Listing appointments: <code>listAppointment</code> [Since v1.3]">[Listing appointments: <code>listAppointment</code> [Since v1.3]]</a> for more information.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the appointment at the specified <code>INDEX</code>. The index refers to the index number shown in the current
-appointment listing. The index <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>For more information on constraints of the different fields,
-refer to <a href="#adding-an-appointment-code-addappointment-code-since-v1-2">Adding an appointment: <code>addAppointment</code> [Since v1.2]</a>.</p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -527,7 +493,7 @@ Inheritance from the base classes of the external package is done so that we can
 <p>End Time</p>
 </li>
 <li>
-<p>Celebrity indices</p>
+<p>Celebrity Indices</p>
 </li>
 <li>
 <p>Point of Contact Indices</p>
@@ -696,7 +662,7 @@ in UI component while appointments in Model component.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:47:25 UTC
+Last updated 2018-04-15 07:38:29 UTC
 </div>
 </div>
 </body>

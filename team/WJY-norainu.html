@@ -173,7 +173,7 @@ Format: <code>removeTag TAG</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Removes the tag from every person in CelebManager.</p>
+<p>Removes the tag from every person in the full contact list (not necessarily the last shown list) in CelebManager.</p>
 </li>
 <li>
 <p><code>TAG</code> removed <strong>must not be</strong> <code>celebrity</code>.</p>
@@ -189,11 +189,23 @@ Format: <code>removeTag TAG</code></p>
 <ul>
 <li>
 <p><code>removeTag friends</code><br>
-Removes the tag, <code>friends</code> from every person and shows the number of person(s) affected.</p>
+Removes the tag, <code>friends</code> from every person and shows the number of person(s) affected.<br>
+Suppose <code>PersonListPanel</code> looks like the one on the left below before execution.<br>
+After execution, <code>PersonListPanel</code> should get updated to the one on the right below.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../images/removeTag.png" alt="removeTag" width="800">
+</div>
+<div class="title">Figure 1. State of <code>PersonListPanel</code> before (left) and after (right) executing <code>removeTag friends</code></div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>removeTag colleagues</code><br>
-Removes the tag, <code>colleagues</code> from every person and shows the number of person(s) affected.</p>
+<p><code>removeTag owesMoney</code><br>
+Removes the tag, <code>owesMoney</code> from every person and shows the number of person(s) affected.</p>
 </li>
 </ul>
 </div>
@@ -318,32 +330,11 @@ The method <code>removeAppointment</code> is in <code>Appointment</code> class, 
 an appointment may have two celebrities attending. Then this appointment will have two child entries, one each in each
 attending celebrity&#8217;s calendar. So when this appointment gets deleted, both entries should get removed as well.</p>
 </div>
-<div class="paragraph">
-<p>Suppose the current address book has two appointments in the appointment list as shown in the figure below:</p>
-</div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/BeforeDeleteAppointment_2.png" alt="BeforeDeleteAppointment 2" width="">
+<img src="../images/DeleteAppointmentCommand-logic-seq-diagram.jpg" alt="DeleteAppointmentCommand logic seq diagram" width="">
 </div>
-<div class="title">Figure 1. State of application before executing <code>deleteAppointment 2</code></div>
-</div>
-<div class="paragraph">
-<p>After the successful execution of <code>deleteAppointment 2</code>, appointment list will be updated to the diagram below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/AfterDeleteAppointment_2.png" alt="AfterDeleteAppointment 2" width="">
-</div>
-<div class="title">Figure 2. State of <code>PersonListPanel</code> after executing <code>removeTag friends</code></div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows the interaction within classes in <code>Logic</code> to process <code>removeTag</code> command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/DeleteAppointmentCommand-logic-seq-diagram.png" alt="DeleteAppointmentCommand logic seq diagram" width="">
-</div>
-<div class="title">Figure 3. Sequence diagram of deleteAppointment command</div>
+<div class="title">Figure 2. Sequence diagram of deleteAppointment command</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
@@ -437,7 +428,7 @@ in UI component while appointments in Model component.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:47:25 UTC
+Last updated 2018-04-15 07:38:29 UTC
 </div>
 </div>
 </body>

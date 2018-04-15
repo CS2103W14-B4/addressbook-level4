@@ -5,14 +5,14 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.6.1">
-<title>tzerbin - Project Portfolio</title>
+<title>Ng Tzer Bin - Project Portfolio</title>
 <link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>tzerbin - Project Portfolio</h1>
+<h1>Ng Tzer Bin - Project Portfolio</h1>
 </div>
 <div id="content">
 <div class="sect1">
@@ -22,91 +22,128 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>CelebManager is a software application that aims to allow celebrity managers to maintain schedule of celebrities under them. CelebManager is optimized for users who prefer to work with a Command Line Interface (CLI) while still having a Graphical User Interface (GUI) for visual feedback.</p>
+<p>CelebManager is a software that aims to allow celebrity managers to maintain the schedule of celebrities under them efficiently. CelebManager is optimized for celebrity managers (users) who prefer to work with a Command Line Interface (CLI) while still having a Graphical User Interface (GUI) for visual feedback.</p>
 </div>
 <div class="paragraph">
-<p>In this software, the users should be able to:</p>
+<p>In CelebManager, the celebrity managers should be able to enter commands using CLI to:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Manage contacts</p>
+<p>Manage contacts (including celebrities) in an address book,</p>
 </li>
 <li>
-<p>Manage appointments</p>
+<p>Manage appointments for celebrities with calendars, and;</p>
 </li>
 <li>
-<p>Manage calendars</p>
-</li>
-<li>
-<p>Plan efficient routes</p>
+<p>Plan efficient routes for celebrities with interactive map.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>This software is developed by a team of 4 for a project in CS2103T Software Engineering in National University of Singapore. This project portfolio aims to demonstrate my project contribution for academic grading, and my programming ability for potential employers or interested parties.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="contributions-summary"><a class="link" href="#contributions-summary">Contributions Summary</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p><strong>Enhancement</strong></p>
+</div>
+<div class="paragraph">
+<p>In this project, I have added the ability for users to save user data in the hard disk for commands involving calendars and appointments.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: Provide functionalities for storing calendar and appointment data</p>
+<p>What it does</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allow functionalities for celebrity manager to automaticallly save appointments in an .xml file, and read appointments data from a .xml file to run the application.</p>
+<p>It allows the user to save appointments automatically after adding, editing or deleting appointments in the software using an .xml file.</p>
 </li>
 <li>
-<p>Justification: This feature allows other components to communicate with <code>Storage</code> component so that other features related to appointments can be saved and retrieved.</p>
-</li>
-<li>
-<p>Highlights: This feature affects commands related to appointments, and commands to be added in future.</p>
+<p>It allows the user to retrieve saved appointments automatically from the .xml file automatically when using the software.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/functional/tzerbin.md">Functional code</a>] [<a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/test/tzerbin.md">Test code</a>]</p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+<p>Justification</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed documentation as a whole for project submissions in CS2103T and CS2101.</p>
+<p>This enhancement allows other software components to communicate with the Storage component so that the other features can be saved and retrieved.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Documentation:</p>
+<p>Highlight</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated features content in User Guide: <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/108">#108</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/93">#93</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/138">#138</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/20">#20</a>
-<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/21">#21</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/58">#58</a></p>
-</li>
-<li>
-<p>Updated features implementation content in developer guide: <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/108">#108</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/93">#93</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/138">#138</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/124">#124</a>
-<a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/58">#58</a> <a href="https://github.com/CS2103JAN2018-W14-B4/main/pull/1">#1</a></p>
+<p>This enhancement affects current commands related to appointments, and commands that will be added in the future.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Community:</p>
+<p>Credit</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Reported bugs and suggestions for other teams in the class</p>
+<p>This enhancement is adapted from the existing code base in the Storage component given to the project team.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Code Contribution</strong></p>
+</div>
+<div class="paragraph">
+<p>Please refer to the [<a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/functional/tzerbin.md">Functional code</a>] and [<a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/collated/test/tzerbin.md">Test code</a>] that I have contributed in GitHub.</p>
+</div>
+<div class="paragraph">
+<p><strong>Other Contributions</strong></p>
+</div>
+<div class="paragraph">
+<p>I am also responsible for other contributions which does not involve project enhancements.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Management</p>
+<div class="ulist">
+<ul>
+<li>
+<p>I managed the release of v1.5rc on GitHub.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation</p>
+<div class="ulist">
+<ul>
+<li>
+<p>I was responsible for documentations as a whole for project submissions in CS2103T Software Engineering and CS2101 Effective Communication for Computing Professionals. This includes the formating, layout, language use and consistency for both documentation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Community</p>
+<div class="ulist">
+<ul>
+<li>
+<p>I reported bugs for other teams working in different projects for CS2103T Software Engineering. The issues can be found in:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -141,13 +178,83 @@
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-guide-contribution"><a class="link" href="#user-guide-contribution">User Guide Contribution</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The following are sections of the user guide that I had contributed, which showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="editing-an-appointment-code-editappointment-code-since-v1-4"><a class="link" href="#editing-an-appointment-code-editappointment-code-since-v1-4">Editing an appointment <code>editAppointment</code> [Since v1.4]</a></h3>
+<div class="paragraph">
+<p>Pre-requisite: you can only edit an appointment when <code>CalendarPanel</code> is showing an appointment list.
+Refer to <a href="#Listing appointments: <code>listAppointment</code> [Since v1.5]">[Listing appointments: <code>listAppointment</code> [Since v1.5]]</a> for more information.<br></p>
+</div>
+<div class="paragraph">
+<p>Edits the specified appointment and replaces the appointment list with the calendar in
+<code>CalendarPanel</code> upon successful execution.<br>
+Alias: <code>ea</code><br>
+Format: <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME]
+[ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the appointment at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p><code>INDEX</code> refers to the index number shown in the current appointment list.</p>
+</li>
+<li>
+<p><code>INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
+</li>
+<li>
+<p>At least one of the optional fields must be provided.</p>
+</li>
+<li>
+<p>Existing values will be updated to the input values.</p>
+</li>
+<li>
+<p>For more information on constraints of the different fields,
+refer to <a href="#Adding an appointment: <code>addAppointment</code> [Since v1.2]">[Adding an appointment: <code>addAppointment</code> [Since v1.2]]</a>.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>listAppointment</code><br>
+<code>editAppointment 2 n/Dentist Appointment l/Orchard Road p/3</code>
+Edits the 2nd appointment in the appointment list.</p>
+</li>
+<li>
+<p><code>listAppointment 01-04 01-05</code><br>
+<code>editAppointment 1 st/16:00 et/20:00 sd/23-03-2018 c/1 c/2</code>
+Edits the 1st appointment in the result of <code>listAppointment 01-04 01-05</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="developer-guide-contribution"><a class="link" href="#developer-guide-contribution">Developer Guide Contribution</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -155,94 +262,7 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
-</tr>
-</tbody>
-</table>
-<div class="sect2">
-<h3 id="introduction"><a class="link" href="#introduction">Introduction</a></h3>
-<div class="paragraph">
-<p>CelebManager (CM) is for celebrity managers who <strong>prefer to use a desktop app for managing their celebrity&#8217;s schedule
-with ease</strong>. More importantly, CM is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while
-still having the benefits of a Graphical User Interface (GUI). If you require a versatile application that has the
-feature of <strong>managing contacts, organising schedules, emailing (Coming in v2.0) and trip planning</strong>. You are at the right
-place as CM would be the best platform for you, with its integration of address book, calendar and visual maps.
-Interested? Jump to the <a href="#quick-start">Quick Start</a> to get started. Enjoy!</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="quick-start"><a class="link" href="#quick-start">Quick Start</a></h3>
-<div class="paragraph">
-<p>Follow this series of steps to have the CelebManager app quickly up and running on your computer.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Ensure you have Java version <code>1.8.0_60</code> or later installed in your Computer. The link to the latest version of Java
-can be found
-<a href="https://java.com/en/download/">here</a>.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Having any Java 8 version is not enough.<br>
-This app will not work with earlier versions of Java 8.
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>Download the latest <code>addressbook.jar</code> <a href="{repoURL}/releases">here</a>.</p>
-</li>
-<li>
-<p>Copy the file to the folder you want to use as the home folder for your CelebManager.</p>
-</li>
-<li>
-<p>Double-click the file to start the app. The interface should appear in a few seconds.</p>
-<div class="paragraph">
-<p>The image below (Figure 1) shows the current interface of CelebManager.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/Ui_UserGuide.png" alt="Ui UserGuide" width="790">
-</div>
-<div class="title">Figure 1. Interface of CelebManager</div>
-</div>
-</li>
-<li>
-<p>Type <code>help</code> in the command box and press <kbd>Enter</kbd> to execute it. A help window should be opened.</p>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Refer to <a href="#Features">[Features]</a> for details of all commands available in CelebManager and their example usage.
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>The following are sections of the user guide that I had contributed, which showcase my ability to write technical documentation targeting developers and show technical depth in my contributions.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -256,7 +276,7 @@ It describes how the overall structure of the <code>Storage</code> component and
 <div class="content">
 <img src="../images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
-<div class="title">Figure 2. Class diagram of the <code>Storage</code> component</div>
+<div class="title">Figure 1. Class diagram of the <code>Storage</code> component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong>: <a href="{repoURL}/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -315,7 +335,7 @@ It supports the retrieval and storage for appointments made by the user.</p>
 <div class="content">
 <img src="../images/ReadStorageCalendarSequenceDiagram.png" alt="ReadStorageCalendarSequenceDiagram" width="">
 </div>
-<div class="title">Figure 3. Sequence Diagram for reading <code>StorageCalendar</code></div>
+<div class="title">Figure 2. Sequence Diagram for reading <code>StorageCalendar</code></div>
 </div>
 <div class="paragraph">
 <p>In the <code>XmlStorageCalendarStorage</code> class, it allows developers to use methods:</p>
@@ -384,7 +404,7 @@ In <code>XmlSerializableStorageCalendar</code>, it contains a <code>List</code> 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:47:25 UTC
+Last updated 2018-04-15 07:38:29 UTC
 </div>
 </div>
 </body>

@@ -99,7 +99,21 @@
 <li><a href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
 <li><a href="#launch">F.1. Launch</a></li>
-<li><a href="#deleting-a-person">F.2. Deleting a person</a></li>
+<li><a href="#adding-a-person-celebrity">F.2. Adding a person/celebrity</a></li>
+<li><a href="#deleting-a-person-celebrity">F.3. Deleting a person/celebrity</a></li>
+<li><a href="#removing-a-tag">F.4. Removing a tag</a></li>
+<li><a href="#adding-an-appointment">F.5. Adding an appointment</a></li>
+<li><a href="#listing-appointments">F.6. Listing appointments</a></li>
+<li><a href="#edititng-an-appointment">F.7. Edititng an appointment</a></li>
+<li><a href="#deleting-an-appointment">F.8. Deleting an appointment</a></li>
+<li><a href="#viewing-an-appointment">F.9. Viewing an appointment</a></li>
+<li><a href="#showing-location-on-map">F.10. Showing location on map</a></li>
+<li><a href="#estimating-route-between-two-location-on-map">F.11. Estimating route between two location on map</a></li>
+<li><a href="#viewing-a-celebrity-s-calendar">F.12. Viewing a celebrity&#8217;s calendar</a></li>
+<li><a href="#viewing-the-combined-calendar">F.13. Viewing the combined calendar</a></li>
+<li><a href="#changing-to-a-different-calendar-view">F.14. Changing to a different calendar view</a></li>
+<li><a href="#viewing-a-particular-day-s-calendar">F.15. Viewing a particular day&#8217;s calendar</a></li>
+<li><a href="#transferring-of-storage-calendar-xml-file">F.16. Transferring of storage calendar .xml file</a></li>
 </ul>
 </li>
 </ul>
@@ -548,7 +562,7 @@ It describes the overall structure of the <code>Model</code> component, along wi
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+<img src="images/ModelClassDiagram.jpg" alt="ModelClassDiagram" width="800">
 </div>
 <div class="title">Figure 8. Class diagram of the <code>Model</code> component</div>
 </div>
@@ -565,6 +579,15 @@ It describes the overall structure of the <code>Model</code> component, along wi
 </li>
 <li>
 <p>stores the Address Book data.</p>
+</li>
+<li>
+<p>stores a <code>StorageCalendar</code> object that contains all appointments.</p>
+</li>
+<li>
+<p>stores a <code>CalendarSource</code> object that is used to display the calendar.</p>
+</li>
+<li>
+<p>stores a list of appointments which will be displayed for <code>listAppointment</code> command.</p>
 </li>
 <li>
 <p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
@@ -1174,7 +1197,7 @@ Inheritance from the base classes of the external package is done so that we can
 <p>End Time</p>
 </li>
 <li>
-<p>Celebrity indices</p>
+<p>Celebrity Indices</p>
 </li>
 <li>
 <p>Point of Contact Indices</p>
@@ -1442,32 +1465,11 @@ The method <code>removeAppointment</code> is in <code>Appointment</code> class, 
 an appointment may have two celebrities attending. Then this appointment will have two child entries, one each in each
 attending celebrity&#8217;s calendar. So when this appointment gets deleted, both entries should get removed as well.</p>
 </div>
-<div class="paragraph">
-<p>Suppose the current address book has two appointments in the appointment list as shown in the figure below:</p>
-</div>
 <div class="imageblock">
 <div class="content">
-<img src="images/BeforeDeleteAppointment_2.png" alt="BeforeDeleteAppointment 2" width="">
+<img src="images/DeleteAppointmentCommand-logic-seq-diagram.jpg" alt="DeleteAppointmentCommand logic seq diagram" width="">
 </div>
-<div class="title">Figure 21. State of application before executing <code>deleteAppointment 2</code></div>
-</div>
-<div class="paragraph">
-<p>After the successful execution of <code>deleteAppointment 2</code>, appointment list will be updated to the diagram below:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AfterDeleteAppointment_2.png" alt="AfterDeleteAppointment 2" width="">
-</div>
-<div class="title">Figure 22. State of <code>PersonListPanel</code> after executing <code>removeTag friends</code></div>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows the interaction within classes in <code>Logic</code> to process <code>removeTag</code> command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/DeleteAppointmentCommand-logic-seq-diagram.png" alt="DeleteAppointmentCommand logic seq diagram" width="">
-</div>
-<div class="title">Figure 23. Sequence diagram of deleteAppointment command</div>
+<div class="title">Figure 21. Sequence diagram of deleteAppointment command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1582,7 +1584,15 @@ This is done by <code>getChosenAppointment()</code> method.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
-        selectedAppointment = model.getChosenAppointment(chosenIndex);
+        <span class="keyword">if</span> (!model.getIsListingAppointments()) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_MUST_SHOW_LIST_OF_APPOINTMENTS);
+        }
+        <span class="keyword">try</span> {
+            selectedAppointment = model.getChosenAppointment(chosenIndex);
+        } <span class="keyword">catch</span> (<span class="exception">IndexOutOfBoundsException</span> iobe) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX);
+        }
+
         <span class="keyword">try</span> {
             ShowLocationCommand showLocation = <span class="keyword">new</span> ShowLocationCommand(
                     <span class="keyword">new</span> MapAddress(selectedAppointment.getLocation()));
@@ -1621,7 +1631,7 @@ Whenever an <code>Appointment</code> has no location data, any existing location
 <div class="content">
 <img src="images/ViewAppointmentSequenceDiagram.png" alt="ViewAppointmentSequenceDiagram" width="">
 </div>
-<div class="title">Figure 24. Sequence Diagram of <code>viewAppointment</code> Command</div>
+<div class="title">Figure 22. Sequence Diagram of <code>viewAppointment</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -1731,7 +1741,7 @@ It supports the retrieval and storage for appointments made by the user.</p>
 <div class="content">
 <img src="images/ReadStorageCalendarSequenceDiagram.png" alt="ReadStorageCalendarSequenceDiagram" width="">
 </div>
-<div class="title">Figure 25. Sequence Diagram for reading <code>StorageCalendar</code></div>
+<div class="title">Figure 23. Sequence Diagram for reading <code>StorageCalendar</code></div>
 </div>
 <div class="paragraph">
 <p>In the <code>XmlStorageCalendarStorage</code> class, it allows developers to use methods:</p>
@@ -1880,7 +1890,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="images/LocationMarker.png" alt="LocationMarker" width="50">
 </div>
-<div class="title">Figure 26. Location marker</div>
+<div class="title">Figure 24. Location marker</div>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the inheritance diagram for <code>ShowLocationCommand</code>:</p>
@@ -1889,7 +1899,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
 </div>
-<div class="title">Figure 27. Inheritance diagram for <code>Command</code></div>
+<div class="title">Figure 25. Inheritance diagram for <code>Command</code></div>
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
@@ -1985,7 +1995,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 28. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 26. Default State of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
 <p>After the input of "showLocation ma/Punggol" the <code>MapPanel</code> will be updated to the diagram below:</p>
@@ -1994,10 +2004,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="content">
 <img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 29. State of <code>MapPanel</code> after <code>CommandInput</code></div>
-</div>
-<div class="paragraph">
-<p>Any subsequent inputs will remove the previous location marker and update the <code>MapPanel</code> with the new marker.</p>
+<div class="title">Figure 27. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2006,7 +2013,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Whenever an invalid <code>showlocation</code> command is done, any existing location marker or route will be removed from the map.
+Whenever an invalid <code>showLocation</code> command is done, any existing location marker or route will be removed from the map.
 </td>
 </tr>
 </table>
@@ -2018,7 +2025,7 @@ Whenever an invalid <code>showlocation</code> command is done, any existing loca
 <div class="content">
 <img src="images/ShowLocationSequenceDiagram.png" alt="ShowLocationSequenceDiagram" width="">
 </div>
-<div class="title">Figure 30. Sequence Diagram of <code>showLocation</code> Command</div>
+<div class="title">Figure 28. Sequence Diagram of <code>showLocation</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -2106,13 +2113,13 @@ in the <code>MapPanel</code> by updating the state of the <code>MapPanel</code>.
 <div class="content">
 <img src="images/Start_Location_Marker.png" alt="Start Location Marker" width="100">
 </div>
-<div class="title">Figure 31. Start Location marker</div>
+<div class="title">Figure 29. Start Location marker</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/End_Location_Marker.png" alt="End Location Marker" width="100">
 </div>
-<div class="title">Figure 32. End Location marker</div>
+<div class="title">Figure 30. End Location marker</div>
 </div>
 <div class="paragraph">
 <p><code>EstimateRouteCommand</code> inherits from the Command class and is not part of the Undoable Command.
@@ -2130,7 +2137,7 @@ An example would be the details of unit number (e.g #11-111) which will result i
 <ul>
 <li>
 <p><code>GMAPSFX</code> is used to create the <code>MapPanel</code> which allows the
-command to re-center the map view, create the route, mark the start and end location which is then shown to the user.</p>
+command to re-center the map view, create the route, mark the start, end location and route which is then shown to the user.</p>
 </li>
 <li>
 <p><code>Google Maps Web Services API</code> is used to create the
@@ -2151,7 +2158,7 @@ can be reached by driving.</p>
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 33. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 31. Default State of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
 <p>After the input of "estimateRoute sma/Punggol ema/NUS" the <code>MapPanel</code> will be updated to the diagram below:</p>
@@ -2160,7 +2167,7 @@ can be reached by driving.</p>
 <div class="content">
 <img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
 </div>
-<div class="title">Figure 34. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 32. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="paragraph">
 <p>Any subsequent <code>estimateRoute</code> command will remove any existing marker or route before updating the <code>MapPanel</code> with the new route.</p>
@@ -2184,7 +2191,7 @@ Whenever an invalid <code>estimateRoute</code> command is done, any existing loc
 <div class="content">
 <img src="images/EstimateRouteSequenceDiagram.png" alt="EstimateRouteSequenceDiagram" width="">
 </div>
-<div class="title">Figure 35. Sequence Diagram of <code>estimateRoute</code> Command</div>
+<div class="title">Figure 33. Sequence Diagram of <code>estimateRoute</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -2357,7 +2364,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 36. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 34. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 </div>
@@ -3751,9 +3758,9 @@ For each subsequent launch, window size and location should be the same as the s
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">F.2. Deleting a person</a></h3>
+<h3 id="adding-a-person-celebrity"><a class="link" href="#adding-a-person-celebrity">F.2. Adding a person/celebrity</a></h3>
 <div class="paragraph">
-<p>This section includes instructions to test the delete command of the application.</p>
+<p>This section includes instructions to test the <code>add</code> command of the application.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3762,7 +3769,7 @@ For each subsequent launch, window size and location should be the same as the s
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.
+Prerequisites: No other person in the addressbook with the details of the two persons below.
 </td>
 </tr>
 </table>
@@ -3770,16 +3777,592 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Type <code>delete 1</code> in command box and press enter<br>
+<p>Type <code>add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code> in command box and press enter.<br>
+<em>Expected: A contact by the name John Doe and with the above personal particulars will be added.<br>
+Details of the added contact shown in the status message. Timestamp in the status bar is updated.</em></p>
+</li>
+<li>
+<p>Type <code>add n/Jane Doe p/98765431 e/janed@example.com a/311, Clementi Ave 1, #02-25 t/celebrity</code> in command box and press enter.<br>
+<em>Expected: A celebrity by the name Jane Doe is added with the above personal particulars. A new calendar with the initial <code>J</code><br>
+will be created in the calendar panel. Details of the added celebrity shown in the status message. Timestamp in the status bar is updated.</em></p>
+</li>
+<li>
+<p>Type in <code>add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/friends t/owesMoney</code> in command box and press enter.<br>
+<em>Expected: No person is added. Error details is shown in the status message. Status bar remains the same.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person-celebrity"><a class="link" href="#deleting-a-person-celebrity">F.3. Deleting a person/celebrity</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>delete</code> command of the CelebManager.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list. At least one celebrity in the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>delete n</code> in command box (n refers to the one-based index of the celebrity in the person list panel) and press enter.<br>
+<em>Expected: Chosen celebrity is deleted from the list. Calendar corresponding to the deleted celebrity is removed from the calendar panel.
+Details of the deleted celebrity is shown in the status message. Timestamp in the status bar is updated.</em></p>
+</li>
+<li>
+<p>Type <code>delete 1</code> in command box and press enter.<br>
 <em>Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</em></p>
 </li>
 <li>
-<p>Type <code>delete 0</code> in command box and press enter<br>
+<p>Type <code>delete 0</code> in command box and press enter.<br>
 <em>Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</em></p>
 </li>
 <li>
-<p>Type other incorrect delete command such as <code>delete</code>, <code>delete x</code> (where x is larger than the list size) in command box and press enter<br>
+<p>Type other incorrect delete command such as <code>delete</code>, <code>delete x</code> (where <code>x</code> is larger than the list size) in command box and press enter.<br>
 <em>Expected: Similar to previous.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-a-tag"><a class="link" href="#removing-a-tag">F.4. Removing a tag</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>removeTag</code> command of the CelebManager.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: At least one person in the full contact list (not necessarily the last shown list) has <code>friends</code> tag.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>removeTag friends</code> in command box and press enter.<br>
+<em>Expected: <code>friends</code> tag is removed from any person who has it. Number of persons affected shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>removeTag !@#</code> in command box and press enter.<br>
+<em>Expected: No tag is removed. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>removeTag celebrity</code> in command box and press enter.<br>
+<em>Expected: <code>celebrity</code> tag is not removed. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type other incorrect <code>removeTag</code> commands such as <code>removeTag</code>, <code>removeTag x</code>
+(where <code>x</code> is a tag that nobody has in the full contact list or an invalid tag name) in command box and press enter.<br>
+   <em>Expected: No tag is removed. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-an-appointment"><a class="link" href="#adding-an-appointment">F.5. Adding an appointment</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>addAppointment</code> command of the CelebManager.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: List all persons using the <code>list</code> command. At least one celebrity and one normal person in the person list panel. No appointments currently present.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>addAppointment n/Oscar</code> and press enter. Then type <code>la</code> and press enter.<br>
+<em>Expected: An appointment with the name Oscar is added. The start date/time corresponds to the current time. The end date/time is 15 minutes from now.</em></p>
+</li>
+<li>
+<p>Type <code>addAppointment n/Grammy sd/10-04-2018 st/15:00</code> and press enter. Then type <code>la</code> and press enter.<br>
+<em>Expected: An appointment with the name Grammy is added. The start date/time correspond to the input values. End date/time is 15 minutes from that.</em></p>
+</li>
+<li>
+<p>Type <code>addAppointment n/Dentist appointment sd/11-04-2018 st/16:00 ed/12-04-2018 et/09:00 c/n p/k</code> (where n corresponds to the index of a celebrity
+and k corresponds to the index of a normal person) and press enter. Then type <code>la</code> and press enter.<br>
+<em>Expected: An appointment with the above details and the selected celebrity and point of contact will appear in the appointment list.</em></p>
+</li>
+<li>
+<p>Type the above command again and press enter.<br>
+<em>Expected: No appointment is added. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>addAppointment n/Lunch meeting c/x</code> (where x refers to an invalid celebrity index) and press enter.<br>
+<em>Expected: No appointment is added. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>addAppointment n/Dinner l/???</code> and press enter.<br>
+<em>Expected: No appointment is added. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-appointments"><a class="link" href="#listing-appointments">F.6. Listing appointments</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>listAppointment</code> command of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: At least one appointment stored in CelebManager.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>listAppointment</code> in command box and press enter.<br>
+<em>Expected: All appointments are listed.</em></p>
+</li>
+<li>
+<p>Type <code>listAppointment 01-04 01-05</code> in command box and press enter.<br>
+<em>Expected: Appointments with scheduled timings which overlap with the period of 1st April to 1st May of the current year are listed.
+If there is no such appointment, error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>listAppointment 0</code> in command box and press enter.<br>
+<em>Expected: No appointments listed. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>listAppointment a</code> in command box and press enter.<br>
+<em>Expected: No appointments listed. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>listAppointment 03-05 02-01</code> in command box and press enter.<br>
+<em>Expected: No appointments listed. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type other incorrect <code>listAppointment</code> commands such as <code>listAppointment</code>, <code>listAppointment x</code>
+(where <code>x</code> is not a date range of format <code>DD-MM-YYYY DD-MM-YYYY</code>, <code>DD-MM-YYYY DD-MM</code>, <code>DD-MM DD-MM-YYYY</code>, or <code>DD-MM DD-MM</code>)
+in command box and press enter.<br>
+   <em>Expected: No appointments listed. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edititng-an-appointment"><a class="link" href="#edititng-an-appointment">F.7. Edititng an appointment</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>editAppointment</code> command of the CelebManager.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: List all appointments using the <code>listAppointment</code> command. At least one appointment stored in the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>while listing appointments:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>editAppointment 0</code> in command box and press enter.<br>
+<em>Expected: No appointment is edited. Error details shown in the status message. Appointment list remains the same.</em></p>
+</li>
+<li>
+<p>Type <code>editAppointment 1 n/New Appointment</code> in command box and press enter.<br>
+<em>Expected: First appointment is renamed as <code>New Appointment</code> as long as it did not already have that name previously, and will go back to the calendar page.
+If there is an error because the name is the same, no appointment is edited, error details shown in the status message and appointment list remains the same.</em></p>
+</li>
+<li>
+<p>Type other incorrect <code>editAppointment</code> commands such as <code>editAppointment</code>, <code>editAppointment x</code> (where <code>x</code> is larger than the appointment list size) in command box and press enter.<br>
+<em>Expected: No appointment is edited. Error details shown in the status message. Appointment list remains the same.</em></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>While not listing appointments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type correct deleteAppointment commands such as <code>editAppointment 1</code> in command box and press enter.<br>
+<em>Expected: No appointment is edited. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-appointment"><a class="link" href="#deleting-an-appointment">F.8. Deleting an appointment</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>deleteAppointment</code> command of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: List appointments using the <code>listAppointment</code> command. At least one appointment in the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>while listing appointments:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>deleteAppointment 0</code> in command box and press enter.<br>
+<em>Expected: No appointment is deleted. Error details shown in the status message. Appointment list remains the same.</em></p>
+</li>
+<li>
+<p>Type <code>deleteAppointment 1</code> in command box and press enter.<br>
+<em>Expected: First appointment is deleted from the list. If the deleted appointment is the only appointment in the list, CelebManager will switch back to the calendar of the current day.</em></p>
+</li>
+<li>
+<p>Type other incorrect <code>deleteAppointment</code> commands such as <code>deleteAppointment</code>, <code>deleteAppointment x</code> (where <code>x</code> is larger than the appointment list size) in command box and press enter.<br>
+<em>Expected: No appointment is deleted. Error details shown in the status message. Appointment list remains the same.</em></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>While not listing appointments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type correct deleteAppointment commands such as <code>deleteAppointment 1</code> in command box and press enter.<br>
+<em>Expected: No appointment is deleted. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-an-appointment"><a class="link" href="#viewing-an-appointment">F.9. Viewing an appointment</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>viewAppointment</code> command of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: List all appointments using the <code>listAppointment</code> command. Multiple appointments in the list.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>viewAppointment 1</code> in command box and press enter.<br>
+<em>Expected: First appointment is selected from the list. Details of the selected appointment shown in the result display. Location shown in map. Success message shown in result display.</em></p>
+</li>
+<li>
+<p>Type <code>viewAppointment 0</code> in command box and press enter.<br>
+<em>Expected: No appointment is selected. Error details shown in the result display. Status bar remains the same. Map removes any existing location marker or route.</em></p>
+</li>
+<li>
+<p>Type other incorrect  command such as <code>viewAppointment</code>, <code>viewAppointment x</code> (where x is larger than the list size or appointment chosen does not have location data) in command box and press enter.<br>
+<em>Expected: Similar to previous.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="showing-location-on-map"><a class="link" href="#showing-location-on-map">F.10. Showing location on map</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>showLocation</code> command of the application.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>showLocation ma/NUS</code> in command box and press enter.<br>
+<em>Expected: Location shown in map. Map view will be centered to location.</em></p>
+</li>
+<li>
+<p>Type <code>showLocation ma/!!!!!!</code> in command box and press enter.<br>
+<em>Expected: Error details shown in the result display. Status bar remains the same. Map removes any existing location marker or route.</em></p>
+</li>
+<li>
+<p>Type other incorrect  command such as <code>showLocation</code>, <code>showLocation Punggol</code> in command box and press enter.<br>
+<em>Expected: Similar to previous.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="estimating-route-between-two-location-on-map"><a class="link" href="#estimating-route-between-two-location-on-map">F.11. Estimating route between two location on map</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>estimateRoute</code> command of the application.</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>estimateRoute sma/NUS ema/Punggol</code> in command box and press enter.<br>
+<em>Expected: Best route by driving will be added to map. Map view will be centered to location. Details of distance and time of travel shown in result display.
+ Success message shown in result display.</em></p>
+</li>
+<li>
+<p>Type <code>estimateRoute sma/!!!!!! ema/Punggol</code> in command box and press enter.<br>
+<em>Expected: Location not found in google server. Error details shown in the result display. Status bar remains the same.</em></p>
+</li>
+<li>
+<p>Type <code>estimateRoute sma/NUS ema/!!!!!!</code> in command box and press enter.<br>
+<em>Expected: Error details shown in the result display. Status bar remains the same. Map removes any existing marker or route.</em></p>
+</li>
+<li>
+<p>Type other incorrect  command such as <code>estimateRoute</code>, <code>estimateRoute Punggol NUS</code>, <code>estimateRoute sma/Punggol NUS</code>, <code>estimateRoute NUS ema/Punggol</code> in command box and press enter.<br>
+<em>Expected: Similar to previous.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-a-celebrity-s-calendar"><a class="link" href="#viewing-a-celebrity-s-calendar">F.12. Viewing a celebrity&#8217;s calendar</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>viewCalendar</code> command of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: At least one celebrity in the last shown list and the celebrity&#8217;s calendar is not currently displayed.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>viewCalendar c</code> (where <code>c</code> is the index of the celebrity) in command box and press enter.<br>
+<em>Expected: <code>CalendarPanel</code> now displays the celebrity&#8217;s calendar. If the celebrity is the only celebrity in the full contact list, there won&#8217;t be any change in terms of the outlook of calendar.</em></p>
+</li>
+<li>
+<p>Type <code>viewCalendar c</code> (where <code>c</code> is the index of the same celebrity in the previous command) again after previous execution in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>viewCalendar p</code> (where <code>p</code> is the index of a non-celebrity person) in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>viewCalendar 0</code> in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type other incorrect <code>viewCalendar</code> commands such as <code>viewCalendar</code>, <code>viewCalendar x</code> (where <code>x</code> is larger than the last shown contact list size or not a valid index number or the index of the celebrity whose calendar is currently displayed) in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-combined-calendar"><a class="link" href="#viewing-the-combined-calendar">F.13. Viewing the combined calendar</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>viewCombinedCalendar</code> command of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: Combined calendar is not currently displayed.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>viewCombinedCalendar</code> in command box and press enter.<br>
+<em>Expected: <code>CalendarPanel</code> now displays the combined calendar. If there is only one celebrity in the full contact list, there won&#8217;t be any change in terms of the outlook of calendar.</em></p>
+</li>
+<li>
+<p>Type <code>viewCombinedCalendar</code> again after previous execution in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changing-to-a-different-calendar-view"><a class="link" href="#changing-to-a-different-calendar-view">F.14. Changing to a different calendar view</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>viewCalendarBy</code> command of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: Calendar is currently in <code>day</code> view.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>viewCalendarBy week</code> in command box and press enter.<br>
+<em>Expected: Calendar shows the week which the original day is in.</em></p>
+</li>
+<li>
+<p>Type <code>viewCalendarBy month</code> in command box and press enter.<br>
+<em>Expected: Calendar shows the month which the original day is in.</em></p>
+</li>
+<li>
+<p>Type <code>viewCalendarBy day</code> in command box and press enter.<br>
+<em>Expected: Calendar shows the day which is the original day.</em></p>
+</li>
+<li>
+<p>Type <code>viewCalendarBy day</code> again after executing the previous command in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>viewCalendarBy MOnTh</code> in command box and press enter.<br>
+<em>Expected: Calendar shows the week which the original day is in.</em></p>
+</li>
+<li>
+<p>Type <code>viewCalendarBy 1</code> in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type other incorrect <code>viewCalendarBy</code> commands such as <code>viewCalendarBy</code>, <code>viewCalendarBy x</code> (where x is not <code>day</code>, <code>week</code>, <code>month</code> or mixed uppercase and lowercase of one of them) in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-a-particular-day-s-calendar"><a class="link" href="#viewing-a-particular-day-s-calendar">F.15. Viewing a particular day&#8217;s calendar</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the <code>viewDate</code> command of the application.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Prerequisites: Calendar is currently in <code>day</code> view and displays the current day&#8217;s calendar. Current day is not 1st April of 2018.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type <code>viewDate 01-04-2018</code> in command box and press enter.<br>
+<em>Expected: <code>CalendarPanel</code> displays the calendar for 1st April of 2018.</em></p>
+</li>
+<li>
+<p>Type <code>viewDate d</code> (where <code>d</code> is a date that is different from the current day&#8217;s date, in DD-MM format) in command box and press enter.<br>
+<em>Expected: <code>CalendarPanel</code> displays the calendar for date <code>d</code> of current year.</em></p>
+</li>
+<li>
+<p>Type <code>viewDate</code> in command box and press enter.<br>
+<em>Expected: <code>CalendarPanel</code> displays the calendar for the current day.</em></p>
+</li>
+<li>
+<p>Type <code>viewDate</code> again after executing the previous command in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>viewDate 01-04</code> again after executing the previous command in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>viewDate 0</code> in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type <code>viewDate !</code> in command box and press enter.<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+<li>
+<p>Type other incorrect <code>viewDate</code> commands such as <code>viewDate</code>, <code>viewDate x</code> (where <code>x</code> is not a date in <code>DD-MM-YYYY</code> or <code>DD-MM</code> format) in command box and press enter<br>
+<em>Expected: No change in calendar. Error details shown in the status message.</em></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="transferring-of-storage-calendar-xml-file"><a class="link" href="#transferring-of-storage-calendar-xml-file">F.16. Transferring of storage calendar .xml file</a></h3>
+<div class="paragraph">
+<p>This section includes instructions to test the transferring of file of the application</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Preprequisites: The file is a valid .xml file for storage calendar, and is named <code>storagecalendar.xml</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Close the application.</p>
+</li>
+<li>
+<p>Open the <code>data/</code> directory in the folder containing the .jar file.
+<em>Expected: <code>storagecalendar.xml</code> consisting the to-be-replaced data is in the folder.</em></p>
+</li>
+<li>
+<p>Replace the old <code>storagecalendar.xml</code> with the the new <code>storagecalendar.xml</code> file.</p>
+</li>
+<li>
+<p>Restart the application.
+<em>Expected: The new appointments data from <code>storagecalendar.xml</code> is reflected in the calendar panel.</em></p>
 </li>
 </ol>
 </div>
@@ -3789,7 +4372,7 @@ Prerequisites: List all persons using the <code>list</code> command. Multiple pe
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:47:25 UTC
+Last updated 2018-04-15 07:38:29 UTC
 </div>
 </div>
 </body>

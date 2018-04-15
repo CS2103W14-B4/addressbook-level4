@@ -284,7 +284,16 @@ There is no need to save manually.</p>
 the middle left of CelebManager.</p>
 </div>
 <div class="sect3">
-<h4 id="adding-a-person-code-add-code-since-v1-0"><a class="link" href="#adding-a-person-code-add-code-since-v1-0">3.2.1. Adding a person: <code>add</code> [Since v1.0]</a></h4>
+<h4 id="person-vs-celebrity-what-s-the-difference"><a class="link" href="#person-vs-celebrity-what-s-the-difference">3.2.1. Person vs Celebrity: What&#8217;s the difference?</a></h4>
+<div class="paragraph">
+<p>In our application, Celebrities are meant to be the celebrities that you, the manager, are currently managing. The other people are each referred to as a Person. The way you create or edit a Person is almost exactly the same as a Celebrity. Both have the same necessary and optional fields to them such as a name, phone number, address, email and some descriptive tags. The only difference is that if you want to create a Celebrity instead of a regular Person in our app, you need to have a compulsory <code>celebrity</code> tag, in small letters. This will signal to the program that you want to create a Celebrity instead of a normal Person. In other words, the usage of <code>celebrity</code> as a tag is reserved for creation of Celebrities. In some of the commands which deal with the adding and editing of a person this will be further explained.</p>
+</div>
+<div class="paragraph">
+<p>Each celebrity has their own calendar, which will displays the appointments he/she will be attending.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-a-person-code-add-code-since-v1-0"><a class="link" href="#adding-a-person-code-add-code-since-v1-0">3.2.2. Adding a person: <code>add</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Adds a person to CelebManager.<br>
 Alias: <code>a</code><br>
@@ -356,7 +365,7 @@ Adds a celebrity named <code>Paul McCartney</code> to CelebManager and creates a
 </div>
 </div>
 <div class="sect3">
-<h4 id="locating-persons-by-name-code-find-code-since-v1-0"><a class="link" href="#locating-persons-by-name-code-find-code-since-v1-0">3.2.2. Locating persons by name: <code>find</code> [Since v1.0]</a></h4>
+<h4 id="locating-persons-by-name-code-find-code-since-v1-0"><a class="link" href="#locating-persons-by-name-code-find-code-since-v1-0">3.2.3. Locating persons by name: <code>find</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Shows a list of all persons whose names contain any of the given keywords.<br>
 Alias: <code>f</code><br>
@@ -400,7 +409,7 @@ Lists out any person having any of the names: <code>Betsy</code> or <code>John</
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-persons-code-list-code-since-v1-0"><a class="link" href="#listing-all-persons-code-list-code-since-v1-0">3.2.3. Listing all persons : <code>list</code> [Since v1.0]</a></h4>
+<h4 id="listing-all-persons-code-list-code-since-v1-0"><a class="link" href="#listing-all-persons-code-list-code-since-v1-0">3.2.4. Listing all persons : <code>list</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Shows a list of all persons in CelebManager.<br>
 Alias: <code>l</code><br>
@@ -408,7 +417,7 @@ Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-person-code-delete-code-since-v1-0"><a class="link" href="#deleting-a-person-code-delete-code-since-v1-0">3.2.4. Deleting a person : <code>delete</code> [Since v1.0]</a></h4>
+<h4 id="deleting-a-person-code-delete-code-since-v1-0"><a class="link" href="#deleting-a-person-code-delete-code-since-v1-0">3.2.5. Deleting a person : <code>delete</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Deletes the specified person from CelebManager.<br>
 Alias: <code>d</code><br>
@@ -461,7 +470,7 @@ Deletes the 1st person in the results of the <code>find</code> command. If the l
 </div>
 </div>
 <div class="sect3">
-<h4 id="selecting-a-person-code-select-code-since-v1-0"><a class="link" href="#selecting-a-person-code-select-code-since-v1-0">3.2.5. Selecting a person : <code>select</code> [Since v1.0]</a></h4>
+<h4 id="selecting-a-person-code-select-code-since-v1-0"><a class="link" href="#selecting-a-person-code-select-code-since-v1-0">3.2.6. Selecting a person : <code>select</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Alias: <code>s</code><br>
@@ -473,9 +482,6 @@ Format: <code>select INDEX</code></p>
 <ul>
 <li>
 <p>Selects the person at the specified <code>INDEX</code> in the last shown person list.</p>
-</li>
-<li>
-<p>The selected person&#8217;s information will be highlited with yellow colour.</p>
 </li>
 <li>
 <p><code>INDEX</code> refers to the index number shown in the most recent listing.</p>
@@ -506,7 +512,7 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-person-code-edit-code-since-v1-0"><a class="link" href="#editing-a-person-code-edit-code-since-v1-0">3.2.6. Editing a person : <code>edit</code> [Since v1.0]</a></h4>
+<h4 id="editing-a-person-code-edit-code-since-v1-0"><a class="link" href="#editing-a-person-code-edit-code-since-v1-0">3.2.7. Editing a person : <code>edit</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Edits an existing person in CelebManager.<br>
 Alias: <code>e</code><br>
@@ -576,7 +582,7 @@ If you follow all the examples so far, this person&#8217;s calendar should be de
 </div>
 </div>
 <div class="sect3">
-<h4 id="removing-a-tag-code-removetag-code-since-v1-2"><a class="link" href="#removing-a-tag-code-removetag-code-since-v1-2">3.2.7. Removing a tag : <code>removeTag</code> [Since v1.2]</a></h4>
+<h4 id="removing-a-tag-code-removetag-code-since-v1-2"><a class="link" href="#removing-a-tag-code-removetag-code-since-v1-2">3.2.8. Removing a tag : <code>removeTag</code> [Since v1.2]</a></h4>
 <div class="paragraph">
 <p>Removes the specified tag from every person in CelebManager and shows the number of person(s) affected by this
 operation.<br>
@@ -588,7 +594,7 @@ Format: <code>removeTag TAG</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Removes the tag from every person in CelebManager.</p>
+<p>Removes the tag from every person in the full contact list (not necessarily the last shown list) in CelebManager.</p>
 </li>
 <li>
 <p><code>TAG</code> removed <strong>must not be</strong> <code>celebrity</code>.</p>
@@ -604,17 +610,29 @@ Format: <code>removeTag TAG</code></p>
 <ul>
 <li>
 <p><code>removeTag friends</code><br>
-Removes the tag, <code>friends</code> from every person and shows the number of person(s) affected.</p>
+Removes the tag, <code>friends</code> from every person and shows the number of person(s) affected.<br>
+Suppose <code>PersonListPanel</code> looks like the one on the left below before execution.<br>
+After execution, <code>PersonListPanel</code> should get updated to the one on the right below.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="images/removeTag.png" alt="removeTag" width="800">
+</div>
+<div class="title">Figure 4. State of <code>PersonListPanel</code> before (left) and after (right) executing <code>removeTag friends</code></div>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><code>removeTag colleagues</code><br>
-Removes the tag, <code>colleagues</code> from every person and shows the number of person(s) affected.</p>
+<p><code>removeTag owesMoney</code><br>
+Removes the tag, <code>owesMoney</code> from every person and shows the number of person(s) affected.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="undoing-previous-command-code-undo-code-since-v1-0"><a class="link" href="#undoing-previous-command-code-undo-code-since-v1-0">3.2.8. Undoing previous command : <code>undo</code> [Since v1.0]</a></h4>
+<h4 id="undoing-previous-command-code-undo-code-since-v1-0"><a class="link" href="#undoing-previous-command-code-undo-code-since-v1-0">3.2.9. Undoing previous command : <code>undo</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Restores CelebManager to the state before the previous <em>undoable</em> command was executed.<br>
 Alias: <code>u</code><br>
@@ -678,7 +696,7 @@ The operation fails as there are no undoable commands executed previously.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-the-previously-undone-command-code-redo-code-since-v1-0"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-since-v1-0">3.2.9. Redoing the previously undone command : <code>redo</code> [Since v1.0]</a></h4>
+<h4 id="redoing-the-previously-undone-command-code-redo-code-since-v1-0"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-since-v1-0">3.2.10. Redoing the previously undone command : <code>redo</code> [Since v1.0]</a></h4>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Alias: <code>r</code><br>
@@ -1032,7 +1050,7 @@ The figure below shows a possible state of CelebManager after executing the comm
 <div class="content">
 <img src="images/viewAppointmentInput.png" alt="viewAppointmentInput" width="">
 </div>
-<div class="title">Figure 4. State of CelebManager after executing <code>viewAppointment 1</code></div>
+<div class="title">Figure 5. State of CelebManager after executing <code>viewAppointment 1</code></div>
 </div>
 <div class="paragraph">
 <p>The red boxes are used to highlight the two panels that display the specified appointment&#8217;s information. These red boxes
@@ -1054,7 +1072,7 @@ CelebManager. The figure below shows the default state of <code>CalendarPanel</c
 <div class="content">
 <img src="images/ViewCalendarByDay.jpg" alt="ViewCalendarByDay" width="">
 </div>
-<div class="title">Figure 5. Default state of <code>CalendarPanel</code></div>
+<div class="title">Figure 6. Default state of <code>CalendarPanel</code></div>
 </div>
 <div class="paragraph">
 <p>The date on the top right corner can be different as it should be the current date.
@@ -1166,7 +1184,7 @@ Changes the calendar view to <code>day</code> view that is similar to the figure
 <div class="content">
 <img src="images/ViewCalendarByDay.jpg" alt="ViewCalendarByDay" width="">
 </div>
-<div class="title">Figure 6. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy day</code></div>
+<div class="title">Figure 7. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy day</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1196,7 +1214,7 @@ The column highlighted in red indicates the current day.</p>
 <div class="content">
 <img src="images/ViewCalendarByWeek.jpg" alt="ViewCalendarByWeek" width="">
 </div>
-<div class="title">Figure 7. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy week</code></div>
+<div class="title">Figure 8. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy week</code></div>
 </div>
 <div class="ulist">
 <ul>
@@ -1211,7 +1229,7 @@ The box highlighted in red indicates the current day.</p>
 <div class="content">
 <img src="images/ViewCalendarByMonth.jpg" alt="ViewCalendarByMonth" width="">
 </div>
-<div class="title">Figure 8. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy month</code></div>
+<div class="title">Figure 9. State of <code>CalendarPanel</code> after executing <code>viewCalendarBy month</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1261,7 +1279,7 @@ Changes the base date of calendar to <code>03-05-2018</code> and displays the ca
 <div class="content">
 <img src="images/ViewDate03-05-2018.jpg" alt="ViewDate03 05 2018" width="">
 </div>
-<div class="title">Figure 9. State of <code>CalendarPanel</code> after executing <code>viewDate 03-05-2018</code></div>
+<div class="title">Figure 10. State of <code>CalendarPanel</code> after executing <code>viewDate 03-05-2018</code></div>
 </div>
 <div class="ulist">
 <ul>
@@ -1303,7 +1321,7 @@ The figure below shows the default state of <code>MapPanel</code>.</p>
 <div class="content">
 <img src="images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 10. Default state of <code>MapPanel</code></div>
+<div class="title">Figure 11. Default state of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
 <p>Whenever a new valid or invalid command belonging to map features is executed, any existing route or location marker will be removed.</p>
@@ -1380,7 +1398,7 @@ Updates the map by re-centering to the new route of <code>Punggol</code> and <co
 <div class="content">
 <img src="images/AfterEstimateRouteInput.png" alt="AfterEstimateRouteInput" width="400">
 </div>
-<div class="title">Figure 11. State of <code>MapPanel</code> after executing <code>estimateRoute sma/Punggol ema/NUS</code></div>
+<div class="title">Figure 12. State of <code>MapPanel</code> after executing <code>estimateRoute sma/Punggol ema/NUS</code></div>
 </div>
 </div>
 <div class="sect3">
@@ -1416,7 +1434,7 @@ Updates the map by re-centering to the new location <code>Punggol</code> and add
 <div class="content">
 <img src="images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 12. State of <code>MapPanel</code> after executing <code>showLocation ma/Punggol</code></div>
+<div class="title">Figure 13. State of <code>MapPanel</code> after executing <code>showLocation ma/Punggol</code></div>
 </div>
 </div>
 </div>
@@ -1440,102 +1458,143 @@ data of your previous CelebManager folder.</p>
 are displayed with their respective command formats and examples highlighting their usage. An optional field is enclosed
 within a pair of <code>[]</code>. A field that can be repeatedly entered with different input values is followed by <code>&#8230;&#8203;</code>.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
-</li>
-<li>
-<p><strong>Add Appointment</strong> : <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE]
-[et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code><br>
-e.g. <code>addAppointment n/Oscars 2018 l/Hollywood sd/23-03-2018 st/14:00 ed/23-03-2018 et/20:00 c/1 c/2 p/3 p/4</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>Delete Appointment</strong> : <code>deleteAppointment INDEX</code><br>
-e.g. <code>deleteAppointment 1</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>Edit Appointment</strong> : <code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE]
-[et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code><br>
-e.g. <code>editAppointment n/Dentist Appointment l/Clementi Road st/15:00 et/16:00 c/3</code></p>
-</li>
-<li>
-<p><strong>Estimate Route</strong> : <code>estimateRoute sma/LOCATION ema/LOCATION</code><br>
-e.g.<code>estimateRoute sma/Punggol ema/NUS</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>List Appointments</strong> : <code>listAppointment</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
-<li>
-<p><strong>Remove Tag</strong> : <code>removeTag TAG</code><br>
-e.g.<code>removeTag friends</code></p>
-</li>
-<li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
-</li>
-<li>
-<p><strong>Show Location</strong> : <code>showLocation ma/LOCATION</code><br>
-e.g.<code>showLocation ma/Punggol</code></p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-<li>
-<p><strong>View Appointment</strong> : <code>viewAppointment INDEX</code><br>
-e.g.<code>viewAppointment 1</code></p>
-</li>
-<li>
-<p><strong>View Calendar</strong> : <code>viewCalendar INDEX</code><br>
-e.g.<code>viewCalendar 1</code></p>
-</li>
-<li>
-<p><strong>View Calendar By</strong> : <code>viewCalendarBy VIEW</code><br>
-e.g.<code>viewCalendarBy week</code></p>
-</li>
-<li>
-<p><strong>View Combined Calendar</strong> : <code>viewCombinedCalendar</code></p>
-</li>
-<li>
-<p><strong>View Date</strong> : <code>viewDate [DATE]</code><br>
-e.g.<code>viewDate 03-05-2018</code></p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all" style="width: 90%;">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 35%;">
+<col style="width: 55%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Function</th>
+<th class="tableblock halign-left valign-top">Command Format</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add Person</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add Appointment</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addAppointment n/Oscars 2018 l/Hollywood sd/23-03-2018 st/14:00 ed/23-03-2018 et/20:00 c/1 c/2 p/3 p/4</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Clear</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Delete</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete 3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Delete Appointment</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteAppointment INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deleteAppointment 1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Edit</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit 2 n/James Lee e/jameslee@example.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Edit Appointment</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editAppointment APPOINTMENT_INDEX [n/APPOINTMENT_NAME] [l/LOCATION] [sd/START_DATE] [st/START_TIME] [ed/END_DATE] [et/END_TIME] [c/CELEBRITY_INDEX]&#8230;&#8203; [p/POINT_OF_person_INDEX]&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>editAppointment n/Dentist Appointment l/Clementi Road st/15:00 et/16:00 c/3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Estimate Route</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>estimateRoute sma/LOCATION ema/LOCATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>estimateRoute sma/Punggol ema/NUS</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find KEYWORD [MORE_KEYWORDS]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find James Jake</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Help</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>History</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>List</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>List Appointments</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>listAppointment [START_DATE END_DATE]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>listAppointment 01-04-2018 01-05-2018</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Redo</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Remove Tag</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>removeTag TAG</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>removeTag friends</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Select</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select 2</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Show Location</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showLocation ma/LOCATION</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showLocation ma/Punggol</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Undo</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View Appointment</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewAppointment INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewAppointment 1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View Calendar</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewCalendar INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewCalendar 1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View Calendar By</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewCalendarBy VIEW</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewCalendarBy week</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View Combined Calendar</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewCombinedCalendar</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View Date</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewDate [DATE]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>viewDate 03-05-2018</code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-14 07:47:25 UTC
+Last updated 2018-04-15 07:38:29 UTC
 </div>
 </div>
 </body>
