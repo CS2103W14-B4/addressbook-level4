@@ -286,7 +286,7 @@ the middle left of CelebManager.</p>
 <div class="sect3">
 <h4 id="person-vs-celebrity-what-s-the-difference"><a class="link" href="#person-vs-celebrity-what-s-the-difference">3.2.1. Person vs Celebrity: What&#8217;s the difference?</a></h4>
 <div class="paragraph">
-<p>In our application, Celebrities are meant to be the celebrities that you, the manager, are currently managing. The other people are each referred to as a Person. The way you create or edit a Person is almost exactly the same as a Celebrity. Both have the same necessary and optional fields to them such as a name, phone number, address, email and some descriptive tags. The only difference is that if you want to create a Celebrity instead of a regular Person in our app, you need to have a compulsory <code>celebrity</code> tag, in small letters. This will signal to the program that you want to create a Celebrity instead of a normal Person. In other words, the usage of <code>celebrity</code> as a tag is reserved for creation of Celebrities. In some of the commands which deal with the adding and editing of a person this will be further explained.</p>
+<p>In our application, Celebrities are meant to be the celebrities that you, the manager, are currently managing. The other people are each referred to as a Person. The way you create or edit a Person is almost exactly the same as a Celebrity. Both have the same necessary and optional fields to them such as a name, phone number, address, email and some descriptive tags. The only difference is that if you want to create a Celebrity instead of a regular Person in our app, you need to have a compulsory <code>celebrity</code> tag, in small letters. This will signal to the program that you want to create a Celebrity instead of a normal Person. In other words, the usage of <code>celebrity</code> as a tag is reserved for creation of Celebrities. In some of the commands which deal with the adding and editing of a person this will be further explained. In addition, if we use the term "Point of Contact" from here on out, it refers to a regular person without a <code>celebrity</code> tag (i.e. not a Celebrity).</p>
 </div>
 <div class="paragraph">
 <p>Each celebrity has their own calendar, which will displays the appointments he/she will be attending.</p>
@@ -584,7 +584,8 @@ If you follow all the examples so far, this person&#8217;s calendar should be de
 <div class="sect3">
 <h4 id="removing-a-tag-code-removetag-code-since-v1-2"><a class="link" href="#removing-a-tag-code-removetag-code-since-v1-2">3.2.8. Removing a tag : <code>removeTag</code> [Since v1.2]</a></h4>
 <div class="paragraph">
-<p>Removes the specified tag from every person in CelebManager and shows the number of person(s) affected by this
+<p>Removes the specified tag from every person in CelebManager (including persons who may not be currently shown in <code>PersonListPanel</code>)
+and shows the number of person(s) affected by this
 operation.<br>
 Alias: <code>rt</code><br>
 Format: <code>removeTag TAG</code></p>
@@ -799,7 +800,7 @@ Format: <code>addAppointment n/APPOINTMENT_NAME [l/LOCATION] [sd/START_DATE] [st
 <p>The person at <code>CELEBRITY_INDEX</code> <strong>must be</strong> a celebrity.</p>
 </li>
 <li>
-<p>The person at <code>POINT_OF_person_INDEX</code> <strong>must not be</strong> a celebrity.</p>
+<p>The person at <code>POINT_OF_CONTACT_INDEX</code> <strong>must not be</strong> a celebrity.</p>
 </li>
 <li>
 <p><code>CELEBRITY_INDEX</code> and <code>POINT_OF_person_INDEX</code> <strong>must be a positive integer</strong> <code>1</code>, <code>2</code>, <code>3</code>, &#8230;&#8203;</p>
@@ -1594,7 +1595,7 @@ within a pair of <code>[]</code>. A field that can be repeatedly entered with di
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:14:10 UTC
+Last updated 2018-04-15 14:16:42 UTC
 </div>
 </div>
 </body>

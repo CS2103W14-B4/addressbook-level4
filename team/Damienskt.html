@@ -238,7 +238,58 @@ Clicking these two things triggers a bug which we plan to fix in <code>v2.0</cod
 </table>
 </div>
 </div>
+<div class="sect3">
+<h4 id="show-location-on-map-code-showlocation-code-since-v1-2"><a class="link" href="#show-location-on-map-code-showlocation-code-since-v1-2">Show location on map : <code>showLocation</code> [Since v1.2]</a></h4>
+<div class="paragraph">
+<p>Shows the specified location by marking the latitude and longitude with a location marker on Google Map.<br>
+Alias: <code>sl</code><br>
+Format: <code>showLocation ma/ADDRESS</code></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>ADDRESS</code> should be a postal code, road name, location name or building name.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>showLocation ma/Punggol</code><br>
+Updates the map by re-centering to the new location <code>Punggol</code> and adds a location marker to it as shown below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
+</div>
+<div class="title">Figure 2. State of <code>MapPanel</code> after executing <code>showLocation ma/Punggol</code></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are some key sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect2">
 <h3 id="showlocation-feature"><a class="link" href="#showlocation-feature">ShowLocation Feature</a></h3>
 <div class="sect3">
@@ -255,7 +306,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="../images/LocationMarker.png" alt="LocationMarker" width="50">
 </div>
-<div class="title">Figure 2. Location marker</div>
+<div class="title">Figure 3. Location marker</div>
 </div>
 <div class="paragraph">
 <p>The following diagram shows the inheritance diagram for <code>ShowLocationCommand</code>:</p>
@@ -264,7 +315,7 @@ location and identifying it with a location marker. This command inherits from <
 <div class="content">
 <img src="../images/ShowLocationLogicCommandClassDiagram.png" alt="ShowLocationLogicCommandClassDiagram" width="">
 </div>
-<div class="title">Figure 3. Inheritance diagram for <code>Command</code></div>
+<div class="title">Figure 4. Inheritance diagram for <code>Command</code></div>
 </div>
 <div class="paragraph">
 <p>As you can see from the diagram, <code>ShowLocationCommand</code> inherits from the Command class and is not part of the Undoable Command.
@@ -360,7 +411,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="content">
 <img src="../images/BeforeInputMap.png" alt="BeforeInputMap" width="400">
 </div>
-<div class="title">Figure 4. Default State of <code>MapPanel</code></div>
+<div class="title">Figure 5. Default State of <code>MapPanel</code></div>
 </div>
 <div class="paragraph">
 <p>After the input of "showLocation ma/Punggol" the <code>MapPanel</code> will be updated to the diagram below:</p>
@@ -369,7 +420,7 @@ is then used by the command to find the exact location in the <code>MapPanel</co
 <div class="content">
 <img src="../images/AfterShowLocationInput.png" alt="AfterShowLocationInput" width="400">
 </div>
-<div class="title">Figure 5. State of <code>MapPanel</code> after <code>CommandInput</code></div>
+<div class="title">Figure 6. State of <code>MapPanel</code> after <code>CommandInput</code></div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -390,7 +441,7 @@ Whenever an invalid <code>showLocation</code> command is done, any existing loca
 <div class="content">
 <img src="../images/ShowLocationSequenceDiagram.png" alt="ShowLocationSequenceDiagram" width="">
 </div>
-<div class="title">Figure 6. Sequence Diagram of <code>showLocation</code> Command</div>
+<div class="title">Figure 7. Sequence Diagram of <code>showLocation</code> Command</div>
 </div>
 </div>
 <div class="sect3">
@@ -468,7 +519,7 @@ Whenever an invalid <code>showLocation</code> command is done, any existing loca
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:14:10 UTC
+Last updated 2018-04-15 14:16:42 UTC
 </div>
 </div>
 </body>

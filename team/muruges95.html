@@ -62,16 +62,16 @@ of documentation or writing code.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Allows users to add new appointments into CelebManager. For each appointment, CelebManager takes in an appointment an appointment name field and other optional fields
+<p>What it does: Allows users to add new appointments into CelebManager. For each appointment, CelebManager takes in an appointment name field and other optional fields
 such as the list of celebrities attending the appointment.</p>
 </li>
 <li>
-<p>Justification: This feature is in fact the main feature of the appointment, as we want to be able to manage the schedules of celebrities.
+<p>Justification: This feature is in fact the main feature of the application, as we want to be able to manage the schedules of celebrities.
 The only way to do this would be to store and make corrections to these appointments that the celebrities are attending, which is what this feature allows for.</p>
 </li>
 <li>
-<p>Highlights: Creating this feature was something that was done over the entirety of the project, due to how we changed how we wanted to implement storing of the appointments.
-There was difficulties in implementation due to the fact that each appointment could only be associated with a single celebrities' calendar at a time. Hence, it was eventually decided that appointments will be stored
+<p>Highlights: Creating this feature was done over the entirety of the project, due to changing how we wanted to implement the storage of the appointments.
+There were difficulties in the implementation due to the fact that each appointment could only be associated with a single celebrity&#8217;s calendar at a time. Hence, it was eventually decided that appointments will be stored
 centrally in a <code>StorageCalendar</code> and then cloned for each celebrity attending the appointment.</p>
 </li>
 <li>
@@ -92,7 +92,7 @@ centrally in a <code>StorageCalendar</code> and then cloned for each celebrity a
 add a celebrity to the appointment, the appointment will display on the UI. This means that we are now able to view the appointments and effectively the schedule of the celebrity we are managing.</p>
 </li>
 <li>
-<p>Highlights: This enhancement was carried out through modifications to how the add, edit and delete commands worked. By recognizing a <code>celebrity</code> tag to indicate that the person is a celebrity,
+<p>Highlights: This enhancement was carried out through modifications to the add, edit and delete commands. By recognizing a <code>celebrity</code> tag to indicate that the person is a celebrity,
 the add and edit commands now create a calendar for the added or modified celebrity. There were a lot of difficulties as we had to make sure the celebrities
 were synchronized with the calendars even when the commands were undoed or redoed, as add, edit and delete are meant to be undoable.</p>
 </li>
@@ -587,7 +587,7 @@ in UI component while appointments in Model component.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:14:10 UTC
+Last updated 2018-04-15 14:16:42 UTC
 </div>
 </div>
 </body>

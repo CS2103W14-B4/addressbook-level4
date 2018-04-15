@@ -375,7 +375,7 @@ Coverage reporting could be useful for a team repository that hosts the final ve
 <div class="title">Figure 1. Architecture diagram</div>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has only one class called <a href="https://github.com/CS2103JAN2018-W14-B4/main//src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for:</p>
+<p><code>Main</code> has only one class called link: <a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -476,7 +476,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <div class="title">Figure 4. Class diagram of the <code>UI</code> component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong>: <a href="https://github.com/CS2103JAN2018-W14-B4/main//src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong>: link: <a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>CalendarPanel</code> etc.
@@ -485,7 +485,8 @@ All these classes inherit from the abstract <code>UiPart</code> class.</p>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework.
 The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder.
-For example, the layout of the <a href="https://github.com/CS2103JAN2018-W14-B4/main//src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103JAN2018-W14-B4/main//src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a>.</p>
+For example, the layout of the link: <a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is
+specified in link: <a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -523,7 +524,7 @@ It describe the overall structure of the <code>Logic</code> component and how a 
 <div class="title">Figure 6. Structure of commands in the <code>Logic</code> component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong>: <a href="https://github.com/CS2103JAN2018-W14-B4/main//src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<p><strong>API</strong>: link: <a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>When the user types in a new command to be parsed:</p>
@@ -567,7 +568,7 @@ It describes the overall structure of the <code>Model</code> component, along wi
 <div class="title">Figure 8. Class diagram of the <code>Model</code> component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong>: <a href="https://github.com/CS2103JAN2018-W14-B4/main//src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong>: link: <a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code> component:</p>
@@ -611,7 +612,7 @@ It describes how the overall structure of the <code>Storage</code> component and
 <div class="title">Figure 9. Class diagram of the <code>Storage</code> component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong>: <a href="https://github.com/CS2103JAN2018-W14-B4/main//src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong>: link: <a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component:</p>
@@ -647,7 +648,7 @@ It describes how the overall structure of the <code>Storage</code> component and
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The tag removal mechanism is facilitated by both <code>RemoveTagCommand</code> class, which resides inside <code>LogicManager</code>, and
+<p>The tag removal mechanism is facilitated by both <code>RemoveTagCommand</code> class, which resides inside <code>Logic</code>, and
 <code>removeTag</code> method, which resides in <code>AddressBook</code>. This feature removes a specified tag from each person who has it in the
 address book. <code>RemoveTagCommand</code> class inherits from the <code>UndoableCommand</code> class and hence supports the <code>undo</code> and <code>redo</code> features.</p>
 </div>
@@ -748,7 +749,7 @@ of both. It is also in-charge of printing the successful message upon a successf
 </div>
 </div>
 <div class="paragraph">
-<p>Note that <code>removeTag</code> makes use of <code>EditPersonDescriptor</code> class to creates a new <code>person</code> without the tag, to replace
+<p>Note that <code>removeTag</code> makes use of <code>EditPersonDescriptor</code> class to create a new <code>person</code> without the tag, to replace
 the original <code>person</code> with the tag.</p>
 </div>
 <div class="paragraph">
@@ -762,7 +763,7 @@ the user executes <code>removeTag friends</code> successfully:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/RemoveTagSequenceDiagram.png" alt="RemoveTagSequenceDiagram" width="">
+<img src="images/RemoveTagCommand-logic-seq-diagram.jpg" alt="RemoveTagCommand logic seq diagram" width="">
 </div>
 <div class="title">Figure 10. Sequence diagram of <code>removeTag</code> command</div>
 </div>
@@ -787,15 +788,15 @@ the user executes <code>removeTag friends</code> successfully:</p>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Remove <code>celebrity</code> tag and clears all calendars</p>
+<p><strong>Alternative 2:</strong> Remove <code>celebrity</code> tag and clear all calendars</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Provides an easy way to mass remove <code>celebrity</code> tag and clears all celebrities from the address book.</p>
 </li>
 <li>
-<p>Cons: Requires the creation of additional events to interact with <code>CalendarPanel</code> as calendars are under
-UI component, which logic component has no directly access to.</p>
+<p>Cons: As changes made to calendars and appointments are not undoable,
+removing <code>celebrity</code> tag by mistake can result in loss of all celebrities' calendar and appointment information.</p>
 </li>
 </ul>
 </div>
@@ -2523,7 +2524,7 @@ Please refer to <a href="UsingNetlify.html">UsingNetlify.adoc</a> for more detai
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Update the version number in <a href="https://github.com/CS2103JAN2018-W14-B4/main//src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
+<p>Update the version number in link: <a href="https://github.com/CS2103JAN2018-W14-B4/main/blob/master/src/main/java/seedu/address/MainApp.java"><code>MainApp.java</code></a>.</p>
 </li>
 <li>
 <p>Generate a JAR file <a href="UsingGradle.html#creating-the-jar-file">using Gradle</a>.</p>
@@ -2904,6 +2905,19 @@ information into storage. (By Tzer Bin)</p>
 </ul>
 </div>
 </li>
+<li>
+<p>3b. The person at the given index is a celebrity.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. CelebManager deletes the celebrity&#8217;s calendar.</p>
+<div class="paragraph">
+<p>Use case continues to step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -3014,6 +3028,19 @@ information into storage. (By Tzer Bin)</p>
 <ul class="none">
 <li>
 <p>1a1. CelebManager shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The tag is celebrity.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. CelebManager shows an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3156,6 +3183,23 @@ information into storage. (By Tzer Bin)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
+<p>1b. The entered start date is after end date.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. CelebManager outputs an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
 <p>2a. There is no appointment to show in the date range.</p>
 <div class="ulist none">
 <ul class="none">
@@ -3206,6 +3250,23 @@ information into storage. (By Tzer Bin)</p>
 <ul class="none">
 <li>
 <p>1a1. CelebManager outputs an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b. The entered start date is after end date.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1b1. CelebManager outputs an error message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -3608,7 +3669,7 @@ information into storage. (By Tzer Bin)</p>
 <dd>
 <p>A contact detail that is not meant to be shared with others</p>
 </dd>
-<dt class="hdlist1"><a id="celebcalendar"></a> Celeb calendar</dt>
+<dt class="hdlist1"><a id="celebcalendar"></a> StorageCalendar</dt>
 <dd>
 <p>A calendar that contains all appointments a celebrity managed by the user has</p>
 </dd>
@@ -3625,7 +3686,7 @@ information into storage. (By Tzer Bin)</p>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-CelebManager currently supports displaying by day, week, month and year.
+CelebManager currently supports displaying by day, week and month.
 </td>
 </tr>
 </table>
@@ -4018,7 +4079,7 @@ Prerequisites: List appointments using the <code>listAppointment</code> command.
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>while listing appointments:</p>
+<p>While listing appointments:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -4350,7 +4411,7 @@ Preprequisites: The file is a valid .xml file for storage calendar, and is named
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-04-15 09:14:10 UTC
+Last updated 2018-04-15 14:16:42 UTC
 </div>
 </div>
 </body>
